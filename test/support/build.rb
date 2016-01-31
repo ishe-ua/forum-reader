@@ -19,9 +19,9 @@ def build(model_name, attributes = {})
   #
   #
 
-  if model_name == :account || model_name == :admin_user
-    hash[:password]              = APP::DEFAULT_PASSWORD
-    hash[:password_confirmation] = APP::DEFAULT_PASSWORD
+  if model_name == :account
+    # hash[:password]              = APP::DEFAULT_PASSWORD
+    # hash[:password_confirmation] = APP::DEFAULT_PASSWORD
   end
 
   ###
@@ -30,17 +30,18 @@ def build(model_name, attributes = {})
 
   correction = lambda do |ref|
     if hash[ref].present?
-      hash["#{ref}_id"] = accounts(hash[ref].to_sym).id
-      hash.delete ref
+      hash["#{ref}_id"] = users(hash[ref].to_sym).id
+      hash.delete(ref)
     end
   end
 
   correction.call('account')
-  correction.call('company')
-  correction.call('price')
-  correction.call('upload')
-  correction.call('subscription')
-  correction.call('invite')
+  correction.call('user')
+  correction.call('forum')
+  correction.call('letter')
+  correction.call('letter_item')
+  correction.call('feed')
+  correction.call('feed_item')
 
   ###
   #
