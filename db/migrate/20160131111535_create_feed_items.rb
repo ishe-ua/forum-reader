@@ -1,7 +1,7 @@
 # coding: utf-8
-class CreateEntries < ActiveRecord::Migration
+class CreateFeedItems < ActiveRecord::Migration
   def change
-    create_table :entries do |t|
+    create_table :feed_items do |t|
       t.references :feed, index: true, foreign_key: true
       t.string :digest, null: false
 
@@ -13,7 +13,11 @@ class CreateEntries < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :entries, [:feed_id, :digest], unique: true
-    add_index :entries, :created_at # очистка от устаревших
+    ###
+    #
+    #
+
+    add_index :feed_items, [:feed_id, :digest], unique: true
+    add_index :feed_items, :created_at # очистка от устаревших
   end
 end

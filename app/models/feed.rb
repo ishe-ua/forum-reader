@@ -16,7 +16,6 @@
 #  index_feeds_on_last_fetch_at  (last_fetch_at)
 #  index_feeds_on_url            (url) UNIQUE
 #
-
 class Feed < ActiveRecord::Base
-  has_many :entries
+  has_many :feed_items
 end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: letter_items
 #
 #  id           :integer          not null, primary key
 #  letter_id    :integer
@@ -13,16 +13,16 @@
 #
 # Indexes
 #
-#  index_items_on_last_post_at  (last_post_at)
-#  index_items_on_letter_id     (letter_id)
-#  index_items_on_name          (name)
-#  index_items_on_url           (url)
+#  index_letter_items_on_last_post_at  (last_post_at)
+#  index_letter_items_on_letter_id     (letter_id)
+#  index_letter_items_on_name          (name)
+#  index_letter_items_on_url           (url)
 #
 # Foreign Keys
 #
-#  fk_rails_8fa78c900a  (letter_id => letters.id)
+#  fk_rails_2b6fa86a3d  (letter_id => letters.id)
 #
 
-class Item < ActiveRecord::Base
+class LetterItem < ActiveRecord::Base
   belongs_to :letter
 end

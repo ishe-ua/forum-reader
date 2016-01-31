@@ -1,6 +1,6 @@
-class CreateItems < ActiveRecord::Migration
+class CreateLetterItems < ActiveRecord::Migration
   def change
-    create_table :items do |t|
+    create_table :letter_items do |t|
       t.references :letter, index: true, foreign_key: true
 
       t.string :name, null: false
@@ -12,8 +12,12 @@ class CreateItems < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :items, :name
-    add_index :items, :url
-    add_index :items, :last_post_at
+    ###
+    #
+    #
+
+    add_index :letter_items, :name
+    add_index :letter_items, :url
+    add_index :letter_items, :last_post_at
   end
 end

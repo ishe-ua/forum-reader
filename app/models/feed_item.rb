@@ -3,7 +3,7 @@
 #
 # == Schema Information
 #
-# Table name: entries
+# Table name: feed_items
 #
 #  id         :integer          not null, primary key
 #  feed_id    :integer
@@ -17,14 +17,15 @@
 #
 # Indexes
 #
-#  index_entries_on_created_at          (created_at)
-#  index_entries_on_feed_id             (feed_id)
-#  index_entries_on_feed_id_and_digest  (feed_id,digest) UNIQUE
+#  index_feed_items_on_created_at          (created_at)
+#  index_feed_items_on_feed_id             (feed_id)
+#  index_feed_items_on_feed_id_and_digest  (feed_id,digest) UNIQUE
 #
 # Foreign Keys
 #
-#  fk_rails_05dc0aaac4  (feed_id => feeds.id)
+#  fk_rails_0b1095a1ad  (feed_id => feeds.id)
 #
-class Entry < ActiveRecord::Base
+
+class FeedItem < ActiveRecord::Base
   belongs_to :feed
 end

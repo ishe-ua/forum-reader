@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160131134630) do
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
 
-  create_table "entries", force: :cascade do |t|
+  create_table "feed_items", force: :cascade do |t|
     t.integer  "feed_id"
     t.string   "digest",     null: false
     t.datetime "date"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20160131134630) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "entries", ["created_at"], name: "index_entries_on_created_at", using: :btree
-  add_index "entries", ["feed_id", "digest"], name: "index_entries_on_feed_id_and_digest", unique: true, using: :btree
-  add_index "entries", ["feed_id"], name: "index_entries_on_feed_id", using: :btree
+  add_index "feed_items", ["created_at"], name: "index_feed_items_on_created_at", using: :btree
+  add_index "feed_items", ["feed_id", "digest"], name: "index_feed_items_on_feed_id_and_digest", unique: true, using: :btree
+  add_index "feed_items", ["feed_id"], name: "index_feed_items_on_feed_id", using: :btree
 
   create_table "feeds", force: :cascade do |t|
     t.string   "url",           null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160131134630) do
   add_index "forums", ["url"], name: "index_forums_on_url", using: :btree
   add_index "forums", ["user_id"], name: "index_forums_on_user_id", using: :btree
 
-  create_table "items", force: :cascade do |t|
+  create_table "letter_items", force: :cascade do |t|
     t.integer  "letter_id"
     t.string   "name",         null: false
     t.string   "url",          null: false
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 20160131134630) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "items", ["last_post_at"], name: "index_items_on_last_post_at", using: :btree
-  add_index "items", ["letter_id"], name: "index_items_on_letter_id", using: :btree
-  add_index "items", ["name"], name: "index_items_on_name", using: :btree
-  add_index "items", ["url"], name: "index_items_on_url", using: :btree
+  add_index "letter_items", ["last_post_at"], name: "index_letter_items_on_last_post_at", using: :btree
+  add_index "letter_items", ["letter_id"], name: "index_letter_items_on_letter_id", using: :btree
+  add_index "letter_items", ["name"], name: "index_letter_items_on_name", using: :btree
+  add_index "letter_items", ["url"], name: "index_letter_items_on_url", using: :btree
 
   create_table "letters", force: :cascade do |t|
     t.integer  "user_id"
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 20160131134630) do
   add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
   add_index "users", ["jabber"], name: "index_users_on_jabber", unique: true, using: :btree
 
-  add_foreign_key "entries", "feeds"
+  add_foreign_key "feed_items", "feeds"
   add_foreign_key "forums", "users"
-  add_foreign_key "items", "letters"
+  add_foreign_key "letter_items", "letters"
   add_foreign_key "letters", "users"
   add_foreign_key "users", "accounts"
 end

@@ -21,6 +21,10 @@ class CreateLetters < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    ###
+    #
+    #
+
     add_index :letters, :last_post_at
 
     add_index :letters, :d1
