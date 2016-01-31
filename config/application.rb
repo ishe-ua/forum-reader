@@ -1,3 +1,4 @@
+# coding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -22,5 +23,14 @@ module Reader
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    ###
+    # ishe:
+    #
+
+    ## Чтобы не напрягать SSD
+    if Rails.env.development? || Rails.env.test?
+      config.logger = Logger.new('/dev/null')
+    end
   end
 end

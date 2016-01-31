@@ -1,0 +1,17 @@
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+  Exclude:
+   - 'bin/*'
+   - 'db/**/*'
+   - 'config/environments/*'
+   - 'config/application.rb'
+Style/AsciiComments:
+  Enabled: false
+Rails:
+  Enabled: true
+Rails/Delegate:
+  Enabled: true
+  Exclude:
+    - 'test/support/**/*'

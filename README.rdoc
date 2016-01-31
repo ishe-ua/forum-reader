@@ -1,28 +1,27 @@
-== README
+== RSS Reader
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Идея:
+RSS-ридер "под себя", т.е. как я вижу чтение новостей.
 
-Things you may want to cover:
+Девиз:
+Новости, которые не надоедают!!
 
-* Ruby version
+Как пользоваться (текст на главной странице):
+1. создать группу новостей
+2. добавить в нее фиды
+3. читать:
+   - в браузере - клик по ссылке (видео)
+   - с мобильного - клик по кнопке (видео)
+   - почтой - настроить опцию и время доставки (видео)
+   - jabber - по слову в названии (видео)
+4. подглядывать (видео)
 
-* System dependencies
+Домен:
+Идея - дать ридеру "имя собственное". (С) О.Бендер.
+Главное чтобы хорошо звучало и запоминалось!!
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+reader-irina.com
+reader-marina
+reader-polina
+reader-...
+murka-reader.com
