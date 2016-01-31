@@ -1,0 +1,23 @@
+DEFAULTS: &DEFAULTS
+  user: igor
+  name: Sample letter
+
+  hour:   <%= Letter.new.hour || 0 %>  # TODO
+  minute: <%= Letter.new.minute || 0%> # TODO
+
+  position: <%= Letter.new.position %>
+
+dev:
+  <<: *DEFAULTS
+  name: Software development
+  position: 0
+
+ukr:
+  <<: *DEFAULTS
+  name: Ukraine
+  position: 1
+
+others:
+  <<: *DEFAULTS
+  name: Другие подписки
+  position: 2

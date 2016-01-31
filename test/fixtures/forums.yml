@@ -1,10 +1,10 @@
 DEFAULTS: &DEFAULTS
   user: igor
-  name: Example forum
+  name: Sample forum
   url: http://forum.example.com/feed.xml
 
-  target: 0                     # TODO
-  position: 0
+  target:   <%= Forum.new.target %>
+  position: <%= Forum.new.position %>
 
 reddit_ruby:
   <<: *DEFAULTS

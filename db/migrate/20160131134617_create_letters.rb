@@ -4,13 +4,13 @@ class CreateLetters < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.string :name, null: false
 
-      t.boolean :d1, null: false, default: false
-      t.boolean :d2, null: false, default: false
-      t.boolean :d3, null: false, default: false
-      t.boolean :d4, null: false, default: false
-      t.boolean :d5, null: false, default: false
-      t.boolean :d6, null: false, default: false
-      t.boolean :d7, null: false, default: false
+      t.boolean :d1
+      t.boolean :d2
+      t.boolean :d3
+      t.boolean :d4
+      t.boolean :d5
+      t.boolean :d6
+      t.boolean :d7
 
       t.integer :hour, null: false
       t.integer :minute, null: false

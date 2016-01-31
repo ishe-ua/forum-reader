@@ -83,20 +83,20 @@ ActiveRecord::Schema.define(version: 20160131134630) do
 
   create_table "letters", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",                         null: false
-    t.boolean  "d1",           default: false, null: false
-    t.boolean  "d2",           default: false, null: false
-    t.boolean  "d3",           default: false, null: false
-    t.boolean  "d4",           default: false, null: false
-    t.boolean  "d5",           default: false, null: false
-    t.boolean  "d6",           default: false, null: false
-    t.boolean  "d7",           default: false, null: false
-    t.integer  "hour",                         null: false
-    t.integer  "minute",                       null: false
+    t.string   "name",         null: false
+    t.boolean  "d1"
+    t.boolean  "d2"
+    t.boolean  "d3"
+    t.boolean  "d4"
+    t.boolean  "d5"
+    t.boolean  "d6"
+    t.boolean  "d7"
+    t.integer  "hour",         null: false
+    t.integer  "minute",       null: false
     t.datetime "last_post_at"
-    t.integer  "position",                     null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "position",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "letters", ["d1"], name: "index_letters_on_d1", using: :btree
