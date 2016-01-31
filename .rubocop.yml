@@ -1,4 +1,5 @@
 AllCops:
+  RunRailsCops: true
   Include:
     - '**/Gemfile'
     - '**/Rakefile'
@@ -7,10 +8,36 @@ AllCops:
    - 'db/**/*'
    - 'config/environments/*'
    - 'config/application.rb'
+
 Style/AsciiComments:
   Enabled: false
-Rails:
+
+Style/Documentation:            # не подхватывается если файл в ~/
   Enabled: true
+  Exclude:
+    - 'test/**/*'
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - 'test/support/**/*'
+    - 'test/test_helper.rb'
+
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - 'test/support/**/*'
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - 'test/support/**/*'
+
+Style/TrivialAccessors:
+  Enabled: true
+  Exclude:
+    - 'test/support/**/*'
+
 Rails/Delegate:
   Enabled: true
   Exclude:

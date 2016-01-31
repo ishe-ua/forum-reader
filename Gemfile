@@ -15,14 +15,14 @@ gem 'bcrypt',   '~> 3.1.7'               # Use ActiveModel has_secure_password
 gem 'sdoc',     '~> 0.4.0', group: :doc  # rake doc:rails
 
 group :development, :test do
-  gem 'web-console', '~> 2.0'            # <% console %> in views
-  gem 'byebug'                           # 'byebug'
+  gem 'byebug'
   gem 'spring'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.35.0', require: false
 end
 
 group :development do
-  gem 'annotate', '~> 2.7.0'
+  gem 'web-console', '~> 2.0'            # <% console %> in views
+  gem 'annotate',    '~> 2.7.0'
   gem 'brakeman'
   gem 'guard'
   gem 'guard-minitest'
