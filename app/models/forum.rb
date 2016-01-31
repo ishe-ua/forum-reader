@@ -27,7 +27,6 @@
 #
 #  fk_rails_99e32c35a4  (user_id => users.id)
 #
-
-class Forum < ActiveRecord::Base
+class Forum < ApplicationRecord
   belongs_to :user
 end

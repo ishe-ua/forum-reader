@@ -40,8 +40,7 @@
 #
 #  fk_rails_0236efdee3  (user_id => users.id)
 #
-
-class Letter < ActiveRecord::Base
+class Letter < ApplicationRecord
   belongs_to :user
   has_many :letter_items
 end

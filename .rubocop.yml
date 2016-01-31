@@ -8,6 +8,9 @@ AllCops:
    - 'config/application.rb'
    - 'config/environments/*'
 
+Rails:
+  Enabled: true
+
 Style/AsciiComments:
   Enabled: false
 

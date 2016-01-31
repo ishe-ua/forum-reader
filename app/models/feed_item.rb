@@ -25,7 +25,6 @@
 #
 #  fk_rails_0b1095a1ad  (feed_id => feeds.id)
 #
-
-class FeedItem < ActiveRecord::Base
+class FeedItem < ApplicationRecord
   belongs_to :feed
 end

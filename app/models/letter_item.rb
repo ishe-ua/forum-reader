@@ -25,7 +25,6 @@
 #
 #  fk_rails_2b6fa86a3d  (letter_id => letters.id)
 #
-
-class LetterItem < ActiveRecord::Base
+class LetterItem < ApplicationRecord
   belongs_to :letter
 end

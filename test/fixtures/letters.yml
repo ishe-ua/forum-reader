@@ -2,6 +2,14 @@ DEFAULTS: &DEFAULTS
   user: igor
   name: Sample letter
 
+  d1: <%= Letter.new.d1 %>
+  d2: <%= Letter.new.d2 %>
+  d3: <%= Letter.new.d3 %>
+  d4: <%= Letter.new.d4 %>
+  d5: <%= Letter.new.d5 %>
+  d6: <%= Letter.new.d6 %>
+  d7: <%= Letter.new.d7 %>
+
   hour:   <%= Letter.new.hour || 0 %>  # TODO
   minute: <%= Letter.new.minute || 0%> # TODO
 
@@ -9,15 +17,15 @@ DEFAULTS: &DEFAULTS
 
 dev:
   <<: *DEFAULTS
-  name: Software development
+  name: Development
   position: 0
 
 ukr:
   <<: *DEFAULTS
-  name: Ukraine
+  name: Ukraine (ua)
   position: 1
 
 others:
   <<: *DEFAULTS
-  name: Другие подписки
+  name: Другие подписки (others)
   position: 2

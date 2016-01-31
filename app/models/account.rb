@@ -14,6 +14,6 @@
 #
 #  index_accounts_on_email  (email) UNIQUE
 #
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   has_one :user
 end

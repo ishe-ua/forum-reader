@@ -20,7 +20,7 @@
 #
 #  fk_rails_61ac11da2b  (account_id => accounts.id)
 #
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   belongs_to :account
 
   has_many :forums
