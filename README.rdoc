@@ -25,3 +25,5 @@ reader-marina
 reader-polina
 reader-...
 murka-reader.com
+zebra-reader
+rss-reader24.com
