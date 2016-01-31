@@ -42,6 +42,8 @@ gem 'acts_as_list'
 gem 'compass-rails'
 gem 'rails-i18n', '~> 4.0.0' # For 4.x
 
+gem 'feedjira'
+
 gem 'exception_notification'
 gem 'backburner'
 gem 'beanstalkd_view'
