@@ -25,9 +25,19 @@ ActiveRecord::Schema.define(version: 20160131111535) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
 
   create_table "entries", force: :cascade do |t|
+    t.integer  "feed_id"
+    t.string   "digest",     null: false
+    t.datetime "date"
+    t.text     "link"
+    t.text     "titl"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "entries", ["created_at"], name: "index_entries_on_created_at", using: :btree
+  add_index "entries", ["feed_id", "digest"], name: "index_entries_on_feed_id_and_digest", unique: true, using: :btree
+  add_index "entries", ["feed_id"], name: "index_entries_on_feed_id", using: :btree
 
   create_table "feeds", force: :cascade do |t|
     t.string   "url",        null: false
@@ -49,5 +59,6 @@ ActiveRecord::Schema.define(version: 20160131111535) do
   add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
   add_index "users", ["jabber"], name: "index_users_on_jabber", unique: true, using: :btree
 
+  add_foreign_key "entries", "feeds"
   add_foreign_key "users", "accounts"
 end
