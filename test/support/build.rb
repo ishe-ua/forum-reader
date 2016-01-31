@@ -1,0 +1,52 @@
+##
+# Build instance of model from fixture's DEFAULTS.
+#
+
+def build(model_name, attributes = {})
+  hash = begin
+           path = fixtures_path + '/' + model_name.to_s.pluralize + '.yml'
+           line = YAML.load(ERB.new(File.read(path)).result)['DEFAULTS']
+
+           erb = ERB.new(line.to_s.gsub '$LABEL', 'sample').result
+           instance_eval(erb)
+         end
+
+  attributes.each do |key, value|
+    hash[key] = value
+  end
+
+  ###
+  #
+  #
+
+  if model_name == :account || model_name == :admin_user
+    hash[:password]              = APP::DEFAULT_PASSWORD
+    hash[:password_confirmation] = APP::DEFAULT_PASSWORD
+  end
+
+  ###
+  #
+  #
+
+  correction = lambda do |ref|
+    if hash[ref].present?
+      hash["#{ref}_id"] = accounts(hash[ref].to_sym).id
+      hash.delete ref
+    end
+  end
+
+  correction.call('account')
+  correction.call('company')
+  correction.call('price')
+  correction.call('upload')
+  correction.call('subscription')
+  correction.call('invite')
+
+  ###
+  #
+  #
+
+  model_name.to_s
+    .classify
+    .constantize.new(hash)
+end
