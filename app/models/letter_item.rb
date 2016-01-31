@@ -1,3 +1,6 @@
+# coding: utf-8
+# Фид в Letter -письме.
+#
 # == Schema Information
 #
 # Table name: letter_items
@@ -6,7 +9,7 @@
 #  letter_id    :integer
 #  name         :string           not null
 #  url          :string           not null
-#  last_post_at :datetime         not null
+#  last_post_at :datetime
 #  position     :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

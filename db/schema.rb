@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20160131134630) do
     t.string   "name",         null: false
     t.string   "url",          null: false
     t.integer  "target",       null: false
-    t.datetime "last_post_at", null: false
     t.integer  "position",     null: false
+    t.datetime "last_post_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160131134630) do
     t.integer  "letter_id"
     t.string   "name",         null: false
     t.string   "url",          null: false
-    t.datetime "last_post_at", null: false
+    t.datetime "last_post_at"
     t.integer  "position",     null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20160131134630) do
     t.boolean  "d7",           default: false, null: false
     t.integer  "hour",                         null: false
     t.integer  "minute",                       null: false
-    t.datetime "last_post_at",                 null: false
+    t.datetime "last_post_at"
     t.integer  "position",                     null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false

@@ -1,0 +1,23 @@
+DEFAULTS: &DEFAULTS
+  user: igor
+  name: Example forum
+  url: http://forum.example.com/feed.xml
+
+  target: 0                     # TODO
+  position: 0
+
+reddit_ruby:
+  <<: *DEFAULTS
+  name: reddit/ruby
+  url: http://reddit.com/r/ruby
+
+  target: 0                     # TODO
+  position: 0
+
+reddit_rails:
+  <<: *DEFAULTS
+  name: reddit/rails
+  url: http://reddit.com/r/rails/comments
+
+  target: 1                     # TODO
+  position: 1

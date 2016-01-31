@@ -7,9 +7,9 @@ class CreateForums < ActiveRecord::Migration
       t.string :url, null: false
 
       t.integer :target, null: false
-      t.datetime :last_post_at, null: false
-
       t.integer :position, null: false
+
+      t.datetime :last_post_at
       t.timestamps null: false
     end
 

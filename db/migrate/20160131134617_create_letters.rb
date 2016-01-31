@@ -15,7 +15,7 @@ class CreateLetters < ActiveRecord::Migration
       t.integer :hour, null: false
       t.integer :minute, null: false
 
-      t.datetime :last_post_at, null: false
+      t.datetime :last_post_at
       t.integer :position, null: false
 
       t.timestamps null: false

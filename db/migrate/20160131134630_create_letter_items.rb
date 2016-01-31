@@ -6,7 +6,7 @@ class CreateLetterItems < ActiveRecord::Migration
       t.string :name, null: false
       t.string :url, null: false
 
-      t.datetime :last_post_at, null: false
+      t.datetime :last_post_at
       t.integer :position, null: false
 
       t.timestamps null: false

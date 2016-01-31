@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  url: example.com/feed
+  url: http://example.com/feed
   last_fetch_at: now
 
 opennet:

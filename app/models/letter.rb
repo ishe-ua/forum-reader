@@ -1,3 +1,6 @@
+# coding: utf-8
+# Письмо.
+#
 # == Schema Information
 #
 # Table name: letters
@@ -14,7 +17,7 @@
 #  d7           :boolean          default(FALSE), not null
 #  hour         :integer          not null
 #  minute       :integer          not null
-#  last_post_at :datetime         not null
+#  last_post_at :datetime
 #  position     :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

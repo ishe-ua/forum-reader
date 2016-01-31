@@ -1,3 +1,6 @@
+# coding: utf-8
+# Форум.
+#
 # == Schema Information
 #
 # Table name: forums
@@ -7,7 +10,7 @@
 #  name         :string           not null
 #  url          :string           not null
 #  target       :integer          not null
-#  last_post_at :datetime         not null
+#  last_post_at :datetime
 #  position     :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
