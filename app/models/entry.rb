@@ -25,7 +25,6 @@
 #
 #  fk_rails_05dc0aaac4  (feed_id => feeds.id)
 #
-
 class Entry < ActiveRecord::Base
   belongs_to :feed
 end

@@ -6,6 +6,10 @@ opennet:
   <<: *DEFAULTS
   url: http://opennet.ru/opennews/opennews_6.rss
 
+lbua:
+  <<: *DEFAULTS
+  url: http://lb.ua/rss/rss.xml
+
 atytarenko:
   <<: *DEFAULTS
   url: http://atytarenko.livejournal.com/data/atom
