@@ -1,7 +1,7 @@
 DEFAULTS: &DEFAULTS
   email: $LABEL@example.com
 
-ishe:
+igor:
   <<: *DEFAULTS
 
 mary:

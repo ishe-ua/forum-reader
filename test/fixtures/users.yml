@@ -1,10 +1,10 @@
 DEFAULTS: &DEFAULTS
-  account: ishe
+  account: igor
   jabber:  $LABEL@example.com
 
-ishe:
+igor:
   <<: *DEFAULTS
-  account: ishe
+  account: igor
 
 mary:
   <<: *DEFAULTS
