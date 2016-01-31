@@ -1,6 +1,6 @@
 DEFAULTS: &DEFAULTS
   url: example.com/feed
-  fetched_at: now
+  last_fetch_at: now
 
 opennet:
   <<: *DEFAULTS

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131111535) do
+ActiveRecord::Schema.define(version: 20160131134630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,76 @@ ActiveRecord::Schema.define(version: 20160131111535) do
   add_index "entries", ["feed_id"], name: "index_entries_on_feed_id", using: :btree
 
   create_table "feeds", force: :cascade do |t|
-    t.string   "url",        null: false
-    t.datetime "fetched_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "url",           null: false
+    t.datetime "last_fetch_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "feeds", ["fetched_at"], name: "index_feeds_on_fetched_at", using: :btree
+  add_index "feeds", ["last_fetch_at"], name: "index_feeds_on_last_fetch_at", using: :btree
   add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
+
+  create_table "forums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",         null: false
+    t.string   "url",          null: false
+    t.integer  "target",       null: false
+    t.datetime "last_post_at", null: false
+    t.integer  "position",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "forums", ["last_post_at"], name: "index_forums_on_last_post_at", using: :btree
+  add_index "forums", ["name"], name: "index_forums_on_name", using: :btree
+  add_index "forums", ["target"], name: "index_forums_on_target", using: :btree
+  add_index "forums", ["url"], name: "index_forums_on_url", using: :btree
+  add_index "forums", ["user_id"], name: "index_forums_on_user_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "letter_id"
+    t.string   "name",         null: false
+    t.string   "url",          null: false
+    t.datetime "last_post_at", null: false
+    t.integer  "position",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "items", ["last_post_at"], name: "index_items_on_last_post_at", using: :btree
+  add_index "items", ["letter_id"], name: "index_items_on_letter_id", using: :btree
+  add_index "items", ["name"], name: "index_items_on_name", using: :btree
+  add_index "items", ["url"], name: "index_items_on_url", using: :btree
+
+  create_table "letters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",                         null: false
+    t.boolean  "d1",           default: false, null: false
+    t.boolean  "d2",           default: false, null: false
+    t.boolean  "d3",           default: false, null: false
+    t.boolean  "d4",           default: false, null: false
+    t.boolean  "d5",           default: false, null: false
+    t.boolean  "d6",           default: false, null: false
+    t.boolean  "d7",           default: false, null: false
+    t.integer  "hour",                         null: false
+    t.integer  "minute",                       null: false
+    t.datetime "last_post_at",                 null: false
+    t.integer  "position",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "letters", ["d1"], name: "index_letters_on_d1", using: :btree
+  add_index "letters", ["d2"], name: "index_letters_on_d2", using: :btree
+  add_index "letters", ["d3"], name: "index_letters_on_d3", using: :btree
+  add_index "letters", ["d4"], name: "index_letters_on_d4", using: :btree
+  add_index "letters", ["d5"], name: "index_letters_on_d5", using: :btree
+  add_index "letters", ["d6"], name: "index_letters_on_d6", using: :btree
+  add_index "letters", ["d7"], name: "index_letters_on_d7", using: :btree
+  add_index "letters", ["hour"], name: "index_letters_on_hour", using: :btree
+  add_index "letters", ["last_post_at"], name: "index_letters_on_last_post_at", using: :btree
+  add_index "letters", ["minute"], name: "index_letters_on_minute", using: :btree
+  add_index "letters", ["user_id"], name: "index_letters_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "account_id"
@@ -60,5 +122,8 @@ ActiveRecord::Schema.define(version: 20160131111535) do
   add_index "users", ["jabber"], name: "index_users_on_jabber", unique: true, using: :btree
 
   add_foreign_key "entries", "feeds"
+  add_foreign_key "forums", "users"
+  add_foreign_key "items", "letters"
+  add_foreign_key "letters", "users"
   add_foreign_key "users", "accounts"
 end

@@ -22,4 +22,7 @@
 #
 class User < ActiveRecord::Base
   belongs_to :account
+
+  has_many :forums
+  has_many :letters
 end
