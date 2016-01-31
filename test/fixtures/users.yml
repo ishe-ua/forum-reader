@@ -1,6 +1,5 @@
 DEFAULTS: &DEFAULTS
   account: ishe
-  email:   $LABEL@example.com
   jabber:  $LABEL@example.com
 
 ishe:
