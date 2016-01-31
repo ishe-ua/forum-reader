@@ -1,4 +1,5 @@
 # coding: utf-8
+# frozen_string_literal: true
 ##
 # Константы и настройки приложения.
 #
@@ -7,29 +8,29 @@
 #
 module APP
   ## Назва проекта одним словом.
-  NAME = 'ReaderJ'
+  NAME = 'ReaderJ'.freeze
 
   ## Год начала разработки.
-  YEAR = '2016'
+  YEAR = '2016'.freeze
 
   ## Founder проекта.
-  AUTHOR = 'ishe_ua'
+  AUTHOR = 'ishe_ua'.freeze
 
   ## Хост на котором все крутится.
-  HOST = 'readerJ.com'
+  HOST = 'readerJ.com'.freeze
 
   ## Почта админа.
-  ADMIN_EMAIL = 'in.shevkun@gmail.com'
+  ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
 
   ## Почта "без ответа".
-  NOREPLY_EMAIL = "no-reply@#{HOST}"
+  NOREPLY_EMAIL = "no-reply@#{HOST}".freeze
 
   ## Для test и development сред.
-  DEFAULT_PASSWORD = '1234567'
+  DEFAULT_PASSWORD = '1234567'.freeze
 
   ## Поддерживаемые локали.
-  LANGS = %w(en ru) # TODO: вытащить из application.rb
+  LANGS = %w(en ru).freeze # TODO: вытащить из application.rb
 
   ## Дефолтная (главная) языковая локаль.
-  DEFAULT_LANG = 'ru'
+  DEFAULT_LANG = 'ru'.freeze
 end

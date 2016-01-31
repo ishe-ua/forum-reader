@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131081007) do
+ActiveRecord::Schema.define(version: 20160131111535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20160131081007) do
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
+
+  create_table "entries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string   "url",        null: false
+    t.datetime "fetched_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feeds", ["fetched_at"], name: "index_feeds_on_fetched_at", using: :btree
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "account_id"

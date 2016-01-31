@@ -1,4 +1,6 @@
 # coding: utf-8
+# Зарегистрированный аккаунт.
+#
 # == Schema Information
 #
 # Table name: accounts
@@ -11,10 +13,6 @@
 # Indexes
 #
 #  index_accounts_on_email  (email) UNIQUE
-#
-
-##
-# Зарегистрированный аккаунт.
 #
 class Account < ActiveRecord::Base
   has_one :user

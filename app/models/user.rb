@@ -1,4 +1,6 @@
 # coding: utf-8
+# Пользователь приложения, по сути его профиль.
+#
 # == Schema Information
 #
 # Table name: users
@@ -17,10 +19,6 @@
 # Foreign Keys
 #
 #  fk_rails_61ac11da2b  (account_id => accounts.id)
-#
-
-##
-# Пользователь приложения, по сути его профиль.
 #
 class User < ActiveRecord::Base
   belongs_to :account

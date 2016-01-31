@@ -1,0 +1,15 @@
+DEFAULTS: &DEFAULTS
+  url: example.com/rss
+  fetched_at: now
+
+opennet:
+  <<: *DEFAULTS
+  url: http://opennet.ru/opennews/opennews_6.rss
+
+lb:
+  <<: *DEFAULTS
+  url: http://lb.ua/rss/rss.xml
+
+atytarenko:
+  <<: *DEFAULTS
+  url: http://atytarenko.livejournal.com/data/atom
