@@ -1,0 +1,16 @@
+DEFAULTS: &DEFAULTS
+  account: ishe
+  email:   $LABEL@example.com
+  jabber:  $LABEL@example.com
+
+ishe:
+  <<: *DEFAULTS
+  account: ishe
+
+mary:
+  <<: *DEFAULTS
+  account: mary
+
+john:
+  <<: *DEFAULTS
+  account: john
