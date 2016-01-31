@@ -8,7 +8,7 @@
 #
 module APP
   ## Назва проекта одним словом.
-  NAME = 'ReaderJ'.freeze
+  NAME = 'Reader'.freeze
 
   ## Год начала разработки.
   YEAR = '2016'.freeze
@@ -17,7 +17,7 @@ module APP
   AUTHOR = 'ishe_ua'.freeze
 
   ## Хост на котором все крутится.
-  HOST = 'readerJ.com'.freeze
+  HOST = 'feeds-reader.com'.freeze
 
   ## Почта админа.
   ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
