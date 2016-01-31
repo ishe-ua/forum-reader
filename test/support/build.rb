@@ -30,7 +30,13 @@ def build(model_name, attributes = {})
 
   correction = lambda do |ref|
     if hash[ref].present?
-      hash["#{ref}_id"] = users(hash[ref].to_sym).id
+      hash["#{ref}_id"] = if ref == 'feed'
+                            feeds(hash[ref].to_sym).id
+                          elsif ref == 'letter'
+                            letters(hash[ref].to_sym).id
+                          else
+                            users(hash[ref].to_sym).id
+                          end
       hash.delete(ref)
     end
   end

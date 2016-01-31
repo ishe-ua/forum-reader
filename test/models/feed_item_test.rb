@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class FeedItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @instance = build(:feed_item)
+  end
+
+  include ValidateInstanceTest
+  include ValidateFixturesTest
 end

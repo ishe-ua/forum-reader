@@ -18,3 +18,9 @@ Style/ClassAndModuleChildren:
   Enabled: true
   Exclude:
     - 'test/test_helper.rb'
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - 'test/**/*'
+    - 'db/migrate/*'

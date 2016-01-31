@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ForumTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @instance = build(:forum)
+  end
+
+  include ValidateInstanceTest
+  include ValidateFixturesTest
 end

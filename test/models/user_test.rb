@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @instance = build(:user)
+  end
+
+  include ValidateInstanceTest
+  include ValidateFixturesTest
 end
