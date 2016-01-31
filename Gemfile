@@ -17,7 +17,7 @@ gem 'sdoc',     '~> 0.4.0', group: :doc  # rake doc:rails
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'rubocop', '~> 0.35.0', require: false
+  gem 'rubocop', '~> 0.36.0', require: false
 end
 
 group :development do
