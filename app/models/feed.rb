@@ -18,4 +18,9 @@
 #
 class Feed < ApplicationRecord
   has_many :feed_items
+
+  ## Alias.
+  def items
+    feed_items
+  end
 end
