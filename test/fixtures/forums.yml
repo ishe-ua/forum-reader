@@ -1,6 +1,6 @@
 DEFAULTS: &DEFAULTS
   user: igor
-  name: Sample forum
+  name: Sample forum feed
   url: http://forum.example.com/feed.xml
 
   target:   <%= Forum.new.target %>

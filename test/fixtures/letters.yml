@@ -20,7 +20,7 @@ dev:
   name: Development
   position: 0
 
-ukr:
+ua:
   <<: *DEFAULTS
   name: Ukraine (ua)
   position: 1

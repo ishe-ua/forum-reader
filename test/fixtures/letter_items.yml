@@ -1,0 +1,26 @@
+DEFAULTS: &DEFAULTS
+  letter: dev
+  name: Sample feed
+  url: http://forum.example.com/feed.xml
+  position: <%= LetterItem.new.position %>
+
+opennet:
+  <<: *DEFAULTS
+  letter: dev
+  name: opennet.ru
+  url: http://opennet.ru/opennews/opennews_6.rss
+  position: 0
+
+lbua:
+  <<: *DEFAULTS
+  letter: ua
+  name: lb.ua
+  url: http://lb.ua/rss/rss.xml
+  position: 0
+
+atytarenko:
+  <<: *DEFAULTS
+  letter: ua
+  name: atytarenko
+  url: http://atytarenko.livejournal.com/data/atom
+  position: 1
