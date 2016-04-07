@@ -1,6 +1,7 @@
 == RSS Reader (с jabber-ботами)
 
 rss-journals.com
+rss-mailer.com
 
 Идея:
 RSS-ридер "под себя", т.е. как я вижу чтение новостей.
