@@ -45,4 +45,7 @@ class Letter < ApplicationRecord
   has_many :letter_items
 
   include Name
+
+  include Position
+  acts_as_list scope: :user
 end

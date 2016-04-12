@@ -36,6 +36,9 @@ class Forum < ApplicationRecord
   #include Url
   #validates :url, uniqueness: { scope: :user_id }
 
+  include Position
+  acts_as_list scope: :user
+
   ## На какой Target отправлять по дефолту.
   DEFAULT_TARGET = targets[:jabber]
 
