@@ -28,8 +28,21 @@
 #
 class Forum < ApplicationRecord
   belongs_to :user
-  include Name
+  after_initialize :set_default_values
 
-  include Url
-  validates :url, uniqueness: { scope: :user_id }
+  include Name
+  include Target
+
+  #include Url
+  #validates :url, uniqueness: { scope: :user_id }
+
+  ## На какой Target отправлять по дефолту.
+  DEFAULT_TARGET = targets[:jabber]
+
+  protected
+
+  ## Значения по умолчанию.
+  def set_default_values
+    self.target ||= DEFAULT_TARGET
+  end
 end

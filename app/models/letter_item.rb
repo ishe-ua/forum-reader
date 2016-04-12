@@ -28,6 +28,6 @@ class LetterItem < ApplicationRecord
   belongs_to :letter
   include Name
 
-  include Url
-  validates :url, uniqueness: { scope: :letter_id }
+  #include Url
+  #validates :url, uniqueness: { scope: :letter_id }
 end

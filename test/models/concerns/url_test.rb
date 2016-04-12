@@ -1,12 +1,13 @@
 # coding: utf-8
 require 'test_helper'
 
-class TimezoneTest < ActiveSupport::TestCase
+class UrlTest < ActiveSupport::TestCase
   setup do
     @instance = build([:forum, :letter_item].shuffle.sample)
   end
 
   test 'обязательное поле' do
+    skip
     instance.url = nil
     assert_not instance.valid?
   end
