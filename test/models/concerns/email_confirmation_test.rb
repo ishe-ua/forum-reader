@@ -11,7 +11,7 @@ class EmailConfirmationTest < ActiveSupport::TestCase
     assert_not instance.email_confirmed?, 'по дефолту все не подтвержденные'
   end
 
-  test 'сделать подтвержденным' do
+  test '#email_confirm!' do
     instance.save
     assert_not instance.email_confirmed?
 
@@ -30,6 +30,7 @@ class EmailConfirmationTest < ActiveSupport::TestCase
   end
 
   test 'можем генерить случайные токены' do
-    assert instance_class.gen_email_confirmation_token.present?
+    assert instance_class
+      .gen_email_confirmation_token
   end
 end

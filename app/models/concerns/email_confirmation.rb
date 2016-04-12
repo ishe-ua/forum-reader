@@ -1,5 +1,5 @@
 # coding: utf-8
-# Подтверждение email.
+# Подтверждение Email.
 #
 # Поля в таблице:
 #
@@ -19,24 +19,24 @@ module EmailConfirmation
               allow_nil: true
   end
 
-  ## Email подтвержден или нет?
+  ## Подтвержден или нет?
   def email_confirmed?
     email_confirmation_at ? true : false
   end
 
-  ## Отметить email как подтвержденный.
+  ## Отметить как подтвержденный.
   def confirm_email!
     update!(email_confirmation_at: Time.zone.now)
   end
 
-  ## Отметить email как неподтвержденный.
+  ## Отметить как неподтвержденный.
   def unconfirm_email
-    update! email_confirmation_at: nil,
-            email_confirmation_token: self.class.gen_email_confirmation_token
+    update!(email_confirmation_at: nil,
+            email_confirmation_token: self.class.gen_email_confirmation_token)
   end
 
   class_methods do
-    ## Генерим случайный токен для подтверждения email-адреса.
+    ## Генерим случайный токен для подтверждения адреса.
     def gen_email_confirmation_token
       s1 = ('a'..'z').to_a.shuffle
       s2 = (0..9)    .to_a.shuffle

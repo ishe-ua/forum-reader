@@ -118,12 +118,16 @@ ActiveRecord::Schema.define(version: 20160131134630) do
   create_table "users", force: :cascade do |t|
     t.integer  "account_id"
     t.string   "jabber"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "jabber_confirmation_at"
+    t.string   "jabber_confirmation_token"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
   add_index "users", ["jabber"], name: "index_users_on_jabber", unique: true, using: :btree
+  add_index "users", ["jabber_confirmation_at"], name: "index_users_on_jabber_confirmation_at", using: :btree
+  add_index "users", ["jabber_confirmation_token"], name: "index_users_on_jabber_confirmation_token", unique: true, using: :btree
 
   add_foreign_key "feed_items", "feeds"
   add_foreign_key "forums", "users"

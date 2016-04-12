@@ -1,6 +1,9 @@
 DEFAULTS: &DEFAULTS
   account: igor
-  jabber:  $LABEL@example.com
+  jabber: $LABEL@example.com
+
+  jabber_confirmation_at: now
+  jabber_confirmation_token: NULL
 
 igor:
   <<: *DEFAULTS
