@@ -31,8 +31,10 @@ module JabberConfirmation
 
   ## Отметить как неподтвержденный.
   def unconfirm_jabber
-    update!(jabber_confirmation_at: nil,
-            jabber_confirmation_token: self.class.gen_jabber_confirmation_token)
+    update_columns(
+      jabber_confirmation_at: nil,
+      jabber_confirmation_token: self.class.gen_jabber_confirmation_token
+    )
   end
 
   class_methods do

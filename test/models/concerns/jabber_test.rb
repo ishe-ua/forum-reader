@@ -36,4 +36,12 @@ class JabberTest < ActiveSupport::TestCase
     instance.validate
     assert_equal instance.jabber, 'user@example.com'
   end
+
+  test '#nullify_jabber_confirmation' do
+    user = users(:mary)
+    assert user.jabber_confirmed?
+
+    user.update(jabber: 'test@example.com')
+    assert_not user.reload.jabber_confirmed?
+  end
 end

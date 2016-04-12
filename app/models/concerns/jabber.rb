@@ -13,11 +13,12 @@ module Jabber
 
   included do
     before_validation :downcase_jabber, if: :jabber_changed?
+    after_update :nullify_jabber_confirmation, if: :jabber_changed?
 
     validates :jabber,
 
-              uniqueness: true,
               presence: true,
+              uniqueness: true,
 
               format: {
                 with: VALID_JABBER,
@@ -30,5 +31,14 @@ module Jabber
   ## Значение в нижний регистр.
   def downcase_jabber
     jabber.downcase!
+  end
+
+  ##
+  # После изменения jabber становится не подтвержденным (see
+  # JabberConfirmation).
+  #
+
+  def nullify_jabber_confirmation
+    unconfirm_jabber
   end
 end
