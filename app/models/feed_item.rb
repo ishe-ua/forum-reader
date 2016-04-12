@@ -1,5 +1,5 @@
 # coding: utf-8
-# Fetched item of Feed.
+# Скачанный элемент Feed -а.
 #
 # == Schema Information
 #
