@@ -7,6 +7,7 @@
 #
 #  id                        :integer          not null, primary key
 #  account_id                :integer
+#  nick                      :string           not null
 #  jabber                    :string
 #  jabber_confirmation_at    :datetime
 #  jabber_confirmation_token :string
@@ -19,6 +20,7 @@
 #  index_users_on_jabber                     (jabber) UNIQUE
 #  index_users_on_jabber_confirmation_at     (jabber_confirmation_at)
 #  index_users_on_jabber_confirmation_token  (jabber_confirmation_token) UNIQUE
+#  index_users_on_nick                       (nick) UNIQUE
 #
 # Foreign Keys
 #
@@ -29,6 +31,8 @@ class User < ApplicationRecord
 
   has_many :forums
   has_many :letters
+
+  include Nick
 
   include Jabber
   include JabberConfirmation

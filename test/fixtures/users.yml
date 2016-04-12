@@ -1,5 +1,7 @@
 DEFAULTS: &DEFAULTS
   account: igor
+
+  nick: $LABEL
   jabber: $LABEL@example.com
 
   jabber_confirmation_at: now

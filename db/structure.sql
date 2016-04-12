@@ -261,6 +261,7 @@ CREATE TABLE schema_migrations (
 CREATE TABLE users (
     id integer NOT NULL,
     account_id integer,
+    nick character varying NOT NULL,
     jabber character varying,
     jabber_confirmation_at timestamp without time zone,
     jabber_confirmation_token character varying,
@@ -615,6 +616,13 @@ CREATE INDEX index_users_on_jabber_confirmation_at ON users USING btree (jabber_
 --
 
 CREATE UNIQUE INDEX index_users_on_jabber_confirmation_token ON users USING btree (jabber_confirmation_token);
+
+
+--
+-- Name: index_users_on_nick; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_nick ON users USING btree (nick);
 
 
 --

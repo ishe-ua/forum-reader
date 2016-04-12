@@ -10,7 +10,7 @@ module Email
   extend ActiveSupport::Concern
 
   ## Валидный Email (взято из gem 'devise').
-  REGEXP = /\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/
+  VALID_EMAIL = /\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/
 
   included do
     before_validation :downcase_email, if: :email_changed?
@@ -21,7 +21,7 @@ module Email
               uniqueness: true,
 
               format: {
-                with: REGEXP,
+                with: VALID_EMAIL,
                 message: I18n.t('activerecord.errors.invalid_format')
               }
   end

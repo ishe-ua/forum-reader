@@ -10,7 +10,7 @@ module JabberConfirmation
   extend ActiveSupport::Concern
 
   ## <em>Рекомендованный</em> размер токена.
-  TOKEN_LENGTH = 40
+  JABBER_CONFIRMATION_TOKEN_LENGTH = 40
 
   included do
     validates :jabber_confirmation_token,
@@ -42,7 +42,7 @@ module JabberConfirmation
       s2 = (0..9)    .to_a.shuffle
 
       array = (s1 + s2).shuffle
-      array[0..(TOKEN_LENGTH - 1)].join
+      array[0..(JABBER_CONFIRMATION_TOKEN_LENGTH - 1)].join
     end
   end
 end
