@@ -7,8 +7,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :jabber
 
       t.datetime :jabber_confirmation_at
-      t.string   :jabber_confirmation_token
+      t.string :jabber_confirmation_token
 
+      t.string :lang, null: false
       t.timestamps null: false
     end
 
@@ -17,5 +18,7 @@ class CreateUsers < ActiveRecord::Migration
 
     add_index :users, :jabber_confirmation_at
     add_index :users, :jabber_confirmation_token, unique: true
+
+    add_index :users, :lang
   end
 end

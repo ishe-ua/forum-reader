@@ -29,5 +29,5 @@ module APP
   DEFAULT_PASSWORD = '1234567'.freeze
 
   ## Поддерживаемые локали.
-  LANGS = %w(en ru uk).freeze # TODO: вытащить из настроек gem 'rails-i18n'
+  LANGS = %w(en ru uk).freeze
 end
