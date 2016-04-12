@@ -1,6 +1,9 @@
 DEFAULTS: &DEFAULTS
   email: $LABEL@example.com
 
+  email_confirmation_at: now
+  email_confirmation_token: NULL
+
 igor:
   <<: *DEFAULTS
 

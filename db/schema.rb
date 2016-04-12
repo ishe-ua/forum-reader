@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 20160131134630) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",                    null: false
+    t.datetime "email_confirmation_at"
+    t.string   "email_confirmation_token"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
+  add_index "accounts", ["email_confirmation_at"], name: "index_accounts_on_email_confirmation_at", using: :btree
+  add_index "accounts", ["email_confirmation_token"], name: "index_accounts_on_email_confirmation_token", unique: true, using: :btree
 
   create_table "feed_items", force: :cascade do |t|
     t.integer  "feed_id"
