@@ -1,5 +1,5 @@
 # coding: utf-8
-# Форум.
+# Feed for tracking.
 #
 # == Schema Information
 #

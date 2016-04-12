@@ -1,5 +1,6 @@
 # coding: utf-8
-# Пользователь приложения, по сути его профиль.
+# Account profile.
+#
 #
 # == Schema Information
 #

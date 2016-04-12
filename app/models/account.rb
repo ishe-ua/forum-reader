@@ -1,5 +1,5 @@
 # coding: utf-8
-# Зарегистрированный аккаунт.
+# User account.
 #
 # == Schema Information
 #

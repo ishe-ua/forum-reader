@@ -1,5 +1,5 @@
 # coding: utf-8
-# Фид в Letter -письме.
+# Feed in Letter.
 #
 # == Schema Information
 #

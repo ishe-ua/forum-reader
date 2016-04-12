@@ -1,5 +1,5 @@
 # coding: utf-8
-# Письмо.
+# Group of Feed -s.
 #
 # == Schema Information
 #

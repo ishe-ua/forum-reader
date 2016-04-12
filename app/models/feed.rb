@@ -1,5 +1,5 @@
 # coding: utf-8
-# Фид, который скачиваем.
+# Url for fetch.
 #
 # == Schema Information
 #
