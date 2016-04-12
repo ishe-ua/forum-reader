@@ -12,11 +12,6 @@ class CreateLetterItems < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    ###
-    #
-    #
-
-    add_index :letter_items, :name
     add_index :letter_items, :url
     add_index :letter_items, :last_post_at
   end

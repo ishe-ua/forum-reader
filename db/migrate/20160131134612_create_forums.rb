@@ -13,14 +13,8 @@ class CreateForums < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    ###
-    #
-    #
-
-    add_index :forums, :name
     add_index :forums, :url
-
-    add_index :forums, :last_post_at
     add_index :forums, :target
+    add_index :forums, :last_post_at
   end
 end

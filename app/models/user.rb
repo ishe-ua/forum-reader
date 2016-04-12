@@ -32,7 +32,6 @@
 #
 #  fk_rails_61ac11da2b  (account_id => accounts.id)
 #
-
 class User < ApplicationRecord
   belongs_to :account
 

@@ -461,13 +461,6 @@ CREATE INDEX index_forums_on_last_post_at ON forums USING btree (last_post_at);
 
 
 --
--- Name: index_forums_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forums_on_name ON forums USING btree (name);
-
-
---
 -- Name: index_forums_on_target; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -500,13 +493,6 @@ CREATE INDEX index_letter_items_on_last_post_at ON letter_items USING btree (las
 --
 
 CREATE INDEX index_letter_items_on_letter_id ON letter_items USING btree (letter_id);
-
-
---
--- Name: index_letter_items_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_letter_items_on_name ON letter_items USING btree (name);
 
 
 --

@@ -44,6 +44,8 @@ class Letter < ApplicationRecord
   belongs_to :user
   has_many :letter_items
 
+  include Name
+
   ## Alias.
   def items
     letter_items
