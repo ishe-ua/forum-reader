@@ -12,6 +12,8 @@ module Lang
 
   included do
     validates :lang,
+              presence: true,
+
               inclusion: { in: SUPPORTED_LANGS }
   end
 end

@@ -15,7 +15,9 @@ module Jabber
     before_validation :downcase_jabber, if: :jabber_changed?
 
     validates :jabber,
+
               uniqueness: true,
+              presence: true,
 
               format: {
                 with: VALID_JABBER,

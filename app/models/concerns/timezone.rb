@@ -12,6 +12,8 @@ module Timezone
 
   included do
     validates :timezone,
+              presence: true,
+
               inclusion: { in: TZ_NAMES }
   end
 end

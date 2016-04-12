@@ -275,6 +275,7 @@ module Country # rubocop:disable ModuleLength
 
   included do
     validates :country,
+              presence: true,
 
               length:    { is: 2 },
               inclusion: { in: COUNTRY_CODES }
