@@ -11,13 +11,15 @@
 #  jabber                    :string
 #  jabber_confirmation_at    :datetime
 #  jabber_confirmation_token :string
-#  lang                      :string           not null
+#  lang                      :string
+#  country                   :string
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
 # Indexes
 #
 #  index_users_on_account_id                 (account_id)
+#  index_users_on_country                    (country)
 #  index_users_on_jabber                     (jabber) UNIQUE
 #  index_users_on_jabber_confirmation_at     (jabber_confirmation_at)
 #  index_users_on_jabber_confirmation_token  (jabber_confirmation_token) UNIQUE
@@ -28,6 +30,7 @@
 #
 #  fk_rails_61ac11da2b  (account_id => accounts.id)
 #
+
 class User < ApplicationRecord
   belongs_to :account
 
@@ -42,6 +45,7 @@ class User < ApplicationRecord
   include JabberConfirmation
 
   include Lang
+  include Country
 
   protected
 

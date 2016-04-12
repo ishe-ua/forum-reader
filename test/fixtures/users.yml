@@ -8,15 +8,19 @@ DEFAULTS: &DEFAULTS
   jabber_confirmation_token: NULL
 
   lang: <%= User.new.lang %>
+  country: <%= Country::COUNTRY_CODES.shuffle.sample %>
 
 igor:
   <<: *DEFAULTS
   account: igor
+  country: ua
 
 mary:
   <<: *DEFAULTS
   account: mary
+  country: au
 
 john:
   <<: *DEFAULTS
   account: john
+  country: us

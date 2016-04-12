@@ -265,7 +265,8 @@ CREATE TABLE users (
     jabber character varying,
     jabber_confirmation_at timestamp without time zone,
     jabber_confirmation_token character varying,
-    lang character varying NOT NULL,
+    lang character varying,
+    country character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -596,6 +597,13 @@ CREATE INDEX index_letters_on_user_id ON letters USING btree (user_id);
 --
 
 CREATE INDEX index_users_on_account_id ON users USING btree (account_id);
+
+
+--
+-- Name: index_users_on_country; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_country ON users USING btree (country);
 
 
 --
