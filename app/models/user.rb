@@ -1,7 +1,6 @@
 # coding: utf-8
 # Account profile.
 #
-#
 # == Schema Information
 #
 # Table name: users
