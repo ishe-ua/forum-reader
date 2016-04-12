@@ -1,5 +1,5 @@
 # coding: utf-8
-# Подгружаем либы
+# Load libs
 #
 
 require Rails.root.join('lib', 'app.rb')
