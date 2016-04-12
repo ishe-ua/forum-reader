@@ -9,11 +9,13 @@ DEFAULTS: &DEFAULTS
 
   lang: <%= User.new.lang %>
   country: <%= Country::COUNTRY_CODES.shuffle.sample %>
+  timezone: <%= Timezone::TZ_NAMES.shuffle.sample %>
 
 igor:
   <<: *DEFAULTS
   account: igor
   country: ua
+  timezone: Kyiv
 
 mary:
   <<: *DEFAULTS

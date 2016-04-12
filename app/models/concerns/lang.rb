@@ -3,7 +3,6 @@
 #
 # Поле +lang+ в таблице:
 # * строка
-# * непустое
 #
 module Lang
   extend ActiveSupport::Concern
@@ -13,7 +12,6 @@ module Lang
 
   included do
     validates :lang,
-              presence: true,
               inclusion: { in: SUPPORTED_LANGS }
   end
 end

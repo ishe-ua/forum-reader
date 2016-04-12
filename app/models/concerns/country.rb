@@ -3,7 +3,6 @@
 #
 # Поле +country+ в таблице:
 # * строка
-# * непустое
 #
 module Country # rubocop:disable ModuleLength
   extend ActiveSupport::Concern
@@ -276,7 +275,6 @@ module Country # rubocop:disable ModuleLength
 
   included do
     validates :country,
-              presence: true,
 
               length:    { is: 2 },
               inclusion: { in: COUNTRY_CODES }

@@ -261,12 +261,13 @@ CREATE TABLE schema_migrations (
 CREATE TABLE users (
     id integer NOT NULL,
     account_id integer,
-    nick character varying NOT NULL,
+    nick character varying,
     jabber character varying,
     jabber_confirmation_at timestamp without time zone,
     jabber_confirmation_token character varying,
     lang character varying,
     country character varying,
+    timezone character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -639,6 +640,13 @@ CREATE INDEX index_users_on_lang ON users USING btree (lang);
 --
 
 CREATE UNIQUE INDEX index_users_on_nick ON users USING btree (nick);
+
+
+--
+-- Name: index_users_on_timezone; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_timezone ON users USING btree (timezone);
 
 
 --
