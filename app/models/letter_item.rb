@@ -24,8 +24,10 @@
 #
 #  fk_rails_2b6fa86a3d  (letter_id => letters.id)
 #
-
 class LetterItem < ApplicationRecord
   belongs_to :letter
   include Name
+
+  include Url
+  validates :url, uniqueness: { scope: :letter_id }
 end

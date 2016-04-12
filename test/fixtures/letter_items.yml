@@ -1,7 +1,7 @@
 DEFAULTS: &DEFAULTS
   letter: dev
   name: Sample feed
-  url: http://forum.example.com/feed.xml
+  url: http://$LABEL.example.com/feed.xml
   position: <%= LetterItem.new.position %>
 
 opennet:

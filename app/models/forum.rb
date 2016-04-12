@@ -26,8 +26,10 @@
 #
 #  fk_rails_99e32c35a4  (user_id => users.id)
 #
-
 class Forum < ApplicationRecord
   belongs_to :user
   include Name
+
+  include Url
+  validates :url, uniqueness: { scope: :user_id }
 end
