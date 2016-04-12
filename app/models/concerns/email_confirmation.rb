@@ -31,8 +31,10 @@ module EmailConfirmation
 
   ## Отметить как неподтвержденный.
   def unconfirm_email
-    update!(email_confirmation_at: nil,
-            email_confirmation_token: self.class.gen_email_confirmation_token)
+    update_columns(
+      email_confirmation_at: nil,
+      email_confirmation_token: self.class.gen_email_confirmation_token
+    )
   end
 
   class_methods do

@@ -35,11 +35,11 @@ module Email
   end
 
   ##
-  # Измененяем email - он становится не подтвержденным (see
+  # После изменения email становится не подтвержденным (see
   # EmailConfirmation).
   #
 
   def nullify_email_confirmation
-    self.unconfirm_email
+    unconfirm_email
   end
 end

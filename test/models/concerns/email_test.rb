@@ -36,4 +36,12 @@ class EmailTest < ActiveSupport::TestCase
     instance.validate
     assert_equal instance.email, 'user@example.com'
   end
+
+  test '#nullify_email_confirmation' do
+    acc = accounts(:mary)
+    assert acc.email_confirmed?
+
+    acc.update(email: 'test@example.com')
+    assert_not acc.reload.email_confirmed?
+  end
 end
