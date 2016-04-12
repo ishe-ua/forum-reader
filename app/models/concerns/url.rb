@@ -11,10 +11,6 @@ module Url
   ## Используемые http-протоколы.
   VALID_SCHEMES = %w(http https).freeze
 
-  ## Валидный url.
-  VALID_URL = '(https?://(?:www.|(?!www))[^ .]+.[^ ]{2,}|www.[^ ]+.[^ ]{2,})'
-              .freeze
-
   included do
     before_validation :downcase_url,      if: 'url.present?'
     before_validation :add_http_or_https, if: 'url.present?'
@@ -22,14 +18,14 @@ module Url
     validates :url,
 
               presence: true,
-              format: { with: /VALID_URL/ }
+              format: { with: URI.regexp }
   end
 
   protected
 
-  ## Опускаем в нижний регистр.
+  ## Переводим в нижний регистр.
   def downcase_url
-    self.url = url.downcase
+    url.downcase!
   end
 
   ## Добавляем назву протокола из PROTOCOLS.

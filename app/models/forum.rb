@@ -33,8 +33,8 @@ class Forum < ApplicationRecord
   include Name
   include Target
 
-  #include Url
-  #validates :url, uniqueness: { scope: :user_id }
+  include Url
+  validates :url, uniqueness: { scope: :user_id }
 
   include Position
   acts_as_list scope: :user
