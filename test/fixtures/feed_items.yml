@@ -3,7 +3,7 @@ DEFAULTS: &DEFAULTS
   digest: left-value-$LABEL
 
   date: now
-  link: http://opennet.ru/feed/15
+  link: http://opennet.ru/$LABEL/feed/15
   titl: Обновился Firefox ($LABEL)
   body: Очень сильно обновился...
 
