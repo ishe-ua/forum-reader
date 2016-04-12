@@ -261,13 +261,13 @@ CREATE TABLE schema_migrations (
 CREATE TABLE users (
     id integer NOT NULL,
     account_id integer,
-    nick character varying,
-    jabber character varying,
+    nick character varying NOT NULL,
+    jabber character varying NOT NULL,
     jabber_confirmation_at timestamp without time zone,
     jabber_confirmation_token character varying,
-    lang character varying,
-    country character varying,
-    timezone character varying,
+    lang character varying NOT NULL,
+    country character varying NOT NULL,
+    timezone character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

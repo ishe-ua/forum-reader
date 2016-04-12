@@ -3,6 +3,7 @@
 #
 # Поле +nick+ в таблице:
 # * строка
+# * непустое
 # * unique-индекс
 #
 module Nick
@@ -21,6 +22,8 @@ module Nick
     before_validation :downcase_nick, if: :nick_changed?
 
     validates :nick,
+
+              presence: true,
               uniqueness: true,
 
               format: { with: VALID_NICK },

@@ -14,6 +14,7 @@ module Email
 
   included do
     before_validation :downcase_email, if: :email_changed?
+    after_update :nullify_email_confirmation, if: :email_changed?
 
     validates :email,
 
@@ -31,5 +32,14 @@ module Email
   ## Значение в нижний регистр.
   def downcase_email
     email.downcase!
+  end
+
+  ##
+  # Измененяем email - он становится не подтвержденным (see
+  # EmailConfirmation).
+  #
+
+  def nullify_email_confirmation
+    self.unconfirm_email
   end
 end

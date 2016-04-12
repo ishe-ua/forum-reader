@@ -3,6 +3,7 @@
 #
 # Поле +country+ в таблице:
 # * строка
+# * непустое
 #
 module Country # rubocop:disable ModuleLength
   extend ActiveSupport::Concern
@@ -13,7 +14,7 @@ module Country # rubocop:disable ModuleLength
   # Хеш аля {"ua" => "Ukraine", ...}, взято из gem "country".
   #
 
-  COUNTRY_LIST = {
+  COUNTRIES = {
     'ad' => 'Andorra',
     'ae' => 'United Arab Emirates',
     'af' => 'Afghanistan',
@@ -267,7 +268,10 @@ module Country # rubocop:disable ModuleLength
   }.freeze
 
   ## Коды стран (две буквы).
-  COUNTRY_CODES = COUNTRY_LIST.keys
+  CODES = COUNTRIES.keys
+
+  ## Назвы стран.
+  NAMES = COUNTRIES.values
 
   ###
   #
@@ -278,6 +282,6 @@ module Country # rubocop:disable ModuleLength
               presence: true,
 
               length:    { is: 2 },
-              inclusion: { in: COUNTRY_CODES }
+              inclusion: { in: CODES }
   end
 end
