@@ -26,7 +26,7 @@ group :development do
   gem 'brakeman'
   gem 'guard'
   gem 'guard-minitest'
-  gem 'guard-livereload', '~> 2.4', require: false
+  gem 'guard-livereload', require: false
   gem 'rack-livereload'
 end
 
@@ -46,7 +46,7 @@ gem 'feedjira'
 
 gem 'exception_notification'
 gem 'backburner'
-# gem 'beanstalkd_view'
+gem 'beanstalkd_view'
 gem 'dalli'
 gem 'lograge'
 gem 'clockwork'
