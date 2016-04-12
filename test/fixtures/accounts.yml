@@ -1,5 +1,6 @@
 DEFAULTS: &DEFAULTS
   email: $LABEL@example.com
+  password_digest: <%= BCrypt::Password.create(APP::DEFAULT_PASSWORD) %>
 
   email_confirmation_at: now
   email_confirmation_token: NULL

@@ -36,6 +36,7 @@ SET default_with_oids = false;
 CREATE TABLE accounts (
     id integer NOT NULL,
     email character varying NOT NULL,
+    password_digest character varying NOT NULL,
     email_confirmation_at timestamp without time zone,
     email_confirmation_token character varying,
     created_at timestamp without time zone NOT NULL,

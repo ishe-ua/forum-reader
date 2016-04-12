@@ -1,14 +1,11 @@
 # coding: utf-8
-# frozen_string_literal: true
-##
 # Константы и настройки приложения.
 #
-# В основном программерские.
-# Еще есть админские, но они в основном в "secrets.yml".
+# В основном программерские. Еще есть админские, но они в "secrets.yml".
 #
 module APP
   ## Назва проекта одним словом.
-  NAME = 'Reader'.freeze
+  NAME = 'Forum-reader'.freeze
 
   ## Год начала разработки.
   YEAR = '2016'.freeze
@@ -17,10 +14,13 @@ module APP
   AUTHOR = 'ishe_ua'.freeze
 
   ## Хост на котором все крутится.
-  HOST = 'feeds-reader.com'.freeze
+  HOST = 'forum-reader2.com'.freeze
 
   ## Почта админа.
   ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
+
+  ## Почта support-а.
+  SUPPORT_EMAIL = "support@#{HOST}".freeze
 
   ## Почта "без ответа".
   NOREPLY_EMAIL = "no-reply@#{HOST}".freeze
@@ -29,8 +29,5 @@ module APP
   DEFAULT_PASSWORD = '1234567'.freeze
 
   ## Поддерживаемые локали.
-  LANGS = %w(en ru).freeze # TODO: вытащить из application.rb
-
-  ## Дефолтная (главная) языковая локаль.
-  DEFAULT_LANG = 'ru'.freeze
+  LANGS = %w(en ru uk).freeze # TODO: вытащить из настроек gem 'rails-i18n'
 end

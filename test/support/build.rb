@@ -20,8 +20,8 @@ def build(model_name, attributes = {})
   #
 
   if model_name == :account
-    # hash[:password]              = APP::DEFAULT_PASSWORD
-    # hash[:password_confirmation] = APP::DEFAULT_PASSWORD
+    hash[:password] = APP::DEFAULT_PASSWORD
+    hash[:password_confirmation] = APP::DEFAULT_PASSWORD
   end
 
   ###
@@ -55,6 +55,6 @@ def build(model_name, attributes = {})
   #
 
   model_name.to_s
-    .classify
-    .constantize.new(hash)
+            .classify
+            .constantize.new(hash)
 end
