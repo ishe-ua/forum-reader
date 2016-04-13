@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   ###
   # Статические страницы.
-  # WARN: алиасы для них не делаем, чтобы небыло накладок с Company#code.
   #
 
   controller :pages do
