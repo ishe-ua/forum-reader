@@ -28,9 +28,4 @@ class JabberConfirmationTest < ActiveSupport::TestCase
     assert users(:igor).update(jabber_confirmation_token: 'aa')
     assert_not users(:john) .update(jabber_confirmation_token: 'aa')
   end
-
-  test 'можем генерить случайные токены' do
-    assert instance_class
-      .gen_jabber_confirmation_token
-  end
 end
