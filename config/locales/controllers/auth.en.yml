@@ -1,0 +1,10 @@
+en:
+  auth:
+    sign_in:
+      fail: Bad email or password
+      locked: Account locked
+      form:
+        header: Sign In
+        link:
+          register: Register
+          forgot_password: I forgot password

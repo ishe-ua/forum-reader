@@ -5,13 +5,12 @@
 # случаев на производстве", открываем доступ к каждой из них отдельно.
 #
 class PagesController < ApplicationController
-  # TODO
-  # skip_before_action :require_sign_in, only:
-  #                                        [
-  #                                          :home,
-  #                                          :how,
-  #                                          :info
-  #                                        ]
+  skip_before_action :require_sign_in, only:
+                                         [
+                                           :home,
+                                           :how,
+                                           :info
+                                         ]
 
   ## Стартовая приложения.
   def home
