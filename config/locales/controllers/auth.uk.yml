@@ -1,0 +1,10 @@
+uk:
+  auth:
+    sign_in:
+      fail: Не вiрний Email або пароль
+      locked: Аккаунт заблоковано
+      form:
+        header: Вхiд
+        link:
+          register: Реєстрацiя
+          forgot_password: Я забув(ла) пароль

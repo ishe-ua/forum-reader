@@ -5,7 +5,7 @@
 #
 module APP
   ## Назва проекта одним словом.
-  NAME = 'Forum-reader'.freeze
+  NAME = 'FORUM-READER'.freeze
 
   ## Год начала разработки.
   YEAR = '2016'.freeze

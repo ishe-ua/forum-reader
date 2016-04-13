@@ -2,8 +2,8 @@ require 'test_helper'
 
 class AccountsMailerTest < ActionMailer::TestCase
   setup do
-    @account = accounts(:hurtovnia)
-    @mailer  = AccountsMailer
+    @account = accounts(:john)
+    @mailer = AccountsMailer
   end
 
   teardown do
@@ -31,13 +31,5 @@ class AccountsMailerTest < ActionMailer::TestCase
 
     assert_equal [@account.email], mail.to
     assert_match 'aassACd2',       mail.body.encoded
-  end
-
-  test '#new_token' do
-    @mail = mailer.new_token(@account)
-    assert I18n.t('accounts_mailer.new_token.subject').present?
-
-    assert_equal [@account.email], mail.to
-    assert_match @account.token,   mail.body.encoded
   end
 end

@@ -1,0 +1,10 @@
+uk:
+  accounts_mailer:
+    welcome:
+      subject: Welcome!!
+    email_confirmation:
+      subject: Email confirmation
+      body:
+        please_confirm: Будь ласка, підтвердіть свій Email
+    new_password:
+      subject: Новий пароль

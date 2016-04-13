@@ -1,0 +1,5 @@
+uk:
+  activerecord:
+
+    errors:
+      invalid_format: не вiрний формат

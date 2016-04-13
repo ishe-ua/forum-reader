@@ -1,0 +1,10 @@
+ru:
+  accounts_mailer:
+    welcome:
+      subject: Welcome!!
+    email_confirmation:
+      subject: Email confirmation
+      body:
+        please_confirm: Пожалуйста, подтвердите свой Email
+    new_password:
+      subject: Новый пароль

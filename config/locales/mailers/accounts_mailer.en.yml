@@ -1,0 +1,10 @@
+en:
+  accounts_mailer:
+    welcome:
+      subject: Welcome!!
+    email_confirmation:
+      subject: Email confirmation
+      body:
+        please_confirm: Please, confirm Email
+    new_password:
+      subject: New password
