@@ -28,7 +28,6 @@
 #
 class Forum < ApplicationRecord
   belongs_to :user
-  after_initialize :set_default_values
 
   include Name
   include Target
@@ -39,14 +38,4 @@ class Forum < ApplicationRecord
 
   include Position
   acts_as_list scope: :user
-
-  ## На какой Target отправлять по дефолту.
-  DEFAULT_TARGET = targets[:jabber]
-
-  protected
-
-  ## Значения по умолчанию.
-  def set_default_values
-    self.target ||= DEFAULT_TARGET
-  end
 end
