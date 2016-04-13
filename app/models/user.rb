@@ -38,8 +38,6 @@ class User < ApplicationRecord
   has_many :forums
   has_many :letters
 
-  after_initialize :set_default_values
-
   include Nick
 
   include Jabber
@@ -48,11 +46,4 @@ class User < ApplicationRecord
   include Lang
   include Country
   include Timezone
-
-  protected
-
-  ## Значения по умолчанию.
-  def set_default_values
-    self.lang ||= I18n.default_locale
-  end
 end
