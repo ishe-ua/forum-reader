@@ -1,0 +1,21 @@
+ru:
+  done: Done
+
+  success: Все хорошо
+  fail:    Что-то не так
+
+  form:
+    submit: ОК
+    errors: Ошибки
+
+  we_sent_you_email: Мы отправили Вам email
+  best_regards: С наилучшими пожеланиями
+  thank_you: Спасибо
+
+  access_denied: Доступ запрещен
+  read_more: Подробнее
+
+  download: Скачать
+  link: Ссылка
+
+  reset: Сбросить

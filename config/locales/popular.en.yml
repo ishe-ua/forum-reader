@@ -1,0 +1,21 @@
+en:
+  done: Done
+
+  success: Success
+  fail:    Fail
+
+  form:
+    submit: OK
+    errors: Errors
+
+  we_sent_you_email: We sent you the Email # TODO: t, - без the??
+  best_regards: Best Regards
+  thank_you: Thank you
+
+  access_denied: Access denied
+  read_more: More
+
+  download: Download
+  link: Link
+
+  reset: Reset
