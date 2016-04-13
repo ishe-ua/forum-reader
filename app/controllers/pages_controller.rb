@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   skip_before_action :require_sign_in, only:
                                          [
                                            :home,
-                                           :how,
+                                           :help,
                                            :info
                                          ]
 
@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   ## Как пользоваться.
-  def how
+  def help
   end
 
   ##

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   controller :pages do
     get 'pages/home'
-    get 'pages/how'
+    get 'pages/help'
     get 'pages/info'
     get 'pages/data'
     get 'pages/settings'
