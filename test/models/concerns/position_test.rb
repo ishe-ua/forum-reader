@@ -7,10 +7,15 @@ class PositionTest < ActiveSupport::TestCase
   end
 
   test 'следующие по списку номера присваиваются' do
-    model_name = instance_class.to_s.underscore.to_sym
+    model_sym = instance_class.to_s.underscore.to_sym
 
-    o1 = build(model_name, url: 'example.com/1')
-    o2 = build(model_name, url: 'example.com/2')
+    o1 = build(model_sym)
+    o2 = build(model_sym)
+
+    if model_sym != :letter
+      o1.url = 'example.com/1'
+      o2.url = 'example.com/2'
+    end
 
     o1.save!
     o2.save!
