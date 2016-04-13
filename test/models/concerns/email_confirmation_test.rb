@@ -25,12 +25,7 @@ class EmailConfirmationTest < ActiveSupport::TestCase
   end
 
   test 'два одинаковых токена не получится' do
-    assert accounts(:igor).update(email_confirmation_token: 'aa')
-    assert_not accounts(:john) .update(email_confirmation_token: 'aa')
-  end
-
-  test 'можем генерить случайные токены' do
-    assert instance_class
-      .gen_email_confirmation_token
+    assert     accounts(:igor).update(email_confirmation_token: 'aa')
+    assert_not accounts(:john).update(email_confirmation_token: 'aa')
   end
 end

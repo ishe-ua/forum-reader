@@ -33,18 +33,8 @@ module EmailConfirmation
   def unconfirm_email
     update_columns(
       email_confirmation_at: nil,
-      email_confirmation_token: self.class.gen_email_confirmation_token
+      email_confirmation_token:
+        Tokenizer.random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
     )
-  end
-
-  class_methods do
-    ## Генерим случайный токен для подтверждения адреса.
-    def gen_email_confirmation_token
-      s1 = ('a'..'z').to_a.shuffle
-      s2 = (0..9)    .to_a.shuffle
-
-      array = (s1 + s2).shuffle
-      array[0..(EMAIL_CONFIRMATION_TOKEN_SIZE - 1)].join
-    end
   end
 end
