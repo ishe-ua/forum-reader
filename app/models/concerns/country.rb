@@ -14,7 +14,7 @@ module Country # rubocop:disable ModuleLength
   # Хеш аля {"ua" => "Ukraine", ...}, взято из gem "country".
   #
 
-  COUNTRIES = {
+  COUNTRIES_HASH = {
     'ad' => 'Andorra',
     'ae' => 'United Arab Emirates',
     'af' => 'Afghanistan',
@@ -268,20 +268,16 @@ module Country # rubocop:disable ModuleLength
   }.freeze
 
   ## Коды стран (две буквы).
-  CODES = COUNTRIES.keys
+  COUNTRIES_CODES = COUNTRIES_HASH.keys
 
   ## Назвы стран.
-  NAMES = COUNTRIES.values
-
-  ###
-  #
-  #
+  COUNTRIES_NAMES = COUNTRIES_HASH.values
 
   included do
     validates :country,
               presence: true,
 
               length:    { is: 2 },
-              inclusion: { in: CODES }
+              inclusion: { in: COUNTRIES_CODES }
   end
 end

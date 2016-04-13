@@ -9,7 +9,7 @@ module Url
   extend ActiveSupport::Concern
 
   ## Используемые http-протоколы.
-  VALID_SCHEMES = %w(http https).freeze
+  SUPPORTED_SCHEMES = %w(http https).freeze
 
   included do
     before_validation :downcase_url,      if: 'url.present?'
@@ -31,7 +31,7 @@ module Url
   ## Добавляем назву протокола из PROTOCOLS.
   def add_http_or_https
     b = false
-    VALID_SCHEMES.each { |name| b = true if url.start_with?(name + '://') }
+    SUPPORTED_SCHEMES.each { |name| b = true if url.start_with?(name + '://') }
     self.url = 'http://' + url unless b
   end
 end

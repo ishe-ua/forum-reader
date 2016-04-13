@@ -8,7 +8,7 @@ DEFAULTS: &DEFAULTS
   jabber_confirmation_token: NULL
 
   lang: <%= User.new.lang %>
-  country: <%= Country::CODES.shuffle.sample %>
+  country: <%= Country::COUNTRIES_CODES.shuffle.sample %>
   timezone: <%= Timezone::TZ_NAMES.shuffle.sample %>
 
 igor:

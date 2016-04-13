@@ -9,10 +9,10 @@ module Password
   extend ActiveSupport::Concern
 
   ## Минимальная длинна.
-  MIN_LENGTH = 5
+  MIN_PASSWORD = 5
 
   ## Максимальная длинна.
-  MAX_LENGTH = 155
+  MAX_PASSWORD = 155
 
   included do
     has_secure_password
@@ -20,14 +20,14 @@ module Password
     validates :password,
               presence: true,
 
-              length: { in: MIN_LENGTH..MAX_LENGTH },
+              length: { in: MIN_PASSWORD..MAX_PASSWORD },
               on: :create
   end
 
   class_methods do
     ## Генерим случайный  и возвращаем как строку.
     def gen_random_password
-      length = MIN_LENGTH * 4
+      length = MIN_PASSWORD * 4
 
       s1 = ('A'..'Z').to_a.shuffle
       s2 = ('a'..'z').to_a.shuffle

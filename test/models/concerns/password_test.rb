@@ -13,13 +13,13 @@ class PasswordTest < ActiveSupport::TestCase
   end
 
   test 'минимальная длинна ограничена' do
-    instance.password = 'a' * (instance_class::MIN_LENGTH - 1)
+    instance.password = 'a' * (Password::MIN_PASSWORD - 1)
     instance.password_confirmation = instance.password
     assert_not instance.valid?
   end
 
   test 'максимальная тоже' do
-    instance.password = 'a' * (instance_class::MAX_LENGTH + 1)
+    instance.password = 'a' * (Password::MAX_PASSWORD + 1)
     instance.password_confirmation = instance.password
     assert_not instance.valid?
   end

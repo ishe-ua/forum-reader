@@ -9,14 +9,14 @@ module Target
   extend ActiveSupport::Concern
 
   ## Допустимые значения.
-  VALID_TARGETS = %w(email jabber).freeze
+  SUPPORTED_TARGETS = %w(email jabber).freeze
 
   included do
-    enum target: VALID_TARGETS
+    enum target: SUPPORTED_TARGETS
 
     validates :target,
 
               presence: true,
-              inclusion: { in: VALID_TARGETS }
+              inclusion: { in: SUPPORTED_TARGETS }
   end
 end
