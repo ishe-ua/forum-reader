@@ -1,1 +1,23 @@
-TODO
+<div class="holder-after">
+  <div class="project-description">
+    <h2><%= t 'view.idea' %> :</h2>
+
+    <%= render :partial => "pages/home/idea", :locals => {idea_num: 1, help: "read_news"} %>
+    <%= render :partial => "pages/home/idea", :locals => {idea_num: 2, help: "read_forums"} %>
+  </div>
+
+
+
+  <div class="container">
+    <%= render "pages/home/sign_in" %>
+
+    <div class="attention">
+      <h2><%= t 'view.attention' %> :</h2>
+      <p><%= render "pages/home/attention" %></p>
+    </div>
+
+  </div>
+
+
+</div>
+<div class="pencil"></div>
