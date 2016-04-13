@@ -26,7 +26,9 @@
 #
 class LetterItem < ApplicationRecord
   belongs_to :letter
+
   include Name
+  include LastPostAt
 
   include Url
   validates :url, uniqueness: { scope: :letter_id }

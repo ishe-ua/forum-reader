@@ -32,6 +32,7 @@ class Forum < ApplicationRecord
 
   include Name
   include Target
+  include LastPostAt
 
   include Url
   validates :url, uniqueness: { scope: :user_id }
