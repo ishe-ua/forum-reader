@@ -1,1 +1,25 @@
-TODO
+<div class="logo">
+  <strong class="image"><%= link_to '', root_path %></strong>
+  <span class="slogan"><%= t 'app.description' %></span>
+</div>
+
+
+<ul class="links">
+  <li>
+    <% if signed_in? %>
+      <%= link_to t('view.sign_out'), 'todo: session_path(current_user)', method: :delete %>
+    <% else %>
+      <%= link_to t('view.sign_in'), 'todo: new_session_path' %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to t('view.help'), 'todo: page_path(:how)', class: "active" %>
+  </li>
+</ul>
+
+
+<ul class="langs">
+  <li class="en"><%= render 'shared/lang', name: :en %></li>
+  <li class="uk"><%= render 'shared/lang', name: :uk %></li>
+  <li class="ru"><%= render 'shared/lang', name: :ru %></li>
+</ul>
