@@ -1,1 +1,28 @@
-TODO
+<div class="help-holder">
+  <div class="border-img"></div>
+
+  <div class="help-block">
+    <h2><%= t('.how_use') %> ?</h2>
+    <ul class="links-list">
+
+      <li><%= link_to t('.read_news'),     "#read_news"     %></li>
+      <li><%= link_to t('.read_forums'),   "#read_forums"   %></li>
+      <li><%= link_to t('.bote'),          "#bote"          %></li>
+      <li><%= link_to t('.bote_commands'), "#bote_commands" %></li>
+
+      <li><br/></li>
+
+      <li><%= link_to t('.faq_xmpp'), 'todo: xmpp_wiki_link', target: "_blank" %></li>
+      <li><%= link_to t('.faq_spy'), "#faq_spy" %></li>
+
+    </ul>
+  </div>
+
+
+  <%= render "pages/help/block", anchor: "read_news" %>
+  <%= render "pages/help/block", anchor: "read_forums" %>
+  <%= render "pages/help/block", anchor: "bote" %>
+  <%= render "pages/help/block", anchor: "bote_commands" %>
+  <%= render "pages/help/block", anchor: "faq_spy" %>
+
+</div>

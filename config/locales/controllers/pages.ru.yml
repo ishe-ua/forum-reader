@@ -3,3 +3,11 @@ ru:
     home:
       attention: Внимание
       idea: Идея
+    help:
+      how_use:       Как пользоваться
+      read_news:     Как читать новости
+      read_forums:   Как читать форумы
+      bote:          Jabber-бот
+      bote_commands: Команды бота
+      faq_xmpp:      "FAQ: такое Jabber"
+      faq_spy:       "FAQ: как \"подсматривать\" новости"

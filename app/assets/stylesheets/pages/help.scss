@@ -1,0 +1,39 @@
+.pages.help {
+
+  .help-holder .border-img {
+    height:42px;
+    margin: 0 -41px 0 -33px;
+    padding:0 41px 10px 33px;
+    background: image-url("border-img-05.png") no-repeat;
+  }
+
+
+  .help-block {
+    margin:0 0 45px;
+    h2 { margin:0 0 15px;}
+    p, table {
+      margin: 0 90px;
+      td:first-child {
+        font-weight: bold;
+        width: 8em;
+      }
+    }
+  }
+
+
+  .links-list {
+    list-style:none;
+    margin:0 0 0 90px;
+    padding:0;
+    width:275px;
+
+    li {
+      padding:3px 0 3px 2px;
+      border-top:1px solid #e8e8e8;
+      font:14px/12px Helvetica, sans-serif;
+
+      a { color:#d65959;}
+      &:first-child {border:none;}
+    }
+  }
+}
