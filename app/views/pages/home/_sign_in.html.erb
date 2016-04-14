@@ -1,30 +1,29 @@
 <div class="holder">
-  <%= form_tag sessions_path, method: :post, class: "login-form" do %>
+  <%= form_tag 'sessions_path', method: :post, class: "login-form" do %>
     <h2><%= t 'view.sign_in' %></h2>
 
 
     <div class="field">
-      <%= label_tag :email, User.human_attribute_name(:email), :class => "valign" %>
-      <%= text_field_tag :email, "", :id => "login", :autofocus => true %>
+      <%= label_tag :email, User.human_attribute_name(:email), class: "valign" %>
+      <%= text_field_tag :email, "", id: "login", autofocus: true %>
     </div>
 
 
     <div class="field">
-      <%= label_tag :password, User.human_attribute_name(:password), :class => "valign" %>
-      <%= password_field_tag :password, "", :id => "password" %>
+      <%= label_tag :password, User.human_attribute_name(:password), class: "valign" %>
+      <%= password_field_tag :password, "", id: "password" %>
     </div>
 
 
     <div class="holder">
-      <%= link_to t('view.register'), new_user_path, :class => "register-link" %>
+      <%= link_to t('view.register'), 'new_user_path', class: "register-link" %>
     </div>
 
 
     <div class="holder-button">
       <%= submit_tag t('view.sign_in') %>
-      <%= link_to t('view.forgot_password'), restore_password_path %>
+      <%= link_to t('view.forgot_password'), 'restore_password_path' %>
     </div>
-
 
   <% end %>
 </div>
