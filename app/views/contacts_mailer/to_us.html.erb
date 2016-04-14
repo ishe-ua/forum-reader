@@ -1,0 +1,9 @@
+<p>
+  Subj: <%= @contact.theme %><br/>
+  From: <%= mail_to(@contact.email, @contact.email, subject: "Re: #{@contact.theme}") %>
+
+  <br/>
+  <br/>
+
+  <%= @contact.text %>
+</p>

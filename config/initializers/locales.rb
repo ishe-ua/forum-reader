@@ -8,7 +8,7 @@ Rails.application
 
 Rails.application
      .config
-     .i18n.default_locale = :ru
+     .i18n.default_locale = :en
 
 ## Загружаем только эти локали (gem 'rails-i18n')
 Rails.application
