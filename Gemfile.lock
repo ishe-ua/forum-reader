@@ -350,7 +350,7 @@ DEPENDENCIES
   feedjira
   foreman
   guard
-  guard-livereload
+  guard-livereload (~> 2.4)
   guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
