@@ -29,5 +29,8 @@ class FeedItem < ApplicationRecord
   belongs_to :feed
 
   # include Url
+  # include Theme
   # include Text
+
+  # TODO: для темы и текста добавить в их тесты данную модель
 end

@@ -9,7 +9,7 @@ class LocaleControllerTest < ActionController::TestCase
     I18n.locale = @current_locale
   end
 
-  test "should get change" do
+  test 'should get change' do
     get :change, lang: APP::LANGS.shuffle.sample
     assert_response :redirect
   end

@@ -19,11 +19,6 @@ class ContactTest < ActiveSupport::TestCase
     assert_not instance.save
   end
 
-  test 'тема сообщения ограничена по длинне' do
-    instance.theme = 'a' * (instance_class::MAX_THEME_LENGTH + 1)
-    assert_not instance.valid?
-  end
-
   test 'email не уникальный' do
     instance.email = instance_class.all.sample.email
     assert instance.valid?

@@ -12,8 +12,8 @@ class NameTest < ActiveSupport::TestCase
   end
 
   test "максимальная длинна ограничена и обрезается если надо" do
-    instance.name = 'a' * (Name::MAX_NAME * 2)
+    instance.name = 'a' * (instance_class::MAX_NAME * 2)
     assert instance.valid?
-    assert_equal instance.name.length, Name::MAX_NAME
+    assert_equal instance.name.length, instance_class::MAX_NAME
   end
 end

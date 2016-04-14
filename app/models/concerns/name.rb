@@ -22,7 +22,7 @@ module Name
 
   protected
 
-  ## Укоротить длинну если надо.
+  ## Укоротить длинну (если надо).
   def trim_name
     self.name = name[0..(MAX_NAME - 1)] if name.present?
   end

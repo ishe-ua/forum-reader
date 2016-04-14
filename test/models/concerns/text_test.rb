@@ -7,7 +7,7 @@ class TextTest < ActiveSupport::TestCase
   end
 
   test 'максимальная длинна ограничена' do
-    instance.text = 'a' * (instance_class::MAX_LENGTH + 1)
+    instance.text = 'a' * (instance_class::MAX_TEXT + 1)
     assert_not instance.valid?
   end
 end

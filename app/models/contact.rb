@@ -28,12 +28,10 @@
 class Contact < ApplicationRecord
   include Email
   include Text
+  include Theme
 
-  ## Максимальная длинна темы сообщения.
-  MAX_THEME_LENGTH = 128
+  validates :text, presence: true
+  validates :theme, presence: true
 
   default_scope { order 'created_at desc' }
-
-  validates :theme, presence: true, length: { maximum: MAX_THEME_LENGTH }
-  validates :text, presence: true
 end

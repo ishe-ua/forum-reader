@@ -2,16 +2,16 @@
 # Текст чего-то.
 #
 # Поле +text+ в таблице:
-# * text Тип поля, т.е. text: text
+# * text
 #
 module Text
   extend ActiveSupport::Concern
 
   ## Максимальная длинна.
-  MAX_LENGTH = 1024
+  MAX_TEXT = 2048
 
   included do
     validates :text,
-              length: { maximum: MAX_LENGTH }
+              length: { maximum: MAX_TEXT }
   end
 end
