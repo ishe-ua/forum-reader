@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   ###
-  # Статические страницы.
+  # Статические страницы
   #
 
   controller :pages do
