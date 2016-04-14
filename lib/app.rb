@@ -8,7 +8,7 @@ module APP
   NAME = 'forum-reader'.freeze
 
   ## Описание проекта одной строкой.
-  DESCRIPTION = 'RSS and ATOM to Email and Jabber'
+  DESCRIPTION = 'RSS and ATOM to Email and Jabber'.freeze
 
   ## Год начала разработки.
   YEAR = '2014'.freeze

@@ -27,7 +27,7 @@ module Password
   class_methods do
     ## Генерим случайный пароль и возвращаем как строку.
     def gen_random_password
-      Tokenizer.random_string()
+      Tokenizer.random_string
     end
   end
 end
