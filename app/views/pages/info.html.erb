@@ -1,1 +1,11 @@
-TODO
+<% if flash.alert.present? %>
+  <h2 class="alert"><%= flash.alert.html_safe %></h2>
+<% end %>
+
+
+<% if flash.notice.present? %>
+  <h2 class="notice"><%= flash.notice.html_safe %></h2>
+<% end %>
+
+
+<%= link_to "Home", root_path %>
