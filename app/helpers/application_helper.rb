@@ -4,7 +4,7 @@
 module ApplicationHelper
   ## Title браузера.
   def app_title
-    APP::NAME + ' | ' + APP::DESCRIPTION
+    APP::NAME
   end
 
   ##
