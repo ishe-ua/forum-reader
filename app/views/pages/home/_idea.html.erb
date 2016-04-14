@@ -2,6 +2,6 @@
   <span class="num"><%= idea_num %></span>
   <div class="holder">
     <p><%= render "pages/home/idea#{idea_num}" %></p>
-    <%= link_to t('more'), pages_help_path(anchor: help), class: "more" %>
+    <%= link_to t('more'), help_path(anchor: help), class: "more" %>
   </div>
 </div>

@@ -50,6 +50,6 @@ class ContactsController < ApplicationController
     ContactsMailer.to_us(@contact).deliver_later(queue_priority: 0)
     ContactsMailer.thank_you(@contact).deliver_later(queue_priority: 0)
 
-    redirect_to pages_info_path, notice: t('thank_you')
+    redirect_to info_path, notice: t('thank_you')
   end
 end

@@ -19,7 +19,7 @@ class ContactsControllerTest < ActionController::TestCase
       end
 
       assert_response :redirect
-      assert_redirected_to pages_info_path
+      assert_redirected_to info_path
     end
   end
 

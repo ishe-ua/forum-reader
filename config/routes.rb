@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   #
 
   controller :pages do
-    get 'pages/home'
-    get 'pages/help'
-    get 'pages/info'
-    get 'pages/data'
-    get 'pages/settings'
+    get 'home'
+    get 'help'
+    get 'info'
+    get 'data'
+    get 'settings'
   end
 
   ###
