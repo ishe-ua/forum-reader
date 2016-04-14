@@ -8,6 +8,6 @@ en:
       read_news:     How to read news
       read_forums:   How to read forums
       bote:          Jabber-bot
-      bote_commands: "Bot’s commands"
+      bote_commands: Bot’s commands
       faq_xmpp:      "FAQ: what is Jabber"
       faq_spy:       "FAQ: how to \"spy\" news"
