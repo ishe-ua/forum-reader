@@ -18,10 +18,11 @@
   .copyright {
     float:left;
     padding:4px 0 0;
+    a { color: white; }
   }
 
 
-  a.mail {
+  a.contact {
     float:right;
     padding:0 0 0 51px;
     background: image-url("ico-mail.gif") no-repeat;
@@ -29,5 +30,4 @@
     color:#fefefe;
     height:26px;
   }
-
 }

@@ -6,14 +6,14 @@
 
 <ul class="links">
   <li>
-    <% if signed_in? %>
-      <%= link_to "t('view.sign_out')", 'todo: session_path(current_user)', method: :delete %>
+    <% if !signed_in? %>
+      <%= link_to t('header.sign_in'), 'todo: new_session_path' %>
     <% else %>
-      <%= link_to "t('view.sign_in')", 'todo: new_session_path' %>
+      <%= link_to t('header.sign_out'), 'todo: session_path(current_user)', method: :delete %>
     <% end %>
   </li>
   <li>
-    <%= link_to "t('view.help')", pages_help_path, class: "active" %>
+    <%= link_to t('header.help'), pages_help_path, class: "active" %>
   </li>
 </ul>
 

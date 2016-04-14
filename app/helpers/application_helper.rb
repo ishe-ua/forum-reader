@@ -22,7 +22,7 @@ module ApplicationHelper
 
   ## Copyright-строка для footer-а.
   def copyright
-    app_link = link_to APP::NAME.camelize, root_path
+    app_link = link_to APP::NAME.upcase, root_url
     "&copy; «#{app_link}» #{app_years}. #{t('footer.copyright')}."
   end
 
