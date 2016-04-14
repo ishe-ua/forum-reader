@@ -1,17 +1,16 @@
 <%
 title = ''
-title = 'English' if name == :en
-  title = 'Russian' if name == :ru
-    title = 'Ukrainian' if name == :uk
-%>
 
+title = 'English'   if name == :en
+title = 'Russian'   if name == :ru
+title = 'Ukrainian' if name == :uk
+%>
 
 <%= link_to(image_tag("flag-#{name}.gif",
                       width: 42,
                       height: 22,
                       alt: ''),
 
-            'todo: change_locale_path(name)',
+            change_locale_path(name),
             title: title
-)
-%>
+) %>

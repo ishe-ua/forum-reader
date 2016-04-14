@@ -1,5 +1,6 @@
 # coding: utf-8
 Rails.application.routes.draw do
+
   root 'pages#home'
 
   ###
@@ -19,4 +20,6 @@ Rails.application.routes.draw do
   #
 
   resources :contacts, only: [:new, :create]
+
+  get 'locale/change/:lang', to: 'locale#change', as: :change_locale
 end
