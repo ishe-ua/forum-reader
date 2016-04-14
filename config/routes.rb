@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     get 'pages/data'
     get 'pages/settings'
   end
+
+  ###
+  #
+  #
+
+  resources :contacts, only: [:new, :create]
 end

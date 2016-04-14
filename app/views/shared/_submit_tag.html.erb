@@ -1,0 +1,6 @@
+<%# Засабмитить форму %>
+<% val = defined?(text) ? text : t('form.submit') %>
+
+<div class="field">
+  <%= submit_tag(val) %>
+</div>

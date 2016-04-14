@@ -1,0 +1,32 @@
+<%# Ошибки в форме %>
+<%
+instance_error = proc {
+  defined?(instance)            &&
+  instance.respond_to?(:errors) &&
+  instance.errors.any?
+} %>
+
+<div class="errors">
+  <% if instance_error.call || flash[:alert].present? %>
+
+    <% if Rails.env.test? %>
+      <h3><%= t('form.errors') %> :</h3>
+    <% end %>
+
+    <ul>
+
+      <% if instance_error.call %>
+        <% instance.errors.full_messages.each do |msg| %>
+          <li><%= msg.html_safe %></li>
+        <% end %>
+      <% end %>
+
+
+      <% if flash[:alert].present? %>
+        <li><%= flash[:alert].html_safe %></li>
+      <% end %>
+
+    </ul>
+
+  <% end %>
+</div>

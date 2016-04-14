@@ -1,0 +1,26 @@
+<%= form_for(@contact) do |f| %>
+
+  <%= render 'shared/errors', instance: @contact %>
+
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :theme %>
+    <%= f.text_field :theme %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </div>
+
+
+  <%= render 'shared/submit_tag' %>
+
+<% end %>

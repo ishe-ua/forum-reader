@@ -19,6 +19,7 @@ end
 
 class ActionController::TestCase
   include ActiveJob::TestHelper
+  include ActionMailer::TestHelper
 
   ## Залогиниться.
   def sign_in(account)
