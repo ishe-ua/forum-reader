@@ -32,5 +32,5 @@ class FeedItem < ApplicationRecord
   # include Theme
   # include Text
 
-  # TODO: для темы и текста добавить в их тесты данную модель
+  # TODO: для url, темы и текста добавить в их тесты данную модель
 end

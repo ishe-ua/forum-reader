@@ -30,12 +30,11 @@ class Forum < ApplicationRecord
   belongs_to :user
 
   include Name
+  include Url
   include Target
+  include Position
   include LastPostAt
 
-  include Url
   validates :url, uniqueness: { scope: :user_id }
-
-  include Position
   acts_as_list scope: :user
 end

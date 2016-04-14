@@ -27,11 +27,11 @@
 #
 class Contact < ApplicationRecord
   include Email
-  include Text
   include Theme
+  include Text
 
-  validates :text, presence: true
   validates :theme, presence: true
+  validates :text, presence: true
 
   default_scope { order 'created_at desc' }
 end
