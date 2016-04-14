@@ -13,10 +13,6 @@ class CreateFeedItems < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    ###
-    #
-    #
-
     add_index :feed_items, [:feed_id, :digest], unique: true
     add_index :feed_items, :created_at # очистка от устаревших
   end

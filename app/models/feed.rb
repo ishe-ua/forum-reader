@@ -18,5 +18,7 @@
 #
 class Feed < ApplicationRecord
   has_many :feed_items
+
   include Url
+  validates :url, uniqueness: true
 end
