@@ -1,0 +1,19 @@
+DEFAULTS: &DEFAULTS
+  email: $LABEL@example.com
+  theme: $LABEL - наш отзыв
+  text: Спасибо, очень и очень  хороший и полезный проект...
+
+  created_at: now
+  updated_at: now
+
+one:
+  <<: *DEFAULTS
+  theme: $LABEL - вопрос
+  text: Как мне сделать...
+  created_at: <%= 1.day.ago %>
+
+two:
+  <<: *DEFAULTS
+  theme: $LABEL - вопросик
+  text: Вчера загрузил прайс и все клиенты его получили. Теперь хочу...
+  created_at: <%= 2.days.ago %>

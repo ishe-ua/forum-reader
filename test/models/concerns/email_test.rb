@@ -11,11 +11,6 @@ class EmailTest < ActiveSupport::TestCase
     assert_not instance.valid?
   end
 
-  test 'уникальное' do
-    instance.email = instance_class.all.sample.email
-    assert_not instance.valid?
-  end
-
   test 'можно только валидные ящики' do
     instance.email = 'not-email'
     assert_not instance.valid?

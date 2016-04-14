@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
@@ -7,4 +8,9 @@ class AccountTest < ActiveSupport::TestCase
 
   include ValidateInstanceTest
   include ValidateFixturesTest
+
+  test 'email уникальный' do
+    instance.email = instance_class.all.sample.email
+    assert_not instance.valid?
+  end
 end

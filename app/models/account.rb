@@ -23,6 +23,8 @@ class Account < ApplicationRecord
   has_one :user
 
   include Email
+  validates :email, uniqueness: true
+
   include EmailConfirmation
   include Password
 end

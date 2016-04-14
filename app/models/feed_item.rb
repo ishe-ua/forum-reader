@@ -27,4 +27,7 @@
 #
 class FeedItem < ApplicationRecord
   belongs_to :feed
+
+  # include Url
+  # include Text
 end
