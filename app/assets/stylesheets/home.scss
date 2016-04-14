@@ -1,0 +1,110 @@
+.pages.home {
+
+  #main { background: image-url("bg-index.png") no-repeat 50% 0; }
+  #content { padding-top:14px;}
+
+  .project-description {
+    float:left;
+    width:410px;
+    padding:10px 0 0;
+
+    h2 { margin:0 0 5px; }
+    p { margin:0;}
+
+    .idea {
+      padding:18px 0 0;
+      font:14px/24px Tahoma, Geneva, sans-serif;
+      color:#404040;
+      overflow:hidden;
+
+      .num {
+        float:left;
+        width:45px;
+        height:62px;
+        font:bold 30px/60px Arial, Helvetica, sans-serif;
+        color:#fff;
+        background: image-url("bg-box-number.png") no-repeat;
+        margin:0 16px 0 0;
+        padding:0 0 0 17px;
+      }
+    }
+  }
+
+  .container { float:right; width:450px; }
+  .more      { display:block; margin:8px 0 0; color:#d45e5e; }
+
+  .login-form {
+    float:right;
+    width:295px;
+    padding:20px 1px 20px 16px;
+    background:#f8f7f7;
+
+    .field { padding:1px 0; border-bottom:1px solid #e8e8e8; overflow:hidden; }
+    .register-link { float:right; margin:12px 7px 0 0; }
+
+    h2 { margin:0 0 10px;}
+    a { color:#d45e5e; font:italic 13px Georgia, sans-serif; }
+
+    label {
+      float:left;
+      width:101px;
+      padding:0 3px;
+      font:13px/12px Helvetica, sans-serif;
+      color:#6f6f6f;
+    }
+
+
+    .holder-button {
+      overflow:hidden;
+      padding:15px 0 0;
+
+      a {
+        float:right;
+        line-height:25px;
+      }
+    }
+
+
+    input[type="text"], input[type="password"] {
+      width:180px;
+      height:20px;
+      border:1px solid #d1d1d1;
+      background:#e8e8e8;
+      font:normal 14px/16px Helvetica, sans-serif;
+      color:#000;
+      padding:0 0 0 5px;
+      display:block;
+      float:left;
+    }
+
+    input[type="submit"] {
+      float:right;
+      padding:0 0 4px;
+      height:25px;
+      width:91px;
+      background:#d65959;
+      border:none;
+      font:16px/16px Helvetica, sans-serif;
+      color:#fff;
+      margin:0 0 0 9px;
+      cursor:pointer;
+    }
+  }
+
+  .attention {
+    margin :28px 0 0;
+    font   :14px/24px Tahoma, Geneva, sans-serif;
+    color  :#404040;
+
+    h2 { margin :0 0 24px; }
+    p  { margin :0; }
+    a  { color  :#d45e5e; }
+  }
+
+  .pencil {
+    height:43px;
+    padding:0 40px 0 61px;
+    margin:18px -40px 0 -61px;
+    background: image-url("border-img-01.png") no-repeat;
+  }
+}
