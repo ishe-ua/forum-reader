@@ -8,7 +8,7 @@ module APP
   NAME = 'forum-reader'.freeze
 
   ## Год начала разработки.
-  YEAR = '2016'.freeze
+  YEAR = '2014'.freeze
 
   ## Founder проекта.
   AUTHOR = 'ishe_ua'.freeze

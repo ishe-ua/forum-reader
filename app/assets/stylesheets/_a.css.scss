@@ -1,0 +1,51 @@
+html, body { height: 100%;}
+
+body {
+  min-width: 960px;
+  margin: 0;
+  background: #fff;
+  color: #4d4d4d;
+  font: 14px Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: underline;
+  &:hover { text-decoration: none; }
+}
+
+img { border-style: none; }
+
+h2 {
+  margin: 0;
+  color: #404040;
+  font: 16px/19px Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+form, fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+
+  input, textarea, select {
+    color: #333;
+    font: 100% arial,sans-serif;
+    vertical-align: middle;
+  }
+}
+
+
+#wrapper {
+  width: 959px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+
+.holder { overflow: hidden;}
+.holder-after:after { clear: both; content: ""; display: block; }
+
+
+#main { padding: 0 0 165px 20px; }
+#content {}

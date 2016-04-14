@@ -1,0 +1,96 @@
+/* header */
+#header {
+  padding:0 0 21px;
+  overflow:hidden;
+
+  .logo {
+    float:left;
+    padding:45px 0 0 20px;
+
+    .image {
+      display:block;
+      overflow:hidden;
+
+      margin:0 0 5px;
+      width:230px;
+      height:29px;
+      text-indent:-9999px;
+      background: image-url("logo.png") no-repeat;
+
+      a { display:block; height:100%; }
+    }
+
+
+    .slogan {
+      display:block;
+      font:15px/15px Arial, Helvetica, sans-serif;
+      color:#404040;
+    }
+  }
+
+
+
+  .links {
+    float:right;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    list-style:none;
+
+    li {
+      float:left;
+      font:16px/19px Helvetica, sans-serif;
+
+      a {
+        display:block;
+        padding:68px 5px 0 9px;
+        min-width:48px;
+        height:26px;
+
+        background:#fff;
+        color:#000;
+
+        text-align:center;
+        text-decoration:none;
+        text-transform:uppercase;
+
+        &.active {
+          background:#d45e5e;
+          color:#fff;
+        }
+      }
+    }
+  }
+
+
+  .langs {
+    margin:0 250px;
+    padding:8px 0 0;
+    list-style:none;
+    text-align:center;
+    font-size:0;
+    line-height:0;
+
+
+    li {
+      display:inline-block;
+      padding:0 4px;
+
+      a {
+        display:block;
+        border:5px solid #fff;
+        text-decoration:none;
+
+        &:hover, .active {border:5px solid #d45e5e;}
+        img { display:block;}
+      }
+    }
+  }
+
+
+  *+html .langs li {
+    display:inline;
+    zoom:1;
+  }
+
+}
