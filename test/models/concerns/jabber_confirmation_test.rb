@@ -12,7 +12,7 @@ class JabberConfirmationTest < ActiveSupport::TestCase
   end
 
   test '#jabber_confirmed?' do
-    assert users(:igor).jabber_confirmed?
+    assert users(:ishe).jabber_confirmed?
     assert_not instance.jabber_confirmed?
   end
 
@@ -25,12 +25,12 @@ class JabberConfirmationTest < ActiveSupport::TestCase
   end
 
   test '#unconfirm_jabber' do
-    users(:igor).unconfirm_jabber
-    assert_not users(:igor).jabber_confirmed?
+    users(:ishe).unconfirm_jabber
+    assert_not users(:ishe).jabber_confirmed?
   end
 
   test 'два одинаковых токена не получится' do
-    assert users(:igor).update(jabber_confirmation_token: 'aa')
+    assert users(:ishe).update(jabber_confirmation_token: 'aa')
     assert_not users(:john) .update(jabber_confirmation_token: 'aa')
   end
 end

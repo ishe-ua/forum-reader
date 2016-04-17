@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  user: igor
+  user: ishe
   name: Sample letter
 
   d1: <%= Letter.new.d1 %>

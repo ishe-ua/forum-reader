@@ -5,7 +5,7 @@ DEFAULTS: &DEFAULTS
   email_confirmation_at: now
   email_confirmation_token: <%= Account.new.email_confirmation_token %>
 
-igor:
+ishe:
   <<: *DEFAULTS
 
   email_confirmation_at: now

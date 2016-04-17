@@ -32,7 +32,7 @@ class PagesControllerTest < ActionController::TestCase
     assert_redirected_to new_session_path
     assert_response :redirect, 'защищенная страница'
 
-    sign_in accounts(:igor)
+    sign_in accounts(:ishe)
 
     get :data
     assert_response :success

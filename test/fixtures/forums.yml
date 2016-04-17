@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  user: igor
+  user: ishe
   name: Sample forum feed ($LABEL)
   url: http://$LABEL.example.com/feed.xml
 

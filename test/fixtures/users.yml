@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  account: igor
+  account: ishe
 
   nick: $LABEL
   jabber: $LABEL@example.com
@@ -11,9 +11,9 @@ DEFAULTS: &DEFAULTS
   country: <%= Country::COUNTRIES_CODES.shuffle.sample %>
   timezone: <%= Timezone::TZ_NAMES.shuffle.sample %>
 
-igor:
+ishe:
   <<: *DEFAULTS
-  account: igor
+  account: ishe
   country: ua
   timezone: Kyiv
 

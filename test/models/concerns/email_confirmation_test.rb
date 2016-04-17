@@ -12,7 +12,7 @@ class EmailConfirmationTest < ActiveSupport::TestCase
   end
 
   test '#email_confirmed?' do
-    assert accounts(:igor).email_confirmed?
+    assert accounts(:ishe).email_confirmed?
     assert_not instance.email_confirmed?, 'по дефолту все не подтвержденные'
   end
 
@@ -25,12 +25,12 @@ class EmailConfirmationTest < ActiveSupport::TestCase
   end
 
   test '#unconfirm_email' do
-    accounts(:igor).unconfirm_email
-    assert_not accounts(:igor).email_confirmed?
+    accounts(:ishe).unconfirm_email
+    assert_not accounts(:ishe).email_confirmed?
   end
 
   test 'два одинаковых токена не получится' do
-    assert     accounts(:igor).update(email_confirmation_token: 'aa')
+    assert     accounts(:ishe).update(email_confirmation_token: 'aa')
     assert_not accounts(:john).update(email_confirmation_token: 'aa')
   end
 end
