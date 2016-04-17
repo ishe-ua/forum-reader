@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
                                            :create
                                          ]
 
-  #include ConfirmEmail
+  include ConfirmEmail
   #include ResetPassword
 
   ##
