@@ -20,8 +20,6 @@ class SessionsController < ApplicationController
   ##
   # Создать сессию.
   #
-  # Lock -нутые не залогинятся.
-  #
   # Входящие данные в параметрах:
   #
   # * <tt>params[:email]</tt>

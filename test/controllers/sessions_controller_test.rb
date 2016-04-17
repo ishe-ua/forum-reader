@@ -28,6 +28,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'заблокированные не залогинятся' do
+    return unless defined?(Lock)
     @account.lock!
 
     get :create, email: @account.email, password: APP::DEFAULT_PASSWORD

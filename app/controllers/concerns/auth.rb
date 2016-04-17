@@ -34,7 +34,7 @@ module Auth
   ##
   # Залогиниться.
   #
-  # Lock -нутые не залогинятся.
+  # Lock -нутые не залогинятся (если Lock-механизм доступен).
   #
   # Возвращаем:
   # 1. true   Залогинились
@@ -45,7 +45,7 @@ module Auth
     account = Account.find_by(email: email)
 
     return t('auth.sign_in.fail')   if account.nil?
-    return t('auth.sign_in.locked') if account.locked?
+    return t('auth.sign_in.locked') if defined?(Lock) && account.locked?
 
     if account.authenticate(password)
       session[:account_id] = account.id
