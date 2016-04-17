@@ -11,12 +11,12 @@ class ContactTest < ActiveSupport::TestCase
 
   test 'обязательно должна быть тема сообщения' do
     instance.theme = nil
-    assert_not instance.save
+    assert_not instance.valid?
   end
 
   test 'обязательно должен быть текст сообщения' do
     instance.text = nil
-    assert_not instance.save
+    assert_not instance.valid?
   end
 
   test 'email не уникальный' do

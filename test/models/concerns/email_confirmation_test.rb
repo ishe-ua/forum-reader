@@ -6,6 +6,11 @@ class EmailConfirmationTest < ActiveSupport::TestCase
     @instance = build(:account)
   end
 
+  test 'токен обязательно' do
+    instance.email_confirmation_token = nil
+    assert_not instance.valid?
+  end
+
   test '#email_confirmed?' do
     assert accounts(:igor).email_confirmed?
     assert_not instance.email_confirmed?, 'по дефолту все не подтвержденные'

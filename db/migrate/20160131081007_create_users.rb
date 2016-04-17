@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :jabber, null: false
 
       t.datetime :jabber_confirmation_at
-      t.string :jabber_confirmation_token
+      t.string :jabber_confirmation_token, null: false
 
       t.string :lang, null: false
       t.string :country, null: false

@@ -38,7 +38,7 @@ CREATE TABLE accounts (
     email character varying NOT NULL,
     password_digest character varying NOT NULL,
     email_confirmation_at timestamp without time zone,
-    email_confirmation_token character varying,
+    email_confirmation_token character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -297,7 +297,7 @@ CREATE TABLE users (
     nick character varying NOT NULL,
     jabber character varying NOT NULL,
     jabber_confirmation_at timestamp without time zone,
-    jabber_confirmation_token character varying,
+    jabber_confirmation_token character varying NOT NULL,
     lang character varying NOT NULL,
     country character varying NOT NULL,
     timezone character varying NOT NULL,

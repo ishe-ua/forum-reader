@@ -6,6 +6,11 @@ class JabberConfirmationTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
+  test 'токен обязательно' do
+    instance.jabber_confirmation_token = nil
+    assert_not instance.valid?
+  end
+
   test '#jabber_confirmed?' do
     assert users(:igor).jabber_confirmed?
     assert_not instance.jabber_confirmed?

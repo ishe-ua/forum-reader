@@ -13,10 +13,12 @@ module EmailConfirmation
   EMAIL_CONFIRMATION_TOKEN_SIZE = 40
 
   included do
+    after_initialize :set_default_email_confirmation_token
+
     validates :email_confirmation_token,
 
-              uniqueness: true,
-              allow_nil: true
+              presence: true,
+              uniqueness: true
   end
 
   ## Подтвержден или нет?
@@ -36,5 +38,13 @@ module EmailConfirmation
       email_confirmation_token:
         Tokenizer.random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
     )
+  end
+
+  protected
+
+  ## Значение по умолчанию.
+  def set_default_email_confirmation_token
+    self.email_confirmation_token ||=
+      Tokenizer.random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
   end
 end

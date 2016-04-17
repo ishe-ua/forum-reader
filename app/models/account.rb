@@ -9,7 +9,7 @@
 #  email                    :string           not null
 #  password_digest          :string           not null
 #  email_confirmation_at    :datetime
-#  email_confirmation_token :string
+#  email_confirmation_token :string           not null
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #

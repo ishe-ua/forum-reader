@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :password_digest, null: false
 
       t.datetime :email_confirmation_at
-      t.string :email_confirmation_token
+      t.string :email_confirmation_token, null: false
 
       t.timestamps null: false
     end

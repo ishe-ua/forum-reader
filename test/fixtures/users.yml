@@ -5,7 +5,7 @@ DEFAULTS: &DEFAULTS
   jabber: $LABEL@example.com
 
   jabber_confirmation_at: now
-  jabber_confirmation_token: NULL
+  jabber_confirmation_token: <%= User.new.jabber_confirmation_token %>
 
   lang: <%= User.new.lang %>
   country: <%= Country::COUNTRIES_CODES.shuffle.sample %>
@@ -17,12 +17,21 @@ igor:
   country: ua
   timezone: Kyiv
 
+  jabber_confirmation_at: now
+  jabber_confirmation_token: <%= User.new.jabber_confirmation_token %>
+
 mary:
   <<: *DEFAULTS
   account: mary
   country: au
 
+  jabber_confirmation_at: now
+  jabber_confirmation_token: <%= User.new.jabber_confirmation_token %>
+
 john:
   <<: *DEFAULTS
   account: john
   country: us
+
+  jabber_confirmation_at: now
+  jabber_confirmation_token: <%= User.new.jabber_confirmation_token %>

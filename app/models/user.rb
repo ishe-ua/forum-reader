@@ -10,7 +10,7 @@
 #  nick                      :string           not null
 #  jabber                    :string           not null
 #  jabber_confirmation_at    :datetime
-#  jabber_confirmation_token :string
+#  jabber_confirmation_token :string           not null
 #  lang                      :string           not null
 #  country                   :string           not null
 #  timezone                  :string           not null
