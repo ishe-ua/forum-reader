@@ -1,0 +1,26 @@
+<%= form_tag sessions_path do %>
+
+  <%= render 'shared/errors' %>
+
+
+  <div class="field">
+    <%= label_tag :email, Account.human_attribute_name(:email) %>
+    <%= email_field_tag :email, nil, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= label_tag :password, Account.human_attribute_name(:password) %>
+    <%= password_field_tag :password %>
+  </div>
+
+
+  <%= render 'shared/submit_tag' %>
+
+
+  <ul class="footer">
+    <li><%= link_to t('auth.sign_in.form.link.register') + '!!', 'todo: new_account_path' %></li>
+    <li><%= link_to t('auth.sign_in.form.link.forgot_password'), 'todo: reset_password_path' %></li>
+  </ul>
+
+<% end %>

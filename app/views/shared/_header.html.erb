@@ -7,9 +7,9 @@
 <ul class="links">
   <li>
     <% if !signed_in? %>
-      <%= link_to t('header.sign_in'), 'todo: new_session_path' %>
+      <%= link_to t('header.sign_in'), new_session_path %>
     <% else %>
-      <%= link_to t('header.sign_out'), 'todo: session_path(current_user)', method: :delete %>
+      <%= link_to t('header.sign_out'), session_path(current_user), method: :delete %>
     <% end %>
   </li>
   <li>

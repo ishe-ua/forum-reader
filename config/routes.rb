@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   #
   #
 
+  get 'register', to: redirect('accounts/new'),  as: :register
+  get 'login',    to: redirect('sessions/new'),  as: :login
+  get 'logout',   to: 'sessions#destroy',        as: :logout
+
   resources :contacts, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 
   get 'locale/change/:lang', to: 'locale#change', as: :change_locale
 end
