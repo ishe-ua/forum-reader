@@ -24,7 +24,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_response :success, 'остались на той же странице'
 
     assert_not session[:account_id]
-    assert_equal flash[:alert], I18n.t('auth.sign_in.fail')
+    assert_equal flash[:alert], I18n.t('sessions.errors.fail')
   end
 
   test 'заблокированные не залогинятся' do
@@ -39,9 +39,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'should get destroy' do
-    delete :destroy,
-           { id:         @account.id },
-           account_id: @account.id
+    delete :destroy, { id: @account.id }, account_id: @account.id
 
     assert_response :redirect
     assert_redirected_to root_path
