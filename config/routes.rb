@@ -22,6 +22,18 @@ Rails.application.routes.draw do
   get 'login',    to: redirect('sessions/new'),  as: :login
   get 'logout',   to: 'sessions#destroy',        as: :logout
 
+  resources :accounts, except: [:index, :show]
+
+  # get 'accounts/confirm_email/:token' =>
+  #     'accounts#confirm_email', as: :confirm_email
+
+  # match 'accounts/reset_password' =>
+  #       'accounts#reset_password', via: [:get, :post], as: :reset_password
+
+  ###
+  #
+  #
+
   resources :contacts, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 

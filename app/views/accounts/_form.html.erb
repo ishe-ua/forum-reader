@@ -1,0 +1,24 @@
+<%= form_for(@account) do |f| %>
+  <%= render "shared/errors", instance: @account %>
+
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= render 'shared/submit_tag' %>
+
+<% end %>
