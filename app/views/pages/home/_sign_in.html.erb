@@ -1,6 +1,6 @@
 <div class="holder">
   <%= form_tag 'sessions_path', method: :post, class: "login-form" do %>
-    <h2><%= "t 'view.sign_in'" %></h2>
+    <h2><%= t('sessions.form.title') %></h2>
 
 
     <div class="field">
@@ -21,7 +21,7 @@
 
 
     <div class="holder-button">
-      <%= submit_tag "t('view.sign_in')" %>
+      <%= submit_tag t('form.submit') %>
       <%= link_to "t('view.forgot_password')", 'restore_password_path' %>
     </div>
 
