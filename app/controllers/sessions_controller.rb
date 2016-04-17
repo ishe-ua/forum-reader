@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
   def create
     b = sign_in(params[:email], params[:password])
     if b == true
-      url = back_url || root_path
+      url = defined?(BackUrl) ? (back_url || root_path) : root_path
       redirect_to url
     else
       flash.alert = b
