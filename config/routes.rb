@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get 'accounts/confirm_email/:token' =>
       'accounts#confirm_email', as: :confirm_email
 
+  get 'accounts/confirm_jabber/:token' =>
+      'accounts#confirm_jabber', as: :confirm_jabber
+
   match 'accounts/reset_password' =>
         'accounts#reset_password', via: [:get, :post], as: :reset_password
 

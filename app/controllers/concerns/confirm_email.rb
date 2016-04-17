@@ -1,5 +1,5 @@
 # coding: utf-8
-# Подтвердить email.
+# Подтвердить Email.
 #
 # Морда для EmailConfirmation.
 #
