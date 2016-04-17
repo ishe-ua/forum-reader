@@ -6,7 +6,7 @@ class LocaleController < ApplicationController
 
   ## Изменить текущую локаль.
   def change
-    I18n.locale = params[:lang]
+    session[:current_locale] = params[:lang]
     redirect_to :back
   rescue ActionController::RedirectBackError
     redirect_to root_path
