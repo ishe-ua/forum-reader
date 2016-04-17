@@ -16,13 +16,13 @@
 
 
     <div class="holder">
-      <%= link_to "t('view.register')", new_account_path, class: "register-link" %>
+      <%= link_to t('sessions.form.links.register'), new_account_path, class: "register-link" %>
     </div>
 
 
     <div class="holder-button">
       <%= submit_tag t('form.submit') %>
-      <%= link_to "t('view.forgot_password')", 'restore_password_path' %>
+      <%= link_to t('sessions.form.links.forgot_password'), reset_password_path %>
     </div>
 
   <% end %>
