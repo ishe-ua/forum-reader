@@ -44,8 +44,8 @@ module Auth
   def sign_in(email, password)
     account = Account.find_by(email: email)
 
-    return t('auth.sign_in.fail')   if account.nil?
-    return t('auth.sign_in.locked') if defined?(Lock) && account.locked?
+    return t('sessions.errors.fail')   if account.nil?
+    return t('sessions.errors.locked') if defined?(Lock) && account.locked?
 
     if account.authenticate(password)
       session[:account_id] = account.id

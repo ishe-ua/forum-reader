@@ -1,0 +1,10 @@
+ru:
+  sessions:
+    form:
+      title: Вход
+      links:
+        register: Регистрация
+        forgot_password: Я забыл(а) пароль
+    errors:
+      fail: Не верный Email или пароль
+      locked: Аккаунт заблокирован

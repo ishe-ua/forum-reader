@@ -1,0 +1,10 @@
+en:
+  sessions:
+    form:
+      title: Sign In
+      links:
+        register: Register
+        forgot_password: I forgot password
+    errors:
+      fail: Bad email or password
+      locked: Account locked

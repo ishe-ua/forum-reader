@@ -1,12 +1,8 @@
 # coding: utf-8
 # Сессии пользователей.
 #
-# Т.е. залогинить / разлогинить Account.
-# Также система аутентификации включает:
-#
-# 1. Auth
-# 2. BackUrl
-# 3. I18n in auth.en.yml
+# Также система аутентификации включает Auth, Lock и BackUrl (два
+# последние могут быть, а могут и не быть).
 #
 class SessionsController < ApplicationController
   before_action :downcase_email, only: :create

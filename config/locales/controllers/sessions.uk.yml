@@ -1,0 +1,10 @@
+uk:
+  sessions:
+    form:
+      title: Вхiд
+      links:
+        register: Реєстрацiя
+        forgot_password: Я забув(ла) пароль
+    errors:
+      fail: Не вiрний Email або пароль
+      locked: Аккаунт заблоковано
