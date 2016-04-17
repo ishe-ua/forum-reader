@@ -79,7 +79,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.update(account_params)
         unconfirm_email && send_email_confirmation if new_email?
-        format.html { redirect_to pages_settings_path }
+        format.html { redirect_to settings_path }
       else
         format.html { render :edit }
       end
@@ -122,7 +122,7 @@ class AccountsController < ApplicationController
     AdminMailer.new_registration(@account)
                .deliver_later!(queue_priority: 0)
 
-    redirect_to pages_info_path, notice: t('we_sent_you_email')
+    redirect_to info_path, notice: t('we_sent_you_email')
   end
 
   def new_email?
