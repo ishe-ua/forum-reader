@@ -20,10 +20,10 @@ module ConfirmJabber
   #
 
   def confirm_jabber
-    account = Account.find_by(jabber_confirmation_token: params[:token])
+    user = User.find_by(jabber_confirmation_token: params[:token])
 
-    if account && confirm_j(account)
-      auto_signin(account) # прописано в ConfirmEmail
+    if user && confirm_j(user)
+      auto_signin(user.account) # прописано в ConfirmEmail
       flash.notice = t 'success'
     else
       flash.alert = t 'fail'
@@ -34,8 +34,8 @@ module ConfirmJabber
 
   private
 
-  def confirm_j(account)
-    account.confirm_jabber! unless account.jabber_confirmed?
-    account.jabber_confirmed?
+  def confirm_j(user)
+    user.confirm_jabber! unless user.jabber_confirmed?
+    user.jabber_confirmed?
   end
 end

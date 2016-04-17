@@ -16,6 +16,8 @@ class AccountsController < ApplicationController
                                          ]
 
   include ConfirmEmail
+  include ConfirmJabber
+
   # include ResetPassword
 
   ##
