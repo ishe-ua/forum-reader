@@ -45,7 +45,7 @@ gem 'feedjira'
 
 gem 'exception_notification'
 gem 'backburner'
-gem 'dalli'
+gem 'dalli' # TODO: jump to redis
 gem 'lograge'
 gem 'clockwork'
 gem 'foreman'

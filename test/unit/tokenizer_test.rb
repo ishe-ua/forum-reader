@@ -6,7 +6,7 @@ class TokenizerTest < ActiveSupport::TestCase
   end
 
   test '#random_string' do
-    token = modul.random_string(48)
-    assert_equal token.size, 48
+    token = modul.random_string(modul::DEFAULT_SIZE)
+    assert_equal token.size, modul::DEFAULT_SIZE
   end
 end

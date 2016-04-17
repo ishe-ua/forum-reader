@@ -33,11 +33,7 @@ class ActionController::TestCase
 end
 
 class ActionView::TestCase
-  ###
-  # Тестирование хелперов.
-  # Чтобы в них были доступны link_to и подобные.
-  #
-
+  ## Тестирование хелперов (чтоб в них были доступны link_to и подобное).
   include Rails.application.routes.url_helpers
 
   def default_url_options
