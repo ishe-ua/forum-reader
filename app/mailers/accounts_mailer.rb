@@ -14,6 +14,12 @@ class AccountsMailer < ApplicationMailer
     mail to: account.email
   end
 
+  ## Письмо со ссылкой для подтверждения Jabber.
+  def jabber_confirmation(account)
+    @account = account
+    mail to: account.user.jabber
+  end
+
   ## Высылаем Account -у его новый Password.
   def new_password(account, new_password)
     @new_password = new_password

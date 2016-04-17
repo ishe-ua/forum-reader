@@ -6,5 +6,9 @@ ru:
       subject: Email confirmation
       body:
         please_confirm: Пожалуйста, подтвердите свой Email
+    jabber_confirmation:
+      subject: Jabber confirmation
+      body:
+        please_confirm: Пожалуйста, подтвердите свой Jabber
     new_password:
       subject: Новый пароль

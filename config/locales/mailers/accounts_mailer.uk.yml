@@ -6,5 +6,9 @@ uk:
       subject: Email confirmation
       body:
         please_confirm: Будь ласка, підтвердіть свій Email
+    jabber_confirmation:
+      subject: Jabber confirmation
+      body:
+        please_confirm: Будь ласка, підтвердіть свій Jabber
     new_password:
       subject: Новий пароль

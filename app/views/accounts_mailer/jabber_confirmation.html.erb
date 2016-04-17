@@ -1,0 +1,4 @@
+<p>
+  <%= t('accounts_mailer.jabber_confirmation.body.please_confirm') %>:<br/>
+  <%= link_to 'Follow link...', confirm_jabber_url(@account.user.jabber_confirmation_token) %>
+</p>

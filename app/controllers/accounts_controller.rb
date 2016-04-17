@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
                                          ]
 
   include ConfirmEmail
-  #include ResetPassword
+  # include ResetPassword
 
   ##
   # GET /accounts/new
@@ -126,7 +126,8 @@ class AccountsController < ApplicationController
   end
 
   def new_email?
-    @account.previous_changes['email']&.any?
+    @account.previous_changes['email'] &&
+      @account.previous_changes['email'].any?
   end
 
   def unconfirm_email

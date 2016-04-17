@@ -10,7 +10,6 @@ class ConfirmEmailTest < ActionController::TestCase
     assert_not accounts(:john).email_confirmed?
   end
 
-
   test 'success' do
     get :confirm_email, token: @account.email_confirmation_token
 

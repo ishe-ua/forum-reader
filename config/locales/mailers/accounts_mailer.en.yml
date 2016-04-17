@@ -5,6 +5,10 @@ en:
     email_confirmation:
       subject: Email confirmation
       body:
-        please_confirm: Please, confirm Email
+        please_confirm: Please, confirm your Email
+    jabber_confirmation:
+      subject: Jabber confirmation
+      body:
+        please_confirm: Please, confirm your Jabber
     new_password:
       subject: New password

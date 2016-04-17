@@ -20,10 +20,14 @@ class AccountsMailerTest < ActionMailer::TestCase
   end
 
   test '#email_confirmation' do
-    skip
     @mail = mailer.email_confirmation(@account)
     assert_equal [@account.email], mail.to
     assert I18n.t('accounts_mailer.email_confirmation.subject').present?
+  end
+
+  test '#jabber_confirmation' do
+    @mail = mailer.jabber_confirmation(@account)
+    assert_equal [@account.user.jabber], mail.to
   end
 
   test '#new_password' do
