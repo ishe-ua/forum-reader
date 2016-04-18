@@ -1,9 +1,7 @@
 uk:
   activerecord:
-
     models:
       letter: Лист
-
     attributes:
       letter:
         name: Назва

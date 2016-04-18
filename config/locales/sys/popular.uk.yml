@@ -1,21 +1,15 @@
 uk:
   done: Done
-
   success: Все добре
   fail:    Щось не так
-
   form:
     submit: ОК
     errors: Помилки
-
   we_sent_you_email: Ми відправили Вам email
   best_regards: З найліпшими побажаннями
   thank_you: Дякуємо
-
   access_denied: Доступ заборонено
   more: Докладніше
-
   download: Скачати
   link: Посилання
-
   reset: Зкинути

@@ -1,9 +1,7 @@
 en:
   activerecord:
-
     models:
       forum: Forum
-
     attributes:
       forum:
         name: Name

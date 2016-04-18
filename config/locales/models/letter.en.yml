@@ -1,9 +1,7 @@
 en:
   activerecord:
-
     models:
       letter: Letter
-
     attributes:
       letter:
         name: Name

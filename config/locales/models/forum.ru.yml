@@ -1,9 +1,7 @@
 ru:
   activerecord:
-
     models:
       forum: Форум
-
     attributes:
       forum:
         name: Название

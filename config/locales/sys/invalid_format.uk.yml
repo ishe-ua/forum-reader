@@ -1,5 +1,4 @@
 uk:
   activerecord:
-
     errors:
       invalid_format: не вірний формат

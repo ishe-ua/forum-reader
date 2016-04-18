@@ -1,9 +1,7 @@
 uk:
   activerecord:
-
     models:
       account: Аккаунт
-
     attributes:
       account:
         email: Пошта
