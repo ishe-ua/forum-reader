@@ -1,0 +1,14 @@
+en:
+  activerecord:
+
+    models:
+      forum: Forum
+
+    attributes:
+      forum:
+        name: Name
+        url: Url
+        target: Destination
+        last_post_at: Last delivery
+        created_at: Created at
+        updated_at: Updated at

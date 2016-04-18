@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+
+    models:
+      forum: Форум
+
+    attributes:
+      forum:
+        name: Название
+        url: Урл
+        target: Куда доставлять
+        last_post_at: Последняя доставка
+        created_at: Создан
+        updated_at: Обновлялся
