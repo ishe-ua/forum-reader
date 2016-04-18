@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      letter_item: Letter Feed
+    attributes:
+      letter_item:
+        name: Name
+        url: Url
+        last_post_at: Last delivery
+        created_at: Created at
+        updated_at: Updated at

@@ -1,0 +1,11 @@
+uk:
+  activerecord:
+    models:
+      letter_item: Фід листа
+    attributes:
+      letter_item:
+        name: Назва
+        url: Урл
+        last_post_at: Остання доставка
+        created_at: Створено
+        updated_at: Оновлено
