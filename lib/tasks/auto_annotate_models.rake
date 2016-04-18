@@ -1,3 +1,6 @@
+# coding: utf-8
+# Сгенерил автоматом gem 'annotate'.
+#
 if Rails.env.development?
   task :set_annotation_options do
     Annotate.set_defaults(

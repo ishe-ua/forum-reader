@@ -1,5 +1,5 @@
 # coding: utf-8
-# Jabber reminders.
+# TODO: Jabber reminders.
 #
 module Reminder
   Dir[].each { |f| require f }

@@ -26,5 +26,5 @@ end
 if Rails.env.test?
   Rails.application
        .config
-       .i18n.default_locale = APP::LANGS.shuffle.shuffle.shuffle.sample.to_sym
+       .i18n.default_locale = APP::LANGS.shuffle.sample.to_sym
 end

@@ -1,5 +1,5 @@
 # coding: utf-8
-# Jabber talks.
+# TODO: Jabber talks.
 #
 module Talker
   Dir[].each { |f| require f }

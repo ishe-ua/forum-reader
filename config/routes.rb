@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   ###
-  #
+  # Account
   #
 
   get 'register', to: redirect('accounts/new'),  as: :register
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         'accounts#reset_password', via: [:get, :post], as: :reset_password
 
   ###
-  #
+  # Others
   #
 
   resources :contacts, only: [:new, :create]
