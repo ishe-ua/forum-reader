@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      contact: Contact
+    attributes:
+      contact:
+        email: Your Email
+        theme: Theme
+        text:  Text

@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      contact: Сообщение
+    attributes:
+      contact:
+        email: Ваш Email
+        theme: Тема
+        text:  Текст

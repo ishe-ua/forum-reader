@@ -1,0 +1,74 @@
+.form-wrapper {
+
+  .border-img {
+    margin:0 -41px 0 -33px;
+    padding:0 41px 12px 33px;
+    height:54px;
+    background: image-url("border-img-06.png") no-repeat;
+  }
+
+
+  h2 { margin:0 0 12px; }
+  textarea { width: 98%; height: 10em; }
+
+
+  .holder-form {
+    padding:0 0 0 70px;
+    width:295px;
+
+
+    label {
+      float:left;
+      width:104px;
+      font:14px/12px Helvetica, sans-serif;
+      color:#7f7f7f;
+    }
+
+
+    .field {
+      padding:1px 0 1px 3px;
+      overflow:hidden;
+      border-top:1px solid #e8e8e8;
+
+      input, select {
+        width:180px;
+        height:20px;
+        background:#e8e8e8;
+        border:1px solid #d1d1d1;
+        font:normal 14px/15px Helvetica, sans-serif;
+        color:#000;
+        padding:0 0 0 5px;
+      }
+
+      &:first-child {border:none;}
+      select {width: 188px;}
+    }
+
+
+    .captcha {
+      margin-top: 1em;
+    }
+
+
+    .holder-button {
+      overflow:hidden;
+      padding:15px 0 0 106px;
+      a {color: #d45e5e;}
+    }
+
+
+    input[type="submit"] {
+      float:left;
+      margin: 1.5em 0;
+      padding:0 0 5px;
+      width:115px;
+      height:25px;
+      cursor:pointer;
+      border:none;
+      color:#fff;
+      background:#d65959;
+      font:16px/25px Helvetica, sans-serif;
+    }
+
+  }
+}
