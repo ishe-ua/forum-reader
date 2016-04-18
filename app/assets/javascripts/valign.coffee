@@ -1,7 +1,7 @@
 ##
 # Выравнивание в формах (label и input-полей):
 #
-# Находим все эл-ты с классом '.valign' и выравниваем их по горизонтали.
+# Находим все label в формах и выравниваем их по вертикали.
 # Файл от верстальщика.
 #
 $.fn.v_align = ->
@@ -13,4 +13,4 @@ $.fn.v_align = ->
     $(this).css('margin-top', mh)
 
 $(document).on 'page:change', ->
-  $('.valign').v_align()
+  $('form label').v_align()
