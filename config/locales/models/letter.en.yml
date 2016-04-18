@@ -1,0 +1,21 @@
+en:
+  activerecord:
+
+    models:
+      letter: Letter
+
+    attributes:
+      letter:
+        name: Name
+        d1: Sun
+        d2: Mon
+        d3: Tue
+        d4: Wed
+        d5: Thu
+        d6: Fri
+        d7: Sat
+        hour: Hour
+        minute: Minute
+        last_post_at: Last delivery
+        created_at: Created at
+        updated_at: Updated at

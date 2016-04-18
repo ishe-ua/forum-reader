@@ -1,0 +1,21 @@
+uk:
+  activerecord:
+
+    models:
+      letter: Лист
+
+    attributes:
+      letter:
+        name: Назва
+        d1: Нед
+        d2: Пн
+        d3: Вт
+        d4: Ср
+        d5: Чт
+        d6: Пт
+        d7: Сб
+        hour: Час
+        minute: Хвилина
+        last_post_at: Остання доставка
+        created_at: Створено
+        updated_at: Оновлено

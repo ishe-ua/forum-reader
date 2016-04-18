@@ -1,0 +1,21 @@
+ru:
+  activerecord:
+
+    models:
+      letter: Письмо
+
+    attributes:
+      letter:
+        name: Название
+        d1: Вс
+        d2: Пн
+        d3: Вт
+        d4: Ср
+        d5: Чт
+        d6: Пт
+        d7: Сб
+        hour: Час
+        minute: Минуна
+        last_post_at: Последняя доставка
+        created_at: Создано
+        updated_at: Обновлялось
