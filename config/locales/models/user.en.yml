@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        nick: Nick
+        jabber: Jabber
+        jabber_confirmation_at: Jabber confirmation
+        lang: Language
+        country: Country
+        timezone: Timezone
