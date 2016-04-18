@@ -36,7 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts_as_list (0.7.3)
+    acts_as_list (0.7.4)
       activerecord (>= 3.0)
     addressable (2.4.0)
     annotate (2.7.0)
@@ -71,7 +71,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cliver (0.3.2)
-    clockwork (1.2.0)
+    clockwork (2.0.0)
       activesupport
       tzinfo
     coderay (1.1.1)
@@ -309,7 +309,7 @@ DEPENDENCIES
   feedjira
   foreman
   guard
-  guard-livereload (~> 2.4)
+  guard-livereload
   guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
