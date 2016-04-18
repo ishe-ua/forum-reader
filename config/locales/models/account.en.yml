@@ -1,0 +1,12 @@
+en:
+  activerecord:
+
+    models:
+      account: Account
+
+    attributes:
+      account:
+        email: Email
+        password: Password
+        password_confirmation: Password again
+        email_confirmation: Email confirmation

@@ -1,0 +1,12 @@
+UK:
+  activerecord:
+
+    models:
+      account: Аккаунт
+
+    attributes:
+      account:
+        email: Пошта
+        password: Пароль
+        password_confirmation: Пароль знову
+        email_confirmation: Підтвердження пошти
