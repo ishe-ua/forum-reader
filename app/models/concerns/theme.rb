@@ -8,7 +8,7 @@ module Theme
   extend ActiveSupport::Concern
 
   ## Максимальная длинна.
-  MAX_THEME = 255 # макс. длинна строк ограничена
+  MAX_THEME = 255 # макс. длинна строк ограничена в СУБД
 
   included do
     validates :theme,
