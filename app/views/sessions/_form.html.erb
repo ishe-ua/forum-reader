@@ -12,14 +12,12 @@
       <%= password_field_tag :password %>
     </div>
 
-    <div class="holder-button">
-      <%= submit_tag t('form.submit') %>
-
+    <%= render layout: 'shared/submit_tag' do %>
       <ul class="links">
         <li><%= link_to t('sessions.form.links.register') + '!!', new_account_path %></li>
         <li><%= link_to t('sessions.form.links.forgot_password'), reset_password_path %></li>
       </ul>
-    </div>
+    <% end %>
 
   </div>
 <% end %>
