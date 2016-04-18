@@ -28,9 +28,9 @@ module Nick
 
               format: { with: VALID_NICK },
               length: { in: MIN_NICK..MAX_NICK }
-
-    protected
   end
+
+  protected
 
   ## Значение в нижний регистр.
   def downcase_nick
