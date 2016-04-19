@@ -42,14 +42,13 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test 'should get sets' do
-    skip
     get :sets
     assert_redirected_to new_session_path
     assert_response :redirect, 'защищенная страница'
 
-    sign_in himprom
+    sign_in accounts(:mary)
 
-    get :settings
+    get :sets
     assert_response :success
   end
 end

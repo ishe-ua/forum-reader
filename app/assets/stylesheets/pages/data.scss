@@ -1,0 +1,217 @@
+.pages.data {
+
+  .border-img {
+    padding:0 40px 0 34px;
+    margin:0 -40px 16px -34px;
+  }
+
+
+  .header {
+    padding:0 0 14px 0;
+    overflow:hidden;
+
+    h2 {
+      float:left;
+      margin:0 12px 0 0;
+      line-height:22px;
+    }
+
+
+    a.button {
+      float:left;
+      padding:0 25px 0 19px;
+      font:14px/22px Helvetica, sans-serif;
+      color:#fff;
+      background:#d45e5e;
+      text-decoration:none;
+      height:22px;
+      &.button:hover {background:#898989;}
+    }
+  }
+
+  .program-settings {
+    overflow:hidden;
+    padding:0 0 5px 91px;
+
+    a.link {
+      float:left;
+      margin:0 10px 0 0;
+      padding:0 25px 0 19px;
+      font:14px/22px Helvetica, sans-serif;
+      color:#fff;
+      background:#d45e5e;
+      text-decoration:none;
+      height:22px;
+    }
+    .title {
+      float:left;
+      padding-right: .5em;
+      font:14px/18px Helvetica, sans-serif;
+      font-weight:bold;
+      color:#898989;
+    }
+    .time {
+      float:left;
+      font:10px/17px Helvetica, sans-serif;
+      margin:0 10px 0 0;
+    }
+  }
+
+
+
+  .settings-list {
+
+    float:left;
+    margin:0;
+    padding:0 0 0 91px;
+
+    li {
+      list-style:none;
+      &:first-child .item { border:none; }
+
+      .item {
+        border-top:1px solid #e8e8e8;
+        padding:0 15px 4px 2px;
+        overflow:hidden;
+      }
+      .name {
+        float:left;
+        width:430px;
+        font:14px/14px Helvetica, sans-serif;
+        padding:4px 0 0;
+        a { color:#d85454;}
+      }
+    }
+  }
+
+
+
+  .info-list {
+    padding:0 0 0 91px;
+    margin:0;
+    list-style:none;
+
+
+    li {
+      width:272px;
+      border-top:1px solid #e8e8e8;
+      padding:2px 0 2px 2px;
+      &:first-child { border:none; }
+
+      .info {
+        padding-top: 1px;
+        padding-bottom: 1px;
+
+        width:500px;
+        overflow:hidden;
+        background: #fff;
+      }
+      .info-name {
+        float:left;
+        width:74px;
+        color:#898989;
+        font:14px/12px Helvetica, sans-serif;
+      }
+      .info-holder {
+        float:left;
+        color:#000;
+        font:italic 14px/14px Helvetica, sans-serif;
+      }
+      .active-info {
+        color:#ff0000;
+        font:10px/10px Helvetica, sans-serif;
+        float:left;
+        margin:0 0 0 8px;
+      }
+      .activate {
+        color:#d65959;
+        font:14px/14px Helvetica, sans-serif;
+        float:left;
+        margin:0 0 0 12px;
+      }
+    }
+  }
+
+
+
+  .settings-list li .active-info,
+  .program-settings .active-info {
+    float:left;
+    font:10px/12px Helvetica, sans-serif;
+    padding:2px 0 0;
+    color:#ff0000;
+  }
+  .program-settings .active-info {
+    font:10px/17px Helvetica, sans-serif;
+    padding:0;
+    padding-right:.5em;
+  }
+  .settings-list li .active-info.active,
+  .program-settings .active-info.active { color:#44b759;}
+  .settings-list li .button-settings,
+  .program-settings .button-settings {
+    margin:1px 12px 0 0;
+    float:left;
+  }
+  .settings-list li a.button-edit,
+  .program-settings a.button-edit {
+    width:12px;
+    height:14px;
+    background: image-url("arrow-edit.png") no-repeat;
+  }
+  .settings-list li a.button-edit:hover,
+  .program-settings a.button-edit:hover {
+    background: image-url("arrow-edit.png") no-repeat 0 -14px;
+  }
+  .settings-list li a.button-delete,
+  .program-settings .button-delete {
+    width:12px;
+    height:14px;
+    background: image-url("ico-delete.png") no-repeat;
+  }
+  .settings-list li a.button-delete:hover,
+  .program-settings a.button-delete:hover {
+    background: image-url("ico-delete.png") no-repeat 0 -14px;
+  }
+  .settings-list li a.button-up,
+  .program-settings a.button-up {
+    width:13px;
+    height:13px;
+    background: image-url("arrow-list.png") no-repeat 0 0;
+  }
+  .settings-list li a.button-down,
+  .program-settings a.button-down {
+    width:13px;
+    height:13px;
+    background: image-url("arrow-list.png") no-repeat 0 -13px;
+  }
+
+
+
+  .settings-forums .list-day,
+  .program-settings .list-day {
+    margin:0;
+    padding:0;
+    list-style:none;
+    overflow:hidden;
+    float:left;
+  }
+  .settings-forums .list-day li,
+  .list-day li {
+    float:left;
+    padding:0 3px 0 0;
+    overflow:hidden;
+  }
+  .settings-forums .time,
+  .settings-forums .list-day li a,
+  .list-day li a {
+    float:left;
+    width:14px;
+    height:18px;
+    background: image-url("bg-list-day.gif") no-repeat;
+    text-decoration:none;
+    padding:0 0 0 4px;
+    font:9px/16px Helvetica, sans-serif;
+    color:#898989;
+  }
+}

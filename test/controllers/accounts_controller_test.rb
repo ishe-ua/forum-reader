@@ -44,7 +44,7 @@ class AccountsControllerTest < ActionController::TestCase
     patch :update, id: @account, account: acc_params
 
     assert_response :redirect
-    assert_redirected_to settings_path
+    assert_redirected_to sets_path
   end
 
   test 'изменили email - новый не подтвержденный, письмо для подтверждения' do

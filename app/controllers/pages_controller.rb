@@ -42,6 +42,6 @@ class PagesController < ApplicationController
   end
 
   ## Настройки.
-  def settings
+  def sets
   end
 end

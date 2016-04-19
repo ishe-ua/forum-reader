@@ -3,6 +3,10 @@ uk:
     home:
       attention: Увага
       idea: Ідея
+    data:
+      my_settings: Мої налаштунки
+      my_forums: Мої форуми
+      my_letters: Мої листи
     help:
       how_use:       Як користуватися
       read_news:     Як читати новини

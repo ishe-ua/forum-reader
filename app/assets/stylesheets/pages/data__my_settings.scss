@@ -1,0 +1,18 @@
+// Data-страница - Мои настройки.
+//
+
+.pages.data
+
+.my-settings {
+  padding:0 0 26px;
+
+  .border-img {
+    height:53px;
+    background: image-url("border-img-02.png") no-repeat;
+  }
+
+  .adds {
+    font:14px/14px Helvetica, sans-serif;
+    a {color:#d65959;}
+  }
+}

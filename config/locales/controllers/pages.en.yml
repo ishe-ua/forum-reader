@@ -3,6 +3,10 @@ en:
     home:
       attention: Attention
       idea: Idea
+    data:
+      my_settings: My settings
+      my_forums: My forums
+      my_letters: My letters
     help:
       how_use:       How to use
       read_news:     How to read news

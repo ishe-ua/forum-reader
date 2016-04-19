@@ -3,6 +3,10 @@ ru:
     home:
       attention: Внимание
       idea: Идея
+    data:
+      my_settings: Мои настройки
+      my_forums: Мои форумы
+      my_letters: Мои письма
     help:
       how_use:       Как пользоваться
       read_news:     Как читать новости

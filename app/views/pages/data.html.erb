@@ -1,1 +1,29 @@
-TODO
+<div id="content">
+
+  <div class="my-settings">
+    <div class="border-img"></div>
+    <div class="header">
+      <h2><%= t '.my_settings' %></h2>
+      <%= link_to t('edit'), "edit_user_path(current_user)", class: "button" %>
+    </div>
+
+    <%= render 'pages/data/settings' %>
+  </div>
+
+  <div class="my-forums" >
+    <div class="border-img"></div>
+    <div class="header">
+      <h2><%= t '.my_forums' %></h2>
+      <%= link_to t('view.add'), "new_forum_path", class: "button" %>
+    </div>
+  </div>
+
+  <div class="my-letters">
+    <div class="border-img"></div>
+    <div class="header">
+      <h2><%= t '.my_letters' %></h2>
+      <%= link_to t('view.add'), "new_letter_path", class: "button" %>
+    </div>
+  </div>
+
+</div>
