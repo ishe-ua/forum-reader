@@ -1,0 +1,14 @@
+DEFAULTS: &DEFAULTS
+  user: ishe
+
+ishe:
+  <<: *DEFAULTS
+  user: ishe
+
+mary:
+  <<: *DEFAULTS
+  user: mary
+
+john:
+  <<: *DEFAULTS
+  user: john

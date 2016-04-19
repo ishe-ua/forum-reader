@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :forums
   has_many :letters
 
+  has_one :reader_conf
+
   include Nick
 
   include Jabber

@@ -279,6 +279,37 @@ ALTER SEQUENCE letters_id_seq OWNED BY letters.id;
 
 
 --
+-- Name: reader_confs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE reader_confs (
+    id integer NOT NULL,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: reader_confs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE reader_confs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: reader_confs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE reader_confs_id_seq OWNED BY reader_confs.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -378,6 +409,13 @@ ALTER TABLE ONLY letters ALTER COLUMN id SET DEFAULT nextval('letters_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY reader_confs ALTER COLUMN id SET DEFAULT nextval('reader_confs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -435,6 +473,14 @@ ALTER TABLE ONLY letter_items
 
 ALTER TABLE ONLY letters
     ADD CONSTRAINT letters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: reader_confs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY reader_confs
+    ADD CONSTRAINT reader_confs_pkey PRIMARY KEY (id);
 
 
 --
@@ -635,6 +681,13 @@ CREATE INDEX index_letters_on_user_id ON letters USING btree (user_id);
 
 
 --
+-- Name: index_reader_confs_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reader_confs_on_user_id ON reader_confs USING btree (user_id);
+
+
+--
 -- Name: index_users_on_account_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -738,6 +791,14 @@ ALTER TABLE ONLY forums
 
 
 --
+-- Name: fk_rails_d4738ebb55; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY reader_confs
+    ADD CONSTRAINT fk_rails_d4738ebb55 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -758,4 +819,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160131134617');
 INSERT INTO schema_migrations (version) VALUES ('20160131134630');
 
 INSERT INTO schema_migrations (version) VALUES ('20160141134632');
+
+INSERT INTO schema_migrations (version) VALUES ('20160419120643');
 
