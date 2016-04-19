@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 
   ## Стартовая приложения.
   def home
-    # TODO: redirect_to pages_data_path if signed_in?
+    redirect_to data_path if signed_in?
   end
 
   ## Как пользоваться.

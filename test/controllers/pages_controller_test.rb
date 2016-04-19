@@ -5,6 +5,11 @@ class PagesControllerTest < ActionController::TestCase
   test 'should get home' do
     get :home
     assert_response :success
+
+    sign_in accounts(:ishe)
+
+    get :home
+    assert_redirected_to data_path, 'для залогиненных не показываем'
   end
 
   test 'should get help' do
@@ -27,10 +32,8 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test 'should get data' do
-    skip
     get :data
-    assert_redirected_to new_session_path
-    assert_response :redirect, 'защищенная страница'
+    assert_redirected_to new_session_path, 'защищенная страница'
 
     sign_in accounts(:ishe)
 
@@ -38,9 +41,9 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get settings' do
+  test 'should get sets' do
     skip
-    get :settings
+    get :sets
     assert_redirected_to new_session_path
     assert_response :redirect, 'защищенная страница'
 
