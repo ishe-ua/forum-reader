@@ -21,8 +21,4 @@
 #  fk_rails_503d442a23  (user_id => users.id)
 #
 class ReaderSet < BaseSet
-  belongs_to :user
-  validates :user_id, presence: true, uniqueness: true
-
-  include Status
 end
