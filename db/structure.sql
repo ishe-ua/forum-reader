@@ -285,6 +285,7 @@ ALTER SEQUENCE letters_id_seq OWNED BY letters.id;
 CREATE TABLE reader_confs (
     id integer NOT NULL,
     user_id integer,
+    status integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -678,6 +679,13 @@ CREATE INDEX index_letters_on_minute ON letters USING btree (minute);
 --
 
 CREATE INDEX index_letters_on_user_id ON letters USING btree (user_id);
+
+
+--
+-- Name: index_reader_confs_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reader_confs_on_status ON reader_confs USING btree (status);
 
 
 --

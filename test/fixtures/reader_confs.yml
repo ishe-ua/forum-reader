@@ -1,5 +1,6 @@
 DEFAULTS: &DEFAULTS
   user: ishe
+  status: <%= ReaderConf.statuses[ReaderConf.new.status] %>
 
 ishe:
   <<: *DEFAULTS
@@ -8,6 +9,7 @@ ishe:
 mary:
   <<: *DEFAULTS
   user: mary
+  status: <%= ReaderConf.statuses[:off] %>
 
 john:
   <<: *DEFAULTS

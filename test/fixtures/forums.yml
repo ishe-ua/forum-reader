@@ -3,7 +3,7 @@ DEFAULTS: &DEFAULTS
   name: Sample forum feed ($LABEL)
   url: http://$LABEL.example.com/feed.xml
 
-  target:   <%= Forum.new.target %>
+  target:   <%= Forum.targets[Forum.new.target] %>
   position: <%= Forum.new.position %>
 
 reddit_ruby:
