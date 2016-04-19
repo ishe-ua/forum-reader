@@ -4,7 +4,7 @@
     <div class="border-img"></div>
     <div class="header">
       <h2><%= t '.my_settings' %></h2>
-      <%= link_to t('edit'), "edit_user_path(current_user)", class: "button" %>
+      <%= link_to t('edit'), "edit_user_path(current_user)" %>
     </div>
 
     <%= render 'pages/data/settings' %>
@@ -14,7 +14,7 @@
     <div class="border-img"></div>
     <div class="header">
       <h2><%= t '.my_forums' %></h2>
-      <%= link_to t('add'), "new_forum_path", class: "button" %>
+      <%= link_to t('add'), "new_forum_path" %>
     </div>
   </div>
 
@@ -22,7 +22,7 @@
     <div class="border-img"></div>
     <div class="header">
       <h2><%= t '.my_letters' %></h2>
-      <%= link_to t('add'), "new_letter_path", class: "button" %>
+      <%= link_to t('add'), "new_letter_path" %>
     </div>
   </div>
 
