@@ -7,6 +7,9 @@ en:
       my_settings: My settings
       my_forums: My forums
       my_letters: My letters
+      confirmation:
+        not_activated: Not activated
+        activate: Activate
     help:
       how_use:       How to use
       read_news:     How to read news

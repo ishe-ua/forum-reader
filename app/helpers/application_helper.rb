@@ -26,8 +26,8 @@ module ApplicationHelper
     "&copy; «#{app_link}» #{app_years}. #{t('footer.copyright')}."
   end
 
-  ## Показываем строку или APP::DASH если та пустая.
+  ## Показываем строку или '-' если та пустая.
   def dashed(str)
-    str.present? ? str : APP::DASH
+    str.present? ? str : '-'
   end
 end

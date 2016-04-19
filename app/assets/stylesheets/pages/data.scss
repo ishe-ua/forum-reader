@@ -5,7 +5,6 @@
     margin:0 -40px 16px -34px;
   }
 
-
   .header {
     padding:0 0 14px 0;
     overflow:hidden;
@@ -117,10 +116,10 @@
         font:italic 14px/14px Helvetica, sans-serif;
       }
       .active-info {
-        color:#ff0000;
-        font:10px/10px Helvetica, sans-serif;
         float:left;
         margin:0 0 0 8px;
+        color:#ff0000;
+        font:10px/10px Helvetica, sans-serif;
       }
       .activate {
         color:#d65959;
@@ -187,7 +186,7 @@
 
 
 
-  .settings-forums .list-day,
+  .my-forums .list-day,
   .program-settings .list-day {
     margin:0;
     padding:0;
@@ -195,14 +194,14 @@
     overflow:hidden;
     float:left;
   }
-  .settings-forums .list-day li,
+  .my-forums .list-day li,
   .list-day li {
     float:left;
     padding:0 3px 0 0;
     overflow:hidden;
   }
-  .settings-forums .time,
-  .settings-forums .list-day li a,
+  .my-forums .time,
+  .my-forums .list-day li a,
   .list-day li a {
     float:left;
     width:14px;

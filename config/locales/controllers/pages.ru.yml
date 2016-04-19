@@ -7,6 +7,9 @@ ru:
       my_settings: Мои настройки
       my_forums: Мои форумы
       my_letters: Мои письма
+      confirmation:
+        not_activated: Не активирован
+        activate: Активировать
     help:
       how_use:       Как пользоваться
       read_news:     Как читать новости

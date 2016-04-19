@@ -7,6 +7,9 @@ uk:
       my_settings: Мої налаштунки
       my_forums: Мої форуми
       my_letters: Мої листи
+      confirmation:
+        not_activated: Не активовано
+        activate: Активувати
     help:
       how_use:       Як користуватися
       read_news:     Як читати новини

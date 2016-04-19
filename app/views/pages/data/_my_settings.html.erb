@@ -1,0 +1,38 @@
+<ul class="info-list user">
+
+  <li>
+    <div class="field info">
+      <span class="info-name"><%= User.human_attribute_name(:nick) %></span>
+      <span class="info-holder"><%= dashed(current_user.nick) %></span>
+    </div>
+  </li>
+
+  <li>
+    <div class="field info">
+      <span class="info-name"><%= Account.human_attribute_name(:email) %></span>
+      <span class="info-holder"><%= dashed(current_account.email) %></span>
+      <%= render 'pages/data/confirmation', target: :email %>
+    </div>
+  </li>
+
+  <li>
+    <div class="field info">
+      <span class="info-name"><%= User.human_attribute_name(:jabber) %></span>
+      <span class="info-holder"><%= dashed(current_user.jabber) %></span>
+      <%= render 'pages/data/confirmation', target: :jabber %>
+    </div>
+  </li>
+
+  <li>
+    <div class="field info">
+      <span class="info-name">&nbsp;</span>
+      <span class="info-holder"><%= country_tz_lang(current_user) %></span>
+    </div>
+  </li>
+
+  <li class="adds">
+    <%= render 'pages/data/delivery_status', target: :forums %>
+    <%= render 'pages/data/delivery_status', target: :letters %>
+  </li>
+
+</ul>
