@@ -279,10 +279,10 @@ ALTER SEQUENCE letters_id_seq OWNED BY letters.id;
 
 
 --
--- Name: reader_confs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: reader_sets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE reader_confs (
+CREATE TABLE reader_sets (
     id integer NOT NULL,
     user_id integer,
     status integer NOT NULL,
@@ -292,10 +292,10 @@ CREATE TABLE reader_confs (
 
 
 --
--- Name: reader_confs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: reader_sets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE reader_confs_id_seq
+CREATE SEQUENCE reader_sets_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -304,10 +304,10 @@ CREATE SEQUENCE reader_confs_id_seq
 
 
 --
--- Name: reader_confs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: reader_sets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE reader_confs_id_seq OWNED BY reader_confs.id;
+ALTER SEQUENCE reader_sets_id_seq OWNED BY reader_sets.id;
 
 
 --
@@ -410,7 +410,7 @@ ALTER TABLE ONLY letters ALTER COLUMN id SET DEFAULT nextval('letters_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY reader_confs ALTER COLUMN id SET DEFAULT nextval('reader_confs_id_seq'::regclass);
+ALTER TABLE ONLY reader_sets ALTER COLUMN id SET DEFAULT nextval('reader_sets_id_seq'::regclass);
 
 
 --
@@ -477,11 +477,11 @@ ALTER TABLE ONLY letters
 
 
 --
--- Name: reader_confs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: reader_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY reader_confs
-    ADD CONSTRAINT reader_confs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY reader_sets
+    ADD CONSTRAINT reader_sets_pkey PRIMARY KEY (id);
 
 
 --
@@ -682,17 +682,17 @@ CREATE INDEX index_letters_on_user_id ON letters USING btree (user_id);
 
 
 --
--- Name: index_reader_confs_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_reader_sets_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_reader_confs_on_status ON reader_confs USING btree (status);
+CREATE INDEX index_reader_sets_on_status ON reader_sets USING btree (status);
 
 
 --
--- Name: index_reader_confs_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_reader_sets_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_reader_confs_on_user_id ON reader_confs USING btree (user_id);
+CREATE INDEX index_reader_sets_on_user_id ON reader_sets USING btree (user_id);
 
 
 --
@@ -783,6 +783,14 @@ ALTER TABLE ONLY letter_items
 
 
 --
+-- Name: fk_rails_503d442a23; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY reader_sets
+    ADD CONSTRAINT fk_rails_503d442a23 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: fk_rails_61ac11da2b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -796,14 +804,6 @@ ALTER TABLE ONLY users
 
 ALTER TABLE ONLY forums
     ADD CONSTRAINT fk_rails_99e32c35a4 FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_d4738ebb55; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY reader_confs
-    ADD CONSTRAINT fk_rails_d4738ebb55 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --

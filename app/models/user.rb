@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :forums
   has_many :letters
 
-  has_one :reader_conf
+  has_one :reader_set
 
   include Nick
 

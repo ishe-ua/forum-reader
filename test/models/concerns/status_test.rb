@@ -3,7 +3,7 @@ require 'test_helper'
 
 class StatusTest < ActiveSupport::TestCase
   setup do
-    @instance = build(:reader_conf)
+    @instance = build(:reader_sets)
   end
 
   test 'обязательное поле' do
