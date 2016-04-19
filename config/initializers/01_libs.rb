@@ -9,7 +9,7 @@ require Rails.root.join('lib', 'tokenizer.rb')
 ##
 
 require Rails.root.join('lib/reader', 'reader.rb')
-require Rails.root.join('lib/notificator', 'notificator.rb')
+require Rails.root.join('lib/mailer', 'mailer.rb')
 
 require Rails.root.join('lib/talker', 'talker.rb')
 require Rails.root.join('lib/reminder', 'reminder.rb')
