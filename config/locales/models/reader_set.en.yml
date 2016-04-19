@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      reader_set: Reader Settings
+    attributes:
+      reader_set:
+        status: Status

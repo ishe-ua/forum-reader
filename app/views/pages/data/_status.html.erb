@@ -1,0 +1,13 @@
+<%
+obj = nil
+obj = current_user.reader_set if whose == :reader
+%>
+
+<div class="status">
+  <span><%= obj.status %></span>
+  <sup>
+    <%= link_to( t('change'), 'todo',
+      method: :patch,
+      remote: true ) %>
+  </sup>
+</div>

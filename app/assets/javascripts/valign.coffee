@@ -1,8 +1,8 @@
 ##
-# Выравнивание в формах (label и input-полей):
+# Выравнивание полей (файл верстальщика).
 #
-# Находим все label в формах и выравниваем их по вертикали.
-# Файл от верстальщика.
+# Находим все label (и не только) в формах и выравниваем их по
+# вертикали.
 #
 $.fn.v_align = ->
   return this.each (i) ->
@@ -13,4 +13,4 @@ $.fn.v_align = ->
     $(this).css('margin-top', mh)
 
 $(document).on 'page:change', ->
-  $('form label').v_align()
+  $('form label, .info-name').v_align()

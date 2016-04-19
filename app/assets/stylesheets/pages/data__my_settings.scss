@@ -11,8 +11,9 @@
     background: image-url("border-img-02.png") no-repeat;
   }
 
-  .adds {
-    font:14px/14px Helvetica, sans-serif;
-    a {color:#d65959;}
+  .status {
+    span { text-transform: uppercase; }
+    sup { text-transform: lowercase; }
+    sup a { color: #d45e5e; }
   }
 }

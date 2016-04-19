@@ -30,9 +30,13 @@
     </div>
   </li>
 
-  <li class="adds">
-    <%= render 'pages/data/delivery_status', target: :forums %>
-    <%= render 'pages/data/delivery_status', target: :letters %>
+  <li>
+    <div class="field info">
+      <span class="info-name">Reader</span>
+      <span class="info-holder">
+        <%= render 'pages/data/status', whose: :reader %>
+      </span>
+    </div>
   </li>
 
 </ul>
