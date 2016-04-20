@@ -5,13 +5,13 @@ en:
     attributes:
       letter:
         name: Name
-        d1: Sun
-        d2: Mon
-        d3: Tue
-        d4: Wed
-        d5: Thu
-        d6: Fri
-        d7: Sat
+        d1: Su
+        d2: Mo
+        d3: Tu
+        d4: We
+        d5: Th
+        d6: Fr
+        d7: Sa
         hour: Hour
         minute: Minute
         last_post_at: Last delivery

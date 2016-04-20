@@ -39,9 +39,8 @@ module PagesHelper
 
   ## Время доставки (с учетом временной зоны User -а).
   def post_time(letter)
-    return '11:34' # TODO
     h = letter.hour_in_user_timezone
-    m = letter.minute_in_user_timezone
+    m = letter.minute
 
     m = if m < 10
           "0#{m}"

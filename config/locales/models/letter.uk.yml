@@ -5,7 +5,7 @@ uk:
     attributes:
       letter:
         name: Назва
-        d1: Нед
+        d1: Не
         d2: Пн
         d3: Вт
         d4: Ср

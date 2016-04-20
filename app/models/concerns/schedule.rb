@@ -35,7 +35,7 @@ module Schedule
 
   ## Значение по умолчанию.
   def set_default_schedule
-    self.d5 = true if d5.nil?
+    self.d6 = true if d6.nil?
     self.hour ||= 0
     self.minute ||= 0
   end
