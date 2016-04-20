@@ -1,6 +1,7 @@
 <%
 obj = nil
 obj = current_user.reader_set if whose == :reader
+obj = current_user.mailer_set if whose == :mailer
 %>
 
 <div class="status">
