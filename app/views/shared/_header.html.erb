@@ -7,7 +7,7 @@
 <ul class="links">
   <li>
     <% if !signed_in? %>
-      <% unless controller_name == 'pages' && action_name == 'home' %>
+      <% unless current_page?(controller: 'pages', action: 'home') %>
         <%= link_to t('header.sign_in'), new_session_path %>
       <% end %>
     <% else %>
