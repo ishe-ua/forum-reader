@@ -1,1 +1,5 @@
-todo
+<div class="letters">
+  <% current_user.letters.each do |letter| %>
+    <%= render 'pages/data/letter', letter: letter %>
+  <% end %>
+</div>

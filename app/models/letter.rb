@@ -1,5 +1,8 @@
 # coding: utf-8
-# Group of Feed -s.
+# Письмо.
+#
+# Группа LetterItem -фидов.
+#
 #
 # == Schema Information
 #
@@ -46,6 +49,7 @@ class Letter < ApplicationRecord
 
   include Name
   include Position
+  include Schedule
   include LastPostAt
 
   acts_as_list scope: :user

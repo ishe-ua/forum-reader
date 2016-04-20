@@ -10,8 +10,8 @@ DEFAULTS: &DEFAULTS
   d6: <%= Letter.new.d6 %>
   d7: <%= Letter.new.d7 %>
 
-  hour:   <%= Letter.new.hour || 0 %>   # TODO
-  minute: <%= Letter.new.minute || 0 %> # TODO
+  hour:   <%= Letter.new.hour %>
+  minute: <%= Letter.new.minute %>
 
   position: <%= Letter.new.position %>
 

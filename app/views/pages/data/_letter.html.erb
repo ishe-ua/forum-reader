@@ -1,0 +1,27 @@
+<div class="letter letter_<%= letter.id %>">
+
+  <div class="program-settings">
+    <span class="title"><%= letter.name.truncate(55) %></span>
+    <%= link_to t('add'), 'todo: new_letter_item_path(letter_id: letter.id)', class: "new_letter_item link" %>
+
+    <ul class="list-day">
+      <% post_days(letter).each do |abbr| %>
+        <li><%= link_to abbr, '' %></li>
+      <% end %>
+    </ul>
+
+    <span class="active-info time">
+      <%= post_time(letter) %>
+    </span>
+
+    <%= render 'pages/data/icons_menu', resource: letter %>
+  </div>
+
+
+
+
+
+
+
+
+</div>
