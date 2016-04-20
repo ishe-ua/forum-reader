@@ -9,7 +9,7 @@ module PagesHelper
 
   ## Страна / Локаль / Временная_зона.
   def country_tz_lang(user)
-    country = Country::COUNTRIES_HASH[user.lang.to_s]
+    country = Country::COUNTRIES_HASH[user.country]
     "#{dashed country} / #{dashed user.timezone} / #{dashed user.lang}"
   end
 end
