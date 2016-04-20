@@ -1,5 +1,5 @@
 <div class="holder">
-  <ul class="settings-list forums">
+  <ul class="forums">
     <% current_user.forums.each do |forum| %>
       <%= render 'pages/data/forum', forum: forum %>
     <% end %>

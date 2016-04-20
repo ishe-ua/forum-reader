@@ -1,9 +1,7 @@
-<li class="forum_<%= forum.id %>">
-  <div class="item">
-    <span class="name">
-      <%= link_to forum.name.truncate(64), forum.url, target: "_blank", title: t('jump') %>
-    </span>
+<%= content_tag_for(:li, forum) do %>
+  <span class="name">
+    <%= link_to forum.name.truncate(64), forum.url, target: "_blank", title: t('jump') %>
+  </span>
 
-    <%= render 'pages/data/icons_menu', resource: forum %>
-  </div>
-</li>
+  <%= render 'pages/data/icons_menu', resource: forum %>
+<% end %>

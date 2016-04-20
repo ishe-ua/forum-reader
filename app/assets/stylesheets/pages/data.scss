@@ -56,34 +56,6 @@
   }
 
 
-
-  .settings-list {
-
-    float:left;
-    margin:0;
-    padding:0 0 0 91px;
-
-    li {
-      list-style:none;
-      &:first-child .item { border:none; }
-
-      .item {
-        border-top:1px solid #e8e8e8;
-        padding:0 15px 4px 2px;
-        overflow:hidden;
-      }
-      .name {
-        float:left;
-        width:430px;
-        font:14px/14px Helvetica, sans-serif;
-        padding:4px 0 0;
-        a { color:#d85454;}
-      }
-    }
-  }
-
-
-
   .info-list {
     padding:0 0 0 91px;
     margin:0;
@@ -132,52 +104,63 @@
 
 
 
-  .settings-list li .active-info,
+  .forums li .active-info,
   .program-settings .active-info {
     float:left;
     font:10px/12px Helvetica, sans-serif;
     padding:2px 0 0;
     color:#ff0000;
   }
+
   .program-settings .active-info {
     font:10px/17px Helvetica, sans-serif;
     padding:0;
     padding-right:.5em;
   }
-  .settings-list li .active-info.active,
-  .program-settings .active-info.active { color:#44b759;}
-  .settings-list li .button-settings,
+
+  .forums li .active-info.active,
+  .program-settings .active-info.active {
+    color:#44b759;
+  }
+
+  .forums li .button-settings,
   .program-settings .button-settings {
     margin:1px 12px 0 0;
     float:left;
   }
-  .settings-list li a.button-edit,
+
+  .forums li a.button-edit,
   .program-settings a.button-edit {
     width:12px;
     height:14px;
     background: image-url("arrow-edit.png") no-repeat;
   }
-  .settings-list li a.button-edit:hover,
+
+  .forums li a.button-edit:hover,
   .program-settings a.button-edit:hover {
     background: image-url("arrow-edit.png") no-repeat 0 -14px;
   }
-  .settings-list li a.button-delete,
+
+  .forums li a.button-delete,
   .program-settings .button-delete {
     width:12px;
     height:14px;
     background: image-url("ico-delete.png") no-repeat;
   }
-  .settings-list li a.button-delete:hover,
+
+  .forums li a.button-delete:hover,
   .program-settings a.button-delete:hover {
     background: image-url("ico-delete.png") no-repeat 0 -14px;
   }
-  .settings-list li a.button-up,
+
+  .forums li a.button-up,
   .program-settings a.button-up {
     width:13px;
     height:13px;
     background: image-url("arrow-list.png") no-repeat 0 0;
   }
-  .settings-list li a.button-down,
+
+  .forums li a.button-down,
   .program-settings a.button-down {
     width:13px;
     height:13px;
