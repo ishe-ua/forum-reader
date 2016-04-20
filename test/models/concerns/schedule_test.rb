@@ -10,4 +10,8 @@ class ScheduleTest < ActiveSupport::TestCase
     assert instance.hour
     assert instance.minute
   end
+
+  test '#hour_to_user_tz' do
+    assert instance.respond_to?(:hour_to_user_tz)
+  end
 end
