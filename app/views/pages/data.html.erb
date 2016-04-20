@@ -16,6 +16,13 @@
       <h2><%= t '.my_forums' %></h2>
       <%= link_to t('add'), "todo: new_forum_path" %>
     </div>
+    <div class="holder">
+      <ul class="settings-list forums">
+        <% current_user.forums.each do |forum| %>
+          <%= render 'pages/data/forum', forum: forum %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="my-letters">

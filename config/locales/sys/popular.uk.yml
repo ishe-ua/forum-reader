@@ -15,3 +15,7 @@ uk:
   download: Скачати
   link: Посилання
   reset: Зкинути
+  jump: Перейти
+  move:
+    up: Вище
+    down: Нижче

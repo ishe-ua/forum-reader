@@ -15,3 +15,7 @@ en:
   download: Download
   link: Link
   reset: Reset
+  jump: Jump
+  move:
+    up: Up
+    down: Down

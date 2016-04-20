@@ -15,3 +15,7 @@ ru:
   download: Скачать
   link: Ссылка
   reset: Сбросить
+  jump: Перейти
+  move:
+    up: Выше
+    down: Ниже
