@@ -1,36 +1,16 @@
 <div id="content">
-
   <div class="my-settings">
-    <div class="border-img"></div>
-    <div class="header">
-      <h2><%= t '.my_settings' %></h2>
-      <%= link_to t('edit'), "todo: edit_user_path(current_user)" %>
-    </div>
-
+    <%= render 'pages/data/header', title: t('.my_settings'), btn_name: t('edit'), btn_path: 'todo: edit_user_path(current_user)' %>
     <%= render 'pages/data/my_settings' %>
   </div>
 
   <div class="my-forums" >
-    <div class="border-img"></div>
-    <div class="header">
-      <h2><%= t '.my_forums' %></h2>
-      <%= link_to t('add'), "todo: new_forum_path" %>
-    </div>
-    <div class="holder">
-      <ul class="settings-list forums">
-        <% current_user.forums.each do |forum| %>
-          <%= render 'pages/data/forum', forum: forum %>
-        <% end %>
-      </ul>
-    </div>
+    <%= render 'pages/data/header', title: t('.my_forums'), btn_name: t('add'), btn_path: 'todo: new_forum_path' %>
+    <%= render 'pages/data/my_forums' %>
   </div>
 
   <div class="my-letters">
-    <div class="border-img"></div>
-    <div class="header">
-      <h2><%= t '.my_letters' %></h2>
-      <%= link_to t('add'), "todo: new_letter_path" %>
-    </div>
+    <%= render 'pages/data/header', title: t('.my_letters'), btn_name: t('add'), btn_path: 'todo: new_letter_path' %>
+    <%= render 'pages/data/my_letters' %>
   </div>
-
 </div>
