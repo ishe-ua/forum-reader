@@ -11,7 +11,7 @@ module APP
   DESCRIPTION = 'RSS and ATOM to Email and Jabber'.freeze
 
   ## Год начала разработки.
-  YEAR = '2016'.freeze
+  YEAR = '2014'.freeze
 
   ## Founder проекта.
   AUTHOR = 'ishe_ua'.freeze
