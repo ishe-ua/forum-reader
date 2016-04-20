@@ -1,0 +1,16 @@
+DEFAULTS: &DEFAULTS
+  user: ishe
+  status: <%= MailerSet.statuses[MailerSet.new.status] %>
+
+ishe:
+  <<: *DEFAULTS
+  user: ishe
+
+mary:
+  <<: *DEFAULTS
+  user: mary
+  status: <%= MailerSet.statuses[:off] %>
+
+john:
+  <<: *DEFAULTS
+  user: john

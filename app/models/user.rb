@@ -39,6 +39,7 @@ class User < ApplicationRecord
   has_many :letters
 
   has_one :reader_set
+  has_one :mailer_set
 
   include Nick
 

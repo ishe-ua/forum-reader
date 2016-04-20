@@ -279,6 +279,38 @@ ALTER SEQUENCE letters_id_seq OWNED BY letters.id;
 
 
 --
+-- Name: mailer_sets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE mailer_sets (
+    id integer NOT NULL,
+    user_id integer,
+    status integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: mailer_sets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE mailer_sets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mailer_sets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE mailer_sets_id_seq OWNED BY mailer_sets.id;
+
+
+--
 -- Name: reader_sets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -410,6 +442,13 @@ ALTER TABLE ONLY letters ALTER COLUMN id SET DEFAULT nextval('letters_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY mailer_sets ALTER COLUMN id SET DEFAULT nextval('mailer_sets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY reader_sets ALTER COLUMN id SET DEFAULT nextval('reader_sets_id_seq'::regclass);
 
 
@@ -474,6 +513,14 @@ ALTER TABLE ONLY letter_items
 
 ALTER TABLE ONLY letters
     ADD CONSTRAINT letters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mailer_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY mailer_sets
+    ADD CONSTRAINT mailer_sets_pkey PRIMARY KEY (id);
 
 
 --
@@ -682,6 +729,20 @@ CREATE INDEX index_letters_on_user_id ON letters USING btree (user_id);
 
 
 --
+-- Name: index_mailer_sets_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_mailer_sets_on_status ON mailer_sets USING btree (status);
+
+
+--
+-- Name: index_mailer_sets_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_mailer_sets_on_user_id ON mailer_sets USING btree (user_id);
+
+
+--
 -- Name: index_reader_sets_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -807,6 +868,14 @@ ALTER TABLE ONLY forums
 
 
 --
+-- Name: fk_rails_ae6ced02bb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY mailer_sets
+    ADD CONSTRAINT fk_rails_ae6ced02bb FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -829,4 +898,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160131134630');
 INSERT INTO schema_migrations (version) VALUES ('20160141134632');
 
 INSERT INTO schema_migrations (version) VALUES ('20160419120643');
+
+INSERT INTO schema_migrations (version) VALUES ('20160420090853');
 
