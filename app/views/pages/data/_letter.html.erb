@@ -17,11 +17,12 @@
     <%= render 'pages/data/icons_menu', resource: letter %>
   </div>
 
-
-
-
-
-
-
+  <div class="holder">
+    <ul class="settings-list letter_items">
+      <% letter.letter_items.each do |letter_item| %>
+        <%= render 'pages/data/letter_item', letter_item: letter_item %>
+      <% end %>
+    </ul>
+  </div>
 
 </div>

@@ -22,7 +22,7 @@ dev:
 
 ua:
   <<: *DEFAULTS
-  name: Ukrainian new (ua)
+  name: Ukrainian news (ua)
   position: 1
 
 others:

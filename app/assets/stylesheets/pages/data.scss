@@ -55,6 +55,30 @@
     }
   }
 
+  .forums, .letter_items {
+    float:left;
+    margin:0;
+    padding:0 0 0 91px;
+
+    li {
+      list-style:none;
+      &:first-child .item { border:none; }
+
+      .item {
+        border-top:1px solid #e8e8e8;
+        padding:0 15px 4px 2px;
+        overflow:hidden;
+      }
+
+      .name {
+        float:left;
+        width:430px;
+        font:14px/14px Helvetica, sans-serif;
+        padding:4px 0 0;
+        a { color:#d85454;}
+      }
+    }
+  }
 
   .info-list {
     padding:0 0 0 91px;
