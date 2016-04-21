@@ -27,7 +27,7 @@
     }
   }
 
-  .program-settings {
+  .letter-settings {
     overflow:hidden;
     padding:0 0 5px 91px;
 
@@ -129,84 +129,84 @@
 
 
   .forums li .active-info,
-  .program-settings .active-info {
+  .letter-settings .active-info {
     float:left;
     font:10px/12px Helvetica, sans-serif;
     padding:2px 0 0;
     color:#ff0000;
   }
 
-  .program-settings .active-info {
+  .letter-settings .active-info {
     font:10px/17px Helvetica, sans-serif;
     padding:0;
     padding-right:.5em;
   }
 
   .forums li .active-info.active,
-  .program-settings .active-info.active {
+  .letter-settings .active-info.active {
     color:#44b759;
   }
 
   .forums li .button-settings,
-  .program-settings .button-settings {
+  .letter-settings .button-settings {
     margin:1px 12px 0 0;
     float:left;
   }
 
   .forums li a.button-edit,
-  .program-settings a.button-edit {
+  .letter-settings a.button-edit {
     width:12px;
     height:14px;
     background: image-url("arrow-edit.png") no-repeat;
   }
 
   .forums li a.button-edit:hover,
-  .program-settings a.button-edit:hover {
+  .letter-settings a.button-edit:hover {
     background: image-url("arrow-edit.png") no-repeat 0 -14px;
   }
 
   .forums li a.button-delete,
-  .program-settings .button-delete {
+  .letter-settings .button-delete {
     width:12px;
     height:14px;
     background: image-url("ico-delete.png") no-repeat;
   }
 
   .forums li a.button-delete:hover,
-  .program-settings a.button-delete:hover {
+  .letter-settings a.button-delete:hover {
     background: image-url("ico-delete.png") no-repeat 0 -14px;
   }
 
   .forums li a.button-up,
-  .program-settings a.button-up {
+  .letter-settings a.button-up {
     width:13px;
     height:13px;
     background: image-url("arrow-list.png") no-repeat 0 0;
   }
 
   .forums li a.button-down,
-  .program-settings a.button-down {
+  .letter-settings a.button-down {
     width:13px;
     height:13px;
     background: image-url("arrow-list.png") no-repeat 0 -13px;
   }
 
-
-
   .my-forums .list-day,
-  .program-settings .list-day {
+  .letter-settings .list-day {
     margin:0;
     padding:0;
     list-style:none;
     overflow:hidden;
     float:left;
   }
+
   .my-forums .list-day li,
   .list-day li {
     float:left;
     padding:0 3px 0 0;
     overflow:hidden;
   }
+
   .my-forums .time,
   .my-forums .list-day li a,
   .list-day li a {

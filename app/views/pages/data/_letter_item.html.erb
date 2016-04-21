@@ -1,4 +1,4 @@
-<%= content_tag_for(:li, letter_item) do %>
+<%= content_tag_for(:li, letter_item, class: 'letter-settings') do %>
   <span class="name">
     <%= link_to letter_item.name.truncate(64), letter_item.url, title: t('jump'), target: "_blank" %>
   </span>

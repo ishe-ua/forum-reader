@@ -5,7 +5,7 @@
 <%= link_to('', 'todo: resource',
             remote: true,
             method: :delete,
-            data: { confirm: I18n.t('view.confirm_question') },
+            data: { confirm: 'todo:' },
             title: t('destroy'),
             class: "button-delete button-settings") %>
 

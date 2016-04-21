@@ -1,6 +1,6 @@
 <div class="letter letter_<%= letter.id %>">
 
-  <div class="program-settings">
+  <div class="letter-settings">
     <span class="title"><%= letter.name.truncate(55) %></span>
     <%= link_to t('add'), 'todo: new_letter_item_path(letter_id: letter.id)', class: "new_letter_item link" %>
 
@@ -18,7 +18,7 @@
   </div>
 
   <div class="holder">
-    <ul class="settings-list letter_items">
+    <ul class="letter_items">
       <% letter.letter_items.each do |letter_item| %>
         <%= render 'pages/data/letter_item', letter_item: letter_item %>
       <% end %>
