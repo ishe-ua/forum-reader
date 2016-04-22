@@ -27,7 +27,6 @@ class PagesControllerTest < ActionController::TestCase
 
   test 'info не показывается, если flash-ы пустые' do
     get :info
-    assert_response :redirect
     assert_redirected_to root_path
   end
 

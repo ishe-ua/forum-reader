@@ -1,5 +1,5 @@
 # coding: utf-8
-# Все ли в порядке с Account, т.е. все ли поля заполнены.
+# Проверка Account -а.
 #
 module CheckAccount
   extend ActiveSupport::Concern

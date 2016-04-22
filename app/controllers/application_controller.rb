@@ -1,5 +1,4 @@
 # coding: utf-8
-##
 # Базовый контроллер.
 #
 class ApplicationController < ActionController::Base
