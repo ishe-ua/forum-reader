@@ -3,7 +3,6 @@
 #
 # Поле +last_post_at+ в таблице:
 # * datetime
-# * непустое
 #
 module LastPostAt
   extend ActiveSupport::Concern

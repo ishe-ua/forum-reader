@@ -3,7 +3,6 @@
 #
 # Поле +target+ в таблице:
 # * integer
-# * непустое
 #
 module Target
   extend ActiveSupport::Concern

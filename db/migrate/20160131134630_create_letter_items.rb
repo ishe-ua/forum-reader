@@ -3,11 +3,11 @@ class CreateLetterItems < ActiveRecord::Migration
     create_table :letter_items do |t|
       t.references :letter, index: true, foreign_key: true
 
-      t.string :name, null: false
-      t.string :url, null: false
+      t.string :name
+      t.string :url
 
       t.datetime :last_post_at
-      t.integer :position, null: false
+      t.integer :position
 
       t.timestamps null: false
     end

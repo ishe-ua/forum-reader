@@ -3,7 +3,6 @@
 #
 # Поле +status+ в таблице:
 # * integer
-# * непустое
 #
 module Status
   extend ActiveSupport::Concern

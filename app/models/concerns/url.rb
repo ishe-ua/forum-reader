@@ -3,7 +3,6 @@
 #
 # Поле +url+ в таблице:
 # * строка
-# * непустое
 #
 module Url
   extend ActiveSupport::Concern

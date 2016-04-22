@@ -7,13 +7,13 @@
 #
 #  id                        :integer          not null, primary key
 #  account_id                :integer
-#  nick                      :string           not null
-#  jabber                    :string           not null
+#  nick                      :string
+#  jabber                    :string
 #  jabber_confirmation_at    :datetime
-#  jabber_confirmation_token :string           not null
-#  lang                      :string           not null
-#  country                   :string           not null
-#  timezone                  :string           not null
+#  jabber_confirmation_token :string
+#  lang                      :string
+#  country                   :string
+#  timezone                  :string
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

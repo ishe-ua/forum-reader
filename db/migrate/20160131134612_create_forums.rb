@@ -3,11 +3,11 @@ class CreateForums < ActiveRecord::Migration
     create_table :forums do |t|
       t.references :user, index: true, foreign_key: true
 
-      t.string :name, null: false
-      t.string :url, null: false
+      t.string :name
+      t.string :url
 
-      t.integer :target, null: false
-      t.integer :position, null: false
+      t.integer :target
+      t.integer :position
 
       t.datetime :last_post_at
       t.timestamps null: false

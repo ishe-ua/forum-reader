@@ -7,7 +7,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  status     :integer          not null
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -6,13 +6,12 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :password_digest, null: false
 
       t.datetime :email_confirmation_at
-      t.string :email_confirmation_token, null: false
+      t.string :email_confirmation_token
 
       t.timestamps null: false
     end
 
     add_index :accounts, :email, unique: true
-
     add_index :accounts, :email_confirmation_at
     add_index :accounts, :email_confirmation_token, unique: true
   end

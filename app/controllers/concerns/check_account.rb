@@ -13,13 +13,13 @@ module CheckAccount
   ].freeze
 
   included do
-    before_action :check_models_presence, unless: :depricated_page? # 1-й
-    before_action :check_account_filling, unless: :depricated_page?
+    before_action :check_models_presence
+    before_action :check_account_filling
   end
 
   protected
 
-  ## Это запрещенная страница или нет?
+  ## Запрещенная без заполнения аккаунта страница или нет?
   def depricated_page?
     b = false
     DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT.each do |page|
@@ -36,7 +36,9 @@ module CheckAccount
   #
 
   def check_models_presence
+    return unless depricated_page?
     key = ACCOUNT_CHECK_SESSION_KEY
+
     if signed_in? && session[key].blank?
       create_user_if_absent
       create_reader_set_if_absent
@@ -50,6 +52,7 @@ module CheckAccount
   #
 
   def check_account_filling
+    return unless depricated_page?
     key = ACCOUNT_CHECK_SESSION_KEY
 
     if request.get? &&
@@ -59,7 +62,7 @@ module CheckAccount
 
       session[key] = true
     else
-      # redirect_to sets_path
+      redirect_to sets_path
     end
   end
 

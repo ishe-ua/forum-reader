@@ -15,9 +15,9 @@
 # Table name: contacts
 #
 #  id         :integer          not null, primary key
-#  email      :string           not null
-#  theme      :string           not null
-#  text       :text             not null
+#  email      :string
+#  theme      :string
+#  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

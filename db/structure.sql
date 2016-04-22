@@ -38,7 +38,7 @@ CREATE TABLE accounts (
     email character varying NOT NULL,
     password_digest character varying NOT NULL,
     email_confirmation_at timestamp without time zone,
-    email_confirmation_token character varying NOT NULL,
+    email_confirmation_token character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -69,9 +69,9 @@ ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
 
 CREATE TABLE contacts (
     id integer NOT NULL,
-    email character varying NOT NULL,
-    theme character varying NOT NULL,
-    text text NOT NULL,
+    email character varying,
+    theme character varying,
+    text text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -138,7 +138,7 @@ ALTER SEQUENCE feed_items_id_seq OWNED BY feed_items.id;
 
 CREATE TABLE feeds (
     id integer NOT NULL,
-    url character varying NOT NULL,
+    url character varying,
     last_fetch_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -171,10 +171,10 @@ ALTER SEQUENCE feeds_id_seq OWNED BY feeds.id;
 CREATE TABLE forums (
     id integer NOT NULL,
     user_id integer,
-    name character varying NOT NULL,
-    url character varying NOT NULL,
-    target integer NOT NULL,
-    "position" integer NOT NULL,
+    name character varying,
+    url character varying,
+    target integer,
+    "position" integer,
     last_post_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -207,10 +207,10 @@ ALTER SEQUENCE forums_id_seq OWNED BY forums.id;
 CREATE TABLE letter_items (
     id integer NOT NULL,
     letter_id integer,
-    name character varying NOT NULL,
-    url character varying NOT NULL,
+    name character varying,
+    url character varying,
     last_post_at timestamp without time zone,
-    "position" integer NOT NULL,
+    "position" integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -242,7 +242,7 @@ ALTER SEQUENCE letter_items_id_seq OWNED BY letter_items.id;
 CREATE TABLE letters (
     id integer NOT NULL,
     user_id integer,
-    name character varying NOT NULL,
+    name character varying,
     d1 boolean,
     d2 boolean,
     d3 boolean,
@@ -250,10 +250,10 @@ CREATE TABLE letters (
     d5 boolean,
     d6 boolean,
     d7 boolean,
-    hour integer NOT NULL,
-    minute integer NOT NULL,
+    hour integer,
+    minute integer,
     last_post_at timestamp without time zone,
-    "position" integer NOT NULL,
+    "position" integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -285,7 +285,7 @@ ALTER SEQUENCE letters_id_seq OWNED BY letters.id;
 CREATE TABLE mailer_sets (
     id integer NOT NULL,
     user_id integer,
-    status integer NOT NULL,
+    status integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -317,7 +317,7 @@ ALTER SEQUENCE mailer_sets_id_seq OWNED BY mailer_sets.id;
 CREATE TABLE reader_sets (
     id integer NOT NULL,
     user_id integer,
-    status integer NOT NULL,
+    status integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -358,13 +358,13 @@ CREATE TABLE schema_migrations (
 CREATE TABLE users (
     id integer NOT NULL,
     account_id integer,
-    nick character varying NOT NULL,
-    jabber character varying NOT NULL,
+    nick character varying,
+    jabber character varying,
     jabber_confirmation_at timestamp without time zone,
-    jabber_confirmation_token character varying NOT NULL,
-    lang character varying NOT NULL,
-    country character varying NOT NULL,
-    timezone character varying NOT NULL,
+    jabber_confirmation_token character varying,
+    lang character varying,
+    country character varying,
+    timezone character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

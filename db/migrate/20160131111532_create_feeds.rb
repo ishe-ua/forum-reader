@@ -1,8 +1,8 @@
 class CreateFeeds < ActiveRecord::Migration
   def change
     create_table :feeds do |t|
-      t.string :url, null: false
-      t.datetime :last_fetch_at, default: nil
+      t.string :url
+      t.datetime :last_fetch_at
 
       t.timestamps null: false
     end

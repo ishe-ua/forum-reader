@@ -10,7 +10,7 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  name         :string           not null
+#  name         :string
 #  d1           :boolean
 #  d2           :boolean
 #  d3           :boolean
@@ -18,10 +18,10 @@
 #  d5           :boolean
 #  d6           :boolean
 #  d7           :boolean
-#  hour         :integer          not null
-#  minute       :integer          not null
+#  hour         :integer
+#  minute       :integer
 #  last_post_at :datetime
-#  position     :integer          not null
+#  position     :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

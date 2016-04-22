@@ -3,15 +3,15 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.references :account, index: true, foreign_key: true
-      t.string :nick, null: false
-      t.string :jabber, null: false
+      t.string :nick
+      t.string :jabber
 
       t.datetime :jabber_confirmation_at
-      t.string :jabber_confirmation_token, null: false
+      t.string :jabber_confirmation_token
 
-      t.string :lang, null: false
-      t.string :country, null: false
-      t.string :timezone, null: false
+      t.string :lang
+      t.string :country
+      t.string :timezone
 
       t.timestamps null: false
     end

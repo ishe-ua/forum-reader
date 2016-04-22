@@ -7,10 +7,10 @@
 #
 #  id           :integer          not null, primary key
 #  letter_id    :integer
-#  name         :string           not null
-#  url          :string           not null
+#  name         :string
+#  url          :string
 #  last_post_at :datetime
-#  position     :integer          not null
+#  position     :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

@@ -3,7 +3,6 @@
 #
 # Поле +name+ в таблице:
 # * строка
-# * непустое
 #
 module Name
   extend ActiveSupport::Concern

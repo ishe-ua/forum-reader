@@ -6,7 +6,7 @@
 # Table name: feeds
 #
 #  id            :integer          not null, primary key
-#  url           :string           not null
+#  url           :string
 #  last_fetch_at :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

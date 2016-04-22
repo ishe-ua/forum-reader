@@ -2,7 +2,7 @@ class CreateLetters < ActiveRecord::Migration
   def change
     create_table :letters do |t|
       t.references :user, index: true, foreign_key: true
-      t.string :name, null: false
+      t.string :name
 
       t.boolean :d1
       t.boolean :d2
@@ -12,11 +12,11 @@ class CreateLetters < ActiveRecord::Migration
       t.boolean :d6
       t.boolean :d7
 
-      t.integer :hour, null: false
-      t.integer :minute, null: false
+      t.integer :hour
+      t.integer :minute
 
       t.datetime :last_post_at
-      t.integer :position, null: false
+      t.integer :position
 
       t.timestamps null: false
     end

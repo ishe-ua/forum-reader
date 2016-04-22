@@ -3,7 +3,6 @@
 #
 # Поле +lang+ в таблице:
 # * строка
-# * непустое
 #
 module Lang
   extend ActiveSupport::Concern

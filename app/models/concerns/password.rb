@@ -3,7 +3,6 @@
 #
 # Поле +password_digest+ в таблице:
 # * строка
-# * непустое
 #
 module Password
   extend ActiveSupport::Concern

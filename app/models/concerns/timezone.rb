@@ -3,7 +3,6 @@
 #
 # Поле +timezone+ в таблице:
 # * строка
-# * непустое
 #
 module Timezone
   extend ActiveSupport::Concern

@@ -2,7 +2,7 @@ class CreateMailerSets < ActiveRecord::Migration
   def change
     create_table :mailer_sets do |t|
       t.references :user, index: true, foreign_key: true
-      t.integer :status, null: false
+      t.integer :status
 
       t.timestamps null: false
     end

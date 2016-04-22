@@ -3,7 +3,6 @@
 #
 # Поле +country+ в таблице:
 # * строка
-# * непустое
 #
 module Country # rubocop:disable ModuleLength
   extend ActiveSupport::Concern

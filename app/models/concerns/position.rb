@@ -5,7 +5,6 @@
 #
 # Поле +position+ в таблице:
 # * число
-# * непустое
 #
 module Position
   extend ActiveSupport::Concern
