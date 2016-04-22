@@ -72,10 +72,10 @@
 
       .name {
         float:left;
-        width:430px;
         font:14px/14px Helvetica, sans-serif;
+        width:430px;
         padding:4px 0 0;
-        a { color:#d85454;}
+        a { color:#d85454; }
       }
     }
   }
@@ -147,32 +147,28 @@
     color:#44b759;
   }
 
-  .my-forums .list-day,
-  .letter-settings .list-day {
+  .list-day {
     margin:0;
     padding:0;
     list-style:none;
     overflow:hidden;
     float:left;
-  }
 
-  .my-forums .list-day li,
-  .list-day li {
-    float:left;
-    padding:0 3px 0 0;
-    overflow:hidden;
-  }
+    li {
+      float:left;
+      padding:0 3px 0 0;
+      overflow:hidden;
 
-  .my-forums .time,
-  .my-forums .list-day li a,
-  .list-day li a {
-    float:left;
-    width:14px;
-    height:18px;
-    background: image-url("bg-list-day.gif") no-repeat;
-    text-decoration:none;
-    padding:0 0 0 4px;
-    font:9px/16px Helvetica, sans-serif;
-    color:#898989;
+      a {
+        float:left;
+        width:14px;
+        height:18px;
+        background: image-url("bg-list-day.gif") no-repeat;
+        text-decoration:none;
+        padding:0 0 0 4px;
+        font:9px/16px Helvetica, sans-serif;
+        color:#898989;
+      }
+    }
   }
 }
