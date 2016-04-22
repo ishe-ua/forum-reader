@@ -1,0 +1,38 @@
+.pages.data {
+
+  .button-edit,
+  .button-delete,
+  .button-up,
+  .button-down {
+    margin:1px 12px 0 0;
+    float:left;
+  }
+
+  .button-edit {
+    width:12px;
+    height:14px;
+    background: image-url("arrow-edit.png") no-repeat;
+
+    &:hover {
+      background: image-url("arrow-edit.png") no-repeat 0 -14px;
+    }
+  }
+
+  .button-delete {
+    width:12px;
+    height:14px;
+    background: image-url("ico-delete.png") no-repeat;
+
+    &:hover {
+      background: image-url("ico-delete.png") no-repeat 0 -14px;
+    }
+  }
+
+  .button-up, .button-down {
+    width:13px;
+    height:13px;
+  }
+
+  .button-up { background: image-url("arrow-list.png") no-repeat 0 0; }
+  .button-down { background: image-url("arrow-list.png") no-repeat 0 -13px; }
+}

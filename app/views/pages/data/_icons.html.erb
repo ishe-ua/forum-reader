@@ -1,22 +1,18 @@
 <%= link_to('', 'todo: im_path(:edit, resource)',
-            title: t('edit'),
-            class: "button-edit button-settings") %>
+            title: t('edit'), class: 'button-edit') %>
 
 <%= link_to('', 'todo: resource',
             remote: true,
             method: :delete,
             data: { confirm: 'todo:' },
-            title: t('destroy'),
-            class: "button-delete button-settings") %>
+            title: t('destroy'), class: 'button-delete') %>
 
 <%= link_to('', 'todo: im_path(:up, resource)',
             remote: true,
             method: :patch,
-            title: t('move.up'),
-            class: "button-up button-settings") %>
+            title: t('move.up'), class: 'button-up') %>
 
 <%= link_to('', 'todo: im_path(:down, resource)',
             remote: true,
             method: :patch,
-            title: t('move.down'),
-            class: "button-down button-settings") %>
+            title: t('move.down'), class: 'button-down') %>

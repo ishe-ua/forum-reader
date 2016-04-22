@@ -147,50 +147,6 @@
     color:#44b759;
   }
 
-  .forums li .button-settings,
-  .letter-settings .button-settings {
-    margin:1px 12px 0 0;
-    float:left;
-  }
-
-  .forums li a.button-edit,
-  .letter-settings a.button-edit {
-    width:12px;
-    height:14px;
-    background: image-url("arrow-edit.png") no-repeat;
-  }
-
-  .forums li a.button-edit:hover,
-  .letter-settings a.button-edit:hover {
-    background: image-url("arrow-edit.png") no-repeat 0 -14px;
-  }
-
-  .forums li a.button-delete,
-  .letter-settings .button-delete {
-    width:12px;
-    height:14px;
-    background: image-url("ico-delete.png") no-repeat;
-  }
-
-  .forums li a.button-delete:hover,
-  .letter-settings a.button-delete:hover {
-    background: image-url("ico-delete.png") no-repeat 0 -14px;
-  }
-
-  .forums li a.button-up,
-  .letter-settings a.button-up {
-    width:13px;
-    height:13px;
-    background: image-url("arrow-list.png") no-repeat 0 0;
-  }
-
-  .forums li a.button-down,
-  .letter-settings a.button-down {
-    width:13px;
-    height:13px;
-    background: image-url("arrow-list.png") no-repeat 0 -13px;
-  }
-
   .my-forums .list-day,
   .letter-settings .list-day {
     margin:0;
