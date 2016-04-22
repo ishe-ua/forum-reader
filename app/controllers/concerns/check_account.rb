@@ -70,21 +70,21 @@ module CheckAccount
 
   def create_user_if_absent
     if current_account.user.nil?
-      user = current_account.user.new
+      user = current_account.build_user
       user.save!(validate: false)
     end
   end
 
   def create_reader_set_if_absent
     if current_user.reader_set.nil?
-      reader_set = current_user.reader_set.new
+      reader_set = current_user.build_reader_set
       reader_set.save!(validate: false)
     end
   end
 
   def create_mailer_set_if_absent
     if current_user.mailer_set.nil?
-      mailer_set = current_user.mailer_set.new
+      mailer_set = current_user.build_mailer_set
       mailer_set.save!(validate: false)
     end
   end

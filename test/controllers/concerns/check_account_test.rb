@@ -4,22 +4,20 @@ require 'test_helper'
 class CheckAccountTest < ActionController::TestCase
   tests PagesController
 
-  setup do
-    sign_in(accounts(:john))
-  end
+  test 'новеньких отправляем дозаполнять аккаунт' do
+    account = build(:account)
+    account.save!
 
-  test 'аккаунт заполнен' do
-    get :help
-    assert_response :success
-  end
-
-  test 'перенаправляем на заполнение аккаунта' do
-    accounts(:john).user.update_attribute(:jabber, nil)
-    assert_not accounts(:john).user.valid?
+    sign_in(account)
 
     get :data
-
-    assert_response :redirect
     assert_redirected_to sets_path
+  end
+
+  test 'аккаунт заполнен - никого никуда не отправляем' do
+    sign_in(accounts(:john))
+
+    get :help
+    assert_response :success
   end
 end
