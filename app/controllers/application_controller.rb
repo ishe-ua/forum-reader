@@ -9,4 +9,5 @@ class ApplicationController < ActionController::Base
 
   include Auth
   include TrackLocale
+  include CheckAccount
 end
