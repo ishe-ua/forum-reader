@@ -9,8 +9,7 @@ class PagesController < ApplicationController
                                          [
                                            :home,
                                            :help,
-                                           :info,
-                                           :sets
+                                           :info
                                          ]
 
   ## Стартовая приложения.
