@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'locale/change/:lang', to: 'locale#change', as: :change_locale
+
+  resources :forums, except: :show
 end
