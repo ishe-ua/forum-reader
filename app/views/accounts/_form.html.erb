@@ -17,7 +17,7 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <% if action_name != 'new' && action_name != 'create' %>
+    <% if !register?(params) %>
       <%= render 'users/form', account_form: f %>
     <% end %>
 

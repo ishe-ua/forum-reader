@@ -1,5 +1,5 @@
 # coding: utf-8
-# Общие хелперы приложения.
+# Хелперы для ApplicationController.
 #
 module ApplicationHelper
   ## Title браузера.
