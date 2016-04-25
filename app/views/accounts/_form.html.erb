@@ -17,10 +17,9 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <%= render 'users/form' %>
-
-    <%= render 'reader_sets/form' %>
-    <%= render 'mailer_sets/form' %>
+    <% if action_name != 'new' && action_name != 'create' %>
+      <%= render 'users/form', account_form: f %>
+    <% end %>
 
     <%= render 'shared/submit_tag' %>
   </div>

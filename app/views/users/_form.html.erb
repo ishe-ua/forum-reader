@@ -1,1 +1,22 @@
-todo: user
+<%= account_form.fields_for :user do |user_form| %>
+  <div class="field">
+    <%= user_form.label :nick %>
+    <%= user_form.text_field :nick %>
+  </div>
+  <div class="field">
+    <%= user_form.label :jabber %>
+    <%= user_form.text_field :jabber %>
+  </div>
+  <div class="field">
+    <%= user_form.label :country %>
+    <%= user_form.select :country, Country::COUNTRIES_HASH.invert %>
+  </div>
+  <div class="field">
+    <%= user_form.label :lang %>
+    <%= user_form.select :lang, Lang::SUPPORTED_LANGS %>
+  </div>
+  <div class="field">
+    <%= user_form.label :timezone %>
+    <%= user_form.select :timezone, Timezone::TZ_NAMES %>
+  </div>
+<% end %>

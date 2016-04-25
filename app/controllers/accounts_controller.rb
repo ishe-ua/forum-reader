@@ -28,6 +28,7 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
+    @account.build_user
   end
 
   ##
@@ -45,7 +46,6 @@ class AccountsController < ApplicationController
   #
 
   def create
-    # TODO: каптча
     @account = Account.new(account_params)
 
     respond_to do |format|
@@ -110,7 +110,8 @@ class AccountsController < ApplicationController
             :name,
             :email,
             :password,
-            :password_confirmation
+            :password_confirmation,
+            user_attributes: [:id, :nick, :jabber, :lang, :country, :timezone]
           )
   end
 
