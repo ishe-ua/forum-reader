@@ -62,7 +62,7 @@ module CheckAccount
 
       session[key] = true
     else
-      redirect_to sets_path
+      redirect_to edit_account_path(current_account)
     end
   end
 

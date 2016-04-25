@@ -81,7 +81,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.update(account_params)
         unconfirm_email && send_email_confirmation if new_email?
-        format.html { redirect_to sets_path }
+        format.html { redirect_to data_path }
       else
         format.html { render :edit }
       end

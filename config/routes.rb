@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get 'help'
     get 'info'
     get 'data'
-    get 'sets'
   end
 
   ###

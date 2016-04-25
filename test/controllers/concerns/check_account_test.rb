@@ -11,7 +11,7 @@ class CheckAccountTest < ActionController::TestCase
     sign_in(account)
 
     get :data
-    assert_redirected_to sets_path
+    assert_redirected_to edit_account_path(account)
   end
 
   test 'аккаунт заполнен - никого никуда не отправляем' do

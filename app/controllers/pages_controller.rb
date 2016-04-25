@@ -40,8 +40,4 @@ class PagesController < ApplicationController
 
   def data
   end
-
-  ## Настройки.
-  def sets
-  end
 end

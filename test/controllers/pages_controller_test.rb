@@ -39,15 +39,4 @@ class PagesControllerTest < ActionController::TestCase
     get :data
     assert_response :success
   end
-
-  test 'should get sets' do
-    get :sets
-    assert_redirected_to new_session_path
-    assert_response :redirect, 'защищенная страница'
-
-    sign_in accounts(:mary)
-
-    get :sets
-    assert_response :success
-  end
 end
