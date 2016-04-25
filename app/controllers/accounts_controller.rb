@@ -28,7 +28,7 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
-    @account.build_user
+    # @account.build_user
   end
 
   ##
