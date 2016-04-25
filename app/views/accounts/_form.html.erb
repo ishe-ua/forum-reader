@@ -17,6 +17,11 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
+    <%= render 'users/form' %>
+
+    <%= render 'reader_sets/form' %>
+    <%= render 'mailer_sets/form' %>
+
     <%= render 'shared/submit_tag' %>
   </div>
 <% end %>
