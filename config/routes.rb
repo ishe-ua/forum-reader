@@ -41,5 +41,10 @@ Rails.application.routes.draw do
 
   get 'locale/change/:lang', to: 'locale#change', as: :change_locale
 
-  resources :forums, except: :show
+  resources :forums, except: :show do
+    member do
+      patch :move_up
+      patch :move_down
+    end
+  end
 end

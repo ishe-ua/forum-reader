@@ -1,6 +1,8 @@
 # coding: utf-8
 # Продолжение Position.
 #
+# Пользуемся Resource.
+#
 module Mover
   extend ActiveSupport::Concern
 
