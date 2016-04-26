@@ -2,14 +2,8 @@
 # Морда для Forum.
 #
 class ForumsController < ApplicationController
-  before_action :set_forum, only:
-                              [
-                                :edit,
-                                :update,
-                                :move_up,
-                                :move_down,
-                                :destroy
-                              ]
+  before_action :set_forum, only: [:edit, :update, :destroy]
+  include Mover
 
   ##
   # GET /forums/new
@@ -61,20 +55,6 @@ class ForumsController < ApplicationController
       else
         format.html { render :edit }
       end
-    end
-  end
-
-  ## Поднять выше в списке.
-  def move_up
-    Forum.transaction do
-      @forum.move_higher
-    end
-  end
-
-  ## Опустить ниже в списке.
-  def move_down
-    Forum.transaction do
-      @forum.move_lower
     end
   end
 
