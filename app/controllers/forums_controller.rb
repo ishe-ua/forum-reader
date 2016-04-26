@@ -66,26 +66,26 @@ class ForumsController < ApplicationController
 
   ## Поднять выше в списке.
   def move_up
-    Forum.transaction do # TODO: transaction
+    Forum.transaction do
       @forum.move_higher
     end
   end
 
   ## Опустить ниже в списке.
   def move_down
-    Forum.transaction do # TODO: transaction
+    Forum.transaction do
       @forum.move_lower
     end
   end
 
   ##
-  # DELETE /forum/1
+  # DELETE /forums/1.js
   #
   # Удалить.
   #
 
   def destroy
-    # TODO
+    @forum.destroy
   end
 
   private
