@@ -2,13 +2,16 @@
 require 'test_helper'
 
 class MoverTest < ActionController::TestCase
-  tests ForumsController
+  tests [ForumsController].shuffle.sample # TODO: add LettersCo, LetterItemsCo
 
   setup do
-    sign_in(accounts(:ishe))
+    account = accounts(:ishe)
+    resources_name = @controller.send(:resources_name)
 
-    @resource1 = forums(:reddit_ruby)
-    @resource2 = forums(:reddit_rails)
+    @resource1 = account.user.send(resources_name).first
+    @resource2 = account.user.send(resources_name).second
+
+    sign_in(account)
   end
 
   test '#move_up' do

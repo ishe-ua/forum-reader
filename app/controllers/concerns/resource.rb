@@ -22,7 +22,7 @@ module Resource
   # Like 'account' => 'accounts'
   #
 
-  def resource_plural_name
+  def resources_name
     controller_name
   end
 
