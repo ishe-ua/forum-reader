@@ -4,7 +4,7 @@
 <%= link_to('', resource,
             remote: true,
             method: :delete,
-            data: { confirm: 'todo:' },
+            data: { confirm: t(:realy_delete) },
             title: t('destroy'), class: 'button-delete') %>
 
 <%= link_to('', icon_path(resource, :move_up),

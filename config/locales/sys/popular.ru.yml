@@ -19,3 +19,4 @@ ru:
   move:
     up: Выше
     down: Ниже
+  realy_delete: Удалять?

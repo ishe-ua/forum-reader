@@ -19,3 +19,4 @@ uk:
   move:
     up: Вище
     down: Нижче
+  realy_delete: Видаляти?

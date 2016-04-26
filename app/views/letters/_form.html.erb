@@ -1,0 +1,30 @@
+<%= form_for(@letter) do |f| %>
+  <%= render "shared/errors", instance: @letter %>
+
+  <div class="holder-form">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field"><%= f.label :d1 %><%= f.check_box :d1 %></div>
+    <div class="field"><%= f.label :d2 %><%= f.check_box :d2 %></div>
+    <div class="field"><%= f.label :d3 %><%= f.check_box :d3 %></div>
+    <div class="field"><%= f.label :d4 %><%= f.check_box :d4 %></div>
+    <div class="field"><%= f.label :d5 %><%= f.check_box :d5 %></div>
+    <div class="field"><%= f.label :d6 %><%= f.check_box :d6 %></div>
+    <div class="field"><%= f.label :d7 %><%= f.check_box :d7 %></div>
+
+    <div class="field">
+      <%= f.label :hour %>
+      <%= f.select :hour, options_for_select(Schedule::HOURS, @letter.hour_to_user_tz) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :minute %>
+      <%= f.select :minute, options_for_select(Schedule::MINUTES, @letter.minute) %>
+    </div>
+
+    <%= render 'shared/submit_tag' %>
+  </div>
+<% end %>

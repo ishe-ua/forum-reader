@@ -37,6 +37,6 @@ module Schedule
   def set_default_schedule
     self.d6 = true if d6.nil?
     self.hour ||= 0
-    self.minute ||= 0
+    self.minute ||= 30
   end
 end

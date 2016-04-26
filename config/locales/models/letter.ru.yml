@@ -13,7 +13,7 @@ ru:
         d6: Пт
         d7: Сб
         hour: Час
-        minute: Минуна
+        minute: Минута
         last_post_at: Последняя доставка
         created_at: Создано
         updated_at: Обновлялось
