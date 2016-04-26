@@ -17,7 +17,7 @@
 #  index_feeds_on_url            (url) UNIQUE
 #
 class Feed < ApplicationRecord
-  has_many :feed_items
+  has_many :feed_items, dependent: :destroy
 
   include Url
   validates :url, uniqueness: true

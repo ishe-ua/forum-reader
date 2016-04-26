@@ -50,7 +50,7 @@ class LettersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @letter.update(forum_params)
+      if @letter.update(letter_params)
         format.html { redirect_to data_path }
       else
         format.html { render :edit }

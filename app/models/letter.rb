@@ -45,7 +45,7 @@
 #
 class Letter < ApplicationRecord
   belongs_to :user
-  has_many :letter_items
+  has_many :letter_items, dependent: :destroy
 
   include Name
   include Position
