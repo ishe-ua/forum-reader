@@ -7,13 +7,23 @@ module Resource
   protected
 
   ##
-  # Get resource name from controller name.
+  # Get resource name from controller_name.
   #
   # Like 'accounts' => 'account'
   #
 
   def resource_name
     controller_name.singularize
+  end
+
+  ##
+  # Get #resource plural name.
+  #
+  # Like 'account' => 'accounts'
+  #
+
+  def resource_plural_name
+    controller_name
   end
 
   ##

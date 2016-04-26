@@ -15,6 +15,10 @@ class ResourceTest < ActionController::TestCase
     assert_equal @controller.send(:resource_name), 'account'
   end
 
+  test '#resource_plural_name' do
+    assert_equal @controller.send(:resource_plural_name), 'accounts'
+  end
+
   test '#set_resource' do
     assert @controller.instance_variable_defined?(:@account)
   end
