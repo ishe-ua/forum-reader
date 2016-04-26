@@ -8,7 +8,7 @@ class LettersController < ApplicationController
   ##
   # GET /letters/new
   #
-  # Создать новое.
+  # Новый.
   #
 
   def new

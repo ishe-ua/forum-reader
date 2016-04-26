@@ -55,5 +55,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :letter_items, except: :show # TODO
+  resources :letter_items, except: :show do
+    member do
+      patch :move_up
+      patch :move_down
+    end
+  end
 end

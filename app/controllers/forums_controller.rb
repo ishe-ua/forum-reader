@@ -8,7 +8,7 @@ class ForumsController < ApplicationController
   ##
   # GET /forums/new
   #
-  # Создать новый.
+  # Новый.
   #
 
   def new
