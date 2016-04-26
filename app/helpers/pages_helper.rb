@@ -50,4 +50,12 @@ module PagesHelper
 
     "#{h}:#{m}"
   end
+
+  ## Пути из route.rb для иконок.
+  def icon_path(resource, action)
+    model = resource.class.name.underscore
+    route = "#{action}_#{model}_path(resource)"
+
+    instance_eval(route)
+  end
 end

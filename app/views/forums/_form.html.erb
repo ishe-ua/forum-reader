@@ -1,0 +1,17 @@
+<%= form_for(@forum) do |f| %>
+  <%= render "shared/errors", instance: @forum %>
+
+  <div class="holder-form">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </div>
+
+    <%= render 'shared/submit_tag' %>
+  </div>
+<% end %>

@@ -47,4 +47,7 @@ Rails.application.routes.draw do
       patch :move_down
     end
   end
+
+  resources :letters, except: :show # TODO
+  resources :letter_items, except: :show # TODO
 end
