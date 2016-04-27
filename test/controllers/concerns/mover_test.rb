@@ -2,7 +2,7 @@
 require 'test_helper'
 
 class MoverTest < ActionController::TestCase
-  tests [ForumsController, LettersController].shuffle.sample # TODO: LetterItems
+  tests [ForumsController, LettersController].shuffle.sample
 
   setup do
     account = accounts(:ishe)

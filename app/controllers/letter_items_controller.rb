@@ -12,8 +12,7 @@ class LetterItemsController < ApplicationController
 
   ## Создать.
   def create
-    @letter_item = current_user.letters.find(params[:letter_id])
-                               .build(letter_item_params)
+    @letter_item = LetterItem.new(letter_item_params)
 
     respond_to do |format|
       if @letter_item.save
@@ -52,12 +51,20 @@ class LetterItemsController < ApplicationController
   private
 
   def set_letter_item
-    @letter_item = current_user.letters.find(params[:letter_id])
-                               .find(params[:id])
+    @letter_item = if params[:letter_item]
+                     current_user
+                       .letters
+                       .find(params[:letter_item][:letter_id])
+                       .letter_items
+                   else
+                     LetterItem
+                   end
+                   .find(params[:id])
   end
 
   def letter_item_params
     params.require(:letter_item).permit(
+      :letter_id,
       :name,
       :url
     )
