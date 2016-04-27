@@ -7,7 +7,7 @@ class LetterItemsController < ApplicationController
 
   ## Новый.
   def new
-    @letter_item = LetterItem.new(params[:letter_id])
+    @letter_item = LetterItem.new(letter_id: params[:letter_id])
   end
 
   ## Создать.
