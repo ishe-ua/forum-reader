@@ -33,7 +33,7 @@ module Resource
   #
 
   def resource
-    instance_variable_get(('@' + resource_name).to_sym)
+    @resource = instance_variable_get(('@' + resource_name).to_sym)
   end
 
   ## Get #resource class.

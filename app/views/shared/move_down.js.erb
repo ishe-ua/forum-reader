@@ -1,0 +1,6 @@
+current = $("#<%= @resource.class.name.underscore %>_<%= @resource.id %>").first()
+prev = current.next()
+
+if (current && prev) {
+  $(current).insertAfter(prev);
+}

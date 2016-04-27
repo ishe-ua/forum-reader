@@ -1,0 +1,9 @@
+// приходится писать на js, т.к. js.coffee.erb не работает.
+// баг здесь: https://github.com/rails/coffee-rails/issues/36
+
+current = $("#<%= @resource.class.name.underscore %>_<%= @resource.id %>").first()
+prev = current.prev()
+
+if (current && prev) {
+  $(current).insertBefore(prev);
+}
