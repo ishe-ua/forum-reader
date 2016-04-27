@@ -44,9 +44,8 @@ end
 class ActionDispatch::IntegrationTest
   self.use_transactional_fixtures = false
 
-  teardown do
-    js_off
-  end
+  setup { js }
+  teardown { js_off }
 
   ## Залогиниться.
   def sign_in(account)
