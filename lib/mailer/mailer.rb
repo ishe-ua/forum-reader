@@ -1,5 +1,5 @@
 # coding: utf-8
-# TODO: Email to Jabber.
+# Email to Jabber notifications.
 #
 module Mailer
   Dir[].each { |f| require f }

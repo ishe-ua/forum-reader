@@ -9,7 +9,7 @@ module Nick
   extend ActiveSupport::Concern
 
   ## Допустимые символы.
-  VALID_NICK = /[a-z0-9]+/ # TODO: надо правильный regexp, это левый
+  VALID_NICK = /\A[a-z0-9\-\.]+\z/
 
   ## Минимальная длинна.
   MIN_NICK = 4

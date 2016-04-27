@@ -17,7 +17,6 @@ class NickTest < ActiveSupport::TestCase
   end
 
   test 'можно только валидные имена' do
-    skip
     instance.nick = 'left_nick'
     assert_not instance.valid?
   end

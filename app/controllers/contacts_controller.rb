@@ -24,7 +24,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    # TODO: каптча
 
     respond_to do |format|
       if @contact.save
