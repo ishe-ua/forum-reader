@@ -65,7 +65,10 @@ class ForumsController < ApplicationController
   #
 
   def destroy
-    @forum.destroy
+    @resource = @forum
+    @resource.destroy
+
+    render 'shared/destroy'
   end
 
   private
