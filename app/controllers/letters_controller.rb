@@ -65,7 +65,10 @@ class LettersController < ApplicationController
   #
 
   def destroy
-    @letter.destroy
+    @resource = @letter
+    @resource.destroy
+
+    render 'shared/destroy'
   end
 
   private

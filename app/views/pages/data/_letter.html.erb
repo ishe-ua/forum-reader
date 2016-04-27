@@ -1,4 +1,4 @@
-<div class="letter letter_<%= letter.id %>">
+<%= div_for(letter) do %>
 
   <div class="letter-settings">
     <span class="title"><%= letter.name.truncate(55) %></span>
@@ -25,4 +25,4 @@
     </ul>
   </div>
 
-</div>
+<% end %>
