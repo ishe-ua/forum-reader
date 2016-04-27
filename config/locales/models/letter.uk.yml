@@ -5,13 +5,13 @@ uk:
     attributes:
       letter:
         name: Назва
-        d1: Не
-        d2: Пн
-        d3: Вт
-        d4: Ср
-        d5: Чт
-        d6: Пт
-        d7: Сб
+        d1: Пн
+        d2: Вт
+        d3: Ср
+        d4: Чт
+        d5: Пт
+        d6: Сб
+        d7: Не
         hour: Час
         minute: Хвилина
         last_post_at: Остання доставка
