@@ -18,14 +18,14 @@ DEFAULTS: &DEFAULTS
 dev:
   <<: *DEFAULTS
   name: Development
-  position: 0
+  position: 1
 
 ua:
   <<: *DEFAULTS
   name: Ukrainian news (ua)
-  position: 1
+  position: 2
 
 others:
   <<: *DEFAULTS
   name: Другие подписки (others)
-  position: 2
+  position: 3
