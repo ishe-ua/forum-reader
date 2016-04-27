@@ -9,16 +9,16 @@ class DestroyTest < ActionDispatch::IntegrationTest
   end
 
   test 'destroy forum' do
-    destroy(forums(:reddit_ruby))
+    assert_destroy(forums(:reddit_ruby))
   end
 
   test 'destroy letter_item' do
-    destroy(letter_items(:opennet))
+    assert_destroy(letter_items(:opennet))
   end
 
   private
 
-  def destroy(resource)
+  def assert_destroy(resource)
     resource_name = resource.class.name.underscore
     row_id = "##{resource_name}_#{resource.id}"
 
