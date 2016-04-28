@@ -1,9 +1,7 @@
 # coding: utf-8
-# Подтвердить Jabber.
+# Confirm Jabber.
 #
-# Морда для JabberConfirmation.
-#
-# Консерва AccountsController.
+# Face for JabberConfirmation.
 #
 module ConfirmJabber
   extend ActiveSupport::Concern

@@ -1,9 +1,7 @@
 # coding: utf-8
-# Подтвердить Email.
+# Confirm Email.
 #
-# Морда для EmailConfirmation.
-#
-# Консерва AccountsController.
+# Face for EmailConfirmation.
 #
 module ConfirmEmail
   extend ActiveSupport::Concern
