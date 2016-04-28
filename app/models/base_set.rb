@@ -1,5 +1,5 @@
 # coding: utf-8
-## Настройки, общие для всех set-моделей.
+## Common settings for set-models.
 class BaseSet < ActiveRecord::Base
   self.abstract_class = true
 

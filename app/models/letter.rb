@@ -1,8 +1,5 @@
 # coding: utf-8
-# Письмо.
-#
-# Группа LetterItem -фидов.
-#
+# Group of LetterItem-s.
 #
 # == Schema Information
 #

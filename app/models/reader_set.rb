@@ -1,5 +1,5 @@
 # coding: utf-8
-# Настройки Reader -а.
+# Settings for Reader.
 #
 # == Schema Information
 #

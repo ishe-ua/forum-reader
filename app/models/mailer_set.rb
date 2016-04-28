@@ -1,5 +1,5 @@
 # coding: utf-8
-# Настройки Mailer -а.
+# Settings for Mailer.
 #
 # == Schema Information
 #

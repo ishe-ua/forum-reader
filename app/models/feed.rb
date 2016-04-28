@@ -1,5 +1,5 @@
 # coding: utf-8
-# Url фида, который скачиваем.
+# Url of external feed.
 #
 # == Schema Information
 #

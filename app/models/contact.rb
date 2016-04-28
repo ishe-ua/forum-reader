@@ -1,13 +1,9 @@
 # coding: utf-8
-# Контакт с нами.
-#
-# По сути это есть "Написать нам".
-# Все сообщения сохраняем в базе, т.к. это enterprise-проект.
-#
+# User message to us.
 #
 # == Some Attributes
 #
-# * +email+ От кого сообщение
+# * +email+ Who wrote
 #
 #
 # == Schema Information
