@@ -2,8 +2,7 @@
 require 'test_helper'
 
 class ChangeStatusTest < ActionController::TestCase
-  #tests [ReaderSetsController, MailerSetsController].shuffle.sample
-  tests [ReaderSetsController].shuffle.sample
+  tests [ReaderSetsController, MailerSetsController].shuffle.sample
 
   setup do
     @account = accounts(:ishe)
@@ -11,7 +10,8 @@ class ChangeStatusTest < ActionController::TestCase
   end
 
   test '#success' do
-    patch :change_status, id: @account.user.reader_set
+    resource = @account.user.send(@controller.send(:resource_name).to_sym)
+    patch :change_status, id: resource, format: :js
     assert_response :success
   end
 end

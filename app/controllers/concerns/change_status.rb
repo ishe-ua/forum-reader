@@ -4,12 +4,11 @@
 module ChangeStatus
   extend ActiveSupport::Concern
 
-  included do
-  end
-
+  ## Patch js request.
   def change_status
-    @resource = controller_name.classify.constantize.find(:id)
+    @resource = controller_name.classify.constantize.find(params[:id])
     @resource.change_status
+
     render 'shared/change_status'
   end
 end
