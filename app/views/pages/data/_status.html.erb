@@ -1,13 +1,13 @@
 <%
-obj = nil
-obj = current_user.reader_set if whose == :reader
-obj = current_user.mailer_set if whose == :mailer
+resource = nil
+resource = current_user.reader_set if whose == :reader
+resource = current_user.mailer_set if whose == :mailer
 %>
 
 <div class="status">
-  <span><%= obj.status %></span>
+  <span><%= resource.status %></span>
   <sup>
-    <%= link_to( t('change'), 'todo',
+    <%= link_to( t(:change), 'todo',
       method: :patch,
       remote: true ) %>
   </sup>
