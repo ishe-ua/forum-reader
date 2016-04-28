@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      mailer_set: Mailer Settings
+    attributes:
+      mailer_set:
+        status: Status
