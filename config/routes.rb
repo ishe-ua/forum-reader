@@ -62,13 +62,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :reader_sets, as: :reader, only: [] do
+  resources :reader_sets, as: :reader, only: [] do
     member do
       patch :change_status
     end
   end
 
-  resource :mailer_sets, as: :mailer, only: [] do
+  resources :mailer_sets, as: :mailer, only: [] do
     member do
       patch :change_status
     end

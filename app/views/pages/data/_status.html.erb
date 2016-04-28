@@ -7,7 +7,7 @@ resource = current_user.mailer_set if whose == :mailer
 <div class="status">
   <span><%= resource.status %></span>
   <sup>
-    <%= link_to( t(:change), 'todo',
+    <%= link_to( t(:change), instance_eval("change_status_#{whose}_path(resource)"),
       method: :patch,
       remote: true ) %>
   </sup>
