@@ -6,4 +6,10 @@ module ChangeStatus
 
   included do
   end
+
+  def change_status
+    @resource = controller_name.classify.constantize.find(:id)
+    @resource.change_status
+    render 'shared/change_status'
+  end
 end

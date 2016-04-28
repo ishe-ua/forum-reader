@@ -3,7 +3,7 @@ require 'test_helper'
 
 class StatusTest < ActiveSupport::TestCase
   setup do
-    @instance = build(:reader_sets)
+    @instance = [reader_sets(:ishe), mailer_sets(:ishe)].shuffle.sample
   end
 
   test 'обязательное поле' do
@@ -13,5 +13,11 @@ class StatusTest < ActiveSupport::TestCase
 
   test 'левое значение не прокатит' do
     assert_raise { instance.status = 1_000_000 }
+  end
+
+  test '#change_status' do
+    assert_equal instance.status, 'on'
+    assert instance.change_status
+    assert_equal instance.status, 'off'
   end
 end
