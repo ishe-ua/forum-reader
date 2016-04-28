@@ -49,6 +49,8 @@ def build(model_name, attributes = {})
   correction.call('letter_item')
   correction.call('feed')
   correction.call('feed_item')
+  correction.call('reader_set')
+  correction.call('mailer_set')
 
   ###
   #
