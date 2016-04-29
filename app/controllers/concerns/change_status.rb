@@ -4,7 +4,7 @@
 module ChangeStatus
   extend ActiveSupport::Concern
 
-  ## Patch js request.
+  ## Patch, js request.
   def change_status
     @resource = controller_name.classify.constantize.find(params[:id])
     @resource.change_status

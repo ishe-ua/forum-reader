@@ -28,14 +28,12 @@ module Status
   end
 
   ## Изменить статус на противоположный.
-  def change_status
-    b1 = false
-    b2 = false
-
-    b1 = update!(status: STATUS_ON) if status == STATUS_OFF
-    b2 = update!(status: STATUS_OFF) if status == STATUS_ON
-
-    b1 || b2
+  def change_status # TODO: некрасиво, переделать
+    if status == STATUS_OFF
+      update!(status: STATUS_ON)
+    elsif status == STATUS_ON
+      update!(status: STATUS_OFF)
+    end
   end
 
   protected

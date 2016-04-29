@@ -4,7 +4,7 @@ resource = current_user.reader_set if whose == :reader
 resource = current_user.mailer_set if whose == :mailer
 %>
 
-<div class="status">
+<div class="status <%= whose %>">
   <span><%= resource.status %></span>
   <sup>
     <%= link_to( t(:change), instance_eval("change_status_#{whose}_path(resource)"),

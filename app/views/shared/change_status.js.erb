@@ -1,0 +1,4 @@
+<% whose = @resource.class == ReaderSet ? :reader : :mailer %>
+
+$('.status.<%= whose %>').
+                     html("<%= j render 'pages/data/status', whose: whose %>")
