@@ -2,7 +2,7 @@
 require 'test_helper'
 
 ## Удалить forum/letter_item.
-class DestroyTest < ActionDispatch::IntegrationTest
+class DestroysTest < ActionDispatch::IntegrationTest
   setup do
     sign_in(accounts(:ishe))
     visit data_path
