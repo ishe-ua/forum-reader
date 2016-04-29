@@ -8,13 +8,13 @@ module Status
   extend ActiveSupport::Concern
 
   ## Status is on.
-  STATUS_ON = 'on'.freeze
+  ON = 'on'.freeze
 
   ## Status is off.
-  STATUS_OFF = 'off'.freeze
+  OFF = 'off'.freeze
 
   ## Допустимые значения.
-  SUPPORTED_STATUSES = [STATUS_ON, STATUS_OFF].freeze
+  SUPPORTED_STATUSES = [ON, OFF].freeze
 
   included do
     enum status: SUPPORTED_STATUSES
@@ -28,12 +28,9 @@ module Status
   end
 
   ## Изменить статус на противоположный.
-  def change_status # TODO: некрасиво, переделать
-    if status == STATUS_OFF
-      update!(status: STATUS_ON)
-    elsif status == STATUS_ON
-      update!(status: STATUS_OFF)
-    end
+  def change_status
+    s = status == ON ? OFF : ON
+    update!(status: s)
   end
 
   protected
