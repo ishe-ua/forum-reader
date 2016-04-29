@@ -24,13 +24,6 @@ module Schedule
     validates :minute, presence: true, inclusion: { in: MINUTES }
   end
 
-  ## Переводим час в Timezone пользователя.
-  def hour_to_user_tz
-    Time.utc(2014, 9, 18, hour)
-        .in_time_zone(user.timezone)
-        .hour
-  end
-
   protected
 
   ## Значение по умолчанию.

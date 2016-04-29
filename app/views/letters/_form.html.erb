@@ -17,7 +17,7 @@
 
     <div class="field">
       <%= f.label :hour %>
-      <%= f.select :hour, options_for_select(Schedule::HOURS, @letter.hour_to_user_tz) %>
+      <%= f.select :hour, options_for_select(Schedule::HOURS, @letter.hour) %>
     </div>
 
     <div class="field">
