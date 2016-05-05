@@ -1,13 +1,13 @@
-# coding: utf-8
-# Временная зона.
+##
+# Time zone.
 #
-# Поле +timezone+ в таблице:
-# * строка
+# Field +timezone+ in table:
+# * string
 #
 module Timezone
   extend ActiveSupport::Concern
 
-  ## Список временных зон.
+  ## Available tz names.
   TZ_NAMES = ActiveSupport::TimeZone::MAPPING.values
 
   included do

@@ -17,6 +17,6 @@
   </div>
   <div class="field">
     <%= user_form.label :timezone %>
-    <%= user_form.select :timezone, Timezone::TZ_NAMES %>
+    <%= user_form.select :timezone, Timezone::TZ_NAMES.sort %>
   </div>
 <% end %>
