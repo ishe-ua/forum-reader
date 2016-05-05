@@ -15,7 +15,7 @@ ishe:
   <<: *DEFAULTS
   account: ishe
   country: ua
-  timezone: Kyiv
+  timezone: <%= ActiveSupport::TimeZone::MAPPING['Kyiv'] %>
 
   jabber_confirmation_at: now
   jabber_confirmation_token: <%= User.new.jabber_confirmation_token %>

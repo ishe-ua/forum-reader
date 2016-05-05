@@ -8,7 +8,7 @@ module Timezone
   extend ActiveSupport::Concern
 
   ## Список временных зон.
-  TZ_NAMES = ActiveSupport::TimeZone.all.map(&:name)
+  TZ_NAMES = ActiveSupport::TimeZone::MAPPING.values
 
   included do
     validates :timezone,
