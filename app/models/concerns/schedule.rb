@@ -1,7 +1,7 @@
 ##
 # Schedule for Letter.
 #
-# Days of week and time when deliver to User.
+# Days of week and time when deliver Letter to User.
 #
 # Fields in table:
 # * day (1..7)
