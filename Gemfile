@@ -42,6 +42,7 @@ gem 'acts_as_list'
 gem 'rails-i18n', '~> 4.0.0' # For 4.x
 
 gem 'feedjira'
+gem 'blather'
 
 gem 'exception_notification'
 gem 'backburner'
