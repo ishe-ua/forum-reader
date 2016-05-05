@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class ScheduleTest < ActiveSupport::TestCase
@@ -6,13 +5,8 @@ class ScheduleTest < ActiveSupport::TestCase
     @instance = build(:letter)
   end
 
-  test "дефолтное время выставляется" do
+  test '#set_default_schedule' do
     assert instance.hour
     assert instance.minute
-  end
-
-  test '#hour_in_user_tz' do
-    skip
-    assert instance.respond_to?(:hour_in_user_tz)
   end
 end
