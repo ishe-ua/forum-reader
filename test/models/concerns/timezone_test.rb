@@ -10,8 +10,8 @@ class TimezoneTest < ActiveSupport::TestCase
     assert_not instance.valid?
   end
 
-  test 'only available' do
-    instance.timezone = 'aa'
+  test 'only supported values' do
+    instance.timezone = 'left/timezone'
     assert_not instance.valid?
   end
 end

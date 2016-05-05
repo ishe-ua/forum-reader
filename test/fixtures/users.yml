@@ -9,7 +9,7 @@ DEFAULTS: &DEFAULTS
 
   lang: <%= User.new.lang %>
   country: <%= Country::COUNTRIES_CODES.shuffle.sample %>
-  timezone: <%= Timezone::TZ_NAMES.shuffle.sample %>
+  timezone: <%= Timezone::SUPPORTED_TZ_NAMES.shuffle.sample %>
 
 ishe:
   <<: *DEFAULTS
