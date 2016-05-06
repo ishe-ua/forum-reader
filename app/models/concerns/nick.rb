@@ -1,20 +1,14 @@
-# coding: utf-8
-# Никнейм.
-#
-# Поле +nick+ в таблице:
-# * строка
-# * unique-индекс
+# Field +nick+ in table:
+# * string
+# * unique
 #
 module Nick
   extend ActiveSupport::Concern
 
-  ## Допустимые символы.
   VALID_NICK = /\A[a-z0-9\-\.]+\z/
 
-  ## Минимальная длинна.
   MIN_NICK = 4
 
-  ## Максимальная длинна.
   MAX_NICK = 44
 
   included do
@@ -31,7 +25,6 @@ module Nick
 
   protected
 
-  ## Значение в нижний регистр.
   def downcase_nick
     nick.downcase!
   end

@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class NickTest < ActiveSupport::TestCase
@@ -6,22 +5,22 @@ class NickTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.nick = nil
     assert_not instance.valid?
   end
 
-  test 'уникальное' do
+  test 'uniqueness' do
     instance.nick = instance_class.all.sample.nick
     assert_not instance.valid?
   end
 
-  test 'можно только валидные имена' do
+  test 'validate by regexp' do
     instance.nick = 'left_nick'
     assert_not instance.valid?
   end
 
-  test 'перед валидацией переводится в нижний регистр' do
+  test 'downcase before validation' do
     instance.nick = 'UsEr'
     instance.validate
     assert_equal instance.nick, 'user'
