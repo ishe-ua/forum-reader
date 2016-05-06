@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class ThemeTest < ActiveSupport::TestCase
@@ -6,7 +5,7 @@ class ThemeTest < ActiveSupport::TestCase
     @instance = build([:contact, :feed_item].shuffle.sample)
   end
 
-  test "максимальная длинна ограничена и обрезается если надо" do
+  test 'max length is limited and trim if need' do
     instance.theme = 'a' * (instance_class::MAX_THEME * 2)
     assert instance.valid?
     assert_equal instance.theme.length, instance_class::MAX_THEME

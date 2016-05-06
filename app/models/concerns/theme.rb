@@ -1,14 +1,12 @@
-# coding: utf-8
-# Тема чего-то.
+# Theme of something.
 #
-# Поле +theme+ в таблице:
+# Field +theme+ in table:
 # * string
 #
 module Theme
   extend ActiveSupport::Concern
 
-  ## Максимальная длинна.
-  MAX_THEME = 255 # макс. длинна строк ограничена в СУБД
+  MAX_THEME = 255 # limited by PostgreSQL String type
 
   included do
     validates :theme,
@@ -19,8 +17,8 @@ module Theme
 
   protected
 
-  ## Укоротить длинну (если надо).
   def trim_theme
-    self.theme = theme[0..(MAX_THEME - 1)] if theme.present?
+    self.theme = theme[0..(MAX_THEME - 1)] if theme.present? &&
+                                              theme.length > MAX_THEME
   end
 end
