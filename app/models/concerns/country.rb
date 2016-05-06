@@ -1,19 +1,13 @@
 # coding: utf-8
-# Страна, точнее ее код.
+# Country code (2 chars).
 #
-# Поле +country+ в таблице:
-# * строка
+# Field +country+ in table:
+# * string
 #
 module Country # rubocop:disable ModuleLength
   extend ActiveSupport::Concern
 
-  ##
-  # Список стран.
-  #
-  # Хеш аля {"ua" => "Ukraine", ...}, взято из gem "country".
-  #
-
-  COUNTRIES_HASH = {
+  COUNTRIES_HASH = { # from gem 'country'.
     'ad' => 'Andorra',
     'ae' => 'United Arab Emirates',
     'af' => 'Afghanistan',
@@ -266,10 +260,7 @@ module Country # rubocop:disable ModuleLength
     'zw' => 'Zimbabwe'
   }.freeze
 
-  ## Коды стран (две буквы).
   COUNTRIES_CODES = COUNTRIES_HASH.keys
-
-  ## Назвы стран.
   COUNTRIES_NAMES = COUNTRIES_HASH.values
 
   included do

@@ -6,17 +6,17 @@ class CountryTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.country = nil
     assert_not instance.valid?
   end
 
-  test 'код две буквы' do
+  test 'only two letters' do
     instance.country = 'aaa'
     assert_not instance.valid?
   end
 
-  test 'можно только поддерживаемые страны' do
+  test 'only supported countries' do
     instance.country = 'aa'
     assert_not instance.valid?
   end

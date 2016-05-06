@@ -1,5 +1,5 @@
 # coding: utf-8
-# Group of LetterItem-s.
+# Group of LetterItem -s.
 #
 # == Schema Information
 #
