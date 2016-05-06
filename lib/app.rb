@@ -1,36 +1,25 @@
-# coding: utf-8
-# Константы и настройки приложения.
-#
-# Программерские, админские в "secrets.yml".
-#
+# App constants.
 module APP
-  ## Назва проекта одним словом.
   NAME = 'forum-reader'.freeze
 
-  ## Описание проекта одной строкой.
   DESCRIPTION = 'RSS and ATOM to Email and Jabber'.freeze
 
-  ## Год начала разработки.
-  YEAR = '2014'.freeze
+  FOUNDER = 'ishe_ua'.freeze
 
-  ## Founder проекта.
-  AUTHOR = 'ishe_ua'.freeze
+  ## Start development since.
+  SINCE = 2014
 
-  ## Хост на котором все крутится.
   HOST = 'forum-reader2.com'.freeze
 
-  ## Почта админа.
   ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
 
-  ## Почта support-а.
   SUPPORT_EMAIL = "support@#{HOST}".freeze
 
-  ## Почта "без ответа".
   NOREPLY_EMAIL = "no-reply@#{HOST}".freeze
 
-  ## Для test и development сред.
+  ## For test and development environments.
   DEFAULT_PASSWORD = '1234567'.freeze
 
-  ## Поддерживаемые локали.
+  ## Supported locales (see Lang).
   LANGS = %w(en ru uk).freeze
 end

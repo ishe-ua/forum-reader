@@ -15,7 +15,7 @@ module ApplicationHelper
   #
 
   def app_years
-    year1 = APP::YEAR.to_i
+    year1 = APP::SINCE
     year2 = Time.zone.now.year
     year1 == year2 ? year1.to_s : "#{year1}-#{year2}"
   end
