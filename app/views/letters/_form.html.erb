@@ -17,12 +17,12 @@
 
     <div class="field">
       <%= f.label :hour %>
-      <%= f.select :hour, options_for_select(Schedule::HOURS, @letter.hour) %>
+      <%= f.select :hour, options_for_select(Schedule::SUPPORTED_HOURS, @letter.hour) %>
     </div>
 
     <div class="field">
       <%= f.label :minute %>
-      <%= f.select :minute, options_for_select(Schedule::MINUTES, @letter.minute) %>
+      <%= f.select :minute, options_for_select(Schedule::SUPPORTED_MINUTES, @letter.minute) %>
     </div>
 
     <%= render 'shared/submit_tag' %>

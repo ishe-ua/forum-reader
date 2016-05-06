@@ -1,4 +1,3 @@
-##
 # Schedule for Letter.
 #
 # Days of week and time when deliver Letter to User.
@@ -11,22 +10,18 @@
 module Schedule
   extend ActiveSupport::Concern
 
-  ## Available hours.
-  HOURS = (0..23).to_a
-
-  ## Available minutes.
-  MINUTES = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].freeze
+  SUPPORTED_HOURS = (0..23).to_a
+  SUPPORTED_MINUTES = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].freeze
 
   included do
     after_initialize :set_default_schedule
 
-    validates :hour, presence: true, inclusion: { in: HOURS }
-    validates :minute, presence: true, inclusion: { in: MINUTES }
+    validates :hour, presence: true, inclusion: { in: SUPPORTED_HOURS }
+    validates :minute, presence: true, inclusion: { in: SUPPORTED_MINUTES }
   end
 
   protected
 
-  ## Default values.
   def set_default_schedule
     self.d6 = true if d6.nil?
     self.hour ||= 17
