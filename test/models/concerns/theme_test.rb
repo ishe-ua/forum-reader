@@ -3,7 +3,7 @@ require 'test_helper'
 
 class ThemeTest < ActiveSupport::TestCase
   setup do
-    @instance = build(:contact)
+    @instance = build([:contact, :feed_item].shuffle.sample)
   end
 
   test "максимальная длинна ограничена и обрезается если надо" do

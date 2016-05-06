@@ -3,7 +3,7 @@ require 'test_helper'
 
 class UrlTest < ActiveSupport::TestCase
   setup do
-    @instance = build([:forum, :letter_item, :feed].shuffle.sample)
+    @instance = build([:forum, :letter_item, :feed, :feed_item].shuffle.sample)
   end
 
   test 'обязательное поле' do

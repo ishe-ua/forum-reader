@@ -103,11 +103,10 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 CREATE TABLE feed_items (
     id integer NOT NULL,
     feed_id integer,
-    digest character varying NOT NULL,
     date timestamp without time zone,
-    link text,
-    titl text,
-    body text,
+    url character varying,
+    theme character varying,
+    text text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -579,13 +578,6 @@ CREATE INDEX index_feed_items_on_created_at ON feed_items USING btree (created_a
 --
 
 CREATE INDEX index_feed_items_on_feed_id ON feed_items USING btree (feed_id);
-
-
---
--- Name: index_feed_items_on_feed_id_and_digest; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_feed_items_on_feed_id_and_digest ON feed_items USING btree (feed_id, digest);
 
 
 --

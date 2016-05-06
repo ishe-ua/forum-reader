@@ -1,4 +1,3 @@
-# coding: utf-8
 # Fetched item of Feed.
 #
 # == Schema Information
@@ -7,19 +6,17 @@
 #
 #  id         :integer          not null, primary key
 #  feed_id    :integer
-#  digest     :string           not null
 #  date       :datetime
-#  link       :text
-#  titl       :text
-#  body       :text
+#  url        :string
+#  theme      :string
+#  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_feed_items_on_created_at          (created_at)
-#  index_feed_items_on_feed_id             (feed_id)
-#  index_feed_items_on_feed_id_and_digest  (feed_id,digest) UNIQUE
+#  index_feed_items_on_created_at  (created_at)
+#  index_feed_items_on_feed_id     (feed_id)
 #
 # Foreign Keys
 #
@@ -28,9 +25,7 @@
 class FeedItem < ApplicationRecord
   belongs_to :feed
 
-  # include Url
-  # include Theme
-  # include Text
-
-  # TODO: для url, темы и текста добавить в их тесты данную модель
+  include Url
+  include Theme
+  include Text
 end

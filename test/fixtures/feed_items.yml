@@ -1,15 +1,14 @@
 DEFAULTS: &DEFAULTS
   feed: opennet
-  digest: left-value-$LABEL
 
   date: now
-  link: http://opennet.ru/$LABEL/feed/15
-  titl: Обновился Firefox ($LABEL)
-  body: Очень сильно обновился...
+  url: http://opennet.ru/$LABEL/feed/15
+  theme: Обновился Firefox ($LABEL)
+  text: Очень сильно обновился...
 
 <% 1.upto(10) do |i| %>
 news_<%= i %>:
   <<: *DEFAULTS
   date: <%= i.days.ago %>
-  link: http://opennet.ru/feed/<%= i %>
+  url: http://opennet.ru/feed/<%= i %>
 <% end %>
