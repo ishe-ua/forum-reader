@@ -1,13 +1,9 @@
-# coding: utf-8
-# Название.
-#
-# Поле +name+ в таблице:
-# * строка
+# Field +name+ in table:
+# * string
 #
 module Name
   extend ActiveSupport::Concern
 
-  ## Максимальная длинна.
   MAX_NAME = 256
 
   included do
@@ -21,8 +17,8 @@ module Name
 
   protected
 
-  ## Укоротить длинну (если надо).
   def trim_name
-    self.name = name[0..(MAX_NAME - 1)] if name.present?
+    self.name = name[0..(MAX_NAME - 1)] if name.present? &&
+                                           name.length > MAX_NAME
   end
 end
