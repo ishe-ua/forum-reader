@@ -6,12 +6,12 @@ class LangTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.lang = nil
     assert_not instance.valid?
   end
 
-  test 'можно только поддерживаемые локали' do
+  test 'only supported values' do
     instance.lang = :aa
     assert_not instance.valid?
   end

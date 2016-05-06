@@ -1,13 +1,11 @@
-# coding: utf-8
-# Язык общения и интерфейса.
+# User language (locale).
 #
-# Поле +lang+ в таблице:
-# * строка
+# Field +lang+ in table:
+# * string
 #
 module Lang
   extend ActiveSupport::Concern
 
-  ## Поддерживаемые языки (локали).
   SUPPORTED_LANGS = APP::LANGS
 
   included do
@@ -21,7 +19,6 @@ module Lang
 
   protected
 
-  ## Значение по умолчанию.
   def set_default_lang
     self.lang ||= I18n.default_locale
   end
