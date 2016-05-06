@@ -1,20 +1,11 @@
-# coding: utf-8
-# Когда последний раз данные отправлялись User -у.
+# When was last post (delivery, send) to User?
 #
-# Поле +last_post_at+ в таблице:
+# Field +last_post_at+ in table:
 # * datetime
 #
 module LastPostAt
   extend ActiveSupport::Concern
 
   included do
-    after_initialize :set_default_last_post_at
-    validates :last_post_at, presence: true
-  end
-
-  protected
-
-  def set_default_last_post_at
-    self.last_post_at ||= Time.zone.now
   end
 end

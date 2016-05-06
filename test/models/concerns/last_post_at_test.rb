@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class LastPostAtTest < ActiveSupport::TestCase
@@ -6,8 +5,8 @@ class LastPostAtTest < ActiveSupport::TestCase
     @instance = build([:forum, :letter, :letter_item].shuffle.sample)
   end
 
-  test 'обязательное поле' do
+  test 'can be empty' do
     instance.last_post_at = nil
-    assert_not instance.valid?
+    assert instance.valid?
   end
 end
