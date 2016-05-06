@@ -1,5 +1,4 @@
-# coding: utf-8
-# Settings for Mailer.
+# Mailer settings.
 #
 # == Schema Information
 #

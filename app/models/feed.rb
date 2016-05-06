@@ -1,5 +1,4 @@
-# coding: utf-8
-# Url of external feed.
+# Url with rss or atom feed.
 #
 # == Schema Information
 #

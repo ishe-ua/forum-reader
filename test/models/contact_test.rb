@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class ContactTest < ActiveSupport::TestCase
@@ -9,17 +8,17 @@ class ContactTest < ActiveSupport::TestCase
   include ValidateInstanceTest
   include ValidateFixturesTest
 
-  test 'обязательно должна быть тема сообщения' do
+  test 'theme required' do
     instance.theme = nil
     assert_not instance.valid?
   end
 
-  test 'обязательно должен быть текст сообщения' do
+  test 'text required' do
     instance.text = nil
     assert_not instance.valid?
   end
 
-  test 'email не уникальный' do
+  test 'email not uniqueness' do
     instance.email = instance_class.all.sample.email
     assert instance.valid?
   end

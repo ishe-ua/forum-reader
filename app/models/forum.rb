@@ -1,5 +1,4 @@
-# coding: utf-8
-# Feed for tracking.
+# Feed with forum.
 #
 # == Schema Information
 #
