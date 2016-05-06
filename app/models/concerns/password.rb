@@ -1,16 +1,12 @@
-# coding: utf-8
-# Пароль аккаунта.
+# Password for Account.
 #
-# Поле +password_digest+ в таблице:
-# * строка
+# Field +password_digest+ in table:
+# * string
 #
 module Password
   extend ActiveSupport::Concern
 
-  ## Минимальная длинна.
   MIN_PASSWORD = 5
-
-  ## Максимальная длинна.
   MAX_PASSWORD = 155
 
   included do
@@ -24,8 +20,7 @@ module Password
   end
 
   class_methods do
-    ## Генерим случайный пароль и возвращаем как строку.
-    def gen_random_password
+    def generate_random_password
       Tokenizer.random_string
     end
   end

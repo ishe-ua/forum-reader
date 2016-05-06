@@ -14,7 +14,7 @@ module ResetPassword
   # Обработчик GET и POST.
   #
   # Выставляем новый случайный и шлем его пиплу на почту.
-  # Помогает Password#gen_random_password.
+  # Помогает Password#generate_random_password.
   #
 
   def reset_password
@@ -57,7 +57,7 @@ module ResetPassword
   private
 
   def generate_new_and_send_email(account)
-    new_passwd = Account.gen_random_password
+    new_passwd = Account.generate_random_password
     account.update!(password: new_passwd, password_confirmation: new_passwd)
 
     AccountsMailer

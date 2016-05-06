@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class PasswordTest < ActiveSupport::TestCase
@@ -6,25 +5,25 @@ class PasswordTest < ActiveSupport::TestCase
     @instance = build(:account)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.password = nil
     instance.password_confirmation = nil
     assert_not instance.valid?
   end
 
-  test 'минимальная длинна ограничена' do
+  test 'min length is limited' do
     instance.password = 'a' * (Password::MIN_PASSWORD - 1)
     instance.password_confirmation = instance.password
     assert_not instance.valid?
   end
 
-  test 'максимальная тоже' do
+  test 'max length is limited' do
     instance.password = 'a' * (Password::MAX_PASSWORD + 1)
     instance.password_confirmation = instance.password
     assert_not instance.valid?
   end
 
-  test 'можем сгенерить случайный пароль' do
-    assert instance_class.gen_random_password.present?
+  test '#generate_random_password' do
+    assert instance_class.generate_random_password.present?
   end
 end

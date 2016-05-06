@@ -14,7 +14,6 @@ module LastPostAt
 
   protected
 
-  ## Значение по умолчанию.
   def set_default_last_post_at
     self.last_post_at ||= Time.zone.now
   end
