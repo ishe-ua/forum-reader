@@ -7,4 +7,9 @@ class FeedTest < ActiveSupport::TestCase
 
   include ValidateInstanceTest
   include ValidateFixturesTest
+
+  test 'uniqueness url' do
+    instance.url = feeds(:opennet).url
+    assert_not instance.valid?
+  end
 end
