@@ -1,5 +1,3 @@
-# Password for Account.
-#
 # Field +password_digest+ in table:
 # * string
 #

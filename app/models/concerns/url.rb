@@ -1,13 +1,9 @@
-# coding: utf-8
-# Урл.
-#
-# Поле +url+ в таблице:
-# * строка
+# Field +url+ in table:
+# * string
 #
 module Url
   extend ActiveSupport::Concern
 
-  ## Используемые http-протоколы.
   SUPPORTED_SCHEMES = %w(http https).freeze
 
   included do
@@ -22,12 +18,11 @@ module Url
 
   protected
 
-  ## Переводим в нижний регистр.
   def downcase_url
     url.downcase!
   end
 
-  ## Добавляем назву протокола из PROTOCOLS.
+  ## Add scheme name from SUPPORTED_SCHEMES if absent.
   def add_http_or_https
     b = false
     SUPPORTED_SCHEMES.each { |name| b = true if url.start_with?(name + '://') }

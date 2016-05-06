@@ -1,5 +1,3 @@
-# Theme of something.
-#
 # Field +theme+ in table:
 # * string
 #

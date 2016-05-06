@@ -1,5 +1,3 @@
-# Text of something.
-#
 # Field +text+ in table:
 # * text
 #
