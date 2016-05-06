@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class StatusTest < ActiveSupport::TestCase
@@ -6,12 +5,12 @@ class StatusTest < ActiveSupport::TestCase
     @instance = [reader_sets(:ishe), mailer_sets(:ishe)].shuffle.sample
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.status = nil
     assert_not instance.valid?
   end
 
-  test 'левое значение не прокатит' do
+  test 'only supported values' do
     assert_raise { instance.status = 1_000_000 }
   end
 
