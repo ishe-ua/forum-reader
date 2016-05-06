@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class TargetTest < ActiveSupport::TestCase
@@ -6,12 +5,12 @@ class TargetTest < ActiveSupport::TestCase
     @instance = build(:forum)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.target = nil
     assert_not instance.valid?
   end
 
-  test 'левое значение не прокатит' do
+  test 'left values is deprecated' do
     assert_raise { instance.target = 1_000_000 }
   end
 end

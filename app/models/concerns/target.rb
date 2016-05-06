@@ -1,13 +1,11 @@
-# coding: utf-8
-# Куда отправлять - на email или в jabber.
+# Send to +email+ or +jabber+.
 #
-# Поле +target+ в таблице:
+# Field +target+ in table:
 # * integer
 #
 module Target
   extend ActiveSupport::Concern
 
-  ## Допустимые значения.
   SUPPORTED_TARGETS = %w(email jabber).freeze
 
   included do
@@ -23,7 +21,6 @@ module Target
 
   protected
 
-  ## Значение по умолчанию.
   def set_default_target
     self.target ||= self.class.targets[:jabber]
   end
