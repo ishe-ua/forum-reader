@@ -1,7 +1,3 @@
-# coding: utf-8
-# Почта
-#
-
 am = ActionMailer::Base
 
 am.default_options = { from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>" }

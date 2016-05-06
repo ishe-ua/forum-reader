@@ -1,7 +1,3 @@
-# coding: utf-8
-# gem 'rack-livereload'
-#
-
 if Rails.env.development?
   Rails.application
        .config
