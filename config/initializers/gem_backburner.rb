@@ -3,7 +3,7 @@ raise 'ExceptionNotifier not defined' if
 
 Backburner.configure do |config|
   config.beanstalk_url    = ['beanstalk://127.0.0.1']
-  config.tube_namespace   = 'price-id'
+  config.tube_namespace   = 'forum-reader'
   config.primary_queue    = 'default'
   config.max_job_retries  = 3
   config.retry_delay      = 5

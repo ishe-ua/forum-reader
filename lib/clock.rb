@@ -24,4 +24,7 @@ module Clockwork
   ###
   #
   #
+
+  every(5.minutes, 'check forums') { FetchForumsJob.perform_later }
+  # every(30.minutes, 'check letter items') { FetchLetterItemsJob.perform_later }
 end
