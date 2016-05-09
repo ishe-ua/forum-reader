@@ -1,11 +1,11 @@
 # RSS Reader.
 #
 module Reader
-  Dir[Rails.root.join('lib/reader/fetcher/*.rb')].each { |f| require f }
-  extend Fetcher
+  require_relative 'fetcher.rb'
+  require_relative 'bote_in.rb'
+  require_relative 'bote_out.rb'
 
   BOTE_NAME = 'reader'.freeze
-
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
   DEFAULT_SELECTION_SIZE = 5

@@ -25,6 +25,6 @@ module Clockwork
   #
   #
 
-  every(5.minutes, 'check forums') { FetchForumsJob.perform_later }
-  # every(30.minutes, 'check letter items') { FetchLetterItemsJob.perform_later }
+  # TODO: every(5.minutes, 'fetch.forums') { FetchForumsJob.perform_later }
+  every(30.minutes, 'fetch letter_items') { FetchLetterItemsJob.perform_later }
 end
