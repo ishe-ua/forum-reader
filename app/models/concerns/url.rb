@@ -7,8 +7,8 @@ module Url
   SUPPORTED_SCHEMES = %w(http https).freeze
 
   included do
-    before_validation :downcase_url,      if: 'url.present?'
-    before_validation :add_http_or_https, if: 'url.present?'
+    before_validation :downcase_url, if: 'url.present?'
+    before_validation :add_supported_scheme_if_absent, if: 'url.present?'
 
     validates :url,
 
@@ -22,8 +22,7 @@ module Url
     url.downcase!
   end
 
-  ## Add scheme name from SUPPORTED_SCHEMES if absent.
-  def add_http_or_https
+  def add_supported_scheme_if_absent
     b = false
     SUPPORTED_SCHEMES.each { |name| b = true if url.start_with?(name + '://') }
     self.url = 'http://' + url unless b
