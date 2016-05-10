@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Reader
-  class FetchForumsJobTest < ActiveJob::TestCase
+  class FetchLettersJobTest < ActiveJob::TestCase
     test 'the truth' do
       skip
     end

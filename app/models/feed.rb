@@ -1,4 +1,4 @@
-# Url with rss or atom feed.
+# External Url with rss or atom.
 #
 # == Schema Information
 #
@@ -20,4 +20,6 @@ class Feed < ApplicationRecord
 
   include Url
   validates :url, uniqueness: true
+
+  include LastFetchAt
 end

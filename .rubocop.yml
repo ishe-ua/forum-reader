@@ -16,7 +16,9 @@ Style/AsciiComments:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  Enabled: false
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
 
 Style/Documentation:
   Enabled: true

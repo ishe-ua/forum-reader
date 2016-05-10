@@ -1,9 +1,21 @@
-class Reader::FetchForumsJob < ActiveJob::Base
-  queue_as :default
+module Reader
+  # Fetch Forum -s.
+  #
+  # Clockwork task.
+  class FetchForumsJob < ActiveJob::Base
+    queue_as :default
 
-  def perform
-    Reader.find_forums_for_fetch.each do |forum_url|
-      FetchFeeds.perform_later(:forum, [forum_url])
+    # Do FetchFeedJob for each Url.
+    def perform
+      find_forums_for_fetch.each do |url|
+        FetchFeedJob.perform_later(url, :forum)
+      end
+    end
+
+    protected
+
+    def find_forums_for_fetch
+      Forum.pluck(:url).uniq
     end
   end
 end
