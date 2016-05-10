@@ -8,8 +8,10 @@ Dir['./app/jobs/**/*.rb'].each do |f|
   require f
 end
 
+Clock = Clockwork
+
 ## App clock, gem 'clockwork'.
-module Clockwork
+module Clock
   ## Always is UTC.
   TZ = 'UTC'.freeze
 

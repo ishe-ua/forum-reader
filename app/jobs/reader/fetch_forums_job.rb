@@ -1,7 +1,7 @@
 module Reader
   # Fetch Forum -s.
   #
-  # Clockwork task.
+  # Clock task.
   class FetchForumsJob < ActiveJob::Base
     queue_as :default
 

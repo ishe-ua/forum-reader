@@ -1,28 +1,26 @@
 module Reader
   # Fetch Feed from remote Url.
+  #
+  # Set job with params to Fetcher 's queue. It is income for
+  # Reader::Fetcher.
   class FetchFeedJob < ActiveJob::Base
-    queue_as -> { Fetcher::QUEUE_NAME }
+    queue_as { Reader::Fetcher::QUEUE_NAME }
 
-    # Set job with params to queue and anything else.
-    #
+    before_enqueue { |job| create_feed_if_absent(job) }
+
     # Params:
     # - +url+ Url
     # - +resource_type+ :forum or :letter_item
 
-    def perform(url, resource_type)
-      raise 'Empty method'
+    def perform(_url, _resource_type)
+      raise 'stub'
     end
 
     protected
 
-    def raise_if_unsupported_resource_type
-      raise 'Unsupported resource' if
-        resource_type != :forum &&
-        resource_type != :letter_item
-    end
-
-    # Reject job if last_fetch_at is
-    def check_last_fetch_at
+    def create_feed_if_absent(job)
+      url = job.arguments.first
+      Feed.find_or_create_by!(url: url)
     end
   end
 end

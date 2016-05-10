@@ -3,11 +3,10 @@ module Reader
   #
   # See:
   #
-  # 1. Clock
-  # 2. FetchForumsJob
-  # 3. FetchLettersJob
-  # 4. FetchUrlJob
-  # 5. TODO
+  # 1. FetchForumsJob
+  # 2. FetchLettersJob
+  # 3. FetchFeedJob
+  # 4. TODO
   #
   class Fetcher
     QUEUE_NAME = :fetcher

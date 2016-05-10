@@ -1,7 +1,7 @@
 module Reader
   # Fetch Letter -s (LetterItem -s).
   #
-  # Clockwork task.
+  # Clock task.
   class FetchLettersJob < ActiveJob::Base
     queue_as :default
 
