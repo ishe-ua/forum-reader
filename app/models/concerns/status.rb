@@ -9,7 +9,7 @@ module Status
   ON = 'on'.freeze
   OFF = 'off'.freeze
 
-  SUPPORTED_STATUSES = [ON, OFF].freeze
+  SUPPORTED_STATUSES = [ON, OFF].freeze # TODO: remove
 
   included do
     enum status: SUPPORTED_STATUSES
