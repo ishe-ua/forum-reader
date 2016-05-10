@@ -1,10 +1,7 @@
-# coding: utf-8
-# Номер элемента по списку.
-#
 # gem 'acts_as_list'
 #
-# Поле +position+ в таблице:
-# * число
+# Field +position+ in table:
+# * integer
 #
 module Position
   extend ActiveSupport::Concern
