@@ -42,6 +42,7 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.x
 
 gem 'feedjira'
 gem 'blather'
+gem 'em-http-request'
 
 gem 'exception_notification'
 gem 'backburner'

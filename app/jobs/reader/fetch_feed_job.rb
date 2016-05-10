@@ -5,21 +5,17 @@ module Reader
   class FetchFeedJob < ActiveJob::Base
     queue_as { Reader::Fetcher::QUEUE_NAME }
 
-    before_enqueue { |job| create_feed_if_absent(job) }
+    before_enqueue do |job|
+      resource_type = job.arguments.second
+      Fetcher.raise_if_bad(resource_type)
+    end
 
     # Params:
     # - +url+ Url
-    # - +resource_type+ :forum or :letter_item
+    # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(_url, _resource_type)
       raise 'stub'
-    end
-
-    protected
-
-    def create_feed_if_absent(job)
-      url = job.arguments.first
-      Feed.find_or_create_by!(url: url)
     end
   end
 end
