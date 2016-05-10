@@ -1,7 +1,7 @@
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
   #
-  # See:
+  # Also see:
   #
   # 1. FetchForumsJob
   # 2. FetchLettersJob

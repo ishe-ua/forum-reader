@@ -23,10 +23,6 @@ module Clock
     config[:logger] = Logger.new("#{LOG_DIR}/#{LOG_FILE}") if Dir.exist? LOG_DIR
   end
 
-  ###
-  #
-  #
-
   every(5.minutes, 'fetch.forums') { FetchForumsJob.perform_later }
-  every(15.minutes, 'fetch letters') { FetchLettersJob.perform_later }
+  every(15.minutes, 'fetch.letters') { FetchLettersJob.perform_later }
 end

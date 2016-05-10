@@ -1,8 +1,7 @@
 module Reader
   # Fetch Feed from remote Url.
   #
-  # Set job with params to Fetcher 's queue. It is income for
-  # Reader::Fetcher.
+  # Incoming job for Fetcher.
   class FetchFeedJob < ActiveJob::Base
     queue_as { Reader::Fetcher::QUEUE_NAME }
 
