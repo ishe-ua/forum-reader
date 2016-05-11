@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:nesquena/backburner.git
+  revision: a8e58f79ad12921e0b10c216f20cf17657bfba68
+  specs:
+    backburner (1.3.1)
+      beaneater (~> 1.0)
+      concurrent-ruby (~> 1.0.1)
+      dante (> 0.1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,9 +53,6 @@ GEM
       rake (>= 10.4, < 12.0)
     arel (6.0.3)
     ast (2.2.0)
-    backburner (1.3.0)
-      beaneater (~> 1.0)
-      dante (> 0.1.5)
     bcrypt (3.1.11)
     beaneater (1.0.0)
     binding_of_caller (0.7.2)
@@ -289,7 +295,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   annotate (~> 2.7.0)
-  backburner
+  backburner!
   bcrypt (~> 3.1.7)
   blather
   brakeman

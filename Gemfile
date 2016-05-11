@@ -44,7 +44,7 @@ gem 'feedjira'
 gem 'blather'
 
 gem 'exception_notification'
-gem 'backburner'
+gem 'backburner', git: 'git@github.com:nesquena/backburner.git' # wait v1.3.1
 gem 'clockwork'
 gem 'lograge'
 gem 'foreman'
