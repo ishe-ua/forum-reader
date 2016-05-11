@@ -10,7 +10,7 @@ module Reader
 
     # Params:
     # - +url+ Url
-    # - +response+ From request to +url+
+    # - +response+ Body from request to +url+
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(url, response, resource_type)
@@ -25,9 +25,11 @@ module Reader
     end
 
     def parse_and_save_updates(url, response)
+      # TODO
     end
 
     def send_forum_updates_to_users(url)
+      # TODO
     end
   end
 end
