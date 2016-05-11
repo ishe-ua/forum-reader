@@ -8,24 +8,15 @@ module Reader
   # 3. FetchLettersJob
   # 4. FetchFeedJob
   # 5. FetchedFeedJob
-  # 6. TODO
   #
   class Fetcher
     QUEUE_NAME = :fetcher
 
     # Method for <tt>bin/runner</tt>.
     #
-    # Enqueue Reader::FetchedFeedJob.
+    # Wait for FetchFeedJob -s and process them.
     def self.run
-      EventMachine.run do
-        # TODO: accept job
-        raise_if_bad(resource_type)
-
-        http = EventMachine::HttpRequest.new(url).get
-        http.callback do
-          FetchedFeedJob.perform_later(url, response, resource_type)
-        end
-      end
+      Backburner.work(QUEUE_NAME, worker: Backburner::Workers::Threading)
     end
 
     # Only :forum or :letter_item.
