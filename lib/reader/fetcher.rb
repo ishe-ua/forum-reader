@@ -59,7 +59,10 @@ module Reader
         url = Helpers.args_from(job).first # TODO: test
         resource_type = Helpers.args_from(job).second # TODO: test
 
-        http = EM::HttpRequest.new(url, REQUEST_PARAMS.dup).get REQUEST_OPTS.dup
+        params = REQUEST_PARAMS.dup
+        options = REQUEST_OPTS.dup
+
+        http = EM::HttpRequest.new(url, params).get(options)
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
