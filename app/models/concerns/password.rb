@@ -19,7 +19,7 @@ module Password
 
   class_methods do
     def generate_random_password
-      Tokenizer.random_string
+      Tokenizer.gen_random_string
     end
   end
 end

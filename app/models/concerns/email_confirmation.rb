@@ -36,7 +36,7 @@ module EmailConfirmation
     update_columns(
       email_confirmation_at: nil,
       email_confirmation_token:
-        Tokenizer.random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
+        Tokenizer.gen_random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
     )
   end
 
@@ -45,6 +45,6 @@ module EmailConfirmation
   ## Значение по умолчанию.
   def set_default_email_confirmation_token
     self.email_confirmation_token ||=
-      Tokenizer.random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
+      Tokenizer.gen_random_string(EMAIL_CONFIRMATION_TOKEN_SIZE)
   end
 end
