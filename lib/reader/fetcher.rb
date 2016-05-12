@@ -73,5 +73,5 @@ module Reader
   end
 end
 
-## Run in console
+## Run in console (see Procfile)
 Reader::Fetcher.run unless defined?(Rails)

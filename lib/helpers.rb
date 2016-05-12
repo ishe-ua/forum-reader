@@ -1,6 +1,6 @@
 require 'backburner'
 
-## APP helpers.
+# APP helpers.
 module Helpers
   extend Backburner::Helpers
 
@@ -13,6 +13,10 @@ module Helpers
     end
 
     # Get job arguments from Beaneater::Job.
+    #
+    # Example:
+    # url = Helpers.args_from(job).first
+
     def args_from(job)
       raise 'left class' unless job.is_a?(Beaneater::Job)
       JSON.parse(job.body)['args'].first['arguments']
