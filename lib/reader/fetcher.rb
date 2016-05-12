@@ -13,7 +13,7 @@ module Reader
   # 4. FetchedFeedJob
   #
   class Fetcher
-    QUEUE_NAME = :fetcher
+    QUEUE_NAME = 'reader.fetcher'.to_sym
 
     # Wait for FetchFeedJob -s and process them.
     def self.run

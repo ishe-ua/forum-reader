@@ -1,6 +1,6 @@
 require 'backburner'
 
-## App helpers.
+## APP helpers.
 module Helpers
   extend Backburner::Helpers
 

@@ -1,4 +1,4 @@
-# App constants.
+# APP constants.
 module APP
   NAME = 'forum-reader'.freeze
 

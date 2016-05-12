@@ -1,5 +1,11 @@
 # RSS Reader.
 #
+# Parts:
+#
+# 1. Fetcher
+# 2. BoteIn
+# 3. BoteOut
+#
 module Reader
   require_relative 'fetcher.rb'
   require_relative 'bote_in.rb'
