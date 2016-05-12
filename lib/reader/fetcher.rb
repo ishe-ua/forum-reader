@@ -1,6 +1,8 @@
 require_relative '../../config/initializers/active_job'
 require_relative '../helpers.rb'
+
 require 'eventmachine'
+require 'em-http'
 
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
@@ -16,6 +18,9 @@ module Reader
     QUEUE_NAME = 'reader.fetcher'.to_sym
 
     # Wait for FetchFeedJob -s and process them.
+    #
+    # See Procfile
+
     def self.run
       EventMachine.run do
         tube = Helpers.get_tube(QUEUE_NAME)
@@ -27,23 +32,21 @@ module Reader
       end
     end
 
-    # Only :forum or :letter_item.
+    # Only +forum+ or +letter_item+.
     def self.raise_if_bad(resource_type)
-      raise 'Bad resource_type' if resource_type != :forum &&
-                                   resource_type != :letter_item
+      raise 'Bad resource_type' if resource_type != Forum.to_s &&
+                                   resource_type != LetterItem.to_s
     end
 
     class << self
       protected
 
-      # Make request to Url and invoke FetchedFeedJob with response.
+      # Make request to Url and invoke FetchedFeedJob with response
+      # body.
+
       def process(job)
-        json = JSON.parse(job)
-
-        url = json[0]
-        resource_type = json[1]
-
-        raise_if_bad(resource_type)
+        url = Helpers.args_from(job).first # TODO: test
+        resource_type = Helpers.args_from(job).second
 
         http = EventMachine::HttpRequest.new(url).get
         http.callback { enqueue_ffj(url, http.response, resource_type) }

@@ -4,10 +4,18 @@ require 'backburner'
 module Helpers
   extend Backburner::Helpers
 
-  # Get access to Beanstalkd tube.
-  def self.get_tube(name)
-    conn = Backburner::Connection.new(Backburner.configuration.beanstalk_url)
-    tube = conn.tubes[expand_tube_name(name)]
-    tube
+  class << self
+    # Get access to Beanstalkd tube.
+    def get_tube(name)
+      conn = Backburner::Connection.new(Backburner.configuration.beanstalk_url)
+      tube = conn.tubes[expand_tube_name(name)]
+      tube
+    end
+
+    # Get job arguments from Beaneater::Job.
+    def args_from(job)
+      raise 'left class' unless job.is_a?(Beaneater::Job)
+      JSON.parse(job.body)['args'].first['arguments']
+    end
   end
 end

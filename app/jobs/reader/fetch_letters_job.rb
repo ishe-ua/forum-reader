@@ -8,7 +8,7 @@ module Reader
     # Do FetchFeedJob for each Url.
     def perform
       find_letters_for_fetch.each do |url|
-        FetchFeedJob.perform_later(url, :letter_item)
+        FetchFeedJob.perform_later(url, LetterItem.to_s)
       end
     end
 
