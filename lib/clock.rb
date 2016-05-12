@@ -1,10 +1,8 @@
 require_relative '../config/initializers/active_job'
 require 'clockwork'
 
-Clock = Clockwork
-
 ## App clock, gem 'clockwork'.
-module Clock
+module Clockwork
   ## Always is UTC.
   TZ = 'UTC'.freeze
 

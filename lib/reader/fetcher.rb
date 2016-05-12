@@ -13,21 +13,20 @@ module Reader
   # 5. FetchedFeedJob
   #
   class Fetcher
+    extend Backburner::Helpers
+
     QUEUE_NAME = :fetcher
 
     # Wait for FetchFeedJob -s and process them.
-    #
-    # See <tt>bin/runner</tt>.
-
     def self.run
       EventMachine.run do
-        conn = Backburner::Worker.connection
-        tube = conn.tubes[QUEUE_NAME]
+        conn = Backburner::Connection.new Backburner.configuration.beanstalk_url
+        tube = conn.tubes[expand_tube_name(QUEUE_NAME)]
 
         while tube.peek(:ready)
-          job = tube.reserve
-          process(job)
-          job.delete
+          #   job = tube.reserve
+          #   process(job)
+          #   job.delete
         end
       end
     end
@@ -63,3 +62,6 @@ module Reader
     end
   end
 end
+
+## Run in console
+Reader::Fetcher.run unless defined?(Rails)
