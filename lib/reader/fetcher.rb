@@ -21,7 +21,7 @@ module Reader
     #
     # See Procfile
 
-    def self.run
+    def run
       EventMachine.run do
         tube = Helpers.get_tube(QUEUE_NAME)
         while tube.peek(:ready)
@@ -38,29 +38,27 @@ module Reader
                                    resource_type != LetterItem.to_s
     end
 
-    class << self
-      protected
+    protected
 
-      # Make request to Url and invoke FetchedFeedJob with response
-      # body.
+    # Make request to Url and enqueue FetchedFeedJob with response
+    # body.
 
-      def process(job)
-        url = Helpers.args_from(job).first # TODO: test
-        resource_type = Helpers.args_from(job).second
+    def process(job)
+      url = Helpers.args_from(job).first # TODO: test
+      resource_type = Helpers.args_from(job).second # TODO: test
 
-        http = EventMachine::HttpRequest.new(url).get
-        http.callback { enqueue_ffj(url, http.response, resource_type) }
-      end
+      http = EventMachine::HttpRequest.new(url).get
+      http.callback { enqueue_ffj(url, http.response, resource_type) }
+    end
 
-      private
+    private
 
-      def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(url, response, resource_type) unless
-          response.blank?
-      end
+    def enqueue_ffj(url, response, resource_type)
+      FetchedFeedJob.perform_later(url, response, resource_type) unless
+        response.blank?
     end
   end
 end
 
 ## Run in console
-Reader::Fetcher.run unless defined?(Rails)
+Reader::Fetcher.new.run unless defined?(Rails)
