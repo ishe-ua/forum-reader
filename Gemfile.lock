@@ -47,8 +47,15 @@ GEM
     backburner (1.3.0)
       beaneater (~> 1.0)
       dante (> 0.1.5)
+    backports (3.6.8)
     bcrypt (3.1.11)
     beaneater (1.0.0)
+    beanstalkd_view (2.0.0)
+      beaneater (~> 1.0.0)
+      json
+      sinatra (>= 1.3.0)
+      sinatra-contrib (>= 1.3.0)
+      vegas (~> 0.1.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blather (1.2.0)
@@ -199,6 +206,8 @@ GEM
     rack (1.6.4)
     rack-livereload (0.3.16)
       rack
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rack_session_access (0.1.1)
@@ -262,6 +271,17 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    sinatra (1.4.7)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    sinatra-contrib (1.4.7)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (>= 1.3, < 3)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.6.0)
@@ -281,6 +301,8 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.5)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -300,6 +322,7 @@ DEPENDENCIES
   annotate (~> 2.7.0)
   backburner
   bcrypt (~> 3.1.7)
+  beanstalkd_view
   blather
   brakeman
   byebug

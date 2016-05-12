@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  mount BeanstalkdView::Server, at: '/beanstalkd'
 
   ###
   # Static pages
