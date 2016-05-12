@@ -1,5 +1,4 @@
 require_relative '../../config/initializers/active_job'
-require_relative '../helpers.rb'
 require 'eventmachine'
 
 module Reader
