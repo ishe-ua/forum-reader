@@ -13,7 +13,7 @@ module Reader
     # +Deprecated+ method.
     #
     # Params:
-    # - +url+ Url
+    # - +url+ Url of Feed
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(url, resource_type)

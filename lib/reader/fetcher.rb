@@ -1,4 +1,5 @@
 require_relative '../../config/initializers/active_job'
+require_relative '../helpers.rb'
 require 'eventmachine'
 
 module Reader
@@ -6,11 +7,10 @@ module Reader
   #
   # Parts:
   #
-  # 1. Clock
-  # 2. FetchForumsJob
-  # 3. FetchLettersJob
-  # 4. FetchFeedJob
-  # 5. FetchedFeedJob
+  # 1. FetchForumsJob
+  # 2. FetchLettersJob
+  # 3. FetchFeedJob
+  # 4. FetchedFeedJob
   #
   class Fetcher
     QUEUE_NAME = :fetcher
@@ -18,7 +18,7 @@ module Reader
     # Wait for FetchFeedJob -s and process them.
     def self.run
       EventMachine.run do
-        tube = ::Helpers.get_tube(QUEUE_NAME)
+        tube = Helpers.get_tube(QUEUE_NAME)
         while tube.peek(:ready)
           job = tube.reserve
           process(job)

@@ -4,7 +4,7 @@ module Reader
     queue_as :default
 
     # Params:
-    # - +url+ Url
+    # - +url+ Url of Feed
     # - +response+ Body from request to +url+
     # - +resource_type+ See Fetcher::raise_if_bad
 
