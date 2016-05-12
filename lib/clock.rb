@@ -9,7 +9,7 @@ module Clock
   TZ = 'UTC'.freeze
 
   LOG_DIR = './log'.freeze
-  LOG_FILE = 'clockwork.log'.freeze
+  LOG_FILE = 'clock.log'.freeze
 
   configure do |config|
     config[:tz] = TZ
