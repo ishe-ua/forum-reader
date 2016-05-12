@@ -1,4 +1,5 @@
 require_relative '../../config/initializers/active_job'
+require_relative '../helpers.rb'
 require 'eventmachine'
 
 module Reader
@@ -13,20 +14,16 @@ module Reader
   # 5. FetchedFeedJob
   #
   class Fetcher
-    extend Backburner::Helpers
-
     QUEUE_NAME = :fetcher
 
     # Wait for FetchFeedJob -s and process them.
     def self.run
       EventMachine.run do
-        conn = Backburner::Connection.new Backburner.configuration.beanstalk_url
-        tube = conn.tubes[expand_tube_name(QUEUE_NAME)]
-
+        tube = ::Helpers.get_tube(QUEUE_NAME)
         while tube.peek(:ready)
-          #   job = tube.reserve
-          #   process(job)
-          #   job.delete
+          job = tube.reserve
+          process(job)
+          job.delete
         end
       end
     end
