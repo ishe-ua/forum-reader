@@ -1,4 +1,4 @@
-# Common settings for set-models.
+# Base for set-models.
 class BaseSet < ActiveRecord::Base
   self.abstract_class = true
 

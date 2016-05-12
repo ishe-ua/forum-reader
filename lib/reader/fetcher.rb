@@ -1,3 +1,6 @@
+require_relative '../../config/initializers/active_job'
+require 'eventmachine'
+
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
   #
@@ -17,7 +20,7 @@ module Reader
     # See <tt>bin/runner</tt>.
 
     def self.run
-      Em.run do
+      EventMachine.run do
         conn = Backburner::Worker.connection
         tube = conn.tubes[QUEUE_NAME]
 

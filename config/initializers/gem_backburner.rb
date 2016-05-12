@@ -1,3 +1,5 @@
+require 'backburner'
+
 raise 'ExceptionNotifier not defined' if
   defined?(Rails) && !defined?(ExceptionNotifier)
 
