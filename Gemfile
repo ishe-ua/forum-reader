@@ -42,9 +42,10 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.x
 
 gem 'feedjira'
 gem 'blather'
+gem 'em-http-request'
 
 gem 'exception_notification'
-gem 'backburner', git: 'git@github.com:nesquena/backburner.git' # wait v1.3.1
+gem 'backburner'
 gem 'clockwork'
 gem 'lograge'
 gem 'foreman'
