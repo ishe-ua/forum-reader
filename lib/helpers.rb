@@ -1,6 +1,7 @@
 require 'backburner'
+require 'zlib'
 
-# APP helpers.
+# Queues (beanstalkd) helpers.
 module Helpers
   extend Backburner::Helpers
 
@@ -20,6 +21,18 @@ module Helpers
     def args_from(job)
       raise 'left class' unless job.is_a?(Beaneater::Job)
       JSON.parse(job.body)['args'].first['arguments']
+    end
+
+    # Make smaller string size (before enqueue):
+    # 1. Job size is limited
+    # 2. String from external Feed can have bad encoding
+    def compress(string)
+      Zlib::Deflate.deflate(string)
+    end
+
+    # Opposite of ::compress.
+    def decompress(string)
+      Zlib::Inflate.inflate(string)
     end
   end
 end

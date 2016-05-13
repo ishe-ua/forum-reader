@@ -69,8 +69,10 @@ module Reader
       private
 
       def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(url, response, resource_type) unless
-          response.blank?
+        unless response.blank?
+          response = Marshal.dump(Helpers.compress(response))
+          FetchedFeedJob.perform_later(url, response, resource_type)
+        end
       end
     end
   end
