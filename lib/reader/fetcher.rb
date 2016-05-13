@@ -18,7 +18,7 @@ module Reader
     QUEUE_NAME = 'reader.fetcher'.to_sym
 
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
-    REQUEST_PARAMS = { connect_timeout: 15, inactivity_timeout: 30 }.freeze
+    CONNECTION_OPTS = { connect_timeout: 15, inactivity_timeout: 30 }.freeze
 
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
     #
@@ -59,10 +59,10 @@ module Reader
         url = Helpers.args_from(job).first # TODO: test
         resource_type = Helpers.args_from(job).second # TODO: test
 
-        params = REQUEST_PARAMS.dup
-        options = REQUEST_OPTS.dup
+        conn_opts = CONNECTION_OPTS.dup
+        request_opts = REQUEST_OPTS.dup
 
-        http = EM::HttpRequest.new(url, params).get(options)
+        http = EM::HttpRequest.new(url, conn_opts).get(request_opts)
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
