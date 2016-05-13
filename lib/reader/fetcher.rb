@@ -3,6 +3,7 @@ require_relative '../helpers.rb'
 
 require 'eventmachine'
 require 'em-http'
+require 'feedjira'
 
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
@@ -52,9 +53,7 @@ module Reader
 
       protected
 
-      # Make request to Url and enqueue FetchedFeedJob with response
-      # body.
-
+      ## Make request to Url and enqueue FetchedFeedJob.
       def process(job)
         url = Helpers.args_from(job).first # TODO: test
         resource_type = Helpers.args_from(job).second # TODO: test
@@ -66,12 +65,16 @@ module Reader
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
-      private
+      # Parse response and enqueue FetchedFeedJob with Feedjira
+      # object:
+      #
+      # 1. Marshaled
+      # 2. Compressed (use Helpers::compress, job size is limited)
 
       def enqueue_ffj(url, response, resource_type)
         unless response.blank?
-          response = Marshal.dump(Helpers.compress(response))
-          FetchedFeedJob.perform_later(url, response, resource_type)
+          feed = Feedjira::Feed.parse(response)
+          FetchedFeedJob.perform_later(url, Marshal.dump(feed), resource_type)
         end
       end
     end

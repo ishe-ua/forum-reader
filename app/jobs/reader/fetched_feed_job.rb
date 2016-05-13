@@ -5,7 +5,7 @@ module Reader
 
     # Params:
     # - +url+ Url of Feed
-    # - +response+ Body from request to +url+
+    # - +response+ Instance of Feedjira::Feed, see Fetcher::enqueue_ffj
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(url, response, resource_type)
