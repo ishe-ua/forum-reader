@@ -65,29 +65,26 @@ module Reader
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
-      # Parse response and enqueue FetchedFeedJob like:
-      #
-      # 1. Marshaled
-      # 2. Compressed (use Helpers::compress, job size is limited)
-
-      def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(url,
-                                     decoded(response), # TODO: compress string
-                                     resource_type) unless
-          response.blank?
-      end
-
-      # Find Feed encoding and decode to utf-8.
+      # Find Feed encoding and encode to utf-8.
       #
       # gem 'rchardet'
 
-      def decoded(response)
+      def encode(response)
         if response.encoding == Encoding::ASCII_8BIT
           feed_encoding = CharDet.detect(response)['encoding']
           response.force_encoding(feed_encoding)
         end
 
         response.encode(Encoding::UTF_8)
+      end
+
+      private
+
+      def enqueue_ffj(url, response, resource_type)
+        FetchedFeedJob.perform_later(url,
+                                     encode(response),
+                                     resource_type) unless
+          response.blank?
       end
     end
   end
