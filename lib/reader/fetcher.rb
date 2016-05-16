@@ -84,7 +84,6 @@ module Reader
       def decoded(response)
         if response.encoding == Encoding::ASCII_8BIT
           feed_encoding = CharDet.detect(response)['encoding']
-          raise 'Encoding not detected' if feed_encoding.blank?
           response.force_encoding(feed_encoding)
         end
 
