@@ -3,7 +3,7 @@ require_relative '../helpers.rb'
 
 require 'eventmachine'
 require 'em-http'
-require 'feedjira'
+require 'rchardet'
 
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
@@ -65,17 +65,30 @@ module Reader
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
-      # Parse response and enqueue FetchedFeedJob with Feedjira
-      # object:
+      # Parse response and enqueue FetchedFeedJob like:
       #
       # 1. Marshaled
       # 2. Compressed (use Helpers::compress, job size is limited)
 
       def enqueue_ffj(url, response, resource_type)
-        unless response.blank?
-          feed = Feedjira::Feed.parse(response)
-          FetchedFeedJob.perform_later(url, Marshal.dump(feed), resource_type)
+        FetchedFeedJob.perform_later(url,
+                                     decoded(response), # TODO: compress string
+                                     resource_type) unless
+          response.blank?
+      end
+
+      # Find Feed encoding and decode to utf-8.
+      #
+      # gem 'rchardet'
+
+      def decoded(response)
+        if response.encoding == Encoding::ASCII_8BIT
+          feed_encoding = CharDet.detect(response)['encoding']
+          raise 'Encoding not detected' if feed_encoding.blank?
+          response.force_encoding(feed_encoding)
         end
+
+        response.encode(Encoding::UTF_8)
       end
     end
   end

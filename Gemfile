@@ -43,6 +43,7 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.x
 gem 'feedjira'
 gem 'blather'
 gem 'em-http-request'
+gem 'rchardet'
 
 gem 'backburner'
 gem 'beanstalkd_view'
