@@ -9,8 +9,8 @@ module Reader
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(url, response, resource_type)
-      response = Helpers.decompess(Marshal.load(response))
       Fetcher.raise_if_bad(resource_type)
+      find_or_create_feed_by(url)
 
       parse_and_save_updates(url, response)
       send_forum_updates_to_users(url) if resource_type == Forum.to_s

@@ -1,18 +1,19 @@
 module Reader
-  # Fetch Feed from remote Url.
+  # Fetch Feed from remote Url
   #
   # Incoming job for Fetcher.
+
   class FetchFeedJob < ActiveJob::Base
     queue_as { Reader::Fetcher::QUEUE_NAME }
 
-    # +Deprecated+ method.
+    # +Deprecated+ method (should perform in Fetcher).
     #
     # Params:
     # - +url+ Url of Feed
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(_url, _resource_type)
-      raise 'deprecated'
+      raise 'Deprecated'
     end
   end
 end
