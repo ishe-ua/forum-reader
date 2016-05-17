@@ -13,12 +13,11 @@ module LastFetchAt
     def time_to_fetch?(url)
       feed = Feed.find_by(url: url)
       return true if !feed || !feed.last_fetch_at
-
-      last_fetch_at % FETCH_INTERVAL == 0
+      feed.last_fetch_at < (Time.zone.now - FETCH_INTERVAL.minutes)
     end
 
     def find_for_fetch(model_name)
-      raise 'Bad klass name' if model_name != :forums &&
+      raise 'Bad model name' if model_name != :forums &&
                                 model_name != :letter_items
 
       model_name.to_s.singularize.classify.safe_constantize
