@@ -24,4 +24,11 @@ class LastFetchAtTest < ActiveSupport::TestCase
     assert_not instance_class.time_to_fetch?(instance.url),
                'time to fetch'
   end
+
+  test '#find_for_fetch' do
+    travel_to(1.day.from_now) do
+      sel = instance_class.find_for_fetch([:forums, :letter_items].sample)
+      assert sel.sample.start_with?('http')
+    end
+  end
 end
