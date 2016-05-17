@@ -19,7 +19,7 @@ module Reader
     QUEUE_NAME = 'reader.fetcher'.to_sym
 
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
-    CONNECTION_OPTS = { connect_timeout: 15, inactivity_timeout: 30 }.freeze
+    CONNECT_OPTS = { connect_timeout: 15, inactivity_timeout: 30 }.freeze
 
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
     #
@@ -36,12 +36,7 @@ module Reader
           trap(:INT)  { EM.stop }
           trap(:TERM) { EM.stop }
 
-          tube = Helpers.get_tube(QUEUE_NAME)
-          while tube.peek(:ready)
-            job = tube.reserve
-            process(job)
-            job.delete
-          end
+          EM.add_periodic_timer(1) { process_jobs_from_tube }
         end
       end
 
@@ -53,12 +48,12 @@ module Reader
 
       protected
 
-      ## Make request to Url and enqueue FetchedFeedJob.
-      def process(job)
+      # Do request to Url and enqueue FetchedFeedJob.
+      def process_single(job)
         url = Helpers.args_from(job).first # TODO: test
         resource_type = Helpers.args_from(job).second # TODO: test
 
-        conn_opts = CONNECTION_OPTS.dup
+        conn_opts = CONNECT_OPTS.dup
         request_opts = REQUEST_OPTS.dup
 
         http = EM::HttpRequest.new(url, conn_opts).get(request_opts)
@@ -79,6 +74,15 @@ module Reader
       end
 
       private
+
+      def process_jobs_from_tube
+        @tube ||= Helpers.get_tube(QUEUE_NAME)
+        while @tube.peek(:ready)
+          job = @tube.reserve
+          process_single(job)
+          job.delete
+        end
+      end
 
       def enqueue_ffj(url, response, resource_type)
         FetchedFeedJob.perform_later(url,

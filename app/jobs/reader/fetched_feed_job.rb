@@ -5,7 +5,7 @@ module Reader
 
     # Params:
     # - +url+ Url of Feed
-    # - +response+ Response from Fetcher::process
+    # - +response+ Response from Fetcher::process_single
     # - +resource_type+ See Fetcher::raise_if_bad
 
     def perform(url, response, resource_type)
