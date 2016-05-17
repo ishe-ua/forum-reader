@@ -1,7 +1,7 @@
 module Reader
+  # Receive Jabber messages from User.
   class BoteIn
     def self.run
-      puts 'bote_in'
     end
   end
 end

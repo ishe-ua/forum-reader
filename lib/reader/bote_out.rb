@@ -1,7 +1,7 @@
 module Reader
+  # Send Jabber messages to User.
   class BoteOut
     def self.run
-      puts 'bote_out'
     end
   end
 end

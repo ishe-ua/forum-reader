@@ -11,7 +11,6 @@ module Reader
   require_relative 'bote_in.rb'
   require_relative 'bote_out.rb'
 
-
   BOTE_NAME = 'reader'.freeze
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
