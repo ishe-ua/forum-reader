@@ -7,15 +7,9 @@ module Reader
 
     # Do FetchFeedJob for each Url.
     def perform
-      find_forums_for_fetch.each do |url|
+      Feed.find_for_fetch(:forums).each do |url|
         FetchFeedJob.perform_later(url, Forum.to_s)
       end
-    end
-
-    protected
-
-    def find_forums_for_fetch
-      Forum.pluck(:url).uniq
     end
   end
 end
