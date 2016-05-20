@@ -107,6 +107,7 @@ CREATE TABLE feed_items (
     url character varying,
     theme character varying,
     text text,
+    checksum character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -564,6 +565,13 @@ CREATE UNIQUE INDEX index_accounts_on_email_confirmation_token ON accounts USING
 --
 
 CREATE INDEX index_contacts_on_email ON contacts USING btree (email);
+
+
+--
+-- Name: index_feed_items_on_checksum; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_feed_items_on_checksum ON feed_items USING btree (checksum);
 
 
 --

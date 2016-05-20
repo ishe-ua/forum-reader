@@ -10,11 +10,13 @@
 #  url        :string
 #  theme      :string
 #  text       :text
+#  checksum   :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
+#  index_feed_items_on_checksum    (checksum)
 #  index_feed_items_on_created_at  (created_at)
 #  index_feed_items_on_feed_id     (feed_id)
 #
@@ -28,4 +30,6 @@ class FeedItem < ApplicationRecord
   include Url
   include Theme
   include Text
+
+  include Checksum
 end

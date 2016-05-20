@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class EmailTest < ActiveSupport::TestCase
@@ -6,12 +5,17 @@ class EmailTest < ActiveSupport::TestCase
     @instance = build(:account)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.email = nil
     assert_not instance.valid?
   end
 
-  test 'можно только валидные ящики' do
+  test 'unique field' do
+    instance.email = instance_class.all.sample.email
+    assert_not instance.valid?
+  end
+
+  test 'only valid emails' do
     instance.email = 'not-email'
     assert_not instance.valid?
 
@@ -21,12 +25,12 @@ class EmailTest < ActiveSupport::TestCase
     )
   end
 
-  test 'i18n-cообщение о неверном формате прописано' do
+  test 'i18n error message is present' do
     msg = I18n.t('activerecord.errors.invalid_format')
     assert msg.present?
   end
 
-  test 'перед валидацией переводится в нижний регистр' do
+  test 'downcase before validation' do
     instance.email = 'UseR@exAmple.COM'
     instance.validate
     assert_equal instance.email, 'user@example.com'

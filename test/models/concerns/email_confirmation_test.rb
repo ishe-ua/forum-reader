@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class EmailConfirmationTest < ActiveSupport::TestCase
@@ -6,14 +5,19 @@ class EmailConfirmationTest < ActiveSupport::TestCase
     @instance = build(:account)
   end
 
-  test 'токен обязательно' do
+  test 'required field' do
     instance.email_confirmation_token = nil
     assert_not instance.valid?
   end
 
+  test 'unique field' do
+    assert     accounts(:ishe).update(email_confirmation_token: 'aa')
+    assert_not accounts(:john).update(email_confirmation_token: 'aa')
+  end
+
   test '#email_confirmed?' do
     assert accounts(:ishe).email_confirmed?
-    assert_not instance.email_confirmed?, 'по дефолту все не подтвержденные'
+    assert_not instance.email_confirmed?, 'by default all are unconfirmed'
   end
 
   test '#email_confirm!' do
@@ -27,10 +31,5 @@ class EmailConfirmationTest < ActiveSupport::TestCase
   test '#unconfirm_email' do
     accounts(:ishe).unconfirm_email
     assert_not accounts(:ishe).email_confirmed?
-  end
-
-  test 'два одинаковых токена не получится' do
-    assert     accounts(:ishe).update(email_confirmation_token: 'aa')
-    assert_not accounts(:john).update(email_confirmation_token: 'aa')
   end
 end

@@ -6,9 +6,12 @@ DEFAULTS: &DEFAULTS
   theme: Обновился Firefox ($LABEL)
   text: Очень сильно обновился...
 
+  checksum: <%= rand(10_000).to_s %>
+
 <% 1.upto(10) do |i| %>
 news_<%= i %>:
   <<: *DEFAULTS
   date: <%= i.days.ago %>
   url: http://opennet.ru/feed/<%= i %>
+  checksum: <%= i.to_s %>
 <% end %>

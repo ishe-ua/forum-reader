@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class JabberTest < ActiveSupport::TestCase
@@ -6,17 +5,17 @@ class JabberTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
-  test 'обязательное поле' do
+  test 'required field' do
     instance.jabber = nil
     assert_not instance.valid?
   end
 
-  test 'уникальное' do
+  test 'unique field' do
     instance.jabber = instance_class.all.sample.jabber
     assert_not instance.valid?
   end
 
-  test 'можно только валидные ящики' do
+  test 'only valid jabber ids' do
     instance.jabber = 'not-jabber'
     assert_not instance.valid?
 
@@ -26,12 +25,12 @@ class JabberTest < ActiveSupport::TestCase
     )
   end
 
-  test 'i18n-cообщение о неверном формате прописано' do
+  test 'i18n error message is present' do
     msg = I18n.t('activerecord.errors.invalid_format')
     assert msg.present?
   end
 
-  test 'перед валидацией переводится в нижний регистр' do
+  test 'downcase before validation' do
     instance.jabber = 'UseR@exAmple.COM'
     instance.validate
     assert_equal instance.jabber, 'user@example.com'
