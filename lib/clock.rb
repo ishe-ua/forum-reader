@@ -10,7 +10,7 @@ module Clockwork
   LOG_FILE = 'clock.log'.freeze
 
   # Time for system tasks.
-  SYS_TIME = '1:00'.freeze
+  SYS_TIME = '4:05'.freeze
 
   configure do |config|
     config[:tz] = TZ

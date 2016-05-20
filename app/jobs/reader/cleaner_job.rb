@@ -4,7 +4,7 @@ module Reader
     queue_as :default
 
     def perform
-      Cleaner.run
+      Cleaner.clean
     end
   end
 end
