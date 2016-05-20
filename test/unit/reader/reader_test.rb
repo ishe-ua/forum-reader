@@ -6,8 +6,8 @@ module Reader
       @modul = Reader
     end
 
-    test 'the truth' do
-      skip
+    test 'check bote name' do
+      assert_equal modul::BOTE_JID, 'reader@forum-reader2.com'
     end
   end
 end
