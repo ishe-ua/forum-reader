@@ -1,5 +1,7 @@
 module Reader
   # Run Cleaner.
+  #
+  # Clockwork task
   class CleanerJob < ActiveJob::Base
     queue_as :default
 

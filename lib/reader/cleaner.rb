@@ -7,6 +7,7 @@ module Reader
     # Remove only if Feed has more items than this count.
     MIN_STORE_ITEMS = 100
 
+    # See CleanerJob.
     def self.clean
       Feed.find_each do |feed|
         find_feed_items_for_clean(feed).delete_all
