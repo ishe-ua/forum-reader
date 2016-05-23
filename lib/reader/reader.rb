@@ -5,11 +5,10 @@
 # 1. Fetcher
 # 2. BoteIn
 # 3. BoteOut
-# 4. Cleaner
+# 4. CleanerJob
 #
 module Reader
   require_relative 'fetcher.rb'
-  require_relative 'cleaner.rb'
   require_relative 'bote_in.rb'
   require_relative 'bote_out.rb'
 
