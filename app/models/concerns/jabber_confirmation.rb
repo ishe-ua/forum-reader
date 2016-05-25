@@ -36,7 +36,7 @@ module JabberConfirmation
     update_columns(
       jabber_confirmation_at: nil,
       jabber_confirmation_token:
-        Tokenizer.gen_random_string(JABBER_CONFIRMATION_TOKEN_SIZE)
+        Utils::Tokenizer.gen_random_string(JABBER_CONFIRMATION_TOKEN_SIZE)
     )
   end
 
@@ -45,6 +45,6 @@ module JabberConfirmation
   ## Значение по умолчанию.
   def set_default_jabber_confirmation_token
     self.jabber_confirmation_token ||=
-      Tokenizer.gen_random_string(JABBER_CONFIRMATION_TOKEN_SIZE)
+      Utils::Tokenizer.gen_random_string(JABBER_CONFIRMATION_TOKEN_SIZE)
   end
 end
