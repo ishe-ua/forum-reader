@@ -1,15 +1,12 @@
 require_relative '../../config/initializers/active_job'
-
+require_relative 'reader.rb'
 require 'blather/client/dsl'
-require_relative '../bote.rb'
 
 module Reader
   # Receive Jabber messages from User.
   module BoteIn
     extend Blather::DSL
-    extend Bote
-
-    setup(bote_jid, bote_password)
+    setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
 
     # Auto approve subscription requests
     subscription :request? do |s|

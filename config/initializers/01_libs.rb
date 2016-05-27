@@ -11,7 +11,5 @@ require Rails.root.join('lib/utils', 'tokenizer.rb')
 
 ##
 
-require Rails.root.join('lib', 'bote.rb')
-
 require Rails.root.join('lib/reader', 'reader.rb')
 require Rails.root.join('lib/mailer', 'mailer.rb')
