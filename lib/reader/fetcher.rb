@@ -49,8 +49,8 @@ module Reader
 
       # Do request to Url and enqueue FetchedFeedJob.
       def process_single(job)
-        url = Helpers.args_from(job).first # TODO: test
-        resource_type = Helpers.args_from(job).second # TODO: test
+        url = Utils::Queues.args_from(job).first # TODO: test
+        resource_type = Utiils::Queues.args_from(job).second # TODO: test
 
         conn_opts = CONNECT_OPTS.dup
         request_opts = REQUEST_OPTS.dup
@@ -75,7 +75,7 @@ module Reader
       private
 
       def process_jobs_from_tube
-        @tube ||= Helpers.get_tube(QUEUE_NAME)
+        @tube ||= Utils::Queues.get_tube(QUEUE_NAME)
         while @tube.peek(:ready)
           job = @tube.reserve
           process_single(job)

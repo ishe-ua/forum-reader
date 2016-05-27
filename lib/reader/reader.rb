@@ -1,3 +1,5 @@
+require_relative '../app.rb'
+
 # RSS Reader.
 #
 # Parts:
