@@ -13,9 +13,18 @@ module Reader
       write_to_stream s.approve!
     end
 
-    message :chat?, :body do |m|
-      write_to_stream m.reply
-    end
+    COMMANDS =
+      [
+        Cmd::HelpJob,
+        Cmd::StatusJob,
+        Cmd::OnJob,
+        Cmd::OffJob,
+        Cmd::LastJob,
+        Cmd::ListJob
+      ].each do |cmd|
+        # rubocop:disable LineLength
+        message(:chat?, body: cmd::REGEXP) { |m| cmd.perform_later(m.body, m.from) }
+      end
 
     def self.run
       EM.run { client.run }
