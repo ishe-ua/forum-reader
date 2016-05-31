@@ -9,11 +9,12 @@ module Reader
     setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
 
     # Auto approve subscription requests
-    subscription :request? do |s|
-      write_to_stream s.approve!
-    end
+    subscription(:request?) { |s| write_to_stream s.approve! }
 
-    COMMANDS =
+    # Reconnect
+    disconnected { client.connect }
+
+    SUPPORTED_COMMANDS =
       [
         Cmd::HelpJob,
         Cmd::StatusJob,
@@ -22,9 +23,16 @@ module Reader
         Cmd::LastJob,
         Cmd::ListJob
       ].each do |cmd|
-        # rubocop:disable LineLength
-        message(:chat?, body: cmd::REGEXP) { |m| cmd.perform_later(m.body, m.from) }
+        message(:chat?, body: cmd::REGEXP) do |m|
+          cmd.perform_later(m.body, m.from)
+          halt
+        end
       end
+
+    # Default command
+    message(:chat?) do |m|
+      Cmd::ListJob.perform_later(m.body, m.from) if m.body.present?
+    end
 
     def self.run
       EM.run { client.run }
