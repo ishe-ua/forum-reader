@@ -14,14 +14,6 @@ module Reader
           SendMessageJob.perform_later(text, to)
         end
       end
-
-      protected
-
-      # Remove resource from incoming Jabber and find User
-      def find_user(from) # TODO: unify
-        jid_without_resource = Blather::JID.new(from).strip
-        User.find_by(jabber: jid_without_resource)
-      end
     end
   end
 end
