@@ -1,0 +1,16 @@
+HELP
+STATUS
+
+ON      # switch on delivery
+OFF     # switch off (suspend) delivery
+
+bcc     # latest news from bbc.com (unread, only titles)
+bcc+    # latest news from bbc.com (unread, titles and text)
+
+LAST bbc        # last 5 read news (titles)
+LAST bbc 15     # last 15 read news (titles)
+
+LAST bbc+       # last 5 read news (titles and text)
+LAST bbc+ 15    # last 15 read news (titles and text)
+
+<%= render 'shared/mailers/app_host' %>
