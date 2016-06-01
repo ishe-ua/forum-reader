@@ -8,11 +8,11 @@ module Reader
     extend Blather::DSL
     setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
 
-    # Auto approve subscription requests
-    subscription(:request?) { |s| write_to_stream s.approve! }
-
     # Reconnect
     disconnected { client.connect }
+
+    # Auto approve subscription requests
+    subscription(:request?) { |s| write_to_stream s.approve! }
 
     SUPPORTED_COMMANDS =
       [

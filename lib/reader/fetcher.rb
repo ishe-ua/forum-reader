@@ -31,12 +31,7 @@ module Reader
       # See Procfile
 
       def run
-        EM.run do
-          trap(:INT)  { EM.stop }
-          trap(:TERM) { EM.stop }
-
-          EM.add_periodic_timer(1) { process_jobs_from_tube }
-        end
+        EM.run { EM.add_periodic_timer(1) { process_jobs_from_tube } }
       end
 
       # Only +forum+ or +letter_item+.
