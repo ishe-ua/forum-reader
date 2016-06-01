@@ -31,7 +31,10 @@ module Reader
       # See Procfile
 
       def run
-        EM.run { EM.add_periodic_timer(1) { process_jobs_from_tube } }
+        EM.run do
+          # rubocop:disable LineLength
+          EM.add_periodic_timer(1) { jobs_from(QUEUE_NAME) { |job| process_incoming(job) } }
+        end
       end
 
       # Only +forum+ or +letter_item+.
@@ -43,9 +46,9 @@ module Reader
       protected
 
       # Do request to Url and enqueue FetchedFeedJob.
-      def process_single(job)
-        url = Utils::Queues.args_from(job).first # TODO: test
-        resource_type = Utiils::Queues.args_from(job).second # TODO: test
+      def process_incoming(job)
+        url = Utils::Queues.args_from(job).first
+        resource_type = Utiils::Queues.args_from(job).second
 
         conn_opts = CONNECT_OPTS.dup
         request_opts = REQUEST_OPTS.dup
@@ -54,7 +57,7 @@ module Reader
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
-      # Find Feed encoding and encode to utf-8.
+      # Find Feed encoding and encode to <tt>utf-8</tt>.
       #
       # gem 'rchardet'
 
@@ -69,19 +72,8 @@ module Reader
 
       private
 
-      def process_jobs_from_tube
-        @tube ||= Utils::Queues.get_tube(QUEUE_NAME)
-        while @tube.peek(:ready)
-          job = @tube.reserve
-          process_single(job)
-          job.delete
-        end
-      end
-
       def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(url,
-                                     encode(response),
-                                     resource_type) unless
+        FetchedFeedJob.perform_later(url, encode(response), resource_type) unless
           response.blank?
       end
     end
