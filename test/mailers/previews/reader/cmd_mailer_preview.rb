@@ -1,9 +1,19 @@
-# Preview all emails at http://localhost:3000/rails/mailers/reader/cmd_mailer
-class Reader::CmdMailerPreview < ActionMailer::Preview
+module Reader
+  # Preview all emails at
+  # http://localhost:3000/rails/mailers/reader/cmd_mailer
+  class CmdMailerPreview < ActionMailer::Preview
+    def help
+      mailer.help(user)
+    end
 
-  # Preview this email at http://localhost:3000/rails/mailers/reader/cmd_mailer/help
-  def help
-    Reader::CmdMailer.help
+    private
+
+    def mailer
+      CmdMailer
+    end
+
+    def user
+      User.all.sample
+    end
   end
-
 end
