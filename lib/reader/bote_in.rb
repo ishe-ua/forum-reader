@@ -6,9 +6,8 @@ module Reader
   # Receive Jabber messages from User.
   module BoteIn
     extend Blather::DSL
-    setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
 
-    # Reconnect
+    setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
     disconnected { client.connect }
 
     # Auto approve subscription requests
@@ -29,7 +28,7 @@ module Reader
         end
       end
 
-    # Default command
+    # Unrecognized command
     message(:chat?) do |m|
       Cmd::ListJob.perform_later(m.body, m.from) if m.body.present?
     end
