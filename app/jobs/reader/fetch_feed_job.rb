@@ -1,12 +1,12 @@
 module Reader
-  # Fetch Feed from remote Url
+  # Fetch Feed from remote Url.
   #
   # Incoming job for Fetcher.
   #
   class FetchFeedJob < ActiveJob::Base
     queue_as { Reader::Fetcher::QUEUE_NAME }
 
-    # +Deprecated+ method (should perform in Fetcher).
+    # +Deprecated+ method (should performs in Fetcher).
     #
     # Params:
     # - +url+ Url of Feed

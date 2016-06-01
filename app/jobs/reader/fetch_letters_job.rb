@@ -2,7 +2,7 @@ module Reader
   # Fetch Letter -s (LetterItem -s).
   #
   # Clockwork task
-  class FetchLetterJob < ActiveJob::Base
+  class FetchLettersJob < ActiveJob::Base
     queue_as :default
 
     # Do FetchFeedJob for each Url.

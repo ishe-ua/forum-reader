@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Reader
-  class AnswerJobTest < ActiveJob::TestCase
+  class ReplyJobTest < ActiveJob::TestCase
     test 'the truth' do
       skip
     end

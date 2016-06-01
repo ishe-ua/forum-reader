@@ -11,7 +11,7 @@ module Reader
         if user
           text = CmdMailer.help(user).body.encoded
           to = from
-          AnswerJob.perform_later(text, to)
+          ReplyJob.perform_later(text, to)
         end
       end
     end

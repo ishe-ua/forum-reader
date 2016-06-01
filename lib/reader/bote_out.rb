@@ -26,9 +26,9 @@ module Reader
       protected
 
       def process_incoming(job)
-        body = args_from(job).first
+        text = args_from(job).first
         to = args_from(job).second
-        say(to, body)
+        say(to, text)
       end
     end
   end
