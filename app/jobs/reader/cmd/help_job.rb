@@ -7,11 +7,8 @@ module Reader
       REGEXP = /help/
 
       def perform(_body, from)
-        user = find_user(from)
-        if user
-          body = CmdMailer.help(user).body.encoded
-          ReplyJob.perform_later(body, from)
-        end
+        body = CmdMailer.help(user).body.encoded
+        ReplyJob.perform_later(body, from)
       end
     end
   end

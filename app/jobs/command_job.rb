@@ -1,22 +1,30 @@
 # Base for Cmd jobs.
 class CommandJob < ApplicationJob
+  # From whom Cmd
+  attr_reader :user
+
+  # TODO: move to job??
+  before_enqueue { |job| find_user_from(job) }
+
   # Default reply for some Cmd.
   DONE = 'DONE'.freeze
 
   protected
 
-  # Remove resource from Jabber ID.
-  def stripped(jid)
-    Blather::JID.new(jid).strip
+  def find_user_from(job)
+    full_jid = args_from(job).second
+    jid = stripped(full_jid)
+
+    @user = User.find_by(jabber: jid)
+    raise_if_user_not_found(full_jid)
   end
 
-  # Remove resource from incoming Jabber and find User for it.
-  #
-  # Params:
-  #
-  # - +full_jid+ Jabber with resource like 'user@example.com/ipad'
+  # Remove resource from Jabber ID.
+  def stripped(full_jid)
+    Blather::JID.new(full_jid).strip
+  end
 
-  def find_user(full_jid)
-    User.find_by(jabber: stripped(full_jid))
+  def raise_if_user_not_found(full_jid)
+    raise "User not found #{full_jid}" if user.nil?
   end
 end
