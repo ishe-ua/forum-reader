@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +On+ command from BoteIn.
-    class OnJob < ApplicationJob
+    class OnJob < CommandJob
       queue_as :default
 
       REGEXP = /on/

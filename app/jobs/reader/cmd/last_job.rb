@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +Last+ command from BoteIn.
-    class LastJob < ApplicationJob
+    class LastJob < CommandJob
       queue_as :default
 
       REGEXP = /last/
