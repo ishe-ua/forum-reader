@@ -6,8 +6,12 @@ module Reader
 
       REGEXP = /status/
 
-      def perform(body, from)
-        # Do something later
+      def perform(_body, from)
+        user = find_user(from)
+        if user
+          body = (user.status == ON ? OFF : ON).upcase
+          ReplyJob.perform_later(body, from)
+        end
       end
     end
   end

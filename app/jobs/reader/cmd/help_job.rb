@@ -10,8 +10,7 @@ module Reader
         user = find_user(from)
         if user
           body = CmdMailer.help(user).body.encoded
-          to = from
-          ReplyJob.perform_later(body, to)
+          ReplyJob.perform_later(body, from)
         end
       end
     end

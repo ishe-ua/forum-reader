@@ -6,7 +6,7 @@ module Reader
 
       REGEXP = /off/
 
-      def perform(body, from)
+      def perform(_body, from)
         # Do something later
       end
     end
