@@ -7,7 +7,11 @@ module Reader
       REGEXP = /on/
 
       def perform(_body, from)
-        # Do something later
+        user = find_user(from)
+        if user
+          user.change_status if user.status != ON
+          ReplyJob.perform_later(DONE, from)
+        end
       end
     end
   end

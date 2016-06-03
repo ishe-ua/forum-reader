@@ -1,5 +1,8 @@
 # Base job.
 class ApplicationJob < ActiveJob::Base
+  # Default reply for some Cmd.
+  DONE = 'DONE!!'
+
   protected
 
   # Remove resource from incoming Jabber and find User.
