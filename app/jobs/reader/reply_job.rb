@@ -9,10 +9,10 @@ module Reader
     # +Deprecated+ method (should performs in Cmd -jobs).
     #
     # Params:
-    # - +text+ What send
+    # - +body+ What send
     # - +to+ Whom send (jid with resource)
 
-    def perform(_text, _to)
+    def perform(_body, _to)
       raise 'Deprecated'
     end
   end
