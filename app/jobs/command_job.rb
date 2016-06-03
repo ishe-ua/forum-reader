@@ -5,12 +5,18 @@ class CommandJob < ApplicationJob
 
   protected
 
-  # Remove resource from incoming Jabber and find User.
-  #
-  # Example: from = 'user@example.com/ipad'
+  # Remove resource from Jabber ID.
+  def stripped(jid)
+    Blather::JID.new(jid).strip
+  end
 
-  def find_user(from)
-    jid_without_resource = Blather::JID.new(from).strip
-    User.find_by(jabber: jid_without_resource)
+  # Remove resource from incoming Jabber and find User for it.
+  #
+  # Params:
+  #
+  # - +full_jid+ Jabber with resource like 'user@example.com/ipad'
+
+  def find_user(full_jid)
+    User.find_by(jabber: stripped(full_jid))
   end
 end
