@@ -1,7 +1,7 @@
 # Base job.
 class ApplicationJob < ActiveJob::Base
   # Default reply for some Cmd.
-  DONE = 'DONE!!'
+  DONE = 'DONE!!'.freeze
 
   protected
 
