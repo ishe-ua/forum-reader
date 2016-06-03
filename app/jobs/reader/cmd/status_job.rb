@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +Status+ command from BoteIn.
-    class StatusJob < ActiveJob::Base
+    class StatusJob < ApplicationJob
       queue_as :default
 
       REGEXP = /status/

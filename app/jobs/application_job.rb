@@ -1,4 +1,5 @@
-class ActiveJob::Base
+# Base job.
+class ApplicationJob < ActiveJob::Base
   protected
 
   # Remove resource from incoming Jabber and find User.

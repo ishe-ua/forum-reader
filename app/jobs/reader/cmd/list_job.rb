@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +List+ command from BoteIn.
-    class ListJob < ActiveJob::Base
+    class ListJob < ApplicationJob
       queue_as :default
 
       REGEXP = /list/

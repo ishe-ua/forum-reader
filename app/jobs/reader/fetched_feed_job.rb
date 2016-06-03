@@ -1,6 +1,6 @@
 module Reader
   # Process response from FetchFeedJob.
-  class FetchedFeedJob < ActiveJob::Base
+  class FetchedFeedJob < ApplicationJob
     queue_as :default
 
     # See #find_or_create_feed_by
@@ -34,7 +34,7 @@ module Reader
     end
 
     def send_forum_updates_to_users
-      Forum.where(url: feed.url).find_each do |forum|
+      Forum.where(url: feed.url).find_each do |_forum|
         # TODO: send jabber msg or email to user
       end
     end

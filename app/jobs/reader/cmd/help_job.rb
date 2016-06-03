@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +Help+ command from BoteIn.
-    class HelpJob < ActiveJob::Base
+    class HelpJob < ApplicationJob
       queue_as :default
 
       REGEXP = /help/

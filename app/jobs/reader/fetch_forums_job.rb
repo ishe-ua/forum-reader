@@ -2,7 +2,7 @@ module Reader
   # Fetch Forum -s.
   #
   # Clockwork task
-  class FetchForumsJob < ActiveJob::Base
+  class FetchForumsJob < ApplicationJob
     queue_as :default
 
     # Do FetchFeedJob for each Url.

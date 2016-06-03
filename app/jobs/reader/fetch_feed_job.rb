@@ -3,7 +3,7 @@ module Reader
   #
   # Incoming job for Fetcher.
   #
-  class FetchFeedJob < ActiveJob::Base
+  class FetchFeedJob < ApplicationJob
     queue_as { Reader::Fetcher::QUEUE_NAME }
 
     # +Deprecated+ method (should performs in Fetcher).

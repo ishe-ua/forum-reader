@@ -1,7 +1,7 @@
 module Reader
   module Cmd
     # +Off+ command from BoteIn.
-    class OffJob < ActiveJob::Base
+    class OffJob < ApplicationJob
       queue_as :default
 
       REGEXP = /off/

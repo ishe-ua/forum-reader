@@ -2,7 +2,7 @@ module Reader
   # Clean FeedItem -s.
   #
   # Clockwork task
-  class CleanerJob < ActiveJob::Base
+  class CleanerJob < ApplicationJob
     queue_as :default
 
     # Remove items fetched before this days ago.
