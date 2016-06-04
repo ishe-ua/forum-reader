@@ -21,8 +21,4 @@ module Reader
     require_relative 'bote_in.rb'
     require_relative 'bote_out.rb'
   end
-
-  DEFAULT_SELECTION_SIZE = 5
-
-  MAX_SELECTION_SIZE = 200
 end

@@ -9,6 +9,10 @@ class CommandJob < ApplicationJob
   # Default reply for some Cmd.
   DONE = 'DONE'.freeze
 
+  DEFAULT_SELECTION_SIZE = 5
+
+  MAX_SELECTION_SIZE = 200
+
   protected
 
   # Also remove resource from full_jid
@@ -26,8 +30,8 @@ class CommandJob < ApplicationJob
   # See #with_plus?
   def find_count_from(token)
     count = token.to_i.abs
-    count = Reader::DEFAULT_SELECTION_SIZE if count <= 0
-    count = Reader::MAX_SELECTION_SIZE if count > Reader::MAX_SELECTION_SIZE
+    count = DEFAULT_SELECTION_SIZE if count <= 0
+    count = MAX_SELECTION_SIZE if count > MAX_SELECTION_SIZE
     count
   end
 
