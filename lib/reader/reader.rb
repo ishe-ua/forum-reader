@@ -23,4 +23,6 @@ module Reader
   end
 
   DEFAULT_SELECTION_SIZE = 5
+
+  MAX_SELECTION_SIZE = 200
 end

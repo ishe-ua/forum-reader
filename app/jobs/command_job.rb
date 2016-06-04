@@ -1,27 +1,39 @@
 # Base for Cmd jobs.
 class CommandJob < ApplicationJob
-  # From whom Cmd, see #find_user_from
-  attr_reader :user
+  # From whom Cmd?
+  attr_accessor :user
+
+  # Which params with Cmd?
+  attr_accessor :params
 
   # Default reply for some Cmd.
   DONE = 'DONE'.freeze
 
   protected
 
-  def find_user_from(job)
-    full_jid = args_from(job).second
-    jid = stripped(full_jid)
-
-    @user = User.find_by(jabber: jid)
-    raise_if_user_not_found(full_jid)
+  # Also remove resource from full_jid
+  def find_user_from(full_jid)
+    jid = Blather::JID.new(full_jid).strip
+    User.find_by(jabber: jid)
   end
 
-  # Remove resource from Jabber ID.
-  def stripped(full_jid)
-    Blather::JID.new(full_jid).strip
+  # See #with_plus?
+  def find_name_from(token)
+    t = (token || '').strip
+    with_plus?(t) ? t.chop : t
   end
 
-  def raise_if_user_not_found(full_jid)
-    raise "User not found #{full_jid}" if user.nil?
+  # See #with_plus?
+  def find_count_from(token)
+    count = token.to_i.abs
+    count = Reader::DEFAULT_SELECTION_SIZE if count <= 0
+    count = Reader::MAX_SELECTION_SIZE if count > Reader::MAX_SELECTION_SIZE
+    count
+  end
+
+  # For commands like Reader::Cmd::LastJob and Reader::Cmd::ListJob
+  def with_plus?(token)
+    (token || '').strip
+                 .last == '+'
   end
 end
