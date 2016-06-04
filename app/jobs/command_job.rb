@@ -1,10 +1,7 @@
 # Base for Cmd jobs.
 class CommandJob < ApplicationJob
-  # From whom Cmd
+  # From whom Cmd, see #find_user_from
   attr_reader :user
-
-  # TODO: move to job??
-  before_enqueue { |job| find_user_from(job) }
 
   # Default reply for some Cmd.
   DONE = 'DONE'.freeze
