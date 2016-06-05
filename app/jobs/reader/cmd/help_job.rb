@@ -6,11 +6,11 @@ module Reader
 
       REGEXP = /help/
 
-      before_enqueue { |job| find_user_from(job) }
-
       def perform(_body, from)
-        body = CmdMailer.help(user).body.encoded
-        ReplyJob.perform_later(body, from)
+        user = find_user_from(from)
+        body = CmdMailer.help(user).body.encoded # TODO: cache for each locale
+
+        ReplyJob.perform_later(body, from) if user && body.presentt?
       end
     end
   end
