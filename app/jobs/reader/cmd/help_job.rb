@@ -10,7 +10,7 @@ module Reader
         user = find_user_from(from)
         body = CmdMailer.help(user).body.encoded # TODO: cache for each locale
 
-        ReplyJob.perform_later(body, from) if user && body.presentt?
+        ReplyJob.perform_later(body, from) if user && body.present?
       end
     end
   end
