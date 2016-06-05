@@ -17,8 +17,14 @@ module Reader
     #
     # Return FeedItem 's like +Array+
 
-    def find_news_in(url, time1, time2)
-      # TODO
+    def find_news_in(feed, time1, time2)
+      time2 = Time.zone.now unless time2
+      time1 = time2 unless time1
+
+      feed.feed_items.where('created_at > ? AND created_at <= ?',
+                            time1, time2)
+          .order(:created_at)
+          .pluck(:created_at, :date, :url, :theme, :text)
     end
 
     private
