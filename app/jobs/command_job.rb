@@ -31,6 +31,11 @@ class CommandJob < ApplicationJob
     }
   end
 
+  # See #params_from and #params
+  def valid_params?
+    params && params[:name].present?
+  end
+
   private
 
   def find_name_from(token)

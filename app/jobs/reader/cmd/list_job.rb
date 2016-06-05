@@ -11,8 +11,7 @@ module Reader
         user = find_user_from(from)
         params = find_params_from(body)
 
-        reply_to(from) if
-          user && params[:name].present?
+        reply_to(from) if user && valid_params?
       end
 
       protected
