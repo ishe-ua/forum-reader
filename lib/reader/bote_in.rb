@@ -28,11 +28,6 @@ module Reader
         end
       end
 
-    # Unrecognized command
-    message(:chat?) do |m|
-      Cmd::ListJob.perform_later(m.body, m.from) if m.body.present?
-    end
-
     def self.run
       EM.run { client.run }
     end
