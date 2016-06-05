@@ -8,11 +8,9 @@ module Reader
     # Return Forum, Letter or LetterItem
 
     def find_obj_by(user, token)
-      f = find_in_forums(user, token)
-      l = find_in_letters(user, token) unless f
-      i = find_in_letter_items(user, token) unless f && l
-
-      f || l || i
+      find_in_forums(user, token) ||
+        find_in_letters(user, token) ||
+        find_in_letter_items(user, token)
     end
 
     # Find news in Feed between to times.
