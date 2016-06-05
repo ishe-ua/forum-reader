@@ -6,6 +6,7 @@ module Reader
 
       REGEXP = /last/
 
+      # Like ListJob
       def perform(body, from)
         user = find_user_from(from)
         params = find_params_from(body)
