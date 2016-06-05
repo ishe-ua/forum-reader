@@ -19,7 +19,7 @@ module Reader
 
       def find_params_from(body)
         tokens = body.split
-        params_from(tokens[0], tokens[1])
+        params_from(tokens[0], tokens[1]).merge(count: CommonJob::MAX_SELECTION)
       end
 
       def reply_to(from)

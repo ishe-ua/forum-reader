@@ -22,7 +22,7 @@ class CommandJob < ApplicationJob
   end
 
   # See Reader::Cmd::LastJob#find_params_from and
-  # Reader::Cmd::ListJob#find_params_from.
+  # Reader::Cmd::ListJob#find_params_from
   def params_from(token1, token2)
     {
       name: find_name_from(token1),
