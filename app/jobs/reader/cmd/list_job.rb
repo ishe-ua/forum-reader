@@ -7,6 +7,8 @@ module Reader
       # Default command
       REGEXP = //
 
+      include Cmd # TODO
+
       # Like LastJob
       def perform(body, from)
         user = find_user_from(from)

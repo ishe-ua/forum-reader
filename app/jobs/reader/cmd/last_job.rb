@@ -6,6 +6,8 @@ module Reader
 
       REGEXP = /last/
 
+      include Cmd # TODO
+
       # Like ListJob
       def perform(body, from)
         user = find_user_from(from)
