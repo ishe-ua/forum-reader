@@ -3,7 +3,7 @@ require 'test_helper'
 module Reader
   class BoteInTest < ActiveSupport::TestCase
     setup do
-      @modul = Reader::BoteIn
+      @modul = BoteIn
     end
 
     test 'the truth' do

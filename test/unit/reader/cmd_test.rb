@@ -1,9 +1,9 @@
 require 'test_helper'
 
 module Reader
-  class BoteOutTest < ActiveSupport::TestCase
+  class CmdTest < ActiveSupport::TestCase
     setup do
-      @modul = BoteOut
+      @modul = Cmd
     end
 
     test 'the truth' do
