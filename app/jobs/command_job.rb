@@ -21,13 +21,23 @@ class CommandJob < ApplicationJob
     User.find_by(jabber: jid)
   end
 
-  # See #with_plus?
+  # See Reader::Cmd::LastJob#find_params_from and
+  # Reader::Cmd::ListJob#find_params_from.
+  def params_from(token1, token2)
+    {
+      name: find_name_from(token1),
+      plus: with_plus?(token1),
+      count: find_count_from(token2)
+    }
+  end
+
+  private
+
   def find_name_from(token)
     t = (token || '').strip
     with_plus?(t) ? t.chop : t
   end
 
-  # See #with_plus?
   def find_count_from(token)
     count = token.to_i.abs
     count = DEFAULT_SELECTION_SIZE if count <= 0
@@ -35,9 +45,7 @@ class CommandJob < ApplicationJob
     count
   end
 
-  # For commands like Reader::Cmd::LastJob and Reader::Cmd::ListJob
   def with_plus?(token)
-    (token || '').strip
-                 .last == '+'
+    (token || '').strip.last == '+'
   end
 end
