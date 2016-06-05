@@ -6,11 +6,12 @@ module Reader
 
       REGEXP = /status/
 
-      before_enqueue { |job| find_user_from(job) }
-
       def perform(_body, from)
-        body = (user.status == ON ? OFF : ON).upcase
-        ReplyJob.perform_later(body, from)
+        user = find_user_from(from)
+        if user
+          body = (user.status == ON ? OFF : ON).upcase
+          ReplyJob.perform_later(body, from)
+        end
       end
     end
   end
