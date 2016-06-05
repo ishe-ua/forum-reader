@@ -32,7 +32,7 @@ class CommandJob < ApplicationJob
   end
 
   # See #params_from and #params
-  def valid_params?
+  def valid?(params)
     params && params[:name].present?
   end
 

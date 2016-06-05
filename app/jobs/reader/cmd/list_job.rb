@@ -4,14 +4,15 @@ module Reader
     class ListJob < CommandJob
       queue_as :default
 
-      REGEXP = /list/
+      # Default command
+      REGEXP = //
 
       # Like LastJob
       def perform(body, from)
         user = find_user_from(from)
         params = find_params_from(body)
 
-        reply_to(from) if user && valid_params?
+        reply_to(from) if user && valid?(params)
       end
 
       protected

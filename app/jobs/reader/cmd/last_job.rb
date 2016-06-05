@@ -11,7 +11,7 @@ module Reader
         user = find_user_from(from)
         params = find_params_from(body)
 
-        reply_to(from) if user && valid_params?
+        reply_to(from) if user && valid?(params)
       end
 
       protected
