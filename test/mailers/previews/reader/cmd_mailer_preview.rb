@@ -6,6 +6,10 @@ module Reader
       mailer.help(user)
     end
 
+    def forum_news
+      mailer.forum_news(forum, feed_item, target)
+    end
+
     private
 
     def mailer
@@ -14,6 +18,18 @@ module Reader
 
     def user
       User.all.sample
+    end
+
+    def forum
+      Forum.all.sample
+    end
+
+    def feed_item
+      FeedItem.all.sample
+    end
+
+    def target
+      Target::SUPPORTED_TARGETS.sample.to_sym
     end
   end
 end
