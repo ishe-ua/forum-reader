@@ -7,6 +7,7 @@ module Reader
     end
 
     def forum_news
+      target = Target::SUPPORTED_TARGETS.sample.to_sym
       mailer.forum_news(forum, feed_item, target)
     end
 
@@ -47,10 +48,6 @@ module Reader
 
     def feed_item
       FeedItem.all.sample
-    end
-
-    def target
-      Target::SUPPORTED_TARGETS.sample.to_sym
     end
   end
 end

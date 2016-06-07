@@ -6,6 +6,7 @@ require Rails.root.join('lib', 'clock.rb')
 
 ##
 
+require Rails.root.join('lib/utils', 'convert.rb')
 require Rails.root.join('lib/utils', 'queues.rb')
 require Rails.root.join('lib/utils', 'tokenizer.rb')
 

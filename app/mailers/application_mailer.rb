@@ -7,7 +7,7 @@ class ApplicationMailer < ActionMailer::Base
 
   helper do
     def html_to_text(str)
-      Nokogiri::HTML(str).text
+      Utils::Convert.html_to_text(str)
     end
   end
 end

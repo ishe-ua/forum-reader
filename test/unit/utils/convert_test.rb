@@ -1,9 +1,9 @@
 require 'test_helper'
 
 module Utils
-  class ConverterTest < ActiveSupport::TestCase
+  class ConvertTest < ActiveSupport::TestCase
     setup do
-      @modul = Converter
+      @modul = Convert
     end
 
     test 'the truth' do
