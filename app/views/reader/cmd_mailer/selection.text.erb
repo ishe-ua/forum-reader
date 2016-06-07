@@ -1,0 +1,21 @@
+<% if @plus %>
+
+  <% @feed_items.each do |feed_item| %>
+    <%= Nokogiri::HTML(feed_item.theme) %>
+    <%= feed_item.url %>
+
+  <% end %>
+
+<% else %>
+
+  <% @feed_items.each do |feed_item| %>
+    --
+    <%= html_to_text feed_item.titl %>
+
+    <%= html_to_text feed_item.body %>
+
+    <%= feed_item.link %>
+
+  <% end %>
+
+<% end %>

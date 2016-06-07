@@ -36,6 +36,16 @@ module Reader
       end
     end
 
+    # FeedItem selection to Jabber.
+    #
+    # See Cmd::LastJob and Cmd::ListJob
+
+    def selection(user, feed_items, plus)
+      @feed_items = feed_items
+      @plus = plus
+      mail to: user.jabber
+    end
+
     private
 
     def build_subject(prefix, text)

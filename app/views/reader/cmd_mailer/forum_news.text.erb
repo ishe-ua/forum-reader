@@ -1,7 +1,7 @@
 <% if @target == :jabber %>
-<%= Nokogiri::HTML(@subject).text %>
+<%= Utils::Converter.html_to_text(@subject) %>
 <% end %>
 
-<%= Nokogiri::HTML(@feed_item.text).text %>
+<%= Utils::Converter.html_to_text(@feed_item.text) %>
 
 <%= @feed_item.url %>
