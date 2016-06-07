@@ -25,7 +25,7 @@ module Reader
 
       def reply_to(from)
         obj = find_obj_by(user, params[:name])
-        body = obj ? build_selection(obj) : CommandJob::UNKNOW
+        body = obj ? build_selection(obj) : CommandJob::NOT_FOUND
         ReplyJob.perform_later(body, from)
       end
 

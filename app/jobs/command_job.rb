@@ -10,7 +10,7 @@ class CommandJob < ApplicationJob
 
   EMPTY  = 'EMPTY'.freeze       # TODO: remove if dont need
 
-  UNKNOW = '??'.freeze
+  NOT_FOUND = '??'.freeze
 
   DEFAULT_SELECTION_SIZE = 5
 
