@@ -31,8 +31,10 @@ module Reader
 
       private
 
-      def build_selection(_obj)
-        feed_items = find_selection(obj)
+      def build_selection(obj)
+        model_name = ActiveModel::Naming.singular(obj)
+        feed_items = instance_eval("from_#{model_name}(obj)")
+
         if feed_items.any?
           CmdMailer.selection(user, feed_items, params[:plus])
                    .body
@@ -42,7 +44,15 @@ module Reader
         end
       end
 
-      def find_selection(obj)
+      def from_forum(obj)
+        # TODO
+      end
+
+      def from_letter(obj)
+        # TODO
+      end
+
+      def from_letter_item(obj)
         # TODO
       end
     end
