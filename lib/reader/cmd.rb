@@ -8,9 +8,9 @@ module Reader
     # Return Forum, Letter or LetterItem
 
     def find_obj_by(user, token)
-      find_in_forums(user, token) ||
-        find_in_letters(user, token) ||
-        find_in_letter_items(user, token)
+      find_in_forums_(user, token) ||
+        find_in_letters_(user, token) ||
+        find_in_letter_items_(user, token)
     end
 
     # Find news in Feed between to times.
@@ -28,15 +28,15 @@ module Reader
 
     private
 
-    def find_in_forums(user, token)
+    def find_in_forums_(user, token)
       user.forums.where('name ILIKE ?', token).order(:position).first
     end
 
-    def find_in_letters(user, token)
+    def find_in_letters_(user, token)
       user.letters.where('name ILIKE ?', token).order(:position).first
     end
 
-    def find_in_letter_items(user, token)
+    def find_in_letter_items_(user, token)
       LetterItems
         .where(letter_id: user.letters.pluck(:id))
         .where('name ILIKE ?', token).order(:position).first

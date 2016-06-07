@@ -24,6 +24,25 @@ module Reader
       end
 
       def reply_to(from)
+        obj = find_obj_by(user, params[:name])
+        body = obj ? build_selection(obj) : CommandJob::UNKNOW
+        ReplyJob.perform_later(body, from)
+      end
+
+      private
+
+      def build_selection(_obj)
+        feed_items = find_selection(obj)
+        if feed_items.any?
+          CmdMailer.selection(user, feed_items, params[:plus])
+                   .body
+                   .encoded.strip
+        else
+          CommandJob::EMPTY
+        end
+      end
+
+      def find_selection(obj)
         # TODO
       end
     end
