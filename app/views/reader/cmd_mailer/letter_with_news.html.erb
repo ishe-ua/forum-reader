@@ -1,0 +1,22 @@
+<% @news.each do |news| %>
+
+  <%
+  letter_item = news[:letter_item]
+  feed_items = news[:feed_items]
+  %>
+
+  <h2><%= letter_item.name %></h2>
+
+  <ul>
+    <% feed_items.each do |feed_item| %>
+      <li>
+        <%= link_to feed_item.theme, feed_item.url %>
+        <small>
+          <i>
+            (<%= feed_item.date.strftime('%Y-%m-%d %H:%M') %>)
+          </i>
+        </small>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

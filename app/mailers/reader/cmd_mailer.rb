@@ -6,7 +6,7 @@ module Reader
       I18n.with_locale(user.lang) { mail(to: user.jabber) }
     end
 
-    # Send Forum news to Target :
+    # Forum news to Target :
     #
     # 1. +html+ version to Email
     # 2. +text+ version to Jabber
@@ -16,8 +16,25 @@ module Reader
       @feed_item = feed_item
 
       to = target == :jabber ? forum.user.jabber : forum.user.account.email
+
       mail to: to,
-           subject: (@subject = "[#{forum.name}]: #{feed_item.theme}")
+           subject: build_subject(forum.name, feed_item.theme)
+    end
+
+    # Letter with news to Email.
+    #
+    # News is array of hashes like [{letter_item: x, feed_items: y}, ...]
+
+    def letter_with_news(letter, news)
+      @news = news
+      mail to: letter.user.account.email,
+           subject: build_subject(APP::NAME, letter.name)
+    end
+
+    private
+
+    def build_subject(prefix, text)
+      @subject = "[#{prefix}]: #{text}"
     end
   end
 end

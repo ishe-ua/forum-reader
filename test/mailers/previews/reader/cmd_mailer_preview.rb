@@ -10,6 +10,15 @@ module Reader
       mailer.forum_news(forum, feed_item, target)
     end
 
+    def letter_with_news
+      news = [
+        { letter_item: LetterItem.first, feed_items: FeedItem.all },
+        { letter_item: LetterItem.last, feed_items: FeedItem.all }
+      ]
+
+      mailer.letter_with_news(letter, news)
+    end
+
     private
 
     def mailer
@@ -22,6 +31,10 @@ module Reader
 
     def forum
       Forum.all.sample
+    end
+
+    def letter
+      Letter.all.sample
     end
 
     def feed_item
