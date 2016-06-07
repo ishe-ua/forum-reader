@@ -6,8 +6,11 @@ class CommandJob < ApplicationJob
   # Which params with Cmd?
   attr_accessor :params
 
-  # Default reply for some Cmd.
   DONE = 'DONE'.freeze
+
+  EMPTY  = 'EMPTY'.freeze       # TODO: remove if dont need
+
+  UNKNOW = '??'.freeze          # TODO: remove if dont need
 
   DEFAULT_SELECTION_SIZE = 5
 
