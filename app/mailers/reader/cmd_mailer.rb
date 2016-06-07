@@ -1,6 +1,8 @@
 module Reader
   # Replies to Cmd -commands.
   class CmdMailer < ApplicationMailer
+    layout 'mailer_no_regards'
+
     # Reply to Cmd::HelpJob
     def help(user)
       I18n.with_locale(user.lang) { mail(to: user.jabber) }
@@ -27,8 +29,11 @@ module Reader
 
     def letter_with_news(letter, news)
       @news = news
-      mail to: letter.user.account.email,
-           subject: build_subject(APP::NAME, letter.name)
+      mail(to: letter.user.account.email,
+           subject: build_subject(APP::NAME, letter.name)) do |format|
+        format.html { render layout: 'mailer' }
+        format.text { render layout: 'mailer' }
+      end
     end
 
     private
