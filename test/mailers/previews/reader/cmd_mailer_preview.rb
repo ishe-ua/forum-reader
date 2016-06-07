@@ -19,6 +19,14 @@ module Reader
       mailer.letter_with_news(letter, news)
     end
 
+    def selection
+      mailer.selection(user, FeedItem.all, false)
+    end
+
+    def selection_plus
+      mailer.selection(user, FeedItem.all, true)
+    end
+
     private
 
     def mailer

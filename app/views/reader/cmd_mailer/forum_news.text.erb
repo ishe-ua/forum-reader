@@ -1,7 +1,7 @@
 <% if @target == :jabber %>
-<%= Utils::Converter.html_to_text(@subject) %>
+<%= html_to_text(@subject) %>
 <% end %>
 
-<%= Utils::Converter.html_to_text(@feed_item.text) %>
+<%= html_to_text(@feed_item.text) %>
 
 <%= @feed_item.url %>
