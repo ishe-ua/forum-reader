@@ -1,6 +1,6 @@
 module Reader
   module Cmd
-    # +List+ command from BoteIn.
+    # +List+ command from BoteIn
     class ListJob < CommandJob
       queue_as :default
 

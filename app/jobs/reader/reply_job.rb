@@ -2,7 +2,6 @@ module Reader
   # Send message to Jabber.
   #
   # Incoming job for BoteOut.
-  #
   class ReplyJob < ApplicationJob
     queue_as { Reader::BoteOut::QUEUE_NAME }
 

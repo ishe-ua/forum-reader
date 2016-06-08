@@ -2,7 +2,6 @@ module Reader
   # Fetch Feed from remote Url.
   #
   # Incoming job for Fetcher.
-  #
   class FetchFeedJob < ApplicationJob
     queue_as { Reader::Fetcher::QUEUE_NAME }
 

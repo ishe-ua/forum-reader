@@ -1,6 +1,6 @@
 module Reader
   module Cmd
-    # +Status+ command from BoteIn.
+    # +Status+ command from BoteIn
     class StatusJob < CommandJob
       queue_as :default
 

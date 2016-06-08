@@ -1,6 +1,6 @@
 module Reader
   module Cmd
-    # +Last+ command from BoteIn.
+    # +Last+ command from BoteIn
     class LastJob < CommandJob
       queue_as :default
 

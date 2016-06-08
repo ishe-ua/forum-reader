@@ -1,5 +1,5 @@
 module Reader
-  # Process response from FetchFeedJob.
+  # Process response from FetchFeedJob
   class FetchedFeedJob < ApplicationJob
     queue_as :default
 
@@ -53,7 +53,7 @@ module Reader
     end
 
     def purify(str)
-      str.present? ? str.strip : ''
+      str ? str.strip : ''
     end
   end
 end

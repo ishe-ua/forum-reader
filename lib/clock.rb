@@ -18,8 +18,10 @@ module Clockwork
   end
 
   # rubocop:disable LineLength
+  # rubocop:disable Rails/TimeZone
 
   every(5.minutes, 'reader.fetch.forums') { Reader::FetchForumsJob.perform_later }
   every(15.minutes, 'reader.fetch.letters') { Reader::FetchLettersJob.perform_later }
+  every(1.minute, 'reader.send_letters') { Reader::SendLettersJob.perform_later(Time.now) }
   every(1.day, 'reader.clean_feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
 end

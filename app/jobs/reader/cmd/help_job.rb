@@ -1,6 +1,6 @@
 module Reader
   module Cmd
-    # +Help+ command from BoteIn.
+    # +Help+ command from BoteIn
     class HelpJob < CommandJob
       queue_as :default
 
