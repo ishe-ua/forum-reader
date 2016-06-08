@@ -44,15 +44,19 @@ module Reader
         end
       end
 
-      def from_forum(obj)
-        # TODO
+      def from(obj)
+        time = obj.last_post_at || Time.zone.now
+        feed = Feed.find_or_create_by(url: obj.url)
+
+        feed.feed_items.where('created_at <= ?', time)
+            .order(:created_at)
+            .last(params[:count])
       end
+
+      alias_method :from_forum, :from
+      alias_method :from_letter_item, :from
 
       def from_letter(obj)
-        # TODO
-      end
-
-      def from_letter_item(obj)
         # TODO
       end
     end
