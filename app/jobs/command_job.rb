@@ -8,7 +8,7 @@ class CommandJob < ApplicationJob
 
   DONE = 'DONE'.freeze
 
-  EMPTY  = 'EMPTY'.freeze       # TODO: remove if dont need
+  EMPTY = 'EMPTY'.freeze
 
   NOT_FOUND = '??'.freeze
 
