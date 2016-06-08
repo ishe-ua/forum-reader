@@ -5,12 +5,11 @@ module Reader
     setup do
       @mailer = CmdMailer
       @user = users(:john)
-      @account = @user.account
     end
 
     test 'help' do
       mail = mailer.help(@user)
-      assert_equal mail.to, [@account.email]
+      assert_equal mail.to, [@user.account.email]
     end
 
     test 'forum_news' do
@@ -22,6 +21,11 @@ module Reader
 
       assert_equal mail.to, [forum.user.jabber] if target == :jabber
       assert_equal mail.to, [forum.user.account.email] if target == :email
+    end
+
+    test 'letter_with_news' do
+      mail = mailer.letter_with_news(letters(:ua), [])
+      assert_not_empty mail.body.encoded, 'regards present'
     end
 
     test 'selection' do
