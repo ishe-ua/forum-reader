@@ -8,7 +8,7 @@ module Reader
     extend Blather::DSL
     extend Utils::Queues
 
-    setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
+    setup(Reader::BOTE_JID, APP::BOTES_PASSWORD)
     disconnected { client.connect }
 
     # Queue with incoming messages (from Cmd).

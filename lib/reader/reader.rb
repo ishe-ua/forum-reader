@@ -15,8 +15,6 @@ module Reader
 
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
-  BOTE_PASSWORD = ENV['reader_bote_password']
-
   if defined?(Rails)
     require_relative 'fetcher.rb'
     require_relative 'bote_in.rb'

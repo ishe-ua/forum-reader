@@ -7,7 +7,7 @@ module Reader
   module BoteIn
     extend Blather::DSL
 
-    setup(Reader::BOTE_JID, Reader::BOTE_PASSWORD)
+    setup(Reader::BOTE_JID, APP::BOTES_PASSWORD)
     disconnected { client.connect }
 
     # Auto approve subscription requests

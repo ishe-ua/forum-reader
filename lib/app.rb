@@ -22,4 +22,10 @@ module APP
 
   # Supported locales (see Lang).
   LANGS = %w(en ru uk).freeze
+
+  # Common password for +all+ botes
+  #
+  # From +ENV+
+
+  BOTES_PASSWORD = ENV['botes_password']
 end
