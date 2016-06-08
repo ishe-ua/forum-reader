@@ -25,7 +25,7 @@ module Reader
       end
 
       def reply_to(from)
-        # TODO
+        # TODO: like LastJob#reply_to
       end
     end
   end
