@@ -31,9 +31,11 @@ module Reader
 
       private
 
+      # rubocop:disable LineLength
+
       def build_selection(obj)
         model_name = ActiveModel::Naming.singular(obj)
-        feed_items = instance_eval("from_#{model_name}(obj)")
+        feed_items = instance_eval("from_#{model_name}(obj)").order(:created_at).last(params[:count])
 
         if feed_items.any?
           CmdMailer.selection(user, feed_items, params[:plus])
@@ -49,15 +51,15 @@ module Reader
         feed = Feed.find_or_create_by(url: obj.url)
 
         feed.feed_items.where('created_at <= ?', time)
-            .order(:created_at)
-            .last(params[:count])
       end
 
-      alias_method :from_forum, :from
-      alias_method :from_letter_item, :from
+      alias from_forum from
+      alias from_letter_item from
 
       def from_letter(obj)
-        # TODO
+        rel = FeedItem.none
+        obj.letter_items.each { |li| rel.merge(from(li)) }
+        rel
       end
     end
   end
