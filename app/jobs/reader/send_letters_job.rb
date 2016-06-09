@@ -19,8 +19,16 @@ module Reader
 
     protected
 
+    # <tt>IMPORTANT:</tt> quite hard request
     def find_letters_for_send
-      # TODO
+      list = []
+      Letter.where("d#{time.wday} == true AND minute == ?", time.min)
+            .find_each do |letter|
+        t = time.in_time_zone(letter.user.timezone)
+        list.push(letter) if t.hour == letter.hour
+      end
+
+      list
     end
 
     def news_in(letter)
