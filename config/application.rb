@@ -32,8 +32,5 @@ module ForumReader
     if Rails.env.development? || Rails.env.test?
       config.logger = Logger.new('/dev/null')
     end
-
-    ## Есть (будут) хранимые процедуры и не только
-    config.active_record.schema_format = :sql
   end
 end
