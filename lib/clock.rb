@@ -1,4 +1,5 @@
 require_relative '../config/initializers/active_job'
+require_relative 'app'
 require 'clockwork'
 
 # App clock, gem 'clockwork'.
@@ -22,6 +23,9 @@ module Clockwork
 
   every(5.minutes, 'reader.fetch.forums') { Reader::FetchForumsJob.perform_later }
   every(15.minutes, 'reader.fetch.letters') { Reader::FetchLettersJob.perform_later }
-  every(1.minute, 'reader.send_letters') { Reader::SendLettersJob.perform_later(Time.now) }
   every(1.day, 'reader.clean_feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
+
+  every(1.minute, 'reader.send_letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
+    Reader::SendLettersJob.perform_later(Time.now)
+  end
 end

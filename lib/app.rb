@@ -25,4 +25,7 @@ module APP
 
   # Common password for +all+ botes (from +ENV+)
   BOTES_PASSWORD = ENV['botes_password']
+
+  # See Schedule and Clockwork
+  SUPPORTED_MINUTES = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].freeze
 end

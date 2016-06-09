@@ -11,7 +11,7 @@ module Schedule
   extend ActiveSupport::Concern
 
   SUPPORTED_HOURS = (0..23).to_a
-  SUPPORTED_MINUTES = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].freeze
+  SUPPORTED_MINUTES = APP::SUPPORTED_MINUTES
 
   included do
     after_initialize :set_default_schedule
