@@ -13,7 +13,10 @@ module Reader
 
       find_letters_for_send.each do |letter|
         news = news_in(letter)
-        CmdMailer.letter_with_news(letter, news).deliver_later if news.any?
+        if news.any?
+          CmdMailer.letter_with_news(letter, news).deliver_later
+          update_last_post_at(letter)
+        end
       end
     end
 
@@ -44,6 +47,12 @@ module Reader
       time2 = time
 
       find_news_in(feed, time1, time2)
+    end
+
+    # Update LastPostAt for Letter and his LetterItem -s
+    def update_last_post_at(letter)
+      letter.update(last_post_at: time)
+      letter.letter_items.each { |li| li.update(last_post_at: time) }
     end
 
     private
