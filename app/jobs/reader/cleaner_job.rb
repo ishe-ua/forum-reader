@@ -20,11 +20,10 @@ module Reader
     protected
 
     def find_feed_items_for_clean(feed)
-      if feed.count > MIN_STORE_ITEMS
-        feed.feed_items.where('created_at < ?', MIN_STORE_TIME.ago)
-      else
-        feed.feed_items.none
-      end
+      rel = feed.feed_items
+      rel.where('created_at < ?', MIN_STORE_TIME.ago) if rel.count >
+                                                         MIN_STORE_ITEMS
+      rel
     end
   end
 end

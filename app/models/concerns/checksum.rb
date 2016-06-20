@@ -14,19 +14,13 @@ module Checksum
               presence: true,
               uniqueness: { scope: :feed_id }
 
-    before_validation :calc_and_set_checksum, if: :blank?
+    before_validation :calc_and_set_checksum, if: 'checksum.blank?'
   end
 
   protected
 
   def calc_and_set_checksum
-    s = if url.present?
-          url
-        else
-          t = Time.zone.now.to_i
-          t.to_s + rand(t).to_s
-        end
-
+    s = "#{url}-#{theme}-#{text}"
     self.checksum = Digest::MD5.hexdigest(s)
   end
 end

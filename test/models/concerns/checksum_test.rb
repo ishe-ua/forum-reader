@@ -7,6 +7,6 @@ class ChecksumTest < ActiveSupport::TestCase
 
   test 'required field' do
     instance.checksum = nil
-    assert_not instance.valid?
+    assert instance.valid?
   end
 end
