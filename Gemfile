@@ -35,6 +35,7 @@ group :test do
   gem 'poltergeist'
   gem 'rr', require: false
   gem 'rack_session_access'
+  gem 'vcr'
 end
 
 gem 'acts_as_list'
