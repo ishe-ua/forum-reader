@@ -1,16 +1,16 @@
 module Reader
   # Command.
   module Cmd
-    protected
-
     # Where to find? Token is value from LastJob or ListJob.
     #
     # Return Forum, Letter or LetterItem
 
     def find_obj_by(user, token)
-      find_in_forums(user, token) ||
-        find_in_letters(user, token) ||
-        find_in_letter_items(user, token)
+      rel = (find_in_forums(user, token) ||
+             find_in_letters(user, token) ||
+             find_in_letter_items(user, token))
+
+      rel ? rel.order(:position).first : nil
     end
 
     # Find news in Feed between to times.
@@ -26,20 +26,31 @@ module Reader
           .order(:created_at)
     end
 
+    protected
+
+    # Prepare token for <tt>PG#ILIKE</tt> function
+    def iliked(token)
+      "%#{token}%"
+    end
+
     private
 
     def find_in_forums(user, token)
-      user.forums.where('name ILIKE ?', token).order(:position).first
+      rel = user.forums.where('name ILIKE ?', iliked(token))
+      rel.any? ? rel : nil
     end
 
     def find_in_letters(user, token)
-      user.letters.where('name ILIKE ?', token).order(:position).first
+      rel = user.letters.where('name ILIKE ?', iliked(token))
+      rel.any? ? rel : nil
     end
 
     def find_in_letter_items(user, token)
-      LetterItems
-        .where(letter_id: user.letters.pluck(:id))
-        .where('name ILIKE ?', token).order(:position).first
+      rel = LetterItem
+            .where(letter_id: user.letters.pluck(:id))
+            .where('name ILIKE ?', iliked(token))
+
+      rel.any? ? rel : nil
     end
   end
 end
