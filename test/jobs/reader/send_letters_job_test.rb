@@ -8,7 +8,10 @@ module Reader
       @letter = letters(:dev)
       @letter_item = letter_items(:opennet)
 
-      @test_time = Time.utc(2016, 06, 18, letter.hour, letter.minute)
+      Time.use_zone(letter.user.timezone) do
+        @test_time = Time.zone.parse "18-6-2016 #{letter.hour}:#{letter.minute}"
+      end
+
       @job = SendLettersJob.new(test_time)
     end
 
@@ -51,6 +54,16 @@ module Reader
 
       assert_not_equal cur1, pre1, 'changed for letter'
       assert_not_equal cur2, pre2, 'changed for letter_item'
+    end
+
+    test 'send_time? => true' do
+      stub(job).time { test_time }
+      travel_to(test_time) { assert job.send(:send_time?, letter) }
+    end
+
+    test 'send_time? => false' do
+      stub(job).time { Time.zone.now }
+      travel_to(Time.zone.now) { assert_not job.send(:send_time?, letter) }
     end
   end
 end
