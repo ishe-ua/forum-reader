@@ -9,10 +9,18 @@ module Reader
       @letter_item = letter_items(:opennet)
 
       Time.use_zone(letter.user.timezone) do
-        @test_time = Time.zone.parse "18-6-2016 #{letter.hour}:#{letter.minute}"
+        t = "18-6-2016 #{letter.hour}:#{letter.minute}"
+        @test_time = Time.zone.parse(t)
       end
 
-      @job = SendLettersJob.new(test_time)
+      @job = SendLettersJob.new
+    end
+
+    #focus
+    test 'perform' do
+      skip
+      # assert_no_enqueued_jobs { job.perform(test_time) }
+      travel_to(test_time) { assert_enqueued_jobs(1) { job.perform test_time } }
     end
 
     test 'find_letters_for_send' do
