@@ -9,4 +9,9 @@ class CommandJobTest < ActiveJob::TestCase
     user = instance.send(:find_user_from, 'ishe@example.com/ipad')
     assert_equal user, users(:ishe)
   end
+
+  test 'with_plus?' do
+    assert instance.send(:with_plus?, 'bbc+')
+    assert_not instance.send(:with_plus?, 'bbc')
+  end
 end
