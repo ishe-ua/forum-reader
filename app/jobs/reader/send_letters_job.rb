@@ -22,11 +22,11 @@ module Reader
 
     protected
 
-    # <tt>IMPORTANT:</tt> hard request
+    # <tt>WARN:</tt> heavy sql
     def find_letters_for_send
       list = []
 
-      Letter.where('minute == ?', time.min).find_each do |letter|
+      Letter.where(minute: time.min).find_each do |letter|
         list.push(letter) if send_time?(letter)
       end
 
