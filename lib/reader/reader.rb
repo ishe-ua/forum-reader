@@ -16,9 +16,9 @@ module Reader
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
   if defined?(Rails)
+    require_relative 'cmd.rb' # should be first
     require_relative 'fetcher.rb'
     require_relative 'bote_in.rb'
     require_relative 'bote_out.rb'
-    require_relative 'cmd.rb'
   end
 end
