@@ -12,6 +12,19 @@ module Reader
       @job = SendLettersJob.new(test_time)
     end
 
+    test 'news_in (letter) => true' do
+      stub(job).time { Time.zone.now }
+      letter_item.update!(last_post_at: 1_000_000.days.ago)
+
+      news = job.send(:news_in, letter)
+      assert_not_empty news
+    end
+
+    test 'news_in (letter) => false' do
+      stub(job).time { Time.zone.now }
+      assert_empty job.send(:news_in, letter)
+    end
+
     test 'news_in_the (letter_item) => true' do
       stub(job).time { Time.zone.now }
       letter_item.update!(last_post_at: 1_000_000.days.ago)
