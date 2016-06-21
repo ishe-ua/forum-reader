@@ -5,6 +5,7 @@ module Reader
     setup do
       @instance = Class.new { include Cmd }.new
       @user = users(:ishe)
+      @feed = feeds(:lbua)
     end
 
     test 'find_in_forums' do
@@ -27,11 +28,13 @@ module Reader
     end
 
     test 'find_news_in => found' do
-      skip
+      news = instance.find_news_in(@feed, 1.day.ago, Time.zone.now)
+      assert_equal news.count, 1
     end
 
     test 'find_news_in => not found' do
-      skip
+      news = instance.find_news_in(@feed, 2.days.ago, 1.day.ago)
+      assert_equal news.count, 0
     end
   end
 end

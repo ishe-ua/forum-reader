@@ -15,3 +15,10 @@ news_<%= i %>:
   url: http://opennet.ru/feed/<%= i %>
   checksum: <%= i.to_s %>
 <% end %>
+
+lbua:
+  <<: *DEFAULTS
+  feed: lbua
+
+  created_at: now
+  updated_at: now
