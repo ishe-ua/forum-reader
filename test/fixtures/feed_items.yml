@@ -11,9 +11,10 @@ DEFAULTS: &DEFAULTS
 <% 1.upto(10) do |i| %>
 news_<%= i %>:
   <<: *DEFAULTS
+  feed: opennet
+  checksum: <%= i.to_s %>
   date: <%= i.days.ago %>
   url: http://opennet.ru/feed/<%= i %>
-  checksum: <%= i.to_s %>
 <% end %>
 
 lbua:

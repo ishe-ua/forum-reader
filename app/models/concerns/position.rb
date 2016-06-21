@@ -9,4 +9,6 @@ module Position
   included do
     default_scope { order :position }
   end
+
+  # TODO: set default value to 1
 end

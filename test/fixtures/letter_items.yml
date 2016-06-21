@@ -9,14 +9,14 @@ opennet:
   letter: dev
   name: opennet.ru
   url: http://opennet.ru/opennews/opennews_6.rss
-  position: 0
+  position: 1
 
 lbua:
   <<: *DEFAULTS
   letter: ua
   name: lb.ua
   url: http://lb.ua/rss/rss.xml
-  position: 0
+  position: 1
 
 atytarenko:
   <<: *DEFAULTS

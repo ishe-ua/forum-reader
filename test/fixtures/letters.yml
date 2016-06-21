@@ -18,6 +18,9 @@ DEFAULTS: &DEFAULTS
 dev:
   <<: *DEFAULTS
   name: Development
+  d5: true
+  hour: 17
+  minute: 30
   position: 1
 
 ua:
