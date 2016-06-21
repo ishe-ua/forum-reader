@@ -16,8 +16,17 @@ class CommandJobTest < ActiveJob::TestCase
     assert_equal instance.send(:find_name_from, ['', nil].shuffle.sample), ''
   end
 
+  test 'find_count_from' do
+    assert_equal instance.send(:find_count_from, '15'), 15
+    assert_equal instance.send(:find_count_from, 10_000),
+                 CommandJob::MAX_SELECTION_SIZE
+    assert_equal instance.send(:find_count_from, ['', nil].shuffle.sample),
+                 CommandJob::DEFAULT_SELECTION_SIZE
+  end
+
   test 'with_plus?' do
     assert instance.send(:with_plus?, 'bbc+')
     assert_not instance.send(:with_plus?, 'bbc')
+    assert_not instance.send(:with_plus?, ['', nil].shuffle.sample)
   end
 end
