@@ -39,8 +39,8 @@ module Reader
 
         if feed_items.any?
           ReplyMailer.selection(user, feed_items, params[:plus])
-                   .body
-                   .encoded.strip
+                     .body
+                     .encoded.strip
         else
           CommandJob::EMPTY
         end

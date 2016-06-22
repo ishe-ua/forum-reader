@@ -13,7 +13,6 @@ module Reader
       @test_time = Time.use_zone(letter.user.timezone) do
         Time.zone.parse("18-6-2016 #{letter.hour}:#{letter.minute}")
       end
-
     end
 
     test 'perform' do

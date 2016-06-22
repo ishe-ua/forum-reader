@@ -16,7 +16,7 @@ module Reader
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
     #
     # http error 301 (pravda.com.ua/rss redirect to pravda.com.ua/rss/)
-    REQUEST_OPTS = { redirects: 2 }.freeze
+    REQUEST_PARAMS = { redirects: 2 }.freeze
 
     class << self
       # Wait for FetchFeedJob -s and process them.
@@ -25,8 +25,9 @@ module Reader
 
       def run
         EM.run do
-          # rubocop:disable LineLength
-          EM.add_periodic_timer(1) { jobs_from(QUEUE_NAME) { |job| process_incoming(job) } }
+          EM.add_periodic_timer(1) do
+            jobs_from(QUEUE_NAME) { |job| process_incoming(job) }
+          end
         end
       end
 
@@ -38,15 +39,16 @@ module Reader
 
       protected
 
-      # Do request to Url and enqueue FetchedFeedJob.
+      # Do +em+-request to Url and enqueue FetchedFeedJob with
+      # response.
       def process_incoming(job)
         url = Utils::Queues.args_from(job).first
         resource_type = Utiils::Queues.args_from(job).second
 
         conn_opts = CONNECT_OPTS.dup
-        request_opts = REQUEST_OPTS.dup
+        request_params = REQUEST_PARAMS.dup
 
-        http = EM::HttpRequest.new(url, conn_opts).get(request_opts)
+        http = EM::HttpRequest.new(url, conn_opts).get(request_params)
         http.callback { enqueue_ffj(url, http.response, resource_type) }
       end
 
@@ -66,8 +68,11 @@ module Reader
       private
 
       def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(url, encode(response), resource_type) unless
-          response.blank?
+        FetchedFeedJob.perform_later(
+          url,
+          encode(response),
+          resource_type
+        ) unless response.blank?
       end
     end
   end
