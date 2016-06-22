@@ -7,11 +7,6 @@ require 'rchardet'
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
   #
-  # 1. FetchForumsJob
-  # 2. FetchLettersJob
-  # 3. FetchFeedJob
-  # 4. FetchedFeedJob
-  #
   module Fetcher
     QUEUE_NAME = 'reader.fetcher'.to_sym
 
