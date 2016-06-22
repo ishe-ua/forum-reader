@@ -7,8 +7,6 @@ require 'rchardet'
 module Reader
   # Fetch Forum -s and Letter -s periodically from remote Url -s.
   #
-  # Parts:
-  #
   # 1. FetchForumsJob
   # 2. FetchLettersJob
   # 3. FetchFeedJob

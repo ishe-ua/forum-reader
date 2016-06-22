@@ -1,6 +1,6 @@
 module Reader
   # Replies to Cmd -commands.
-  class CmdMailer < ApplicationMailer
+  class ReplyMailer < ApplicationMailer
     layout 'mailer_no_regards'
 
     # Reply to Cmd::HelpJob

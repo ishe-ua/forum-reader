@@ -15,7 +15,7 @@ module Reader
       find_letters_for_send.each do |letter|
         news = news_in(letter)
         if news.any?
-          CmdMailer.letter_with_news(letter, news).deliver_later
+          ReplyMailer.letter_with_news(letter, news).deliver_later
           update_last_post_at(letter)
         end
       end

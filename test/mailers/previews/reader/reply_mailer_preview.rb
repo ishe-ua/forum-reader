@@ -1,7 +1,7 @@
 module Reader
   # Preview all emails at
   # http://localhost:3000/rails/mailers/reader/cmd_mailer
-  class CmdMailerPreview < ActionMailer::Preview
+  class ReplyMailerPreview < ActionMailer::Preview
     def help
       mailer.help(user)
     end
@@ -31,7 +31,7 @@ module Reader
     private
 
     def mailer
-      CmdMailer
+      ReplyMailer
     end
 
     def user

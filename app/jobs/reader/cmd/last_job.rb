@@ -38,7 +38,7 @@ module Reader
         feed_items = instance_eval("from_#{model_name}(obj)").order(:created_at).last(params[:count])
 
         if feed_items.any?
-          CmdMailer.selection(user, feed_items, params[:plus])
+          ReplyMailer.selection(user, feed_items, params[:plus])
                    .body
                    .encoded.strip
         else

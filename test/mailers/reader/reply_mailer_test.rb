@@ -1,9 +1,9 @@
 require 'test_helper'
 
 module Reader
-  class CmdMailerTest < ActionMailer::TestCase
+  class ReplyMailerTest < ActionMailer::TestCase
     setup do
-      @mailer = CmdMailer
+      @mailer = ReplyMailer
       @user = users(:john)
     end
 
