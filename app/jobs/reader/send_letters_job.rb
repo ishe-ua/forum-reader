@@ -8,8 +8,9 @@ module Reader
     attr_reader :time
     include Cmd
 
+    # Param should be String
     def perform(enqueue_job_time)
-      @time = enqueue_job_time
+      @time = enqueue_job_time.to_datetime
 
       find_letters_for_send.each do |letter|
         news = news_in(letter)
@@ -40,11 +41,12 @@ module Reader
       end
     end
 
+    # Correct #time to now time
     def news_in_the(letter_item)
       feed = Feed.find_or_create_by(url: letter_item.url)
 
-      time1 = letter_item.last_post_at || time
-      time2 = time
+      time1 = letter_item.last_post_at || (time - 1.month)
+      time2 = [time, Time.zone.now].max
 
       find_news_in(feed, time1, time2)
     end

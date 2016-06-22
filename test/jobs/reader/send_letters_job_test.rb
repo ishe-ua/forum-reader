@@ -16,11 +16,9 @@ module Reader
       @job = SendLettersJob.new
     end
 
-    #focus
     test 'perform' do
-      skip
-      # assert_no_enqueued_jobs { job.perform(test_time) }
-      travel_to(test_time) { assert_enqueued_jobs(1) { job.perform test_time } }
+      assert_enqueued_jobs(2) { job.class.perform_now(test_time.to_s) }
+      assert_no_enqueued_jobs { job.class.perform_now(Time.zone.now.to_s) }
     end
 
     test 'find_letters_for_send' do
@@ -31,7 +29,7 @@ module Reader
       assert_not_empty job.send(:find_letters_for_send)
     end
 
-    test 'news_in (letter) => true' do
+    test 'news_in => true' do
       stub(job).time { Time.zone.now }
       letter_item.update!(last_post_at: 1_000_000.days.ago)
 
@@ -39,12 +37,13 @@ module Reader
       assert_not_empty news
     end
 
-    test 'news_in (letter) => false' do
+    test 'news_in => false' do
+      FeedItem.delete_all
       stub(job).time { Time.zone.now }
       assert_empty job.send(:news_in, letter)
     end
 
-    test 'news_in_the (letter_item) => true' do
+    test 'news_in_the => true' do
       stub(job).time { Time.zone.now }
       letter_item.update!(last_post_at: 1_000_000.days.ago)
 
@@ -52,7 +51,8 @@ module Reader
       assert_not_empty news
     end
 
-    test 'news_in_the (letter_item) => false' do
+    test 'news_in_the => false' do
+      FeedItem.delete_all
       stub(job).time { Time.zone.now }
       assert_empty job.send(:news_in_the, letter_item)
     end
