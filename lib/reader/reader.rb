@@ -1,14 +1,6 @@
 require_relative '../app.rb'
 
-# RSS Reader.
-#
-# Parts:
-#
-# 1. Fetcher
-# 2. BoteIn
-# 3. BoteOut
-# 4. CleanerJob
-# 5. Cmd
+# RSS Reader
 #
 module Reader
   BOTE_NAME = 'reader'.freeze

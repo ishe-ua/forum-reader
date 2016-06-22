@@ -5,15 +5,15 @@ module Reader
     attr_reader :letter, :letter_item, :test_time
 
     setup do
+      @job = SendLettersJob.new
+
       @letter = letters(:dev)
       @letter_item = letter_items(:opennet)
 
-      Time.use_zone(letter.user.timezone) do
-        t = "18-6-2016 #{letter.hour}:#{letter.minute}"
-        @test_time = Time.zone.parse(t)
+      @test_time = Time.use_zone(letter.user.timezone) do
+        Time.zone.parse("18-6-2016 #{letter.hour}:#{letter.minute}")
       end
 
-      @job = SendLettersJob.new
     end
 
     test 'perform' do
