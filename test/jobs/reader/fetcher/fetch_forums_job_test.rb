@@ -8,7 +8,9 @@ module Reader
       end
 
       test 'success' do
-        assert_enqueued_jobs(Forum.count) { job.perform_now }
+        travel_to(1.day.from_now) do
+          assert_enqueued_jobs(Forum.count) { job.perform_now }
+        end
       end
     end
   end
