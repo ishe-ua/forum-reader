@@ -6,8 +6,8 @@ class TextTest < ActiveSupport::TestCase
   end
 
   test 'max length is limited and trim if need' do
-    instance.text = 'a' * (instance_class::MAX_TEXT * 2)
+    instance.text = 'a' * (instance.class::MAX_TEXT * 2)
     assert instance.valid?
-    assert_equal instance.text.length, instance_class::MAX_TEXT
+    assert_equal instance.text.length, instance.class::MAX_TEXT
   end
 end

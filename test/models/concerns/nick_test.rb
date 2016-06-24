@@ -11,7 +11,7 @@ class NickTest < ActiveSupport::TestCase
   end
 
   test 'uniqueness' do
-    instance.nick = instance_class.all.sample.nick
+    instance.nick = instance.class.all.sample.nick
     assert_not instance.valid?
   end
 

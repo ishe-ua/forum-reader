@@ -15,8 +15,8 @@ class StatusTest < ActiveSupport::TestCase
   end
 
   test '#change_status' do
-    assert_equal instance.status, instance_class::ON
+    assert_equal instance.status, instance.class::ON
     assert instance.change_status
-    assert_equal instance.status, instance_class::OFF
+    assert_equal instance.status, instance.class::OFF
   end
 end

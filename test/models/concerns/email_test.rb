@@ -11,7 +11,7 @@ class EmailTest < ActiveSupport::TestCase
   end
 
   test 'unique field' do
-    instance.email = instance_class.all.sample.email
+    instance.email = instance.class.all.sample.email
     assert_not instance.valid?
   end
 

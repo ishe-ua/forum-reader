@@ -8,6 +8,6 @@ module ValidateInstanceTest
   end
 
   def test_instance_is_valid
-    assert instance.valid?, "instance of #{instance_class} is valid"
+    assert instance.valid?, "instance of #{instance.class} is valid"
   end
 end

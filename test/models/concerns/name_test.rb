@@ -11,8 +11,8 @@ class NameTest < ActiveSupport::TestCase
   end
 
   test 'trim if length more then const' do
-    instance.name = 'a' * (instance_class::MAX_NAME * 2)
+    instance.name = 'a' * (instance.class::MAX_NAME * 2)
     assert instance.valid?
-    assert_equal instance.name.length, instance_class::MAX_NAME
+    assert_equal instance.name.length, instance.class::MAX_NAME
   end
 end

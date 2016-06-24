@@ -19,7 +19,7 @@ class ContactTest < ActiveSupport::TestCase
   end
 
   test 'email not uniqueness' do
-    instance.email = instance_class.all.sample.email
+    instance.email = instance.class.all.sample.email
     assert instance.valid?
   end
 end

@@ -11,7 +11,7 @@ class JabberTest < ActiveSupport::TestCase
   end
 
   test 'unique field' do
-    instance.jabber = instance_class.all.sample.jabber
+    instance.jabber = instance.class.all.sample.jabber
     assert_not instance.valid?
   end
 

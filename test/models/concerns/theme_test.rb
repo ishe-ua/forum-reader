@@ -6,8 +6,8 @@ class ThemeTest < ActiveSupport::TestCase
   end
 
   test 'max length is limited and trim if need' do
-    instance.theme = 'a' * (instance_class::MAX_THEME * 2)
+    instance.theme = 'a' * (instance.class::MAX_THEME * 2)
     assert instance.valid?
-    assert_equal instance.theme.length, instance_class::MAX_THEME
+    assert_equal instance.theme.length, instance.class::MAX_THEME
   end
 end

@@ -11,7 +11,7 @@ class BaseSetTest < ActiveSupport::TestCase
   end
 
   test 'user_id uniqueness' do
-    dup = instance_class.new(instance.attributes)
+    dup = instance.class.new(instance.attributes)
     assert_not dup.valid?
   end
 end

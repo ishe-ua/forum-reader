@@ -14,6 +14,7 @@ Dir[
 
 class ActiveSupport::TestCase
   fixtures :all
+  attr_reader :instance
 end
 
 class ActionController::TestCase

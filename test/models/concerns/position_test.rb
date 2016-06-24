@@ -7,7 +7,7 @@ class PositionTest < ActiveSupport::TestCase
   end
 
   test 'следующие по списку номера присваиваются' do
-    model_sym = instance_class.to_s.underscore.to_sym
+    model_sym = instance.class.to_s.underscore.to_sym
 
     o1 = build(model_sym)
     o2 = build(model_sym)

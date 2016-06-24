@@ -24,6 +24,6 @@ class PasswordTest < ActiveSupport::TestCase
   end
 
   test '#generate_random_password' do
-    assert instance_class.generate_random_password.present?
+    assert instance.class.generate_random_password.present?
   end
 end

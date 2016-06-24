@@ -9,7 +9,7 @@ class AccountTest < ActiveSupport::TestCase
   include ValidateFixturesTest
 
   test 'email is uniqueness' do
-    instance.email = instance_class.all.sample.email
+    instance.email = instance.class.all.sample.email
     assert_not instance.valid?
   end
 end
