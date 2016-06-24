@@ -6,11 +6,8 @@ module Reader
     # Param:
     # * +url+ Url of Forum
     def perform(url)
-      feed = Feed.find_or_create_by(url: url)
-      return unless feed
-
       Forum.where(url: url).find_each do |forum|
-        news = find_unsended_news_in(forum, feed)
+        news = find_unsended_news_in(forum)
         send_to(forum, news)
         update_last_post_at(forum)
       end
@@ -18,7 +15,10 @@ module Reader
 
     protected
 
-    def find_unsended_news_in(forum, feed)
+    def find_unsended_news_in(forum)
+      feed = Feed.find_by(url: forum.url)
+      return unless feed
+
       since = forum.last_post_at || Time.zone.now
       feed.feed_items.where('created_at > ?', since).order(:created_at)
     end
