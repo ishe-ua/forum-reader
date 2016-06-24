@@ -11,11 +11,7 @@ module Reader
     end
 
     test 'perform' do
-      skip
-    end
-
-    test 'perform => feed not found' do
-      skip
+      assert_nothing_raised { job.class.perform_now(feed.url) }
     end
 
     test 'find_unsended_news => found' do
