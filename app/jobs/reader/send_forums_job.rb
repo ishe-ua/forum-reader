@@ -10,7 +10,7 @@ module Reader
       return unless feed
 
       Forum.where(url: url).find_each do |forum|
-        news = find_unsended_news(forum, feed)
+        news = find_unsended_news_in(forum, feed)
         send_to(forum, news)
         update_last_post_at(forum)
       end
@@ -18,7 +18,7 @@ module Reader
 
     protected
 
-    def find_unsended_news(forum, feed)
+    def find_unsended_news_in(forum, feed)
       since = forum.last_post_at || Time.zone.now
       feed.feed_items.where('created_at > ?', since).order(:created_at)
     end

@@ -14,14 +14,14 @@ module Reader
       assert_nothing_raised { job.class.perform_now(feed.url) }
     end
 
-    test 'find_unsended_news => found' do
+    test 'find_unsended_news_in => found' do
       FeedItem.update_all(created_at: 1.year.since)
-      assert_not_empty job.send(:find_unsended_news, forum, feed)
+      assert_not_empty job.send(:find_unsended_news_in, forum, feed)
     end
 
-    test 'find_unsended_news => not found' do
+    test 'find_unsended_news_in => not found' do
       FeedItem.update_all(created_at: 1.year.ago)
-      assert_empty job.send(:find_unsended_news, forum, feed)
+      assert_empty job.send(:find_unsended_news_in, forum, feed)
     end
 
     test 'send to email' do
