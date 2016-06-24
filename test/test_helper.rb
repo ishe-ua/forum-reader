@@ -13,8 +13,12 @@ Dir[
 #
 
 class ActiveSupport::TestCase
-  fixtures :all
   attr_reader :instance
+  fixtures :all
+end
+
+class ActiveJob::TestCase
+  attr_reader :job
 end
 
 class ActionController::TestCase
