@@ -11,7 +11,7 @@ module Reader
 
       Forum.where(url: url).find_each do |forum|
         news = find_unsended_news_in(forum)
-        send(forum, news)
+        send_to(forum, news)
         update_last_post_at(forum)
       end
     end
@@ -24,11 +24,15 @@ module Reader
     end
 
     # Send ReplyMailer#forum_news to Target
-    def send(forum, news)
+    def send_to(forum, news)
       news.each do |feed_item|
         mail = ReplyMailer.forum_news(forum, feed_item)
-        mail.deliver_later if forum.email?
-        ReplyJob.perform(mail.text_body, forum.jabber) if forum.jabber?
+
+        if forum.jabber?
+          ReplyJob.perform_later(mail.text_part.body.decoded, forum.user.jabber)
+        else
+          mail.deliver_later
+        end
       end
     end
 

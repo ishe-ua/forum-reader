@@ -23,3 +23,10 @@ lbua:
 
   created_at: now
   updated_at: now
+
+reddit_ruby:
+  <<: *DEFAULTS
+  feed: reddit_ruby
+
+  created_at: now
+  updated_at: now

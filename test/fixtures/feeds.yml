@@ -2,6 +2,10 @@ DEFAULTS: &DEFAULTS
   url: http://example.com/feed
   last_fetch_at: now
 
+reddit_ruby:
+  <<: *DEFAULTS
+  url: http://reddit.com/r/ruby
+
 opennet:
   <<: *DEFAULTS
   url: http://opennet.ru/opennews/opennews_6.rss
