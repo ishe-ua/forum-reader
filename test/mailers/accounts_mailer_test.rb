@@ -6,13 +6,8 @@ class AccountsMailerTest < ActionMailer::TestCase
     @mailer = AccountsMailer
   end
 
-  teardown do
-    assert mail.subject.present?
-    assert mail.from.present?
-  end
-
   test '#welcome' do
-    @mail = mailer.welcome(@account)
+    mail = mailer.welcome(@account)
     assert I18n.t('accounts_mailer.welcome.subject').present?
 
     assert_equal [@account.email], mail.to
@@ -20,18 +15,18 @@ class AccountsMailerTest < ActionMailer::TestCase
   end
 
   test '#email_confirmation' do
-    @mail = mailer.email_confirmation(@account)
+    mail = mailer.email_confirmation(@account)
     assert_equal [@account.email], mail.to
     assert I18n.t('accounts_mailer.email_confirmation.subject').present?
   end
 
   test '#jabber_confirmation' do
-    @mail = mailer.jabber_confirmation(@account)
+    mail = mailer.jabber_confirmation(@account)
     assert_equal [@account.user.jabber], mail.to
   end
 
   test '#new_password' do
-    @mail = mailer.new_password(@account, 'aassACd2')
+    mail = mailer.new_password(@account, 'aassACd2')
     assert I18n.t('accounts_mailer.new_password.subject').present?
 
     assert_equal [@account.email], mail.to

@@ -5,16 +5,13 @@ class AdminMailerTest < ActionMailer::TestCase
     @mailer = AdminMailer
   end
 
-  teardown do
-    assert mail.subject.present?
+  test 'new_registration' do
+    mail = mailer.new_registration(accounts(:mary))
     assert_equal [APP::ADMIN_EMAIL], mail.to
   end
 
-  test 'new_registration' do
-    @mail = mailer.new_registration(accounts(:mary))
-  end
-
   test 'stats' do
-    @mail = mailer.stats
+    mail = mailer.stats
+    assert_equal [APP::ADMIN_EMAIL], mail.to
   end
 end

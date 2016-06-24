@@ -21,6 +21,10 @@ class ActiveJob::TestCase
   attr_reader :job
 end
 
+class ActionMailer::TestCase
+  attr_reader :mailer
+end
+
 class ActionController::TestCase
   include ActiveJob::TestHelper
   include ActionMailer::TestHelper

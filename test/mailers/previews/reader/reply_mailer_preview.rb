@@ -7,8 +7,8 @@ module Reader
     end
 
     def forum_news
-      target = Target::SUPPORTED_TARGETS.sample.to_sym
-      mailer.forum_news(forum, feed_item, target)
+      forum = Forum.all.sample
+      mailer.forum_news(forum, feed_item)
     end
 
     def letter_with_news
