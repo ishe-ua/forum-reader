@@ -1,5 +1,1 @@
-##
-# gem 'rr'
-#
-
 require 'rr'

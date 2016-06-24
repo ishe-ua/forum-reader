@@ -8,21 +8,17 @@ Dir[
 
 ].each { |f| require f }
 
-###
-#
-#
-
 class ActiveSupport::TestCase
-  attr_reader :instance
+  attr_reader :instance, :modul, :klass
   fixtures :all
-end
-
-class ActiveJob::TestCase
-  attr_reader :job
 end
 
 class ActionMailer::TestCase
   attr_reader :mailer
+end
+
+class ActiveJob::TestCase
+  attr_reader :job
 end
 
 class ActionController::TestCase
@@ -39,7 +35,7 @@ class ActionController::TestCase
 end
 
 class ActionView::TestCase
-  ## For access to link_to and others in helper tests
+  ## For access to link_to and others in helper's tests
   include Rails.application.routes.url_helpers
 
   def default_url_options
