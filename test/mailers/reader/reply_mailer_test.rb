@@ -13,14 +13,16 @@ module Reader
     end
 
     test 'forum_news' do
-      forum = Forum.first
+      forum = Forum.all.shuffle.sample
       feed_item = FeedItem.first
 
-      target = Target::SUPPORTED_TARGETS.shuffle.sample.to_sym
-      mail = mailer.forum_news(forum, feed_item, target)
+      mail = mailer.forum_news(forum, feed_item)
 
-      assert_equal mail.to, [forum.user.jabber] if target == :jabber
-      assert_equal mail.to, [forum.user.account.email] if target == :email
+      if forum.email?
+        assert_equal mail.to, [forum.user.account.email]
+      else
+        assert_equal mail.to, [forum.user.jabber]
+      end
     end
 
     test 'letter_with_news' do

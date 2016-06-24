@@ -13,14 +13,14 @@ module Reader
     # 1. +html+ version to Email
     # 2. +text+ version to Jabber
 
-    def forum_news(forum, feed_item, target)
-      @target = target
+    def forum_news(forum, feed_item)
+      @forum = forum
       @feed_item = feed_item
 
-      to = target == :jabber ? forum.user.jabber : forum.user.account.email
+      to = forum.user.account.email  if forum.email?
+      to = forum.user        .jabber if forum.jabber?
 
-      mail to: to,
-           subject: build_subject(forum.name, feed_item.theme)
+      mail to: to, subject: build_subject(forum.name, feed_item.theme)
     end
 
     # Letter with news to Email.

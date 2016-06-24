@@ -19,7 +19,7 @@ module Reader
       feed.feed_items.where('created_at > ?', time).order(:created_at)
     end
 
-    # Send ReplyMailer#forum_news to Email or Jabber
+    # Send ReplyMailer#forum_news to Target
     def send(feed_items)
       feed_items.each do |feed_item|
         mail = ReplyMailer.forum_news(forum, feed_item)
