@@ -1,5 +1,5 @@
 module Reader
-  # Send Forum updates to User -s
+  # Send Forum news.
   class SendForumsJob < ActiveJob::Base
     queue_as :default
 
