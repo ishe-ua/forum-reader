@@ -20,6 +20,16 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'test/test_helper.rb'
 
+Style/SingleLineMethods:
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/EmptyLineBetweenDefs:
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 

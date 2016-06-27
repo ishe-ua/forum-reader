@@ -25,13 +25,8 @@ class ActionController::TestCase
   include ActiveJob::TestHelper
   include ActionMailer::TestHelper
 
-  def sign_in(account)
-    session[:account_id] = account.id
-  end
-
-  def sign_out
-    session[:account_id] = nil
-  end
+  def sign_in(account); session[:account_id] = account.id; end
+  def sign_out; session[:account_id] = nil; end
 end
 
 class ActionView::TestCase
@@ -49,11 +44,6 @@ class ActionDispatch::IntegrationTest
   setup { js }
   teardown { js_off }
 
-  def sign_in(account)
-    page.set_rack_session(account_id: account.id)
-  end
-
-  def sign_out
-    page.set_rack_session(account_id: nil)
-  end
+  def sign_in(account); page.set_rack_session(account_id: account.id); end
+  def sign_out; page.set_rack_session(account_id: nil); end
 end
