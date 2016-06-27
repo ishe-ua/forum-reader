@@ -7,6 +7,6 @@ class ToLogJob < ActiveJob::Base
   # Example: ToLogJob.perform_letter('Bad url', :info)
   #
   def perform(msg, level)
-    Rails.logger.send(:level, msg)
+    Rails.logger.send(level, msg)
   end
 end

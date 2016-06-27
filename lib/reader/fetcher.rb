@@ -35,8 +35,9 @@ module Reader
 
       protected
 
-      # Do +em+-request to Url and enqueue FetchedFeedJob with
-      # response.
+      # Do +em+-request to Url and enqueue:
+      # 1. FetchedFeedJob with response if success
+      # 2. ToLogJob if error
       def process_incoming(job)
         url = args_from(job).first
 
@@ -45,7 +46,7 @@ module Reader
 
         http = EM::HttpRequest.new(url, conn_opts).get(request_params)
         http.callback { enqueue_ffj(url, http.response) }
-        http.errback { enqueue_err(url) }
+        http.errback { enqueue_tlj(url, http.error) }
       end
 
       # Find Feed encoding and encode to <tt>utf-8</tt>.
@@ -66,6 +67,11 @@ module Reader
       def enqueue_ffj(url, response)
         FetchedFeedJob.perform_later(url, encode(response)) unless
           response.blank?
+      end
+
+      def enqueue_tlj(url, error)
+        msg = "#{error} in url #{url}"
+        ToLogJob.perform_latter(msg, :error)
       end
     end
   end
