@@ -4,37 +4,31 @@ module Reader
     class FetchedFeedJob < ApplicationJob
       queue_as :default
 
-      # See #find_or_create_feed_by
-      attr_reader :feed
-
+      # Also enqueue SendForumsJob if need.
+      #
       # Params:
       # - +url+ Url of Feed
-      # - +response+ Response from Fetcher::process_single
+      # - +feed_stream+ Response from Fetcher::process_incoming
 
-      def perform(url, response)
-        find_or_create_feed_by(url)
-        parse_and_save_updates(response)
-        send_forum_updates_to_users(url)
+      def perform(url, feed_stream)
+        feed = find_or_create_feed_by(url)
+        news_count = parse_and_save_news(feed, feed_stream)
+        SendForumsJob.perform_later(url) if news_count > 0
       end
 
       protected
 
       def find_or_create_feed_by(url)
-        @feed ||= Feed.find_or_create_by(url: url)
+        @feed ||= Feed.find_or_create_by!(url: url)
       end
 
-      def parse_and_save_updates(response)
-        response.entries.each do |entry|
+      def parse_and_save_news(feed, feed_stream)
+        feed_stream.entries.select do |entry|
           feed_item = build_feed_item_from(entry)
-          feed_item.save if feed.last_fetch_at.blank? ||
+          feed_item.save if feed.last_fetch_at.nil? ||
                             feed.last_fetch_at < feed_item.date
         end
-      end
-
-      def send_forum_updates_to_users
-        Forum.where(url: feed.url).find_each do |_forum|
-          # TODO: send jabber msg or email to user
-        end
+                   .count
       end
 
       private
