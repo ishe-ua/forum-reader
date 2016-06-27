@@ -45,6 +45,7 @@ module Reader
 
         http = EM::HttpRequest.new(url, conn_opts).get(request_params)
         http.callback { enqueue_ffj(url, http.response) }
+        http.errback { enqueue_err(url) }
       end
 
       # Find Feed encoding and encode to <tt>utf-8</tt>.
