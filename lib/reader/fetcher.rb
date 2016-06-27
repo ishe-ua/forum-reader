@@ -10,6 +10,8 @@ module Reader
   module Fetcher
     QUEUE_NAME = 'reader.fetcher'.to_sym
 
+    extend Utils::Queues
+
     # See https://github.com/igrigorik/em-http-request/wiki/Redirects-and-Timeouts
     CONNECT_OPTS = { connect_timeout: 15, inactivity_timeout: 30 }.freeze
 
@@ -36,7 +38,7 @@ module Reader
       # Do +em+-request to Url and enqueue FetchedFeedJob with
       # response.
       def process_incoming(job)
-        url = Utils::Queues.args_from(job).first
+        url = args_from(job).first
 
         conn_opts = CONNECT_OPTS.dup
         request_params = REQUEST_PARAMS.dup

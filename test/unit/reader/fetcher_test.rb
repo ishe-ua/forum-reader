@@ -5,9 +5,5 @@ module Reader
     setup do
       @modul = Fetcher
     end
-
-    test 'the truth' do
-      skip
-    end
   end
 end
