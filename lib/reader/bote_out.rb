@@ -28,6 +28,7 @@ module Reader
       def process_incoming(job)
         text = args_from(job).first
         to = args_from(job).second
+
         say(to, text)
       end
     end
