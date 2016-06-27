@@ -5,9 +5,5 @@ module Utils
     setup do
       @modul = Queues
     end
-
-    test 'the truth' do
-      skip
-    end
   end
 end
