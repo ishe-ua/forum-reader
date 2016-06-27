@@ -7,6 +7,9 @@ class ToLogJob < ActiveJob::Base
   # Example: ToLogJob.perform_letter('Bad url', :info)
   #
   def perform(msg, level)
+    rails 'Unsupported level type' unless level.instance_of?(String)
+    raise 'Empty msg' if msg.blank?
+
     Rails.logger.send(level, msg)
   end
 end

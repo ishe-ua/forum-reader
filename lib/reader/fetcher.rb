@@ -71,7 +71,7 @@ module Reader
 
       def enqueue_tlj(url, error)
         msg = "#{error} in url #{url}"
-        ToLogJob.perform_latter(msg, :error)
+        ToLogJob.perform_latter(msg, 'error')
       end
     end
   end

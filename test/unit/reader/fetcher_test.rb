@@ -6,12 +6,8 @@ module Reader
       @modul = Fetcher
     end
 
-    test 'run' do
-      modul.respond_to?(:run)
-    end
-
-    test 'process_incoming' do
-      modul.respond_to?(:process_incoming)
+    test 'manual testing' do
+      assert true
     end
   end
 end
