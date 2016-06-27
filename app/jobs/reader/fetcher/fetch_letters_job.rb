@@ -9,8 +9,7 @@ module Reader
       # Do FetchFeedJob for each Url.
       def perform
         Feed.find_for_fetch(:letter_items).each do |url|
-          resource_type = LetterItem.model_name.singular
-          FetchFeedJob.perform_later(url, resource_type)
+          FetchFeedJob.perform_later(url)
         end
       end
     end

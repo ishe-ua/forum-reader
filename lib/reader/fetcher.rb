@@ -19,7 +19,7 @@ module Reader
     REQUEST_PARAMS = { redirects: 2 }.freeze
 
     class << self
-      # Wait for FetchFeedJob -s and process them.
+      # Wait for FetchFeedJob -s in QUEUE_NAME and process them.
       #
       # See Procfile
 
@@ -31,25 +31,18 @@ module Reader
         end
       end
 
-      # Only +forum+ or +letter_item+.
-      def raise_if_bad(resource_type)
-        raise 'Bad resource_type' if resource_type != Forum.to_s &&
-                                     resource_type != LetterItem.to_s
-      end
-
       protected
 
       # Do +em+-request to Url and enqueue FetchedFeedJob with
       # response.
       def process_incoming(job)
         url = Utils::Queues.args_from(job).first
-        resource_type = Utiils::Queues.args_from(job).second
 
         conn_opts = CONNECT_OPTS.dup
         request_params = REQUEST_PARAMS.dup
 
         http = EM::HttpRequest.new(url, conn_opts).get(request_params)
-        http.callback { enqueue_ffj(url, http.response, resource_type) }
+        http.callback { enqueue_ffj(url, http.response) }
       end
 
       # Find Feed encoding and encode to <tt>utf-8</tt>.
@@ -67,12 +60,9 @@ module Reader
 
       private
 
-      def enqueue_ffj(url, response, resource_type)
-        FetchedFeedJob.perform_later(
-          url,
-          encode(response),
-          resource_type
-        ) unless response.blank?
+      def enqueue_ffj(url, response)
+        FetchedFeedJob.perform_later(url, encode(response)) unless
+          response.blank?
       end
     end
   end

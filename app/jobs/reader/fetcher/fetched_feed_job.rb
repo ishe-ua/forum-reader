@@ -10,14 +10,11 @@ module Reader
       # Params:
       # - +url+ Url of Feed
       # - +response+ Response from Fetcher::process_single
-      # - +resource_type+ See Fetcher::raise_if_bad
 
-      def perform(url, response, resource_type)
-        Fetcher.raise_if_bad(resource_type)
+      def perform(url, response)
         find_or_create_feed_by(url)
-
         parse_and_save_updates(response)
-        send_forum_updates_to_users if resource_type == Forum.to_s
+        send_forum_updates_to_users(url)
       end
 
       protected

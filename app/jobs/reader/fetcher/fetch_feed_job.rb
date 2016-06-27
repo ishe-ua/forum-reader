@@ -10,9 +10,8 @@ module Reader
       #
       # Params:
       # - +url+ Url of Feed
-      # - +resource_type+ See Fetcher::raise_if_bad
 
-      def perform(_url, _resource_type)
+      def perform(_url)
         raise 'Deprecated'
       end
     end
