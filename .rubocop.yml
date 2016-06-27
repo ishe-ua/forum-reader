@@ -20,6 +20,9 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'test/test_helper.rb'
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/Documentation:
   Enabled: true
   Exclude:

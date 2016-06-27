@@ -20,7 +20,6 @@ module LastFetchAt
       raise 'Bad model name' if model_name != :forums &&
                                 model_name != :letter_items
 
-      # rubocop:disable Rails/UniqBeforePluck
       model_name.to_s.singularize.classify.safe_constantize
                 .pluck(:url).uniq
                 .select do |url|
