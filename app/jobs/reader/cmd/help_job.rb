@@ -6,10 +6,11 @@ module Reader
 
       REGEXP = /^\s*HELP\s*$/i
 
-      def perform(_body, from)
+      def perform(body, from)
+        return unless body =~ REGEXP
         if (user = find_user_from(from))
-          body = ReplyMailer.help(user).body.encoded
-          ReplyJob.perform_later(body, from) if body.present?
+          text = ReplyMailer.help(user).body.encoded
+          ReplyJob.perform_later(text, from) if text.present?
         end
       end
     end
