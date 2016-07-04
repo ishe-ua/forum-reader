@@ -22,13 +22,19 @@ module Reader
         @feed ||= Feed.find_or_create_by!(url: url)
       end
 
+      # Return news count or 0 if exception.
+      #
+      # <tt>WARN:</tt> core method!!
       def parse_and_save_news(feed, feed_stream)
-        Feedjira::Feed.parse(feed_stream).entries.select do |entry|
+        news = Feedjira::Feed.parse(feed_stream).entries.select do |entry|
           feed_item = build_feed_item_from(entry, feed)
           feed_item.save if feed.last_fetch_at.nil? ||
                             feed.last_fetch_at < feed_item.date
         end
-                      .count
+
+        news.count
+      rescue
+        0
       end
 
       private

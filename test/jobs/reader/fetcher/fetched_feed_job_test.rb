@@ -21,7 +21,7 @@ module Reader
         end
       end
 
-      test 'parse_and_save_news' do
+      test 'parse_and_save_news => success' do
         fixture_name = [:reddit_ruby, :opennet, :lbua, :atytarenko].sample
         VCR.use_cassette(fixture_name.to_s) do
           feed = feeds(fixture_name)
@@ -30,6 +30,10 @@ module Reader
           feed_stream = Faraday.get(feed.url).body
           assert job.send(:parse_and_save_news, feed, feed_stream) > 0
         end
+      end
+
+      test 'parse_and_save_news => fail' do
+        assert_equal job.send(:parse_and_save_news, nil, 'left stream'), 0
       end
     end
   end
