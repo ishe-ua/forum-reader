@@ -21,19 +21,15 @@ module Reader
         end
       end
 
-      # focus
       test 'parse_and_save_news' do
-        feed = feeds(:opennet)
-        feed_stream = VCR.use_cassette('opennet') do
-          Net::HTTP.get_response(URI(feed.url))
+        fixture_name = [:reddit_ruby, :opennet, :lbua, :atytarenko].sample
+        VCR.use_cassette(fixture_name.to_s) do
+          feed = feeds(fixture_name)
+          feed.update(last_fetch_at: 200.years.ago)
+
+          feed_stream = Faraday.get(feed.url).body
+          assert job.send(:parse_and_save_news, feed, feed_stream) > 0
         end
-
-        assert feed_stream
-
-        # assert_difference 'FeedItem.count' do
-        #   count = job.send(:parse_and_save_news, feed, feed_stream)
-        #   assert count > 0
-        # end
       end
     end
   end

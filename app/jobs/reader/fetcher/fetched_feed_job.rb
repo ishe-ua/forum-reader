@@ -23,25 +23,23 @@ module Reader
       end
 
       def parse_and_save_news(feed, feed_stream)
-        feed_stream.entries.select do |entry|
-          feed_item = build_feed_item_from(entry)
+        Feedjira::Feed.parse(feed_stream).entries.select do |entry|
+          feed_item = build_feed_item_from(entry, feed)
           feed_item.save if feed.last_fetch_at.nil? ||
                             feed.last_fetch_at < feed_item.date
         end
-                   .count
+                      .count
       end
 
       private
 
-      def build_feed_item_from(entry)
-        feed_item = feed.build_feed_item(
+      def build_feed_item_from(entry, feed)
+        feed.feed_items.new(
           url:   purify(entry.url),
-          date:  entry.data,
+          date:  entry.published,
           theme: purify(entry.title),
-          text:  purify(entry.text)
+          text:  purify(entry.summary)
         )
-
-        feed_item
       end
 
       def purify(str)
