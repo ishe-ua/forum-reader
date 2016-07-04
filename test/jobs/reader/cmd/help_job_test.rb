@@ -12,7 +12,7 @@ module Reader
       end
 
       test 'fail => user not found' do
-        assert_no_enqueued_jobs { job.perform('help', 'left@example.com') }
+        assert_no_enqueued_jobs { job.perform('hElp', 'left@example.com') }
       end
 
       test 'fail => regexp not found' do

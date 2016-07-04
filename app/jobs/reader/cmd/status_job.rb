@@ -6,10 +6,11 @@ module Reader
 
       REGEXP = /^\s*STATUS\s*$/i
 
-      def perform(_body, from)
+      def perform(body, from)
+        return unless body =~ REGEXP
         if (user = find_user_from(from))
-          body = (user.status == ON ? OFF : ON).upcase
-          ReplyJob.perform_later(body, from)
+          text = (user.reader_set.on? ? Status::ON : Status::OFF).upcase
+          ReplyJob.perform_later(text, from)
         end
       end
     end
