@@ -1,11 +1,11 @@
 module Reader
   module Fetcher
-    # Process response from FetchFeedJob
+    # Process response from FetchFeedJob.
+    #
+    # Also enqueue SendForumsJob if need.
     class FetchedFeedJob < ApplicationJob
       queue_as :default
 
-      # Also enqueue SendForumsJob if need.
-      #
       # Params:
       # - +url+ Url of Feed
       # - +feed_stream+ Response from Fetcher::process_incoming

@@ -4,7 +4,7 @@ DEFAULTS: &DEFAULTS
 
 reddit_ruby:
   <<: *DEFAULTS
-  url: http://reddit.com/r/ruby
+  url: https://www.reddit.com/r/ruby/.rss
 
 opennet:
   <<: *DEFAULTS

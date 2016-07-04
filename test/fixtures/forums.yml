@@ -9,7 +9,7 @@ DEFAULTS: &DEFAULTS
 reddit_ruby:
   <<: *DEFAULTS
   name: reddit/ruby
-  url: http://reddit.com/r/ruby
+  url: https://www.reddit.com/r/ruby/.rss
 
   target: <%= Forum.targets[:email] %>
   position: 1
@@ -17,7 +17,7 @@ reddit_ruby:
 reddit_rails:
   <<: *DEFAULTS
   name: reddit/rails
-  url: http://reddit.com/r/rails/comments
+  url: https://www.reddit.com/r/rails/.rss
 
   target: <%= Forum.targets[:jabber] %>
   position: 2
