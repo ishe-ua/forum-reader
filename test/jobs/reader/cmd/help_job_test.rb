@@ -15,7 +15,7 @@ module Reader
         assert_no_enqueued_jobs { job.perform('hElp', 'left@example.com') }
       end
 
-      test 'fail => regexp not found' do
+      test 'fail => wrong regexp' do
         assert_no_enqueued_jobs { job.perform('left', users(:mary).jabber) }
       end
     end
