@@ -13,6 +13,7 @@ module Reader
     # Auto approve subscription requests
     subscription(:request?) { |s| write_to_stream s.approve! }
 
+    # Order is <tt>VERY IMPORTANT</tt>.
     SUPPORTED_COMMANDS =
       [
         Cmd::HelpJob,

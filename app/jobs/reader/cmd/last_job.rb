@@ -4,16 +4,16 @@ module Reader
     class LastJob < CommandJob
       queue_as :default
 
-      REGEXP = /last/
+      REGEXP = /^\s*LAST\s*\S{1,}\+?\s*\d*\s*$/i
 
-      include Cmd # TODO
+      include Cmd
 
       # Like ListJob
       def perform(body, from)
-        user = find_user_from(from)
-        params = find_params_from(body)
-
-        reply_to(from) if user && valid?(params)
+        if (user = find_user_from(from))
+          params = find_params_from(body)
+          reply_to(from) if valid?(params)
+        end
       end
 
       protected

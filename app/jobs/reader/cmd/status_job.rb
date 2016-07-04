@@ -4,11 +4,10 @@ module Reader
     class StatusJob < CommandJob
       queue_as :default
 
-      REGEXP = /status/
+      REGEXP = /^\s*STATUS\s*$/i
 
       def perform(_body, from)
-        user = find_user_from(from)
-        if user
+        if (user = find_user_from(from))
           body = (user.status == ON ? OFF : ON).upcase
           ReplyJob.perform_later(body, from)
         end

@@ -4,11 +4,10 @@ module Reader
     class OnJob < CommandJob
       queue_as :default
 
-      REGEXP = /on/
+      REGEXP = /^\s*ON\s*$/i
 
       def perform(_body, from)
-        user = find_user_from(from)
-        if user
+        if (user = find_user_from(from))
           user.change_status if user.status != Status::ON
           ReplyJob.perform_later(DONE, from)
         end

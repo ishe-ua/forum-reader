@@ -3,7 +3,11 @@ require 'test_helper'
 module Reader
   module Cmd
     class HelpJobTest < ActiveJob::TestCase
-      test 'the truth' do
+      setup do
+        @job = HelpJob.new
+      end
+
+      test 'regexp' do
         skip
       end
     end

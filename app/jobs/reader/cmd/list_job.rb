@@ -5,16 +5,16 @@ module Reader
       queue_as :default
 
       # Default command
-      REGEXP = //
+      REGEXP = /^\s*\S+\s*$/i
 
-      include Cmd # TODO
+      include Cmd
 
       # Like LastJob
       def perform(body, from)
-        user = find_user_from(from)
-        params = find_params_from(body)
-
-        reply_to(from) if user && valid?(params)
+        if (user = find_user_from(from))
+          params = find_params_from(body)
+          reply_to(from) if valid?(params)
+        end
       end
 
       protected
