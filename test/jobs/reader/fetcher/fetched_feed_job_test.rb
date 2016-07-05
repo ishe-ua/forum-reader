@@ -7,6 +7,10 @@ module Reader
         @job = FetchedFeedJob.new
       end
 
+      test 'perform' do
+        job.class.perform_now('http://example.com/feed', 'any stream')
+      end
+
       test 'find_or_create_feed_by => finded' do
         assert_no_difference 'Feed.count' do
           url = feeds(:reddit_ruby).url

@@ -13,7 +13,7 @@ module Reader
       def perform(url, feed_stream)
         feed = find_or_create_feed_by(url)
         news_count = parse_and_save_news(feed, feed_stream)
-        SendForumsJob.perform_later(url) if news_count > 0
+        Sender::SendForumsJob.perform_later(url) if news_count > 0
       end
 
       protected

@@ -26,6 +26,6 @@ module Clockwork
   every(1.day, 'reader.clean_feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
 
   every(1.minute, 'reader.send_letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
-    Reader::SendLettersJob.perform_later(Time.now)
+    Reader::Sender::SendLettersJob.perform_later(Time.now)
   end
 end
