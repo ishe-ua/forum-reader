@@ -9,7 +9,7 @@ module Reader
       include Cmd
 
       # Like ListJob
-      def perform(body, from)
+      def perform(body, from) # rubocop:disable MethodLength
         return unless body =~ REGEXP
         if (user = find_user_from(from))
           params = find_params_from(body)
@@ -20,6 +20,7 @@ module Reader
                  end
 
           ReplyJob.perform_later(text, from)
+          text # for tests
         end
       end
 
