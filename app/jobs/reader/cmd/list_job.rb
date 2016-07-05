@@ -11,6 +11,7 @@ module Reader
 
       # Like LastJob
       def perform(body, from)
+        return unless body =~ REGEXP
         if (user = find_user_from(from))
           params = find_params_from(body)
           reply_to(from) if valid?(params)

@@ -29,7 +29,7 @@ module Reader
         text = args_from(job).first
         to = args_from(job).second
 
-        say(to, text)
+        say(to, text.strip)
       end
     end
   end
