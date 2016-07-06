@@ -1,10 +1,7 @@
-# coding: utf-8
-# Валидация @instance.
-# Того, который объявляем в setup-методе.
-#
+# Validate @instance (see +setup+ method in model tests)
 module ValidateInstanceTest
   def test_instance_is_defined
-    assert instance, '@instance прописан'
+    assert instance, '@instance defined'
   end
 
   def test_instance_is_valid

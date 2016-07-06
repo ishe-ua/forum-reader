@@ -1,7 +1,4 @@
-# coding: utf-8
-# Валидация фикстур.
-# Проверяем все имеющиеся для конкретной модели.
-#
+# Validate fixtures (see model tests)
 module ValidateFixturesTest
   def test_validate_fixtures
     instance.class.all.each do |obj|
