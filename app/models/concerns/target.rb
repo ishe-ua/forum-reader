@@ -1,4 +1,4 @@
-# Send to +email+ or +jabber+.
+# Send to Email or Jabber.
 #
 # Field +target+ in table:
 # * integer

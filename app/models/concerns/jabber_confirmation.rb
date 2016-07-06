@@ -1,15 +1,11 @@
-# coding: utf-8
-# Подтверждение Jabber.
+# Fields in table:
 #
-# Поля в таблице:
-#
-# 1. +jabber_confirmation_at+ Когда подтвердили (nil - не подтвержденный)
+# 1. +jabber_confirmation_at+ When confirmed (nil - unconfirmed)
 # 2. +jabber_confirmation_token+
 #
 module JabberConfirmation
   extend ActiveSupport::Concern
 
-  ## <em>Рекомендованный</em> размер токена.
   JABBER_CONFIRMATION_TOKEN_SIZE = 40
 
   included do
@@ -21,17 +17,14 @@ module JabberConfirmation
               uniqueness: true
   end
 
-  ## Подтвержден или нет?
   def jabber_confirmed?
     jabber_confirmation_at ? true : false
   end
 
-  ## Отметить как подтвержденный.
   def confirm_jabber!
     update!(jabber_confirmation_at: Time.zone.now)
   end
 
-  ## Отметить как неподтвержденный.
   def unconfirm_jabber
     update_columns(
       jabber_confirmation_at: nil,
@@ -42,7 +35,6 @@ module JabberConfirmation
 
   protected
 
-  ## Значение по умолчанию.
   def set_default_jabber_confirmation_token
     self.jabber_confirmation_token ||=
       Utils::Tokenizer.gen_random_string(JABBER_CONFIRMATION_TOKEN_SIZE)

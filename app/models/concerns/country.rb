@@ -7,7 +7,8 @@
 module Country # rubocop:disable ModuleLength
   extend ActiveSupport::Concern
 
-  COUNTRIES_HASH = { # from gem 'country'.
+  # From gem 'country'.
+  COUNTRIES_HASH = {
     'ad' => 'Andorra',
     'ae' => 'United Arab Emirates',
     'af' => 'Afghanistan',

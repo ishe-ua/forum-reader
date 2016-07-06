@@ -1,14 +1,11 @@
-# coding: utf-8
-# Джаббер.
-#
-# Поле +jabber+ в таблице:
-# * строка
-# * unique-индекс
+# Field +jabber+ in table:
+# * string
+# * unique index
 #
 module Jabber
   extend ActiveSupport::Concern
 
-  ## Валидный Email (взято из gem 'devise').
+  # From gem 'devise'
   VALID_JABBER = Email::VALID_EMAIL
 
   included do
@@ -28,16 +25,11 @@ module Jabber
 
   protected
 
-  ## Значение в нижний регистр.
   def downcase_jabber
     jabber.downcase!
   end
 
-  ##
-  # После изменения jabber становится не подтвержденным (see
-  # JabberConfirmation).
-  #
-
+  # Invoke after change Jabber (see JabberConfirmation)
   def nullify_jabber_confirmation
     unconfirm_jabber
   end

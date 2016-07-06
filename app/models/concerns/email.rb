@@ -1,14 +1,11 @@
-# coding: utf-8
-# Почтовый адрес.
-#
-# Поле +email+ в таблице:
-# * строка
-# * unique-индекс
+# Field +email+ in table:
+# * string
+# * unique index
 #
 module Email
   extend ActiveSupport::Concern
 
-  ## Валидный Email (взято из gem 'devise').
+  # From gem 'devise'
   VALID_EMAIL = /\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/
 
   included do
@@ -26,16 +23,11 @@ module Email
 
   protected
 
-  ## Значение в нижний регистр.
   def downcase_email
     email.downcase!
   end
 
-  ##
-  # После изменения email становится не подтвержденным (see
-  # EmailConfirmation).
-  #
-
+  # Invoke after change Email (see EmailConfirmation)
   def nullify_email_confirmation
     unconfirm_email
   end

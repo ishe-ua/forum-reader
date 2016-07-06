@@ -1,5 +1,3 @@
-# Check sum.
-#
 # For <tt>eliminate duplicates</tt> from FeedItem -s.
 #
 # Field +checksum+ in table:
