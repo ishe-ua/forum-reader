@@ -77,7 +77,7 @@ module Reader
           rel ? rel.union(sel) : (rel = sel)
         end
 
-        rel
+        rel || FeedItem.none
       end
     end
   end
