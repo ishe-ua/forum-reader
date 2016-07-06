@@ -26,9 +26,13 @@ module Reader
 
       protected
 
-      def find_params_from(body)
+      # For LastJob and ListJob commands
+      def find_params_from(body, cmd = :last)
         tokens = body.split
-        params_from(tokens[1], tokens[2])
+
+        p = params_from(tokens[1], tokens[2]) if cmd == :last
+        p = params_from(tokens[0], tokens[1]) if cmd == :list
+        p
       end
 
       def gen_selection(user, params)
@@ -53,11 +57,14 @@ module Reader
         instance_eval("from_#{model_name}(obj)").order(:created_at).last(count)
       end
 
-      def from(obj)
+      def from(obj, cmd = :last)
         time = obj.last_post_at || Time.zone.now
         feed = Feed.find_or_create_by(url: obj.url)
 
-        feed.feed_items.where('created_at <= ?', time)
+        op = '<=' if cmd == :last
+        op = '>'  if cmd == :list
+
+        feed.feed_items.where("created_at #{op} ?", time)
       end
 
       alias from_forum from

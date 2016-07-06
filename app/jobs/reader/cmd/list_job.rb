@@ -1,32 +1,22 @@
 module Reader
   module Cmd
     # +List+ command from BoteIn
-    class ListJob < CommandJob
+    class ListJob < LastJob
       queue_as :default
 
-      # Default command
+      # Default command (see BoteIn)
       REGEXP = /^\s*\S+\s*$/i
-
-      include Cmd
-
-      # Like LastJob
-      def perform(body, from)
-        return unless body =~ REGEXP
-        if (user = find_user_from(from))
-          params = find_params_from(body)
-          reply_to(from) if valid?(params)
-        end
-      end
 
       protected
 
       def find_params_from(body)
-        tokens = body.split
-        params_from(tokens[0], tokens[1]).merge(count: CommonJob::MAX_SELECTION)
+        super(body, :list)
       end
 
-      def reply_to(from)
-        # TODO: like LastJob#reply_to
+      private
+
+      def from(obj)
+        super(obj, :list)
       end
     end
   end
