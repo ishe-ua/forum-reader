@@ -6,14 +6,16 @@ module Reader
       setup do
         @job = LastJob.new
         @from = users(:ishe).jabber
-      end
 
-      test 'success' do
-        %w(
+        @test_objects = %w(
           reddit_ruby
           dev
           opennet
-        ).each do |obj_type| # forum, letter, letter_item
+        ) # forum, letter, letter_item
+      end
+
+      test 'success' do
+        @test_objects.each do |obj_type|
           text = job.perform("last #{obj_type}", @from)
           assert text
 
@@ -22,7 +24,20 @@ module Reader
         end
       end
 
-      test 'fail => bad regexp' do
+      test 'empty' do
+        FeedItem.destroy_all
+        @test_objects.each do |obj_type|
+          text = job.perform("last #{obj_type}", @from)
+          assert_equal text, CommandJob::EMPTY
+        end
+      end
+
+      test 'not found' do
+        text = job.perform('last aaa', @from)
+        assert_equal text, CommandJob::NOT_FOUND
+      end
+
+      test 'bad regexp' do
         assert_not job.perform('left cmd', @from)
       end
     end
