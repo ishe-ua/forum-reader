@@ -64,8 +64,12 @@ module Reader
       alias from_letter_item from
 
       def from_letter(obj)
-        rel = FeedItem.none
-        obj.letter_items.each { |li| rel.merge(from(li)) }
+        rel = nil
+        obj.letter_items.each do |li|
+          sel = from(li)
+          rel ? rel.union(sel) : (rel = sel)
+        end
+
         rel
       end
     end

@@ -39,6 +39,7 @@ group :test do
 end
 
 gem 'acts_as_list'
+gem 'active_record_union'
 gem 'rails-i18n', '~> 4.0.0' # For 4.x
 
 gem 'feedjira'
