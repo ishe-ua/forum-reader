@@ -1,5 +1,5 @@
 module Reader
-  # Command.
+  # Command from BoteIn.
   module Cmd
     # Where to find? Token is value from LastJob or ListJob.
     #

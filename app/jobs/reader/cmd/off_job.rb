@@ -1,6 +1,6 @@
 module Reader
   module Cmd
-    # +Off+ command from BoteIn
+    # +Off+ command
     class OffJob < CommandJob
       queue_as :default
 
