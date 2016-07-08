@@ -1,8 +1,7 @@
 # coding: utf-8
 # See ApplicationController.
-#
 module ApplicationHelper
-  ## Title tag for browser.
+  # Title tag for browser.
   def app_title
     APP::NAME
   end
@@ -18,13 +17,13 @@ module ApplicationHelper
     year1 == year2 ? year1.to_s : "#{year1}-#{year2}"
   end
 
-  ## Copyright string for footer.
+  # Copyright string for footer.
   def copyright
     app_link = link_to APP::NAME.upcase, root_url
     "&copy; «#{app_link}» #{app_years}. #{t('footer.copyright')}."
   end
 
-  ## String or '-' if string is empty.
+  # String or '-' if string is empty.
   def dashed(str)
     str.present? ? str : '-'
   end
