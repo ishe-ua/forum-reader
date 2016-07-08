@@ -33,7 +33,7 @@ module Reader
       end
 
       test 'not found' do
-        text = job.perform('last aaa', @from)
+        text = job.perform('last aa', @from)
         assert_equal text, CommandJob::NOT_FOUND
       end
 

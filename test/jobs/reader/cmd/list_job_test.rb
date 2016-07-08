@@ -36,6 +36,11 @@ module Reader
         end
       end
 
+      test 'not found' do
+        text = job.perform('aa', @from)
+        assert_equal text, CommandJob::NOT_FOUND
+      end
+
       test 'bad regexp' do
         assert_not job.perform('left cmd', @from)
       end
