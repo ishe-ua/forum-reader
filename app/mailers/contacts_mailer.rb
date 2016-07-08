@@ -1,5 +1,4 @@
 # Emails for ContactsController#create
-#
 class ContactsMailer < ApplicationMailer
   # In User locale if User exists or default locale if not.
   def thank_you(contact)

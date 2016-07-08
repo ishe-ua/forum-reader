@@ -1,4 +1,5 @@
 # coding: utf-8
+# See Account
 class AccountsController < ApplicationController
   before_action :set_account, only:
                                 [

@@ -1,3 +1,4 @@
+# See AccountsController
 class AccountsMailer < ApplicationMailer
   def welcome(account)
     @account = account
