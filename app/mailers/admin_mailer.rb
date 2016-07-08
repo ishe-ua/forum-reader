@@ -1,23 +1,14 @@
-# coding: utf-8
-# "Письма в редакцию", т.е. служебные админу.
-#
-# <b>Увага:</b>
-#
-# Все служебные письма (в т.ч. других mailer-ов) направляем admin-у, а
-# тот уже перенаправляет их (по header-у) кому надо.
-#
+# Emails to APP admin.
 class AdminMailer < ApplicationMailer
-  # :stopdoc:
   default to: APP::ADMIN_EMAIL
-  # :startdoc:
 
-  ## Зарегистрирован новый аккаунт.
+  # New Account registratin
   def new_registration(account)
     @account = account
     mail subject: "#{APP::NAME}: new registration"
   end
 
-  ## Статистика проекта.
+  # App statistics
   def stats
     mail subject: "#{APP::NAME}: stats"
   end

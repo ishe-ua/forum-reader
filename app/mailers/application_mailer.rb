@@ -1,6 +1,4 @@
-# coding: utf-8
-# Базовый для всех mailer-ов.
-#
+# Base Mailer
 class ApplicationMailer < ActionMailer::Base
   default from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>"
   layout 'mailer'

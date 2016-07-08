@@ -1,14 +1,7 @@
-# coding: utf-8
-# Письма для ContactsController#create.
+# Emails for ContactsController#create
 #
 class ContactsMailer < ApplicationMailer
-  ##
-  # Спасибо что оставили сообщение (письмо от нас пользователю).
-  #
-  # Если Account с таким email имеется - шлем письмо в его локали,
-  # иначе - в дефолтной.
-  #
-
+  # In User locale if User exists or default locale if not.
   def thank_you(contact)
     @contact = contact
 
@@ -20,9 +13,9 @@ class ContactsMailer < ApplicationMailer
     end
   end
 
-  ## Вопрос от пользователя нам на ящик.
+  # Duplicate to admin.
   def to_us(contact)
     @contact = contact
-    mail to: APP::ADMIN_EMAIL, subject: 'НАПИСАТЬ НАМ от пользователя'
+    mail to: APP::ADMIN_EMAIL, subject: 'EMAIL US from user'
   end
 end
