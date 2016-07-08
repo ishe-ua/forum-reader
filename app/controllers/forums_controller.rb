@@ -1,25 +1,11 @@
-# coding: utf-8
-# Морда для Forum.
-#
+# See Forum.
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:edit, :update, :destroy]
   include Mover
 
-  ##
-  # GET /forums/new
-  #
-  # Новый.
-  #
-
   def new
     @forum = current_user.forums.build
   end
-
-  ##
-  # POST /forums
-  #
-  # Создать.
-  #
 
   def create
     @forum = current_user.forums.build(forum_params)
@@ -33,20 +19,8 @@ class ForumsController < ApplicationController
     end
   end
 
-  ##
-  # GET /forums/1/edit
-  #
-  # Показать страницу редактирования.
-  #
-
   def edit
   end
-
-  ##
-  # PATCH/PUT /forums/1
-  #
-  # Обновить.
-  #
 
   def update
     respond_to do |format|
@@ -57,12 +31,6 @@ class ForumsController < ApplicationController
       end
     end
   end
-
-  ##
-  # DELETE /forums/1.js
-  #
-  # Удалить.
-  #
 
   def destroy
     @resource = @forum
