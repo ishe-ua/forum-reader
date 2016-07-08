@@ -1,10 +1,9 @@
-# coding: utf-8
-# Управление локалью.
+# See Locale.
 #
 class LocaleController < ApplicationController
   skip_before_action :require_sign_in
 
-  ## Изменить текущую локаль.
+  # Change current locale
   def change
     session[:current_locale] = params[:lang]
     redirect_to :back
