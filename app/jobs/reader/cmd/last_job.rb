@@ -10,7 +10,7 @@ module Reader
 
       # Like ListJob
       def perform(body, from) # rubocop:disable MethodLength
-        return unless body =~ self.class::REGEXP
+        return unless body =~ self.class::REGEXP # !!
         if (user = find_user_from(from))
           params = find_params_from(body)
           text = if valid?(params)

@@ -1,6 +1,4 @@
 # coding: utf-8
-# Морда для Account.
-#
 class AccountsController < ApplicationController
   before_action :set_account, only:
                                 [
@@ -19,12 +17,6 @@ class AccountsController < ApplicationController
   include ConfirmJabber
 
   include ResetPassword
-
-  ##
-  # GET /accounts/new
-  #
-  # Показать форму регистрации новеньких.
-  #
 
   def new
     @account = Account.new
@@ -57,12 +49,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  ##
-  # GET /accounts/1/edit
-  #
-  # Показать страницу редактирования.
-  #
-
   def edit
   end
 
@@ -88,12 +74,7 @@ class AccountsController < ApplicationController
     end
   end
 
-  ##
-  # DELETE /accounts/1
-  #
-  # Удалить, <tt>запрещенная операция</tt>.
-  #
-
+  # Deprecated
   def destroy
     raise 'Deprecated'
   end
@@ -101,7 +82,7 @@ class AccountsController < ApplicationController
   private
 
   def set_account
-    @account = current_account # важно!!
+    @account = current_account # !!
   end
 
   def account_params

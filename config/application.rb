@@ -1,4 +1,3 @@
-# coding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -25,10 +24,9 @@ module ForumReader
     config.active_record.raise_in_transactional_callbacks = true
 
     ###
-    # ishe:
+    # ishe
     #
 
-    ## Чтобы не напрягать SSD
     if Rails.env.development? || Rails.env.test?
       config.logger = Logger.new('/dev/null')
     end
