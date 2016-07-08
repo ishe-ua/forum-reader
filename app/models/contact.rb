@@ -29,5 +29,5 @@ class Contact < ApplicationRecord
   validates :theme, presence: true
   validates :text, presence: true
 
-  default_scope { order 'created_at desc' }
+  default_scope { order(created_at: :desc) }
 end
