@@ -14,6 +14,20 @@ module Reader
         ) # forum, letter, letter_item
       end
 
+      test 'success' do
+        @test_objects.each do |obj_type|
+          Forum.update_all(last_post_at: 1.year.ago)
+          Letter.update_all(last_post_at: 1.year.ago)
+          LetterItem.update_all(last_post_at: 1.year.ago)
+
+          text = job.perform(obj_type, @from)
+          assert text
+
+          assert_not_equal text, CommandJob::EMPTY
+          assert_not_equal text, CommandJob::NOT_FOUND
+        end
+      end
+
       test 'bad regexp' do
         assert_not job.perform('left cmd', @from)
       end

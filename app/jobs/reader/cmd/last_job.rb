@@ -10,7 +10,7 @@ module Reader
 
       # Like ListJob
       def perform(body, from) # rubocop:disable MethodLength
-        return unless body =~ REGEXP
+        return unless body =~ self.class::REGEXP
         if (user = find_user_from(from))
           params = find_params_from(body)
           text = if valid?(params)
@@ -27,11 +27,11 @@ module Reader
       protected
 
       # For LastJob and ListJob commands
-      def find_params_from(body, cmd = :last)
+      def find_params_from(body)
         tokens = body.split
 
-        p = params_from(tokens[1], tokens[2]) if cmd == :last
-        p = params_from(tokens[0], tokens[1]) if cmd == :list
+        p = params_from(tokens[1], tokens[2]) if instance_of?(LastJob)
+        p = params_from(tokens[0], tokens[1]) if instance_of?(ListJob)
         p
       end
 
@@ -57,12 +57,12 @@ module Reader
         instance_eval("from_#{model_name}(obj)").order(:created_at).last(count)
       end
 
-      def from(obj, cmd = :last)
+      def from(obj)
         time = obj.last_post_at || Time.zone.now
         feed = Feed.find_or_create_by(url: obj.url)
 
-        op = '<=' if cmd == :last
-        op = '>'  if cmd == :list
+        op = '<=' if instance_of?(LastJob)
+        op = '>'  if instance_of?(ListJob)
 
         feed.feed_items.where("created_at #{op} ?", time)
       end

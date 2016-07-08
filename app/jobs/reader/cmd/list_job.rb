@@ -6,18 +6,6 @@ module Reader
 
       # Default command (see BoteIn)
       REGEXP = /^\s*\S+\s*$/i
-
-      protected
-
-      def find_params_from(body)
-        super(body, :list)
-      end
-
-      private
-
-      def from(obj)
-        super(obj, :list)
-      end
     end
   end
 end
