@@ -1,8 +1,6 @@
-# coding: utf-8
-# Хелперы для AccountsController.
-#
+# See AccountsController.
 module AccountsHelper
-  ## Это операция регистрации аккаунта?
+  # Register new User operation?
   def register?(params)
     c = params['controller']
     a = params['action']

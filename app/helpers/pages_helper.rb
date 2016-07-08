@@ -1,19 +1,18 @@
-# coding: utf-8
-# Хелперы для PagesController.
+# See PagesController.
 #
 module PagesHelper
-  ## Ссылка на wiki-страницу с учетом текущей локали.
+  ## Link to wiki page with locale.
   def xmpp_wiki_path
     "http://#{I18n.locale}.wikipedia.org/wiki/XMPP"
   end
 
-  ## Страна / Локаль / Временная_зона.
+  ## Country / Lang / Timezone.
   def country_tz_lang(user)
     country = Country::COUNTRIES_HASH[user.country]
     "#{dashed country} / #{dashed user.timezone} / #{dashed user.lang}"
   end
 
-  ## Дни доставки.
+  ## Delivery days.
   def post_days(letter) # rubocop:disable all
     @day_abbrs ||=
       [''].push(Letter.human_attribute_name('d1'))
@@ -37,7 +36,7 @@ module PagesHelper
     days
   end
 
-  ## Время доставки (с учетом временной зоны User -а).
+  ## Delivery times (with User 's Timezone).
   def post_time(letter)
     h = letter.hour
     m = letter.minute
@@ -51,7 +50,7 @@ module PagesHelper
     "#{h}:#{m}"
   end
 
-  ## Пути из route.rb для иконок.
+  ## Paths from route.rb for icons.
   def icon_path(resource, action)
     model = resource.class.name.underscore
     route = "#{action}_#{model}_path(resource)"
