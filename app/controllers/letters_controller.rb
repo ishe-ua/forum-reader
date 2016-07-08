@@ -1,5 +1,4 @@
 # See Letter.
-#
 class LettersController < ApplicationController
   before_action :set_letter, only: [:edit, :update, :destroy]
   include Mover

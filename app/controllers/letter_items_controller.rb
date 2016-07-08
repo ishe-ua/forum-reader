@@ -1,4 +1,4 @@
-# See LetterItem.
+# See LetterItem
 class LetterItemsController < ApplicationController
   before_action :set_letter_item, only: [:edit, :update, :destroy]
   include Mover

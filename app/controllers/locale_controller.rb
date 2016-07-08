@@ -1,5 +1,4 @@
-# See Locale.
-#
+# See Locale
 class LocaleController < ApplicationController
   skip_before_action :require_sign_in
 

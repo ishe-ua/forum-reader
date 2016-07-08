@@ -1,4 +1,4 @@
-# See Forum.
+# See Forum
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:edit, :update, :destroy]
   include Mover
