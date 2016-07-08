@@ -1,25 +1,12 @@
-# coding: utf-8
-# Морда для Letter.
+# See Letter.
 #
 class LettersController < ApplicationController
   before_action :set_letter, only: [:edit, :update, :destroy]
   include Mover
 
-  ##
-  # GET /letters/new
-  #
-  # Новый.
-  #
-
   def new
     @letter = current_user.letters.build
   end
-
-  ##
-  # POST /letters
-  #
-  # Создать.
-  #
 
   def create
     @letter = current_user.letters.build(letter_params)
@@ -33,20 +20,8 @@ class LettersController < ApplicationController
     end
   end
 
-  ##
-  # GET /letters/1/edit
-  #
-  # Показать страницу редактирования.
-  #
-
   def edit
   end
-
-  ##
-  # PATCH/PUT /letters/1
-  #
-  # Обновить.
-  #
 
   def update
     respond_to do |format|
@@ -57,12 +32,6 @@ class LettersController < ApplicationController
       end
     end
   end
-
-  ##
-  # DELETE /letters/1.js
-  #
-  # Удалить.
-  #
 
   def destroy
     @resource = @letter
