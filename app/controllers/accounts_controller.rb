@@ -1,4 +1,3 @@
-# coding: utf-8
 # See Account
 class AccountsController < ApplicationController
   before_action :set_account, only:
@@ -24,20 +23,13 @@ class AccountsController < ApplicationController
     # @account.build_user
   end
 
-  ##
-  # POST /accounts
-  #
-  # Создать.
-  #
-  # Если все хорошо - шлем письма:
-  #
-  # 1. AccountsMailer#welcome (доставляется через 10 минут)
+  # If success:
+  # 1. AccountsMailer#welcome (throught 10 minutes)
   # 2. AccountsMailer#email_confirmation
   # 3. AdminMailer#new_registration
   #
-  # Также помним о существовании CheckCompany.
+  # Also CheckCompany.
   #
-
   def create
     @account = Account.new(account_params)
 
@@ -53,17 +45,11 @@ class AccountsController < ApplicationController
   def edit
   end
 
-  ##
-  # PATCH/PUT /accounts/1
+  # If Email changed:
   #
-  # Обновить данные.
+  # 1. Email becomes unconfirmed
+  # 2. Send AccountsMailer#email_confirmation
   #
-  # Если изменился email:
-  #
-  # 1. Новый ящик становится не подтвержденным
-  # 2. Для подтверждения шлем AccountsMailer#email_confirmation
-  #
-
   def update
     respond_to do |format|
       if @account.update(account_params)
