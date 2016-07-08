@@ -1,1 +1,13 @@
-<%# TODO %>
+<% @news.each do |news| %>
+
+  <%
+  letter_item = news[:letter_item]
+  feed_items = news[:feed_items]
+  %>
+
+  <%= letter_item.name %>:
+
+  <% feed_items.each do |feed_item| %>
+    <%= feed_item.theme %> (<%= feed_item.date.strftime('%Y-%m-%d %H:%M') %>)
+  <% end %>
+<% end %>
