@@ -1,31 +1,24 @@
-# coding: utf-8
-# Сессии пользователей.
+# Sign in/out.
 #
-# Также система аутентификации включает Auth, Lock и BackUrl (два
-# последние могут быть, а могут и не быть).
+# See Auth
 #
 class SessionsController < ApplicationController
   before_action :downcase_email, only: :create
   skip_before_action :require_sign_in, except: :destroy
 
-  ## Показать страницу ввода email и пароля.
   def new
     redirect_to(root_path) if signed_in?
   end
 
-  ##
-  # Создать сессию.
-  #
-  # Входящие данные в параметрах:
+  # Params:
   #
   # * <tt>params[:email]</tt>
   # * <tt>params[:password]</tt>
   #
-  # Возвращаем:
+  # Return:
   #
-  # * <tt>flash[:alert]</tt> с ошибкой если что-то не так.
+  # * <tt>flash[:alert]</tt> Error if need
   #
-
   def create
     b = sign_in(params[:email], params[:password])
     if b == true
@@ -37,7 +30,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  ## Удалить сессию.
   def destroy
     sign_out if signed_in?
     redirect_to root_path
@@ -45,7 +37,6 @@ class SessionsController < ApplicationController
 
   protected
 
-  ## Чтобы можно было логиниться с email в любом регистре.
   def downcase_email
     params[:email].downcase! if params[:email].present?
   end
