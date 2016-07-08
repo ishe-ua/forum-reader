@@ -1,4 +1,3 @@
-# coding: utf-8
 # Email to Jabber notifications.
 #
 module Mailer
