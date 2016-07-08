@@ -1,43 +1,26 @@
-# coding: utf-8
-# Статические страницы.
+# Static pages.
 #
-# Все они защищены Auth#require_sign_in. Во избежание "несчастных
-# случаев на производстве", открываем доступ к каждой из них отдельно.
+# All of them are Auth#require_sign_in by default.
 #
 class PagesController < ApplicationController
-  skip_before_action :require_sign_in, only:
-                                         [
-                                           :home,
-                                           :help,
-                                           :info
-                                         ]
+  skip_before_action :require_sign_in,
+                     only: [:home, :help, :info]
 
-  ## Стартовая приложения.
+  # Start page. Redirect to #data if signed.
   def home
     redirect_to data_path if signed_in?
   end
 
-  ## Как пользоваться.
+  # Help page.
   def help
   end
 
-  ##
-  # Инфо-страница.
-  #
-  # Показываем flash-сообщения или redirect на стартовую если те
-  # пустые.
-  #
-
+  # Show +flash+ messages or redirect to #home if empty.
   def info
     redirect_to(root_path) if flash.notice.blank? && flash.alert.blank?
   end
 
-  ##
-  # Данные пользователя.
-  #
-  # Стартовая для залогиненных.
-  #
-
+  # Start page for signed in.
   def data
   end
 end
