@@ -1,16 +1,12 @@
-# coding: utf-8
-# Морда для LetterItem.
-#
+# See LetterItem.
 class LetterItemsController < ApplicationController
   before_action :set_letter_item, only: [:edit, :update, :destroy]
   include Mover
 
-  ## Новый.
   def new
     @letter_item = LetterItem.new(letter_id: params[:letter_id])
   end
 
-  ## Создать.
   def create
     @letter_item = LetterItem.new(letter_item_params)
 
@@ -23,11 +19,9 @@ class LetterItemsController < ApplicationController
     end
   end
 
-  ## Страница редактирования.
   def edit
   end
 
-  ## Обновить.
   def update
     respond_to do |format|
       if @letter_item.update(letter_item_params)
@@ -37,12 +31,6 @@ class LetterItemsController < ApplicationController
       end
     end
   end
-
-  ##
-  # DELETE /letter_items/1.js
-  #
-  # Удалить.
-  #
 
   def destroy
     @resource = @letter_item
