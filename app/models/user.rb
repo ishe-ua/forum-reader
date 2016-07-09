@@ -34,11 +34,12 @@
 class User < ApplicationRecord
   belongs_to :account
 
-  has_many :forums
-  has_many :letters
-
   has_one :reader_set
   has_one :mailer_set
+
+  has_many :forums
+  has_many :letters
+  has_many :messages
 
   include Nick
 
