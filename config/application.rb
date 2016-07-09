@@ -27,6 +27,7 @@ module ForumReader
     # ishe
     #
 
+    # Save SSD
     if Rails.env.development? || Rails.env.test?
       config.logger = Logger.new('/dev/null')
     end
