@@ -127,10 +127,12 @@ ActiveRecord::Schema.define(version: 20160420090853) do
   create_table "mailer_sets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "last_post_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  add_index "mailer_sets", ["last_post_at"], name: "index_mailer_sets_on_last_post_at", using: :btree
   add_index "mailer_sets", ["status"], name: "index_mailer_sets_on_status", using: :btree
   add_index "mailer_sets", ["user_id"], name: "index_mailer_sets_on_user_id", using: :btree
 

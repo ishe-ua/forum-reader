@@ -20,4 +20,5 @@
 #  fk_rails_503d442a23  (user_id => users.id)
 #
 class ReaderSet < BaseSet
+  include Status
 end

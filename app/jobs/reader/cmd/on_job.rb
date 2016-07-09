@@ -16,3 +16,5 @@ module Reader
     end
   end
 end
+
+# TODO: send unreaded forums if present
