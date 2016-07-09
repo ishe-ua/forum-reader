@@ -53,7 +53,8 @@ module Mailer
     end
 
     def subject
-      (mail.subject || '').strip
+      s = (mail.subject || '').strip
+      s.size > max_subject ? (b[0..(max_subject - 3)] + '...') : b
     end
 
     def body
@@ -70,6 +71,10 @@ module Mailer
 
     def max_body
       IncomeEmailJob::MAX_BODY
+    end
+
+    def max_subject
+      IncomeEmailJob::MAX_SUBJECT
     end
   end
 end

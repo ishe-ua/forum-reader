@@ -6,6 +6,9 @@ module Mailer
     # See Piper#to
     MAX_BODY = 1024
 
+    # Limited by Postgres String type
+    MAX_SUBJECT = 256
+
     # Params: see Piper protected methods
     def perform(from, to, subject, body, attachments)
       raise_unless_array(to)

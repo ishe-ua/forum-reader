@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420090853) do
+ActiveRecord::Schema.define(version: 20160709160620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,19 @@ ActiveRecord::Schema.define(version: 20160420090853) do
   add_index "mailer_sets", ["status"], name: "index_mailer_sets_on_status", using: :btree
   add_index "mailer_sets", ["user_id"], name: "index_mailer_sets_on_user_id", using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "body"
+    t.text     "attachments"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "messages", ["created_at"], name: "index_messages_on_created_at", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "reader_sets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "status"
@@ -173,6 +186,7 @@ ActiveRecord::Schema.define(version: 20160420090853) do
   add_foreign_key "letter_items", "letters"
   add_foreign_key "letters", "users"
   add_foreign_key "mailer_sets", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "reader_sets", "users"
   add_foreign_key "users", "accounts"
 end

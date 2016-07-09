@@ -1,0 +1,16 @@
+DEFAULTS: &DEFAULTS
+  user: ishe
+  from: support@$LABEL.com
+  subject: Welcome!!
+  body: Welcome to $LABEL
+
+reddit:
+  <<: *DEFAULTS
+
+twitter:
+  <<: *DEFAULTS
+
+instagram:
+  <<: *DEFAULTS
+  user: mary
+  attachments: 1.txt, 2.txt
