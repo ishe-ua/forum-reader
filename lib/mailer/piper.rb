@@ -61,9 +61,9 @@ module Mailer
       b.size > max_body ? (b[0..(max_body - 3)] + '...') : b
     end
 
-    # Return list of filenames
+    # Return string like '1.txt, 2.txt'
     def attachments
-      mail.attachments.map(&:filename)
+      mail.attachments.map(&:filename).join(', ')
     end
 
     private
