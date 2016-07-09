@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# See lib/piper.rb
+#
+require_relative '../lib/piper'
+Piper.new($stdin.read)
+     .forward
