@@ -1,6 +1,7 @@
 DEFAULTS: &DEFAULTS
   user: ishe
   status: <%= MailerSet.statuses[MailerSet.new.status] %>
+  secret_name: $LABEL<%= MailerSet.new.secret_name %>
 
 ishe:
   <<: *DEFAULTS

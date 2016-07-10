@@ -4,11 +4,13 @@ module Utils
     DEFAULT_SIZE = 24
 
     def self.gen_random_string(size = DEFAULT_SIZE)
-      chars = ('a'..'z').to_a.shuffle
-      nums = (0..9).to_a.shuffle
+      Array.new(size) { [*'0'..'9', *'a'..'z'].sample }.join
 
-      ar = (chars + nums).shuffle
-      1.upto(size).map { ar.sample }.join
+      # chars = ('a'..'z').to_a.shuffle
+      # nums = (0..9).to_a.shuffle
+
+      # ar = (chars + nums).shuffle
+      # 1.upto(size).map { ar.sample }.join
     end
   end
 end

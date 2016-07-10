@@ -2,6 +2,7 @@ class CreateMailerSets < ActiveRecord::Migration
   def change
     create_table :mailer_sets do |t|
       t.references :user, index: true, foreign_key: true
+      t.string :secret_name, null: false
 
       t.integer :status
       t.datetime :last_post_at
@@ -11,5 +12,6 @@ class CreateMailerSets < ActiveRecord::Migration
 
     add_index :mailer_sets, :status
     add_index :mailer_sets, :last_post_at
+    add_index :mailer_sets, :secret_name, unique: true
   end
 end
