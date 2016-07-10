@@ -1,5 +1,5 @@
 module Reader
-  # Clean FeedItem -s.
+  # Clean FeedItem -s (like Mailer::CleanerJob).
   #
   # Clockwork task
   class CleanerJob < ApplicationJob
