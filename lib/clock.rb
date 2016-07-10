@@ -23,9 +23,11 @@ module Clockwork
 
   every(5.minutes, 'reader.fetch.forums') { Reader::Fetcher::FetchForumsJob.perform_later }
   every(15.minutes, 'reader.fetch.letters') { Reader::Fetcher::FetchLettersJob.perform_later }
-  every(1.day, 'reader.clean_feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
 
   every(1.minute, 'reader.send_letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
     Reader::Sender::SendLettersJob.perform_later(Time.now)
   end
+
+  every(1.day, 'reader.clean_feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
+  every(1.day, 'mailer.clean_messages', at: SYS_TIME) { Mailer::CleanerJob.perform_later }
 end
