@@ -1,4 +1,3 @@
-# coding: utf-8
 module Mailer
   # Income emails from Postfix.
   #
