@@ -1,5 +1,4 @@
-# coding: utf-8
-# Продолжение Position.
+# See Position.
 #
 module Resource
   extend ActiveSupport::Concern
