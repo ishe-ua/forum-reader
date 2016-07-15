@@ -1,16 +1,12 @@
-# coding: utf-8
-# Проверка Account -а.
-#
+# See Account
 module CheckAccount
   extend ActiveSupport::Concern
 
-  ## Проверка уже была или нет? Ключ в session.
+  # Check already was or not? Key in Session
   ACCOUNT_CHECK_SESSION_KEY = 'account_checked'.freeze
 
-  ## Страницы, доступ к которым без проверки аккаунта запрещен.
-  DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT = [
-    %w(pages data)
-  ].freeze
+  # Pages with deprecated access without check
+  DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT = [%w(pages data)].freeze
 
   included do
     before_action :check_models_presence
@@ -19,7 +15,7 @@ module CheckAccount
 
   protected
 
-  ## Запрещенная без заполнения аккаунта страница или нет?
+  # Deprecated without Account filling page or not?
   def depricated_page?
     b = false
     DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT.each do |page|
@@ -28,13 +24,9 @@ module CheckAccount
     b
   end
 
-  ##
-  # Проверить наличие обязательных моделей и посоздавать их если надо.
+  # Check availability of required fields and create them if need.
   #
-  # <tt>Увага:</tt> метод обязательно должен идти перед
-  # #check_account_filling.
-  #
-
+  # <tt>WARN:</tt> necessarily should be before #check_account_filling.
   def check_models_presence
     return unless depricated_page?
     key = ACCOUNT_CHECK_SESSION_KEY
@@ -46,11 +38,7 @@ module CheckAccount
     end
   end
 
-  ##
-  # Проверить заполнение обязательных полей и отправить если надо на
-  # дозаполнение.
-  #
-
+  # Check filling of required fields and send to afterfilling if need
   def check_account_filling
     return unless depricated_page?
     key = ACCOUNT_CHECK_SESSION_KEY
