@@ -2,6 +2,6 @@
 require 'test_helper'
 
 class AuthTest < ActionController::TestCase
-  test 'тестирование размазано по всему app' do
+  test 'through entire app' do
   end
 end
