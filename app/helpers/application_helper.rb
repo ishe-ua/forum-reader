@@ -1,5 +1,5 @@
 # coding: utf-8
-# See ApplicationController.
+# See ApplicationController
 module ApplicationHelper
   # Title tag for browser.
   def app_title

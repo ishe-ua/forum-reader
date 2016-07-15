@@ -1,4 +1,4 @@
-# See AccountsController.
+# See AccountsController
 module AccountsHelper
   # Register new User operation?
   def register?(params)

@@ -1,4 +1,4 @@
-# See PagesController.
+# See PagesController
 module PagesHelper
   # Link to wiki page with locale
   def xmpp_wiki_path
