@@ -15,28 +15,28 @@ class MoverTest < ActionController::TestCase
   end
 
   test '#move_up' do
-    assert_resource1_less_resource2('1-й выше')
+    assert_resource1_less_resource2('1 higher')
     patch :move_up, id: @resource2, format: :js
 
     assert_response :success
-    assert_resource2_less_resource1('2-й выше')
+    assert_resource2_less_resource1('2 higher')
   end
 
   test '#move_down' do
-    assert_resource1_less_resource2('1-й выше')
+    assert_resource1_less_resource2('1 higher')
     patch :move_down, id: @resource1, format: :js
 
     assert_response :success
-    assert_resource2_less_resource1('2-й выше')
+    assert_resource2_less_resource1('2 higher')
   end
 
   private
 
-  def assert_resource1_less_resource2(msg = '1-й выше')
+  def assert_resource1_less_resource2(msg = '1 higher')
     assert @resource1.reload.position < @resource2.reload.position, msg
   end
 
-  def assert_resource2_less_resource1(msg = '2-й выше')
+  def assert_resource2_less_resource1(msg = '2 higher')
     assert @resource2.reload.position < @resource1.reload.position, msg
   end
 end
