@@ -1,13 +1,7 @@
-# coding: utf-8
-# Аутентификация.
+# Authentication.
 #
-# Консерва ApplicationController. При include в него должна быть одной
-# из первых (чтобы выполняться как можно раньше), а лучше первой.
-#
-# Ньюансы:
-#
-# * <tt>Прописан фильтр защиты всех страниц</tt>
-# * Id залогиненного храним в <tt>session[:account_id]</tt>
+# Concern for ApplicationController. Should be first or mostly first
+# there.
 #
 module Auth
   extend ActiveSupport::Concern
@@ -22,24 +16,14 @@ module Auth
 
   protected
 
-  ##
-  # Залогиниться только по email, т.е. без пароля.
-  #
-
   def auto_sign_in(email)
     account = Account.find_by(email: email)
     session[:account_id] = account.id if account
   end
 
-  ##
-  # Залогиниться.
+  # Return true or String if error.
   #
-  # Lock -нутые не залогинятся (если Lock-механизм доступен).
-  #
-  # Возвращаем:
-  # 1. true   Залогинились
-  # 2. String Сообщение
-  #
+  # Skip if Lock.
 
   def sign_in(email, password)
     account = Account.find_by(email: email)
@@ -55,45 +39,29 @@ module Auth
     end
   end
 
-  ## Разлогиниться.
   def sign_out
     session[:account_id] = nil
     session[:back_url]   = nil
   end
 
-  ##
-  # Залогинены или нет?
-  #
   # helper_method
-  #
-
   def signed_in?
     session[:account_id] ? true : false
   end
 
-  ##
-  # Текущий залогиненный Account или nil.
-  #
   # helper_method
-  #
-
   def current_account
     @current_account ||= Account.find_by(id: session[:account_id]) if
       signed_in?
   end
 
-  ##
-  # Текущий залогиненный User или nil.
-  #
   # helper_method
-  #
-
   def current_user
     @current_user ||= current_account.user if
       signed_in?
   end
 
-  ## Фильтр защиты страницы.
+  # Secure page filter
   def require_sign_in
     redirect_to new_session_path unless
       signed_in?
