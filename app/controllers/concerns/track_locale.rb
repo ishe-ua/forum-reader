@@ -1,8 +1,4 @@
-# coding: utf-8
-# Установить локаль интерфейса пользователя, точнее следить за
-# выбранной.
-#
-# Консерва ApplicationController.
+# Concern for ApplicationController
 #
 module TrackLocale
   extend ActiveSupport::Concern
@@ -13,7 +9,7 @@ module TrackLocale
 
   protected
 
-  ## Установить текущую выбранную, взяв ее из session.
+  ## Set locale from session
   def track_locale
     I18n.locale = session[:current_locale] || I18n.default_locale
   end
