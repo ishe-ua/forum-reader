@@ -5,7 +5,6 @@ require 'rails/test_help'
 Dir[
   Rails.root.join('test/support/**/*.rb'),
   Rails.root.join('test/**/shared/**/*.rb')
-
 ].each { |f| require f }
 
 class ActiveSupport::TestCase

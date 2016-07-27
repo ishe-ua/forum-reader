@@ -5,7 +5,5 @@ module Mailer
 
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
-  if defined?(Rails)
-    require_relative 'piper.rb'
-  end
+  require_relative 'piper.rb' if defined?(Rails)
 end

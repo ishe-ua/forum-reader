@@ -32,7 +32,7 @@ module Reader
           feed.update(last_fetch_at: 200.years.ago)
 
           feed_stream = Faraday.get(feed.url).body
-          assert job.send(:parse_and_save_news, feed, feed_stream) > 0
+          assert job.send(:parse_and_save_news, feed, feed_stream).positive?
         end
       end
 
