@@ -1,17 +1,7 @@
 # See Account
 class AccountsController < ApplicationController
-  before_action :set_account, only:
-                                [
-                                  :edit,
-                                  :update,
-                                  :destroy
-                                ]
-
-  skip_before_action :require_sign_in, only:
-                                         [
-                                           :new,
-                                           :create
-                                         ]
+  before_action :set_account, only: [:edit, :update, :destroy]
+  skip_before_action :require_sign_in, only: [:new, :create]
 
   include ConfirmEmail
   include ConfirmJabber
