@@ -1,8 +1,6 @@
-# coding: utf-8
 # Confirm Email.
 #
-# Face for EmailConfirmation.
-#
+# See EmailConfirmation
 module ConfirmEmail
   extend ActiveSupport::Concern
 
@@ -10,17 +8,14 @@ module ConfirmEmail
     skip_before_action :require_sign_in, only: :confirm_email
   end
 
-  ##
   # GET /accounts/confirm_email/:token
   #
-  # Выполняется при переходе пипла по ссылке в письме
-  # AccountsMailer#email_confirmation.
-  #
+  # Run after click by link from AccountsMailer#email_confirmation.
 
   def confirm_email
     account = Account.find_by(email_confirmation_token: params[:token])
 
-    if account && confirm(account)
+    if account && attempt_confirm(account)
       auto_signin(account)
       flash.notice = t 'success'
     else
@@ -32,7 +27,7 @@ module ConfirmEmail
 
   private
 
-  def confirm(account)
+  def attempt_confirm(account)
     account.confirm_email unless account.email_confirmed?
     account.email_confirmed?
   end

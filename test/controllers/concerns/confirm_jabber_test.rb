@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class ConfirmJabberTest < ActionController::TestCase
@@ -30,7 +29,7 @@ class ConfirmJabberTest < ActionController::TestCase
     assert_not_empty flash.alert
   end
 
-  test 'при success также выполняется auto_sign_in' do
+  test 'run #auto_sign_in after success' do
     get :confirm_jabber, token: @user.jabber_confirmation_token
 
     assert @controller.send(:signed_in?)

@@ -1,8 +1,6 @@
-# coding: utf-8
 # Confirm Jabber.
 #
-# Face for JabberConfirmation.
-#
+# See JabberConfirmation
 module ConfirmJabber
   extend ActiveSupport::Concern
 
@@ -10,18 +8,15 @@ module ConfirmJabber
     skip_before_action :require_sign_in, only: :confirm_jabber
   end
 
-  ##
   # GET /accounts/confirm_jabber/:token
   #
-  # Выполняется при переходе пипла по ссылке в письме
-  # AccountsMailer#jabber_confirmation.
-  #
+  # Run after click by link from AccountsMailer#jabber_confirmation
 
   def confirm_jabber
     user = User.find_by(jabber_confirmation_token: params[:token])
 
-    if user && confirm_j(user)
-      auto_signin(user.account) # прописано в ConfirmEmail
+    if user && attempt_confirm_j(user)
+      auto_signin(user.account) # see ConfirmEmail
       flash.notice = t 'success'
     else
       flash.alert = t 'fail'
@@ -32,7 +27,7 @@ module ConfirmJabber
 
   private
 
-  def confirm_j(user)
+  def attempt_confirm_j(user)
     user.confirm_jabber unless user.jabber_confirmed?
     user.jabber_confirmed?
   end
