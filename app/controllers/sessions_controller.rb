@@ -1,7 +1,4 @@
-# Sign in/out.
-#
 # See Auth
-#
 class SessionsController < ApplicationController
   before_action :downcase_email, only: :create
   skip_before_action :require_sign_in, except: :destroy

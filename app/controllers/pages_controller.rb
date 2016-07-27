@@ -1,7 +1,6 @@
 # Static pages.
 #
 # All of them are Auth#require_sign_in by default.
-#
 class PagesController < ApplicationController
   skip_before_action :require_sign_in,
                      only: [:home, :help, :info]
