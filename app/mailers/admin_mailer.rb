@@ -1,6 +1,8 @@
 # Emails to APP admin.
 class AdminMailer < ApplicationMailer
+  # :stopdoc:
   default to: APP::ADMIN_EMAIL
+  # :startdoc:
 
   # New Account registratin
   def new_registration(account)
