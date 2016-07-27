@@ -33,7 +33,7 @@ module ConfirmJabber
   private
 
   def confirm_j(user)
-    user.confirm_jabber! unless user.jabber_confirmed?
+    user.confirm_jabber unless user.jabber_confirmed?
     user.jabber_confirmed?
   end
 end

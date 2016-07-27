@@ -16,11 +16,11 @@ class JabberConfirmationTest < ActiveSupport::TestCase
     assert_not instance.jabber_confirmed?
   end
 
-  test '#jabber_confirm!' do
+  test '#jabber_confirm' do
     instance.save
     assert_not instance.jabber_confirmed?
 
-    assert instance.confirm_jabber!
+    assert instance.confirm_jabber
     assert instance.jabber_confirmed?
   end
 

@@ -33,7 +33,7 @@ module ConfirmEmail
   private
 
   def confirm(account)
-    account.confirm_email! unless account.email_confirmed?
+    account.confirm_email unless account.email_confirmed?
     account.email_confirmed?
   end
 

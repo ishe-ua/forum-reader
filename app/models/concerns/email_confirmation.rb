@@ -21,7 +21,7 @@ module EmailConfirmation
     email_confirmation_at ? true : false
   end
 
-  def confirm_email!
+  def confirm_email
     update!(email_confirmation_at: Time.zone.now)
   end
 

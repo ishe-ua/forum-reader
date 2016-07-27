@@ -21,7 +21,7 @@ module JabberConfirmation
     jabber_confirmation_at ? true : false
   end
 
-  def confirm_jabber!
+  def confirm_jabber
     update!(jabber_confirmation_at: Time.zone.now)
   end
 
