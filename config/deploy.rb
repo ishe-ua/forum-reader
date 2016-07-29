@@ -1,27 +1,20 @@
-# gem 'mina'
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/foreman'
 
-set :application, 'reader'
 set :domain, 'forum-reader2.com'
 set :deploy_to, '/var/www/forum-reader2.com'
 set :user, 'deployer'
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
+
+set :foreman_app, 'reader'
 set :foreman_format, 'systemd'
 
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 
-# Optional settings:
-#   set :port, '30000'     # SSH port number.
-#   set :forward_agent, true     # SSH forward_agent.
-
-# This task is the environment that is loaded for most commands, such as
-# `mina deploy` or `mina rake`.
 task :environment do
-  queue 'source ~/.profile'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -36,7 +29,7 @@ task setup: :environment do
 
   queue! %(touch "#{deploy_to}/#{shared_path}/config/database.yml")
   queue! %(touch "#{deploy_to}/#{shared_path}/config/secrets.yml")
-  queue  %(echo "-----> Be sure to edit shared database.yml and secrets.yml.")
+  queue  %(echo "-----> Be sure to edit 'database.yml' and 'secrets.yml'.")
 
   if repository
     repo_host = repository.split(%r{@|://}).last.split(%r{:|\/}).first
@@ -66,14 +59,14 @@ task deploy: :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    invoke :'foreman:export'
+    invoke 'foreman:export'
 
     to :launch do
-      # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 
-      #invoke :'foreman:restart'
-      #run 'nginx -s restart'
+      invoke 'foreman:restart'
+      run 'nginx -s restart'
     end
   end
 end
