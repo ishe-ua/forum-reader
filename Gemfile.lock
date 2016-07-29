@@ -120,6 +120,8 @@ GEM
       loofah (~> 2.0)
       sax-machine (~> 1.0)
     ffi (1.9.14)
+    foreman (0.82.0)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     girl_friday (0.11.2)
       connection_pool (~> 1.0)
@@ -335,6 +337,7 @@ DEPENDENCIES
   em-http-request
   exception_notification
   feedjira
+  foreman
   guard
   guard-livereload
   guard-minitest
