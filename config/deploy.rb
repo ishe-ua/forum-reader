@@ -62,14 +62,14 @@ task deploy: :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    invoke 'foreman:export'
+    #invoke 'foreman:export'
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 
-      invoke 'foreman:restart'
-      run 'nginx -s restart'
+      #invoke 'foreman:restart'
+      #run 'nginx -s restart'
     end
   end
 end
