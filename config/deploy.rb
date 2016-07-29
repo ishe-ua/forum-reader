@@ -4,7 +4,7 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/foreman'
 
-set :foreman_app, 'reader'
+set :application, 'reader'
 set :domain, 'forum-reader2.com'
 set :deploy_to, '/var/www/forum-reader2.com'
 set :user, 'deployer'
