@@ -4,14 +4,18 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/foreman'
 
+set :foreman_app, 'reader'
 set :domain, 'forum-reader2.com'
 set :deploy_to, '/var/www/forum-reader2.com'
 set :user, 'deployer'
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
 
-set :foreman_app, 'reader'
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
+set :shared_paths, [
+      'config/database.yml',
+      'config/secrets.yml',
+      'log'
+    ]
 
 task :environment do
 end
