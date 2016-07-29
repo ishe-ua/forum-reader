@@ -11,8 +11,6 @@ set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
 
 set :foreman_app, 'reader'
-set :foreman_format, 'systemd'
-
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 
 task :environment do
