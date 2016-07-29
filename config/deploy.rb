@@ -5,7 +5,7 @@ require 'mina/git'
 require 'mina/foreman'
 
 set :domain, 'forum-reader2.com'
-set :deploy_to, '/var/www/forum-reader2.com'
+set :deploy_to, '/home/deployer/forum-reader2.com'
 set :user, 'deployer'
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
