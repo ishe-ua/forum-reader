@@ -1,7 +1,8 @@
 # gem 'puma'
 #
 
-workers Integer(ENV['WEB_WORKERS'] || 1)
+workers_count = Integer(ENV['WEB_WORKERS'] || 0)
+workers(workers_count) if workers_count > 0
 threads 1, 1
 
 preload_app!
