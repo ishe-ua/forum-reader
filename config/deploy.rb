@@ -1,3 +1,4 @@
+# gem 'mina'
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
