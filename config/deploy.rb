@@ -10,6 +10,7 @@ set :deploy_to, '/var/www/forum-reader2.com'
 set :user, 'deployer'
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
+set :foreman_format, 'systemd'
 
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 
@@ -71,8 +72,8 @@ task deploy: :environment do
       # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 
-      invoke :'foreman:restart'
-      run 'nginx -s restart'
+      #invoke :'foreman:restart'
+      #run 'nginx -s restart'
     end
   end
 end
