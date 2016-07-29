@@ -9,7 +9,7 @@ preload_app!
 rackup DefaultRackup
 environment ENV['RACK_ENV'] || 'development'
 
-bind 'unix:/tmp/forum-reader.sock'
+bind 'unix:/tmp/reader.sock'
 
 before_fork do
   defined?(ActiveRecord::Base) &&
