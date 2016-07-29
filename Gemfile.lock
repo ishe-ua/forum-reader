@@ -343,6 +343,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   lograge
+  mina
   mina-foreman
   minitest-focus
   pg
