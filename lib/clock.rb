@@ -1,6 +1,6 @@
-require_relative '../config/initializers/active_job'
-require_relative 'app'
 require 'clockwork'
+require_relative 'app'
+require_relative '../config/initializers/active_job'
 
 # App clock, gem 'clockwork'.
 module Clockwork

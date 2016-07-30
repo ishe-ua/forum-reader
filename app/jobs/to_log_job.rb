@@ -1,7 +1,7 @@
 # Write message to Rails log.
 #
 # +Proxy+ for runs <tt>without Rails env</tt> (like Reader::Fetcher).
-class ToLogJob < ActiveJob::Base
+class ToLogJob < ApplicationJob
   queue_as :default
 
   # Example: ToLogJob.perform_letter('Bad url', :info)
