@@ -1,3 +1,4 @@
+ActionMailer::DeliveryJob.queue_name = 'default'
 am = ActionMailer::Base
 
 am.default_options = { from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>" }
