@@ -44,9 +44,8 @@ module CheckAccount
     key = ACCOUNT_CHECK_SESSION_KEY
 
     if request.get? &&
-       signed_in? &&
-       current_user.valid? &&
-       current_account.valid?
+       current_user&.valid? &&
+       current_account&.valid?
 
       session[key] = true
     else

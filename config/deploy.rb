@@ -12,10 +12,10 @@ set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
 
 set :shared_paths, [
-      'config/database.yml',
-      'config/secrets.yml',
-      'log'
-    ]
+  'config/database.yml',
+  'config/secrets.yml',
+  'log'
+]
 
 task :environment do
 end

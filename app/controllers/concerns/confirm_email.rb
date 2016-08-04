@@ -16,14 +16,13 @@ module ConfirmEmail
     account = Account.find_by(email_confirmation_token: params[:token])
 
     if account && attempt_confirm(account)
-      auto_signin(account)
+      raise 'Error auto sign in' unless auto_signin(account.email)
       flash.notice = t 'success'
     else
       flash.alert = t 'fail'
     end
 
-    # redirect_to info_path
-    redirect_to root_path
+    redirect_to info_path
   end
 
   private
