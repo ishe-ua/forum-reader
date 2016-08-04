@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   # Start page. Redirect to #data if signed.
   def home
+    fail 'Aa bb cc'
     redirect_to data_path if signed_in?
   end
 
