@@ -18,7 +18,7 @@ module Auth
 
   def auto_sign_in(email)
     account = Account.find_by(email: email)
-    session[:account_id] = account.id if account
+    session[:account_id] = account&.id
   end
 
   # Return true or String if error.
@@ -51,13 +51,13 @@ module Auth
 
   # helper_method
   def current_account
-    @current_account ||= Account.find_by(id: session[:account_id]) if
+    (@current_account ||= Account.find_by(id: session[:account_id])) if
       signed_in?
   end
 
   # helper_method
   def current_user
-    @current_user ||= current_account.user if
+    (@current_user ||= current_account.user) if
       signed_in?
   end
 

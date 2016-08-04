@@ -16,7 +16,7 @@ module ConfirmEmail
     account = Account.find_by(email_confirmation_token: params[:token])
 
     if account && attempt_confirm(account)
-      raise 'Error auto sign in' unless auto_signin(account.email)
+      auto_signin(account)
       flash.notice = t 'success'
     else
       flash.alert = t 'fail'
