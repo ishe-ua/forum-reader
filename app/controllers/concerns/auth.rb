@@ -18,7 +18,7 @@ module Auth
 
   def auto_sign_in(email)
     account = Account.find_by(email: email)
-    session[:account_id] = account.id if account&.authenticate(password)
+    session[:account_id] = account&.id
   end
 
   # Return true or String if error.

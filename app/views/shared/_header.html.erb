@@ -8,10 +8,10 @@
   <li>
     <% if !signed_in? %>
       <% unless current_page?(controller: 'pages', action: 'home') %>
-        <%= link_to t('header.sign_in'), new_session_path %>
+        <%= link_to t('header.sign_in'), login_path %>
       <% end %>
     <% else %>
-      <%= link_to t('header.sign_out'), session_path(current_user), method: :delete %>
+      <%= link_to t('header.sign_out'), logout_path %>
     <% end %>
   </li>
   <li>
