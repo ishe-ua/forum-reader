@@ -29,7 +29,6 @@ module CheckAccount
   # <tt>WARN:</tt> necessarily should be before #check_account_filling.
   def check_models_presence
     return unless depricated_page?
-    key = ACCOUNT_CHECK_SESSION_KEY
 
     if signed_in? && !current_user
       create_user_if_absent
@@ -41,13 +40,12 @@ module CheckAccount
   # Check filling of required fields and send to afterfilling if need
   def check_account_filling
     return unless depricated_page?
-    key = ACCOUNT_CHECK_SESSION_KEY
 
     if request.get? &&
        current_user&.valid? &&
        current_account&.valid?
 
-      session[key] = true
+      session[ACCOUNT_CHECK_SESSION_KEY] = true
     else
       redirect_to edit_account_path(current_account)
     end
