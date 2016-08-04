@@ -2,9 +2,6 @@
 module CheckAccount
   extend ActiveSupport::Concern
 
-  # Check already was or not? Key in Session
-  ACCOUNT_CHECK_SESSION_KEY = 'account_checked'.freeze
-
   # Pages with deprecated access without check
   DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT = [%w(pages data)].freeze
 
@@ -41,14 +38,10 @@ module CheckAccount
   def check_account_filling
     return unless depricated_page?
 
-    if request.get? &&
-       current_user&.valid? &&
-       current_account&.valid?
-
-      session[ACCOUNT_CHECK_SESSION_KEY] = true
-    else
-      redirect_to edit_account_path(current_account)
-    end
+    redirect_to edit_account_path(current_account) unless
+      request.get? &&
+      current_user&.valid? &&
+      current_account&.valid?
   end
 
   private
