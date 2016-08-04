@@ -31,7 +31,7 @@ module CheckAccount
     return unless depricated_page?
     key = ACCOUNT_CHECK_SESSION_KEY
 
-    if signed_in? && session[key].blank?
+    if signed_in? && !current_user
       create_user_if_absent
       create_reader_set_if_absent
       create_mailer_set_if_absent
