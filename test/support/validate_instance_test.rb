@@ -1,4 +1,4 @@
-# Validate @instance (see +setup+ method in model tests)
+# Validate @instance (see +setup+ method in models tests)
 module ValidateInstanceTest
   def test_instance_is_defined
     assert instance, '@instance defined'
