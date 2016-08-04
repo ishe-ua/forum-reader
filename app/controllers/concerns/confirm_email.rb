@@ -22,7 +22,8 @@ module ConfirmEmail
       flash.alert = t 'fail'
     end
 
-    redirect_to info_path
+    # redirect_to info_path
+    redirect_to root_path
   end
 
   private
