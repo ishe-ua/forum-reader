@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { send_emails_after_create_and_redirect_to_info }
+        format.html { send_emails_after_create_and_redirect_to_info; return }
       else
         format.html { render :new }
       end
