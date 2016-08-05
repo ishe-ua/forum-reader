@@ -29,11 +29,11 @@ Rails.application.routes.draw do
   get 'accounts/confirm_jabber/:token' =>
       'accounts#confirm_jabber', as: :confirm_jabber
 
-  get 'accounts/send_email_confirmation' =>
-      'accounts#send_email_confirmation', as: :send_email_confirmation
+  get 'accounts/repeat_email_confirmation' =>
+      'accounts#repeat_email_confirmation', as: :repeat_email_confirmation
 
-  get 'accounts/send_jabber_confirmation' =>
-      'accounts#send_jabber_confirmation', as: :send_jabber_confirmation
+  get 'accounts/repeat_jabber_confirmation' =>
+      'accounts#repeat_jabber_confirmation', as: :repeat_jabber_confirmation
 
   match 'accounts/reset_password' =>
         'accounts#reset_password', via: [:get, :post], as: :reset_password

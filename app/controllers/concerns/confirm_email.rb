@@ -8,15 +8,6 @@ module ConfirmEmail
     skip_before_action :require_sign_in, only: :confirm_email
   end
 
-  # Send AccountsMailer#email_confirmation
-  #
-  # Like ConfirmJabber#send_jabber_confirmation
-
-  def send_email_confirmation
-    AccountsMailer.email_confirmation(current_account).deliver_later
-    redirect_to info_path, notice: t(:we_sent_you_email)
-  end
-
   # GET /accounts/confirm_email/:token
   #
   # Run after click by link from AccountsMailer#email_confirmation.
@@ -32,6 +23,15 @@ module ConfirmEmail
     end
 
     redirect_to info_path
+  end
+
+  # Send AccountsMailer#email_confirmation
+  #
+  # Like ConfirmJabber#repeat_jabber_confirmation
+
+  def repeat_email_confirmation
+    AccountsMailer.email_confirmation(current_account).deliver_later
+    redirect_to info_path, notice: t(:we_sent_you_email)
   end
 
   private

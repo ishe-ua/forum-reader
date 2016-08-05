@@ -1,6 +1,6 @@
 <% if not confirmed?(target) %>
   <sup class="active-info"><%= t '.not_activated' %></sup>
 
-  <%= link_to(t('.activate'), instance_eval("send_#{target}_confirmation_path"),
+  <%= link_to(t('.activate'), instance_eval("repeat_#{target}_confirmation_path"),
               class: "activate #{target}") %>
 <% end %>

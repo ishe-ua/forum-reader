@@ -35,4 +35,12 @@ class ConfirmEmailTest < ActionController::TestCase
     assert @controller.send(:signed_in?)
     assert_not_empty flash.notice
   end
+
+  test 'repeat_email_confirmation' do
+    sign_in(@account)
+    assert_enqueued_jobs 1 do
+      get :repeat_email_confirmation
+      assert_redirected_to info_path
+    end
+  end
 end
