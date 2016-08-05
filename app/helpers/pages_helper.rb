@@ -56,4 +56,12 @@ module PagesHelper
 
     instance_eval(route)
   end
+
+  # See EmailConfirmation or JabberConfirmation
+  def confirmed?(target)
+    b = true
+    b = false if target == :email && !current_account.email_confirmed?
+    b = false if target == :jabber && !current_user.jabber_confirmed?
+    b
+  end
 end

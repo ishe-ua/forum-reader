@@ -1,16 +1,6 @@
-<%
-activity = true
-
-activity = false if target == :email && !current_account.email_confirmed?
-activity = false if target == :jabber && !current_user.jabber_confirmed?
-%>
-
-
-<% if !activity %>
+<% if not confirmed?(target) %>
   <sup class="active-info"><%= t '.not_activated' %></sup>
 
-  <%= link_to(t('.activate'), "todo",
-              method: :post,
-              remote: true,
+  <%= link_to(t('.activate'), instance_eval("send_#{target}_confirmation_path"),
               class: "activate #{target}") %>
 <% end %>

@@ -7,7 +7,7 @@ en:
   form:
     submit: OK
     errors: Errors
-  we_sent_you_email: We have sent you an Email
+  we_sent_you_email: We just sent you Email
   best_regards: Best Regards
   thank_you: Thank you
   access_denied: Access denied
