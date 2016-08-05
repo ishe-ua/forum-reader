@@ -35,4 +35,12 @@ class ConfirmJabberTest < ActionController::TestCase
     assert @controller.send(:signed_in?)
     assert_not_empty flash.notice
   end
+
+  test 'repeat_jabber_confirmation' do
+    sign_in(@user.account)
+    assert_enqueued_jobs 1 do
+      get :repeat_jabber_confirmation
+      assert_redirected_to info_path
+    end
+  end
 end

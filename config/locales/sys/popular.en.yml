@@ -8,6 +8,7 @@ en:
     submit: OK
     errors: Errors
   we_sent_you_email: We just sent you Email
+  we_sent_you_jabber: We just sent you Jabber message
   best_regards: Best Regards
   thank_you: Thank you
   access_denied: Access denied

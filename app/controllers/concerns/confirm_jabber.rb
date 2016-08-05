@@ -25,6 +25,17 @@ module ConfirmJabber
     redirect_to info_path
   end
 
+  # Send text from AccountsMailer#jabber_confirmation to Jabber
+  # throught Reader::ReplyJob.
+  #
+  # Like ConfirmEmail#repeat_email_confirmation
+
+  def repeat_jabber_confirmation
+    text = AccountsMailer.jabber_confirmation(current_account).body.encoded
+    Reader::ReplyJob.perform_later(text, Reader::BOTE_JID)
+    redirect_to info_path, notice: t(:we_sent_you_jabber)
+  end
+
   private
 
   def attempt_confirm_j(user)

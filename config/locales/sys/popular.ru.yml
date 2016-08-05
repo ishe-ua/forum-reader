@@ -8,6 +8,7 @@ ru:
     submit: ОК
     errors: Ошибки
   we_sent_you_email: Мы отправили Вам email
+  we_sent_you_jabber: Мы отправили Вам Jabber-сообщение
   best_regards: С наилучшими пожеланиями
   thank_you: Спасибо
   access_denied: Доступ запрещен
