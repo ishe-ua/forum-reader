@@ -2,7 +2,14 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '~> 4.2.7'
-gem 'pg'
+gem 'pg',    '~> 0.18'
+gem 'puma',  '~> 3.0'
+gem 'backburner'
+gem 'beanstalkd_view'
+gem 'clockwork'
+gem 'exception_notification'
+gem 'foreman'
+gem 'mina'
 
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
@@ -39,20 +46,11 @@ group :test do
   gem 'vcr'
 end
 
+gem 'rails-i18n', '~> 4.0.0' # For 4.x
+gem 'lograge'
 gem 'acts_as_list'
 gem 'active_record_union'
-gem 'rails-i18n', '~> 4.0.0' # For 4.x
-
 gem 'feedjira'
 gem 'blather'
 gem 'em-http-request'
 gem 'rchardet'
-
-gem 'backburner'
-gem 'beanstalkd_view'
-gem 'exception_notification'
-gem 'clockwork'
-gem 'foreman'
-gem 'lograge'
-gem 'mina'
-gem 'puma'
