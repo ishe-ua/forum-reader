@@ -19,7 +19,7 @@ bind 'unix:/tmp/reader.sock'
 # environment ENV.fetch('RAILS_ENV') { 'development' }
 
 # environment 'development'
-environment ENV['RACK_ENV'] || 'development'
+environment ENV['RAILS_ENV'] || 'development'
 
 
 # Specifies the number of `workers` to boot in clustered mode.
