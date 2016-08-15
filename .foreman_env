@@ -1,1 +1,4 @@
-RAILS_ENV=production
+concurrency:
+        web=1,
+        clock=1,
+        worker=1
