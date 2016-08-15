@@ -5,8 +5,9 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 /.bundle
-/.byebug_history
 /doc
 /log
 /tmp
 /public/assets
+.byebug_history
+.ruby-version
