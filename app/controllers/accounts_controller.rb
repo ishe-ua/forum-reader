@@ -18,8 +18,6 @@ class AccountsController < ApplicationController
   # 2. AccountsMailer#email_confirmation
   # 3. AdminMailer#new_registration
   #
-  # Also CheckCompany.
-  #
   def create
     @account = Account.new(account_params)
 
