@@ -4,7 +4,7 @@ class AdminMailer < ApplicationMailer
   default to: APP::ADMIN_EMAIL
   # :startdoc:
 
-  # New Account registratin
+  # New Account registration
   def new_registration(account)
     @account = account
     mail subject: "#{APP::NAME}: new registration"
