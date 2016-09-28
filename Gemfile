@@ -9,7 +9,7 @@ gem 'beanstalkd_view'
 gem 'clockwork'
 gem 'exception_notification'
 gem 'foreman'
-gem 'mina'
+gem 'mina', '0.3.8'
 
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
