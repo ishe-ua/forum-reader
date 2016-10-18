@@ -1,0 +1,10 @@
+concurrency:
+        web=1,
+        clock=1,
+        worker=1,
+
+        reader_fetcher=1,
+        reader_bote_in=1,
+        reader_bote_out=1
+
+env: .foreman_env
