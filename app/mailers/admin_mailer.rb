@@ -1,4 +1,4 @@
-# Emails to APP admin.
+# Emails for APP admin
 class AdminMailer < ApplicationMailer
   # :stopdoc:
   default to: APP::ADMIN_EMAIL
