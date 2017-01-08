@@ -1,27 +1,27 @@
 # coding: utf-8
 require 'test_helper'
 
-class AccountsControllerTest < ActionController::TestCase
+class AccountsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account = accounts(:john)
   end
 
   test 'should get new' do
-    get :new
+    get new_account_path
     assert_response :success
   end
 
   test 'should create account и отправить ему email-письма' do
     assert_enqueued_jobs 3 do
       assert_difference('Account.count') do
-        post :create, account:
-                        {
-                          email: 'company@example.com',
-                          password: APP::DEFAULT_PASSWORD,
-                          password_confirmation: APP::DEFAULT_PASSWORD
-                        }
+        post accounts_path, params: {
+               account:
+                 {
+                   email: 'company@example.com',
+                   password: APP::DEFAULT_PASSWORD,
+                   password_confirmation: APP::DEFAULT_PASSWORD
+                 }}
 
-        assert_response :redirect
         assert_redirected_to info_path
       end
     end
@@ -29,7 +29,7 @@ class AccountsControllerTest < ActionController::TestCase
 
   test 'should get edit' do
     sign_in @account
-    get :edit, id: @account
+    get edit_account_path(id: @account)
     assert_response :success
   end
 
