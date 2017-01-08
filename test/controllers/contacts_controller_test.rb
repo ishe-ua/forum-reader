@@ -24,8 +24,8 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not create contact if заполнены не все поля, письма не шлются' do
     assert_no_difference('Contact.count') do
-      assert_no_enqueued_emails do  # письма не шлются через .deliver_later
-        assert_no_emails do         # письма не шлются через .deliver_later
+      assert_no_enqueued_emails
+        assert_no_emails do
           post contacts_path, params: {
             contact:
               {
