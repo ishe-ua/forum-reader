@@ -1,26 +1,27 @@
 # coding: utf-8
 require 'test_helper'
 
-class SessionsControllerTest < ActionController::TestCase
+class SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account = accounts(:john)
   end
 
   test 'should get new' do
-    get :new
+    get new_session_path
     assert_response :success
   end
 
   test 'should post create - success' do
-    get :create, email: @account.email.upcase, password: APP::DEFAULT_PASSWORD
-    assert_equal session[:account_id], @account.id
+    post sessions_path(email: @account.email.upcase,
+                       password: APP::DEFAULT_PASSWORD)
 
-    assert_response :redirect
+    assert_equal session[:account_id], @account.id
     assert_redirected_to root_path
   end
 
   test 'should post create - fail' do
-    get :create, email: 'left-email@example.com', password: 'left password'
+    post sessions_path(email: 'left-email@example.com',
+                       password: 'left password')
     assert_response :success, 'остались на той же странице'
 
     assert_not session[:account_id]
@@ -31,7 +32,7 @@ class SessionsControllerTest < ActionController::TestCase
     return unless defined?(Lock)
     @account.lock!
 
-    get :create, email: @account.email, password: APP::DEFAULT_PASSWORD
+    post sessions_path(email: @account.email, password: APP::DEFAULT_PASSWORD)
     assert_response :success, 'остались на той же странице'
 
     assert_not session[:account_id]
@@ -39,11 +40,10 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'should get destroy' do
-    delete :destroy, { id: @account.id }, account_id: @account.id
-
-    assert_response :redirect
-    assert_redirected_to root_path
+    sign_in_as(@account)
+    delete session_path(id: @account.id)
 
     assert_not session[:account_id]
+    assert_redirected_to root_path
   end
 end

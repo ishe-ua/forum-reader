@@ -22,6 +22,7 @@ class ActionDispatch::IntegrationTest
   include ActionMailer::TestHelper
   include ActiveJob::TestHelper
 
-  # def sign_in(account); page.set_rack_session(account_id: account.id); end
-  # def sign_out; page.set_rack_session(account_id: nil); end
+  def sign_in_as(account)
+    post sessions_path(email: account.email, password: APP::DEFAULT_PASSWORD)
+  end
 end
