@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'test_helper'
 
 class ContactsControllerTest < ActionDispatch::IntegrationTest
@@ -22,21 +21,20 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not create contact if заполнены не все поля, письма не шлются' do
+  test 'should not create contact if some fields are empty' do
     assert_no_difference('Contact.count') do
       assert_no_enqueued_emails
-        assert_no_emails do
-          post contacts_path, params: {
-            contact:
-              {
-                email: 'user@example.com',
-                theme: '',
-                text:  ''
-              }
-          }
+      assert_no_emails do
+        post contacts_path, params: {
+               contact:
+                 {
+                   email: 'user@example.com',
+                   theme: '',
+                   text:  ''
+                 }
+             }
 
-          assert_response :success
-        end
+        assert_response :success
       end
     end
   end

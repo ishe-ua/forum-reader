@@ -1,4 +1,4 @@
-<%= div_for(letter) do %>
+<%= content_tag(:div, letter, id: dom_id(letter), class: dom_class(letter)) do %>
 
   <div class="letter-settings">
     <span class="title"><%= letter.name.truncate(55) %></span>

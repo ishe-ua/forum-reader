@@ -1,42 +1,33 @@
-# coding: utf-8
 require 'test_helper'
 
-class PagesControllerTest < ActionController::TestCase
+class PagesControllerTest < ActionDispatch::IntegrationTest
   test 'should get home' do
-    get :home
+    get home_path
     assert_response :success
 
     sign_in accounts(:ishe)
 
-    get :home
-    assert_redirected_to data_path, 'для залогиненных не показываем'
+    get home_path
+    assert_redirected_to data_path
   end
 
   test 'should get help' do
-    get :help
+    get help_path
     assert_response :success
   end
 
   test 'should get info' do
-    get :info, headers: { notice: 'success' }
-    assert_response :success
-
-    get :info, headers: { alert: 'fail' }
-    assert_response :success
-  end
-
-  test 'info не показывается, если flash-ы пустые' do
-    get :info
-    assert_redirected_to root_path
+    get info_path
+    assert_redirected_to root_path, 'empty message'
   end
 
   test 'should get data' do
-    get :data
-    assert_redirected_to new_session_path, 'защищенная страница'
+    get data_path
+    assert_redirected_to new_session_path, 'protected page'
 
     sign_in accounts(:ishe)
 
-    get :data
+    get data_path
     assert_response :success
   end
 end

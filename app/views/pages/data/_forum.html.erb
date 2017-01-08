@@ -1,4 +1,4 @@
-<%= content_tag_for(:li, forum) do %>
+<%= content_tag(:li, forum, id: dom_id(forum), class: dom_class(forum)) do %>
   <div class="item">
     <span class="name">
       <%= link_to forum.name.truncate(64), forum.url, target: "_blank", title: t('jump') %>
