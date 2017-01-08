@@ -1,7 +1,4 @@
-##
 # Build instance of model from fixture's DEFAULTS.
-#
-
 def build(model_name, attributes = {})
   hash = begin
            path = fixtures_path + '/' + model_name.to_s.pluralize + '.yml'

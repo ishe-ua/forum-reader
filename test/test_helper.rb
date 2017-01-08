@@ -7,42 +7,21 @@ Dir[
   Rails.root.join('test/**/shared/**/*.rb')
 ].each { |f| require f }
 
+# Load rake tasks
+Rails.application.load_tasks
+
 class ActiveSupport::TestCase
-  attr_reader :instance, :modul, :klass
+  attr_reader :instance, :modul, :klass, :mailer, :job
+  delegate :class, to: :instance, prefix: true
+
   fixtures :all
-end
-
-class ActionMailer::TestCase
-  attr_reader :mailer
-end
-
-class ActiveJob::TestCase
-  attr_reader :job
-end
-
-class ActionController::TestCase
-  include ActiveJob::TestHelper
-  include ActionMailer::TestHelper
-
-  def sign_in(account); session[:account_id] = account.id; end
-  def sign_out; session[:account_id] = nil; end
-end
-
-class ActionView::TestCase
-  ## For access to link_to and others in helper's tests
-  include Rails.application.routes.url_helpers
-
-  def default_url_options
-    ActionMailer::Base.default_url_options
-  end
+  include ActiveRecord::Tasks::DatabaseTasks # for fixtures_path
 end
 
 class ActionDispatch::IntegrationTest
-  self.use_transactional_fixtures = false
+  include ActionMailer::TestHelper
+  include ActiveJob::TestHelper
 
-  setup { js }
-  teardown { js_off }
-
-  def sign_in(account); page.set_rack_session(account_id: account.id); end
-  def sign_out; page.set_rack_session(account_id: nil); end
+  # def sign_in(account); page.set_rack_session(account_id: account.id); end
+  # def sign_out; page.set_rack_session(account_id: nil); end
 end
