@@ -24,8 +24,8 @@ class ActionDispatch::IntegrationTest
 
   def sign_in(account)
     post sessions_path, params: {
-           email: account.email,
-           password: APP::DEFAULT_PASSWORD
-         }
+      email: account.email,
+      password: APP::DEFAULT_PASSWORD
+    }
   end
 end

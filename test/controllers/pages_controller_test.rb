@@ -18,10 +18,10 @@ class PagesControllerTest < ActionController::TestCase
   end
 
   test 'should get info' do
-    get :info, {}, {}, notice: 'success'
+    get :info, headers: { notice: 'success' }
     assert_response :success
 
-    get :info, {}, {}, alert: 'fail'
+    get :info, headers: { alert: 'fail' }
     assert_response :success
   end
 

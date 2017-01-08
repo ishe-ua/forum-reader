@@ -17,24 +17,24 @@ class LetterItemsControllerTest < ActionController::TestCase
 
   test 'should create letter_item' do
     assert_difference('LetterItem.count') do
-      post :create, letter_item: {
+      post :create, params: { letter_item: {
         letter_id: @letter.id,
         name: 'example',
         url: 'example.com/rss'
-      }
+      } }
 
       assert_redirected_to data_path
     end
   end
 
   test 'should get edit' do
-    get :edit, id: @letter_item
+    get :edit, params: { id: @letter_item }
     assert_response :success
   end
 
   test 'should update letter_item' do
     params = { name: 'example', letter_id: @letter.id }
-    patch :update, id: @letter_item, letter_item: params
+    patch :update, params: { id: @letter_item, letter_item: params }
     assert_redirected_to data_path
   end
 

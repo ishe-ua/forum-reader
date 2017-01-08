@@ -10,7 +10,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'success' do
-    get :confirm_email, token: @account.email_confirmation_token
+    get :confirm_email, params: { token: @account.email_confirmation_token }
 
     assert_response :redirect
     assert_redirected_to info_path
@@ -20,7 +20,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'fail if left token' do
-    get :confirm_email, token: 'left-token'
+    get :confirm_email, params: { token: 'left-token' }
 
     assert_response :redirect
     assert_redirected_to info_path
@@ -30,7 +30,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'run #auto_sign_in after success' do
-    get :confirm_email, token: @account.email_confirmation_token
+    get :confirm_email, params: { token: @account.email_confirmation_token }
 
     assert @controller.send(:signed_in?)
     assert_not_empty flash.notice

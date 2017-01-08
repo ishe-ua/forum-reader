@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'test_helper'
 
-class LettersControllerTest < ActionController::TestCase
+class LettersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:ishe)
     @letter = @user.letters.first

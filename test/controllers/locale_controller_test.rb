@@ -10,7 +10,7 @@ class LocaleControllerTest < ActionController::TestCase
   end
 
   test 'should get change' do
-    get :change, lang: APP::LANGS.shuffle.sample
+    get :change, params: { lang: APP::LANGS.shuffle.sample }
     assert_response :redirect
   end
 end

@@ -14,7 +14,7 @@ class ResetPasswordTest < ActionController::TestCase
       hu = accounts(:john)
       password1 = hu.password_digest.dup
 
-      post :reset_password, email: hu.email
+      post :reset_password, params: { email: hu.email }
       password2 = hu.reload.password_digest
 
       assert_response :redirect
@@ -26,7 +26,7 @@ class ResetPasswordTest < ActionController::TestCase
   end
 
   test 'fail - такой email в базе отсутствует' do
-    post :reset_password, email: 'left-email@example.com'
+    post :reset_password, params: { email: 'left-email@example.com' }
     assert_response :redirect
 
     assert_not_empty flash.alert

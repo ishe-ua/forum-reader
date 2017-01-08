@@ -11,8 +11,7 @@ class PagesController < ApplicationController
   end
 
   # Help page.
-  def help
-  end
+  def help; end
 
   # Show +flash+ messages or redirect to #home if empty.
   def info
@@ -20,6 +19,5 @@ class PagesController < ApplicationController
   end
 
   # Start page for signed in.
-  def data
-  end
+  def data; end
 end

@@ -30,8 +30,7 @@ class AccountsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   # If Email changed:
   #

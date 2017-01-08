@@ -30,11 +30,13 @@ module Mailer
     # Compose IncomeEmailJob.
 
     def forward
-      IncomeEmailJob.perform_later(from,
-                                   to,
-                                   subject,
-                                   body,
-                                   attachments) if mail
+      if mail
+        IncomeEmailJob.perform_later(from,
+                                     to,
+                                     subject,
+                                     body,
+                                     attachments)
+      end
     end
 
     protected
