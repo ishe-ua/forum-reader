@@ -10,15 +10,17 @@ class LettersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get :new
+    get new_letter_path
     assert_response :success
   end
 
   test 'should create letter' do
     assert_difference('Letter.count') do
-      post :create, letter: {
-        user_id: @user.id,
-        name: 'example'
+      post letters_path, params: {
+        letter: {
+          user_id: @user.id,
+          name: 'example'
+        }
       }
 
       assert_redirected_to data_path
@@ -26,19 +28,18 @@ class LettersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    get :edit, id: @letter
+    get edit_letter_path(id: @letter)
     assert_response :success
   end
 
   test 'should update letter' do
-    params = { name: 'example' }
-    patch :update, id: @letter, letter: params
+    patch letter_path(id: @letter), params: { letter: { name: 'example' } }
     assert_redirected_to data_path
   end
 
   test 'should destroy letter' do
     assert_difference('Letter.count', -1) do
-      delete :destroy, id: @letter, format: :js
+      delete letter_path(id: @letter, format: :js)
     end
   end
 end
