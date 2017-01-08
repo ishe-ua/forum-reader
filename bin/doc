@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Generate app documentation
+rm -rf doc
+rdoc app lib README.md \
+                       \
+     -x /.js/          \
+     -x /.css/         \
+     -x /.rake/
