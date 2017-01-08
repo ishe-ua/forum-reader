@@ -5,7 +5,7 @@ class LocaleController < ApplicationController
   # Change current locale
   def change
     session[:current_locale] = params[:lang]
-    redirect_to :back
+    redirect_back fallback_location: root_path
   rescue ActionController::RedirectBackError
     redirect_to root_path
   end
