@@ -22,7 +22,10 @@ class ActionDispatch::IntegrationTest
   include ActionMailer::TestHelper
   include ActiveJob::TestHelper
 
-  def sign_in_as(account)
-    post sessions_path(email: account.email, password: APP::DEFAULT_PASSWORD)
+  def sign_in(account)
+    post sessions_path, params: {
+           email: account.email,
+           password: APP::DEFAULT_PASSWORD
+         }
   end
 end

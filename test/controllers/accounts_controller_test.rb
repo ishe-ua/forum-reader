@@ -12,46 +12,49 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create account и отправить ему email-письма' do
-    assert_enqueued_jobs 3 do
+    assert_enqueued_emails 3 do
       assert_difference('Account.count') do
         post accounts_path, params: {
-               account:
-                 {
-                   email: 'company@example.com',
-                   password: APP::DEFAULT_PASSWORD,
-                   password_confirmation: APP::DEFAULT_PASSWORD
-                 }}
+          account:
+            {
+              email: 'company@example.com',
+              password: APP::DEFAULT_PASSWORD,
+              password_confirmation: APP::DEFAULT_PASSWORD
+            }
+        }
 
         assert_redirected_to info_path
       end
     end
   end
 
-  xtest 'should get edit' do
+  test 'should get edit' do
     sign_in @account
     get edit_account_path(id: @account)
     assert_response :success
   end
 
   test 'should update account' do
-    acc_params = {
-      email:                'company2@example.com',
-      password:              APP::DEFAULT_PASSWORD,
-      password_confirmation: APP::DEFAULT_PASSWORD
+    sign_in @account
+
+    patch account_path(id: @account), params: {
+      account: {
+        email:                'company2@example.com',
+        password:              APP::DEFAULT_PASSWORD,
+        password_confirmation: APP::DEFAULT_PASSWORD
+      }
     }
 
-    sign_in @account
-    patch :update, id: @account, account: acc_params
-
-    assert_response :redirect
     assert_redirected_to data_path
   end
 
   test 'изменили email - новый не подтвержденный, письмо для подтверждения' do
     sign_in @account
 
-    assert_enqueued_jobs 1 do
-      patch :update, id: @account, account: { email: 'new@example.com' }
+    assert_enqueued_emails 1 do
+      patch account_path(id: @account), params: {
+        account: { email: 'new@example.com' }
+      }
       assert_not @account.reload.email_confirmed?
     end
   end
@@ -59,7 +62,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test 'destroy account - deprecated operation' do
     sign_in @account
     assert_raise do
-      delete :destroy, id: @account
+      delete accounts_path(id: @account)
     end
   end
 end

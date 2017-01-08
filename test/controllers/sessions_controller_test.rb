@@ -40,7 +40,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get destroy' do
-    sign_in_as(@account)
+    sign_in(@account)
     delete session_path(id: @account.id)
 
     assert_not session[:account_id]
