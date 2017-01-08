@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
-gem 'rails', '~> 4.2.7'
-gem 'pg',    '~> 0.18'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'rails', '~> 5.0.1'
+gem 'pg',    '~> 0.19'
 gem 'puma',  '~> 3.0'
 gem 'backburner'
 gem 'beanstalkd_view'
@@ -13,40 +18,35 @@ gem 'mina', '0.3.8'
 
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
-gem 'coffee-rails',  '~> 4.1.0'
+gem 'coffee-rails',  '~> 4.2'
 gem 'jquery-rails'
-gem 'turbolinks'
+gem 'turbolinks', '~> 5'
 
-gem 'jbuilder', '~> 2.0'                 # Build JSON APIs with ease
+gem 'jbuilder', '~> 2.5'                 # Build JSON APIs with ease
 gem 'bcrypt',   '~> 3.1.7'               # Use ActiveModel has_secure_password
-gem 'sdoc',     '~> 0.4.0', group: :doc  # rake doc:rails
 
 group :development, :test do
-  gem 'byebug'
-  gem 'spring'
-  gem 'rubocop', require: false
+  gem 'byebug', platform: :mri
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'            # <% console %> in views
-  gem 'annotate',    '~> 2.7.0'
-  gem 'brakeman'
-  gem 'guard'
-  gem 'guard-minitest'
-  gem 'guard-livereload', require: false
-  gem 'rack-livereload'
+  gem 'annotate'
+  gem 'brakeman', require: false
+  gem 'rdoc'
+  gem 'rubocop', require: false
+
+  gem 'web-console', '>= 3.3.0'          # <% console %> in views
+  gem 'listen', '~> 3.0.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
-  gem 'minitest-focus'
-  gem 'capybara'
-  gem 'poltergeist'
   gem 'rr', require: false
-  gem 'rack_session_access'
   gem 'vcr'
 end
 
-gem 'rails-i18n', '~> 4.0.0' # For 4.x
+gem 'rails-i18n', '~> 5.0.0' # For 5.x
 gem 'lograge'
 gem 'acts_as_list'
 gem 'active_record_union'
