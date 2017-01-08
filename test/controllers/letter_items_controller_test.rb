@@ -1,7 +1,6 @@
-# coding: utf-8
 require 'test_helper'
 
-class LetterItemsControllerTest < ActionController::TestCase
+class LetterItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @letter_item = letter_items(:atytarenko)
     @letter = @letter_item.letter
@@ -11,13 +10,13 @@ class LetterItemsControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
-    get :new
+    get new_letter_item_path
     assert_response :success
   end
 
   test 'should create letter_item' do
     assert_difference('LetterItem.count') do
-      post :create, params: { letter_item: {
+      post letter_items_path, params: { letter_item: {
         letter_id: @letter.id,
         name: 'example',
         url: 'example.com/rss'
@@ -28,19 +27,24 @@ class LetterItemsControllerTest < ActionController::TestCase
   end
 
   test 'should get edit' do
-    get :edit, params: { id: @letter_item }
+    get edit_letter_item_path(id: @letter_item)
     assert_response :success
   end
 
   test 'should update letter_item' do
-    params = { name: 'example', letter_id: @letter.id }
-    patch :update, params: { id: @letter_item, letter_item: params }
+    patch letter_item_path(id: @letter_item), params: {
+      letter_item: {
+        name: 'example',
+        letter_id: @letter.id
+      }
+    }
+
     assert_redirected_to data_path
   end
 
   test 'should destroy letter_item' do
     assert_difference('LetterItem.count', -1) do
-      delete :destroy, id: @letter_item, format: :js
+      delete letter_item_path(id: @letter_item, format: :js)
     end
   end
 end
