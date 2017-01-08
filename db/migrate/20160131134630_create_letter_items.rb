@@ -1,4 +1,4 @@
-class CreateLetterItems < ActiveRecord::Migration
+class CreateLetterItems < ActiveRecord::Migration[5.0]
   def change
     create_table :letter_items do |t|
       t.references :letter, index: true, foreign_key: true

@@ -1,4 +1,4 @@
-class CreateMailerSets < ActiveRecord::Migration
+class CreateMailerSets < ActiveRecord::Migration[5.0]
   def change
     create_table :mailer_sets do |t|
       t.references :user, index: true, foreign_key: true
