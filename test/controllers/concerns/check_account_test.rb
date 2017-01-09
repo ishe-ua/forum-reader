@@ -1,22 +1,19 @@
 require 'test_helper'
 
-class CheckAccountTest < ActionController::TestCase
-  tests PagesController
-
+class CheckAccountTest < ActionDispatch::IntegrationTest
   test 'send new users to afterfilling account' do
     account = build(:account)
     account.save!
 
     sign_in(account)
 
-    get :data
+    get data_path
     assert_redirected_to edit_account_path(account)
   end
 
   test 'do not send anybody to afterfilling if all data have filled' do
     sign_in(accounts(:john))
-
-    get :help
+    get help_path
     assert_response :success
   end
 end

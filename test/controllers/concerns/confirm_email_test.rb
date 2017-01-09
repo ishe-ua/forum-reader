@@ -1,8 +1,6 @@
 require 'test_helper'
 
-class ConfirmEmailTest < ActionController::TestCase
-  tests AccountsController
-
+class ConfirmEmailTest < ActionDispatch::IntegrationTest
   setup do
     @account = accounts(:john)
     @account.unconfirm_email
@@ -10,9 +8,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'success' do
-    get :confirm_email, params: { token: @account.email_confirmation_token }
-
-    assert_response :redirect
+    get confirm_email_path(token: @account.email_confirmation_token)
     assert_redirected_to info_path
 
     assert_not_nil @account.reload.email_confirmation_at
@@ -20,9 +16,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'fail if left token' do
-    get :confirm_email, params: { token: 'left-token' }
-
-    assert_response :redirect
+    get confirm_email_path(token: 'left-token')
     assert_redirected_to info_path
 
     assert_nil @account.reload.email_confirmation_at
@@ -30,7 +24,7 @@ class ConfirmEmailTest < ActionController::TestCase
   end
 
   test 'run #auto_sign_in after success' do
-    get :confirm_email, params: { token: @account.email_confirmation_token }
+    get confirm_email_path(token: @account.email_confirmation_token)
 
     assert @controller.send(:signed_in?)
     assert_not_empty flash.notice
@@ -38,8 +32,8 @@ class ConfirmEmailTest < ActionController::TestCase
 
   test 'repeat_email_confirmation' do
     sign_in(@account)
-    assert_enqueued_jobs 1 do
-      get :repeat_email_confirmation
+    assert_enqueued_emails 1 do
+      get repeat_email_confirmation_path
       assert_redirected_to info_path
     end
   end
