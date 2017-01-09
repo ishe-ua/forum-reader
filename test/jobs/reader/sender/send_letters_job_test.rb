@@ -22,64 +22,70 @@ module Reader
       end
 
       test 'find_letters_for_send' do
-        stub(job).time { Time.zone.now }
-        assert_empty job.send(:find_letters_for_send)
+        job.stub(:time, Time.zone.now) do
+          assert_empty job.send(:find_letters_for_send)
+        end
 
-        stub(job).time { test_time }
-        assert_not_empty job.send(:find_letters_for_send)
+        job.stub(:time, -> { test_time }) do
+          assert_not_empty job.send(:find_letters_for_send)
+        end
       end
 
       test 'news_in => true' do
-        stub(job).time { Time.zone.now }
-        letter_item.update!(last_post_at: 1_000_000.days.ago)
-
-        news = job.send(:news_in, letter)
-        assert_not_empty news
+        job.stub(:time, Time.zone.now) do
+          letter_item.update!(last_post_at: 1_000_000.days.ago)
+          news = job.send(:news_in, letter)
+          assert_not_empty news
+        end
       end
 
       test 'news_in => false' do
         FeedItem.delete_all
-        stub(job).time { Time.zone.now }
-        assert_empty job.send(:news_in, letter)
+        job.stub(:time, Time.zone.now) do
+          assert_empty job.send(:news_in, letter)
+        end
       end
 
       test 'news_in_the => true' do
-        stub(job).time { Time.zone.now }
-        letter_item.update!(last_post_at: 1_000_000.days.ago)
-
-        news = job.send(:news_in_the, letter_item)
-        assert_not_empty news
+        job.stub(:time, Time.zone.now) do
+          letter_item.update!(last_post_at: 1_000_000.days.ago)
+          news = job.send(:news_in_the, letter_item)
+          assert_not_empty news
+        end
       end
 
       test 'news_in_the => false' do
         FeedItem.delete_all
-        stub(job).time { Time.zone.now }
-        assert_empty job.send(:news_in_the, letter_item)
+        job.stub(:time, Time.zone.now) do
+          assert_empty job.send(:news_in_the, letter_item)
+        end
       end
 
       test 'update_last_post_at' do
-        stub(job).time { 1.year.ago }
+        job.stub(:time, 1.year.ago) do
+          pre1 = letter.last_post_at
+          pre2 = letter.letter_items.first.last_post_at
 
-        pre1 = letter.last_post_at
-        pre2 = letter.letter_items.first.last_post_at
+          job.send(:update_last_post_at, letter)
 
-        job.send(:update_last_post_at, letter)
+          cur1 = letter.reload.last_post_at
+          cur2 = letter.letter_items.first.reload.last_post_at
 
-        cur1 = letter.reload.last_post_at
-        cur2 = letter.letter_items.first.reload.last_post_at
-
-        assert_not_equal cur1, pre1, 'changed for letter'
-        assert_not_equal cur2, pre2, 'changed for letter_item'
+          assert_not_equal cur1, pre1, 'changed for letter'
+          assert_not_equal cur2, pre2, 'changed for letter_item'
+        end
       end
 
       test 'send_time? => true' do
-        stub(job).time { test_time }
-        travel_to(test_time) { assert job.send(:send_time?, letter) }
+        job.stub(:time, -> { test_time }) do
+          travel_to(test_time) { assert job.send(:send_time?, letter) }
+        end
       end
 
       test 'send_time? => false' do
-        stub(job).time { Time.zone.now }
-        travel_to(Time.zone.now) { assert_not job.send(:send_time?, letter) }
+        job.stub(:time, Time.zone.now) do
+          travel_to(Time.zone.now) { assert_not job.send(:send_time?, letter) }
+        end
       end
     end
   end

@@ -10,6 +10,9 @@ Dir[
 # Load rake tasks
 Rails.application.load_tasks
 
+# For mock and stub
+require 'minitest/autorun'
+
 class ActiveSupport::TestCase
   attr_reader :instance, :modul, :klass, :mailer, :job
   delegate :class, to: :instance, prefix: true
