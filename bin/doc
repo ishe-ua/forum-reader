@@ -4,5 +4,6 @@ rm -rf doc
 rdoc app lib README.md \
                        \
      -x /.js/          \
+     -x /.coffee/      \
      -x /.css/         \
      -x /.rake/
