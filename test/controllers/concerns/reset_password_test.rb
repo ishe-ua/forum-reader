@@ -1,35 +1,29 @@
-# coding: utf-8
 require 'test_helper'
 
-class ResetPasswordTest < ActionController::TestCase
-  tests AccountsController
-
-  test 'форма показывается' do
-    get :reset_password
+class ResetPasswordTest < ActionDispatch::IntegrationTest
+  test 'should show form' do
+    get reset_password_path
     assert_response :success
   end
 
-  test 'success: пароль изменяется, письмо с ним высылается' do
-    assert_enqueued_jobs 1 do
+  test 'success' do
+    assert_enqueued_emails 1 do
       hu = accounts(:john)
       password1 = hu.password_digest.dup
 
-      post :reset_password, params: { email: hu.email }
-      password2 = hu.reload.password_digest
+      post reset_password_path, params: { email: hu.email }
 
-      assert_response :redirect
       assert_not_empty flash.notice
       assert_redirected_to info_path
 
-      assert_not_equal password1, password2, 'пароль изменился'
+      password2 = hu.reload.password_digest
+      assert_not_equal password1, password2
     end
   end
 
-  test 'fail - такой email в базе отсутствует' do
-    post :reset_password, params: { email: 'left-email@example.com' }
-    assert_response :redirect
-
-    assert_not_empty flash.alert
+  test 'fail' do
+    post reset_password_path, params: { email: 'left-email@example.com' }
+    assert_not_empty flash.alert, 'email not found'
     assert_redirected_to info_path
   end
 end
