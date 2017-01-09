@@ -1,8 +1,6 @@
 require 'test_helper'
 
-class ConfirmJabberTest < ActionController::TestCase
-  tests AccountsController
-
+class ConfirmJabberTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:john)
     @user.unconfirm_jabber
@@ -10,9 +8,7 @@ class ConfirmJabberTest < ActionController::TestCase
   end
 
   test 'success' do
-    get :confirm_jabber, params: { token: @user.jabber_confirmation_token }
-
-    assert_response :redirect
+    get confirm_jabber_path(token: @user.jabber_confirmation_token)
     assert_redirected_to info_path
 
     assert_not_nil @user.reload.jabber_confirmation_at
@@ -20,9 +16,7 @@ class ConfirmJabberTest < ActionController::TestCase
   end
 
   test 'fail if left token' do
-    get :confirm_jabber, params: { token: 'left-token' }
-
-    assert_response :redirect
+    get confirm_jabber_path(token: 'left-token')
     assert_redirected_to info_path
 
     assert_nil @user.reload.jabber_confirmation_at
@@ -30,7 +24,7 @@ class ConfirmJabberTest < ActionController::TestCase
   end
 
   test 'run #auto_sign_in after success' do
-    get :confirm_jabber, params: { token: @user.jabber_confirmation_token }
+    get confirm_jabber_path(token: @user.jabber_confirmation_token)
 
     assert @controller.send(:signed_in?)
     assert_not_empty flash.notice
@@ -39,7 +33,7 @@ class ConfirmJabberTest < ActionController::TestCase
   test 'repeat_jabber_confirmation' do
     sign_in(@user.account)
     assert_enqueued_jobs 1 do
-      get :repeat_jabber_confirmation
+      get repeat_jabber_confirmation_path
       assert_redirected_to info_path
     end
   end
