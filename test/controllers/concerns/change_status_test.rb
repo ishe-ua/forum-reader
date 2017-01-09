@@ -1,17 +1,14 @@
-# coding: utf-8
 require 'test_helper'
 
-class ChangeStatusTest < ActionController::TestCase
-  tests [ReaderSetsController, MailerSetsController].shuffle.sample
-
+class ChangeStatusTest < ActionDispatch::IntegrationTest
   setup do
     @account = accounts(:ishe)
     sign_in(@account)
   end
 
   test '#success' do
-    resource = @account.user.send(@controller.send(:resource_name).to_sym)
-    patch :change_status, id: resource, format: :js
+    resource = [@account.user.reader_set , @account.user.mailer_set].sample
+    patch change_status_reader_path(id: resource, format: :js)
     assert_response :success
   end
 end
