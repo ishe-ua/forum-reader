@@ -8,10 +8,10 @@ module Reader
 
       def perform(body, from)
         return unless body =~ REGEXP
-        if (user = find_user_from(from))
-          user.reader_set.change_status if user.reader_set.off?
-          ReplyJob.perform_later(DONE, from) # TODO: skip if has unreaded forums
-        end
+        return unless (user = find_user_from(from))
+
+        user.reader_set.change_status if user.reader_set.off?
+        ReplyJob.perform_later(DONE, from) # TODO: skip if has unreaded forums
       end
 
       protected

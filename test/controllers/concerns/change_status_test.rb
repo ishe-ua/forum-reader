@@ -7,7 +7,7 @@ class ChangeStatusTest < ActionDispatch::IntegrationTest
   end
 
   test '#success' do
-    resource = [@account.user.reader_set , @account.user.mailer_set].sample
+    resource = [@account.user.reader_set, @account.user.mailer_set].sample
     patch change_status_reader_path(id: resource, format: :js)
     assert_response :success
   end

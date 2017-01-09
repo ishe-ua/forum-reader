@@ -8,10 +8,10 @@ module Reader
 
       def perform(body, from)
         return unless body =~ REGEXP
-        if (user = find_user_from(from))
-          text = ReplyMailer.help(user).body.encoded
-          ReplyJob.perform_later(text, from) if text.present?
-        end
+        return unless (user = find_user_from(from))
+
+        text = ReplyMailer.help(user).body.encoded
+        ReplyJob.perform_later(text, from) if text.present?
       end
     end
   end

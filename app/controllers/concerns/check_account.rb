@@ -26,12 +26,11 @@ module CheckAccount
   # <tt>WARN:</tt> necessarily should be before #check_account_filling.
   def check_models_presence
     return unless depricated_page?
+    return unless signed_in? && !current_user
 
-    if signed_in? && !current_user
-      create_user_if_absent
-      create_reader_set_if_absent
-      create_mailer_set_if_absent
-    end
+    create_user_if_absent
+    create_reader_set_if_absent
+    create_mailer_set_if_absent
   end
 
   # Check filling of required fields and send to afterfilling if need
@@ -47,23 +46,20 @@ module CheckAccount
   private
 
   def create_user_if_absent
-    if current_account.user.nil?
-      user = current_account.build_user
-      user.save!(validate: false)
-    end
+    return if current_account.user
+    user = current_account.build_user
+    user.save!(validate: false)
   end
 
   def create_reader_set_if_absent
-    if current_user.reader_set.nil?
-      reader_set = current_user.build_reader_set
-      reader_set.save!(validate: false)
-    end
+    return if current_user.reader_set
+    reader_set = current_user.build_reader_set
+    reader_set.save!(validate: false)
   end
 
   def create_mailer_set_if_absent
-    if current_user.mailer_set.nil?
-      mailer_set = current_user.build_mailer_set
-      mailer_set.save!(validate: false)
-    end
+    return if current_user.mailer_set
+    mailer_set = current_user.build_mailer_set
+    mailer_set.save!(validate: false)
   end
 end

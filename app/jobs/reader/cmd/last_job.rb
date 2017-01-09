@@ -9,19 +9,19 @@ module Reader
       include Cmd
 
       # Like ListJob
-      def perform(body, from) # rubocop:disable MethodLength
+      def perform(body, from)
         return unless body =~ self.class::REGEXP # !!
-        if (user = find_user_from(from))
-          params = find_params_from(body)
-          text = if valid?(params)
-                   gen_selection(user, params)
-                 else
-                   CommandJob::NOT_FOUND
-                 end
+        return unless (user = find_user_from(from))
 
-          ReplyJob.perform_later(text, from)
-          text # for tests
-        end
+        params = find_params_from(body)
+        text = if valid?(params)
+                 gen_selection(user, params)
+               else
+                 CommandJob::NOT_FOUND
+               end
+
+        ReplyJob.perform_later(text, from)
+        text # for tests
       end
 
       protected

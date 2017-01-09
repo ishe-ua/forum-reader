@@ -26,13 +26,13 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
       assert_no_enqueued_emails
       assert_no_emails do
         post contacts_path, params: {
-               contact:
-                 {
-                   email: 'user@example.com',
-                   theme: '',
-                   text:  ''
-                 }
-             }
+          contact:
+            {
+              email: 'user@example.com',
+              theme: '',
+              text:  ''
+            }
+        }
 
         assert_response :success
       end

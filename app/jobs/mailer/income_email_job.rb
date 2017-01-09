@@ -12,11 +12,10 @@ module Mailer
     # Params: see Piper protected methods
     def perform(from, to, subject, body, attachments)
       raise_unless_array(to)
-      user = find_whom_by_secret_name(to)
-      if user
-        msg = create_message(user, from, subject, body, attachments)
-        ReplyJob.perform_later(msg) if msg
-      end
+      return unless (user = find_whom_by_secret_name(to))
+
+      msg = create_message(user, from, subject, body, attachments)
+      ReplyJob.perform_later(msg) if msg
     end
 
     protected
