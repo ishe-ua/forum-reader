@@ -41,7 +41,6 @@ group :development do
 end
 
 group :test do
-  # gem 'minitest-stub-const'
   gem 'vcr'
 end
 
