@@ -2,14 +2,14 @@
 module APP
   NAME = 'forum-reader'.freeze
 
+  HOST = 'forum-reader2.com'.freeze
+
   DESCRIPTION = 'RSS and ATOM to Email and Jabber'.freeze
 
   FOUNDER = 'ishe_ua'.freeze
 
   # Start development since
   SINCE = 2014
-
-  HOST = 'forum-reader2.com'.freeze
 
   ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
 
