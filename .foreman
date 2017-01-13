@@ -1,4 +1,0 @@
-concurrency:
-        web=1
-
-env: .foreman_env

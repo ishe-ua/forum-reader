@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:ishe-ua/mina-foreman.git
-  revision: 589350cdd3080e8f6cd9dd9707c1be76f2c5c43d
-  specs:
-    mina-foreman (1.0.0.beta1)
-      mina (~> 1.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -110,13 +103,12 @@ GEM
       loofah (>= 2.0)
       sax-machine (>= 1.0)
     ffi (1.9.14)
-    foreman (0.82.0)
-      thor (~> 0.19.1)
     girl_friday (0.11.2)
       connection_pool (~> 1.0)
       rubinius-actor
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    god (0.13.7)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.6.1)
@@ -264,12 +256,12 @@ DEPENDENCIES
   em-http-request
   exception_notification
   feedjira
-  foreman
+  god
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   lograge
-  mina-foreman!
+  mina (~> 1.0.0)
   pg (~> 0.19)
   puma (~> 3.0)
   rails (~> 5.0.1)
