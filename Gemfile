@@ -13,9 +13,8 @@ gem 'backburner'
 gem 'clockwork'
 
 gem 'exception_notification'
-gem 'foreman' # TODO
-gem 'mina', '~> 1.0.0'
-gem 'mina-foreman', git: 'git@github.com:ishe-ua/mina-foreman.git'
+gem 'foreman'
+gem 'mina-foreman', git: 'git@github.com:ishe-ua/mina-foreman.git', require: false
 
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
