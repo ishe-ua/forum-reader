@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:ishe-ua/mina-foreman.git
-  revision: d00bd253186302508a2268a5130b02724a23eaca
-  specs:
-    mina-foreman (1.0.0.beta1)
-      mina (~> 1.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -269,7 +262,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   lograge
-  mina-foreman!
+  mina (~> 1.0.0)
   pg (~> 0.19)
   puma (~> 3.0)
   rails (~> 5.0.1)
