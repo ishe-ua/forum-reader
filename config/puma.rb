@@ -1,3 +1,5 @@
+require_relative '../lib/app.rb'
+
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
@@ -12,7 +14,7 @@ threads threads_count, threads_count
 #
 # port ENV.fetch('PORT') { 3000 }
 
-bind 'unix:/tmp/reader.sock'
+bind "unix:/tmp/#{APP::NAME}.sock"
 
 # Specifies the `environment` that Puma will run in.
 #
