@@ -1,3 +1,4 @@
+require 'mina/foreman'
 require 'mina/rails'
 require 'mina/git'
 
@@ -18,6 +19,14 @@ set :deploy_to, "/var/www/#{APP::HOST}"
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
 set :user, 'deployer' # Username in the server to SSH to.
+
+set :foreman_app, -> { fetch(:domain) }
+set :foreman_user, -> { fetch(:user) }
+# set :foreman_log # default:  -> { "#{deploy_to!}/#{shared_path}/log" }
+# set :foreman_sudo # default: true
+set :foreman_format, 'systemd' # default: 'upstart'
+# set :foreman_location # default: '/etc/init'
+# set :foreman_procfile # default: 'Procfile'
 
 # Optional settings:
 #   set :port, '30000'           # SSH port number.
@@ -60,12 +69,15 @@ task :deploy do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
+    invoke :'foreman:export'
 
     on :launch do
       in_path(fetch(:current_path)) do
         command %(mkdir -p tmp/)
-        command %(touch tmp/restart.txt)
+        # command %(touch tmp/restart.txt)
       end
+
+      invoke :'foreman:restart'
     end
   end
 

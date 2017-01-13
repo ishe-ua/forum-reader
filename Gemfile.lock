@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:ishe-ua/mina-foreman.git
+  revision: d3877e1347b22b19bf185d76a3265e0477f8abd1
+  specs:
+    mina-foreman (1.0.0.beta1)
+      mina (~> 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -263,6 +270,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   lograge
   mina (~> 1.0.0)
+  mina-foreman!
   pg (~> 0.19)
   puma (~> 3.0)
   rails (~> 5.0.1)
