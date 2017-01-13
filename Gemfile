@@ -12,10 +12,9 @@ gem 'puma',  '~> 3.0'
 gem 'backburner'
 gem 'clockwork'
 
-gem 'exception_notification'
 gem 'foreman'
 gem 'mina', '~> 1.0.0'
-gem 'mina-multistage', '~> 1.0.0', require: false
+gem 'exception_notification'
 
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
