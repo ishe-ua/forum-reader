@@ -64,6 +64,7 @@ task :deploy do
     on :launch do
       in_path(fetch(:current_path)) do
         command %(mkdir -p tmp/)
+        command %(sudo god restart web)
         # command %(touch tmp/restart.txt)
       end
     end
