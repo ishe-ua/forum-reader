@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: reader_production
-  username: reader
+  username: deployer
   password: <%= ENV['READER_DATABASE_PASSWORD'] %>
