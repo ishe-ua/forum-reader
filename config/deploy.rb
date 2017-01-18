@@ -6,12 +6,6 @@ require_relative '../lib/app.rb'
 # require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
-
 set :application_name, -> { APP::NAME }
 set :domain, -> { APP::HOST }
 set :deploy_to, "/var/www/#{APP::HOST}"

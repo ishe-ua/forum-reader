@@ -11,6 +11,7 @@ gem 'pg',    '~> 0.19'
 gem 'puma',  '~> 3.0'
 gem 'backburner'
 gem 'clockwork'
+gem 'redis-rails'
 
 gem 'exception_notification'
 gem 'mina', '~> 1.0.0'
