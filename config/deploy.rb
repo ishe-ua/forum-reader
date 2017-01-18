@@ -19,10 +19,10 @@ set :user, 'deployer' # Username in the server to SSH to.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
-set :shared_files, fetch(:shared_files, []).push(
-  'config/database.yml',
-  'config/secrets.yml'
-)
+# set :shared_files, fetch(:shared_files, []).push(
+#   'config/database.yml',
+#   'config/secrets.yml'
+# )
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -58,7 +58,7 @@ task :deploy do
     on :launch do
       in_path(fetch(:current_path)) do
         command %(mkdir -p tmp/)
-        command %(sudo god restart web)
+        # command %(sudo god restart web)
         # command %(touch tmp/restart.txt)
       end
     end
