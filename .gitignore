@@ -16,9 +16,6 @@
 # See gem 'byebug'
 .byebug_history
 
-# See Ruby version in Gemfile
-.ruby-version
-
 # Ignore documentation
 /doc/*
 
