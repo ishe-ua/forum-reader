@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Has connect with server or not?
+ansible \
+    -i ~/.hosts \
+    starter -m ping
