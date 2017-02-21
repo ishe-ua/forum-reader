@@ -4,7 +4,8 @@
 
 Rails.application
      .config
-     .i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
+     .i18n.load_path +=
+  Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
 Rails.application
      .config
