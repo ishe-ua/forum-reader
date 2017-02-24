@@ -9,9 +9,9 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'pg',    '~> 0.19'
 gem 'puma',  '~> 3.0'
-gem 'backburner'
-gem 'clockwork'
 gem 'redis-rails'
+gem 'sidekiq'
+gem 'clockwork'
 
 gem 'exception_notification'
 gem 'mina', '~> 1.0.0'

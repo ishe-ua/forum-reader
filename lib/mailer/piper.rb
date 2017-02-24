@@ -8,7 +8,7 @@ module Mailer
     REQUIRED_LIBS = %w(active_job mail).each { |lib| require lib }
 
     require_relative '../../config/initializers/active_job'
-    require_relative '../../config/initializers/gem_backburner'
+    # FIX: require_relative '../../config/initializers/gem_backburner'
 
     require_relative '../app'
     require_relative '../../app/jobs/mailer/income_email_job'

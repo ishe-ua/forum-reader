@@ -1,9 +1,9 @@
-require 'backburner'
+# FIX: require 'backburner'
 
 module Utils
   # Queues (beanstalkd) helpers.
   module Queues
-    extend Backburner::Helpers
+    # FIX: extend Backburner::Helpers
 
     # Get access to Beanstalkd tube.
     def get_tube(name)
