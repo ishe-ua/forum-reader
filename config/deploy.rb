@@ -1,17 +1,24 @@
 require 'mina/rails'
+require 'mina/rbenv'
 require 'mina/git'
 
 require_relative '../lib/app.rb'
-
-# require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
 set :application_name, -> { APP::NAME }
 set :domain, -> { APP::HOST }
 set :deploy_to, "/var/www/#{APP::HOST}"
 set :repository, 'git@bitbucket.org:ishe-ua/forum-reader.git'
 set :branch, 'master'
-set :user, 'deployer' # Username in the server to SSH to.
+
+set :user, 'deploy' # Username in the server to SSH to.
+set :rails_env, 'production'
+
+set :shared_dirs, fetch(:shared_dirs, []).push(
+  'log',
+  'tmp/pids',
+  'tmp/cache',
+  'tmp/sockets'
+)
 
 # Optional settings:
 #   set :port, '30000'           # SSH port number.
@@ -27,12 +34,7 @@ set :user, 'deployer' # Username in the server to SSH to.
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
+  invoke :'rbenv:load'
 end
 
 # Put any custom commands you need to run at setup
@@ -44,7 +46,7 @@ end
 desc 'Deploys the current version to the server.'
 task :deploy do
   # uncomment this line to make sure you pushed your local branch to the remote origin
-  # invoke :'git:ensure_pushed'
+  # FIX: invoke :'git:ensure_pushed'
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
@@ -57,7 +59,7 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command %(mkdir -p tmp/)
+        # command %(mkdir -p tmp/)
         # command %(sudo god restart web)
         # command %(touch tmp/restart.txt)
       end
@@ -67,7 +69,3 @@ task :deploy do
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
   # run(:local){ say 'done' }
 end
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - https://github.com/mina-deploy/mina/tree/master/docs
