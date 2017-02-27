@@ -1,23 +1,25 @@
 # forum-reader2.com
 
-See:
+Rails project for [xmpp](https://en.wikipedia.org/wiki/XMPP) lovers.
+
+## Links
 
 * [Site url](http://forum-reader2.com)
 
 * [Gitter community](https://gitter.im/forum-reader)
 
-
-## Required software
+## Software stack
 
 * Ruby, Rails
 
 * Postgres, Redis
 
-
-## Developer notes
+## Scripts
 
 * __bin/doc__ Generate app documentation
 
-* __forum-reader2.com/admin__ App admin
+## Urls
+
+* __forum-reader2.com/admin__ App admin part
 
 * __forum-reader2.com/sidekiq__ Queues monitoring
