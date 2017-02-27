@@ -13,12 +13,12 @@ God.watch do |w|
   w.env = RAILS_ENV
 end
 
-God.watch do |w|
-  w.name  = APP::NAME + '-clock'
-  w.start = 'bundle exec clockwork lib/clock.rb'
+# God.watch do |w|
+#   w.name  = APP::NAME + '-clock'
+#   w.start = 'bundle exec clockwork lib/clock.rb'
 
-  w.keepalive
+#   w.keepalive
 
-  w.dir = RAILS_ROOT
-  w.env = RAILS_ENV
-end
+#   w.dir = RAILS_ROOT
+#   w.env = RAILS_ENV
+# end
