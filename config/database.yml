@@ -5,14 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: reader_development
+  database: forum_reader_development
 
 test:
   <<: *default
-  database: reader_test
+  database: forum_reader_test
 
 production:
   <<: *default
-  database: reader_production
-  username: deploy
-  password: <%= ENV['READER_DATABASE_PASSWORD'] %>
+  database: forum_reader_production
