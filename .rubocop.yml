@@ -1,0 +1,65 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/*.json.jbuilder'
+  Exclude:
+    - '**/Gemfile'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/application.rb'
+    - 'config/environments/*'
+    - 'test/support/**/*'
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/HttpPositionalArguments:  # TODO: for rails < 5
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/SingleLineMethods:
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/EmptyLineBetweenDefs:
+  Enabled: true
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - 'app/helpers/**/*'
+    - 'db/migrate/**/*'
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'config/routes.rb'
+
+Metrics/LineLength:
+  Enabled: true
+  Exclude:
+    - 'config/deploy.rb'
+    - 'config/deploy/*'
+
+Security/MarshalLoad:
+  Enabled: true
+  Exclude:
+    - 'test/**/*'
