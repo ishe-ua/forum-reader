@@ -1,7 +1,10 @@
-Forum-reader
-============
+# forum-reader2.com
 
-See http://forum-reader2.com
+See:
+
+* [Site url](http://forum-reader2.com)
+
+* [Gitter community](https://gitter.im/forum-reader)
 
 
 ## Required software
