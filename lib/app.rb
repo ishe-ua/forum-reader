@@ -1,6 +1,6 @@
 # APP constants
 module APP
-  NAME = 'reader'.freeze
+  NAME = 'forum-reader'.freeze
 
   HOST = 'forum-reader2.com'.freeze
 
