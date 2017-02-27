@@ -6,7 +6,7 @@ require_relative '../lib/app.rb'
 
 set :application_name, -> { APP::NAME }
 set :domain, -> { APP::HOST }
-set :deploy_to, "/var/www/#{APP::HOST}"
+set :deploy_to, -> { "/var/www/#{APP::HOST}" }
 set :repository, 'git@github.com:ishe-ua/forum-reader.git'
 set :branch, 'master'
 
@@ -58,11 +58,11 @@ task :deploy do
     invoke :'deploy:cleanup'
 
     on :launch do
-      in_path(fetch(:current_path)) do
-        # command %(mkdir -p tmp/)
-        # command %(sudo god restart web)
-        # command %(touch tmp/restart.txt)
-      end
+      #   in_path(fetch(:current_path)) do
+      #     # command %(mkdir -p tmp/)
+      #     # command %(sudo god restart web)
+      #     # command %(touch tmp/restart.txt)
+      #   end
     end
   end
 
