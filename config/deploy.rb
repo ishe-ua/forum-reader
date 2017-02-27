@@ -1,3 +1,5 @@
+# rubocop:disable LineLength
+
 require 'mina/rails'
 require 'mina/rbenv'
 require 'mina/git'
