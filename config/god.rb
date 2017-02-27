@@ -1,10 +1,8 @@
-require_relative '../lib/app.rb'
-
 RAILS_ROOT = File.expand_path('..', __dir__)
 RAILS_ENV = { 'RAILS_ENV' => 'production' }.freeze
 
 God.watch do |w|
-  w.name  = APP::NAME + '-web'
+  w.name  = 'web'
   w.start = 'bundle exec puma'
 
   w.keepalive
@@ -14,7 +12,7 @@ God.watch do |w|
 end
 
 # God.watch do |w|
-#   w.name  = APP::NAME + '-clock'
+#   w.name  = 'clock'
 #   w.start = 'bundle exec clockwork lib/clock.rb'
 
 #   w.keepalive
