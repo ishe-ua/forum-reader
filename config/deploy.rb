@@ -14,10 +14,8 @@ set :user, 'deploy' # Username in the server to SSH to.
 set :rails_env, 'production'
 
 set :shared_dirs, fetch(:shared_dirs, []).push(
-  'log',
-  'tmp/pids',
-  'tmp/cache',
-  'tmp/sockets'
+  'tmp',
+  'log'
 )
 
 # Optional settings:
