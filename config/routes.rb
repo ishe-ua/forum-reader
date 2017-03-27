@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'login',    to: redirect('sessions/new'),  as: :login
   get 'logout',   to: 'sessions#destroy',        as: :logout
 
-  resources :accounts, except: [:index, :show]
+  resources :accounts, except: %i(index show)
 
   get 'accounts/confirm_email/:token' =>
       'accounts#confirm_email', as: :confirm_email
@@ -35,14 +35,14 @@ Rails.application.routes.draw do
       'accounts#repeat_jabber_confirmation', as: :repeat_jabber_confirmation
 
   match 'accounts/reset_password' =>
-        'accounts#reset_password', via: [:get, :post], as: :reset_password
+        'accounts#reset_password', via: %i(get post), as: :reset_password
 
   ###
   # Others
   #
 
-  resources :contacts, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :contacts, only: %i(new create)
+  resources :sessions, only: %i(new create destroy)
 
   get 'locale/change/:lang', to: 'locale#change', as: :change_locale
 

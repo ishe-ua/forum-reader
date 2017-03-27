@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TextTest < ActiveSupport::TestCase
   setup do
-    @instance = build([:contact, :feed_item].shuffle.sample)
+    @instance = build(%i(contact feed_item).shuffle.sample)
   end
 
   test 'max length is limited and trim if need' do

@@ -3,7 +3,7 @@ module Mover
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_resource, only: [:move_up, :move_down]
+    before_action :set_resource, only: %i(move_up move_down)
   end
 
   def move_up

@@ -1,4 +1,5 @@
 # coding: utf-8
+
 # Настройка локалей, gem 'rails-i18n'
 #
 

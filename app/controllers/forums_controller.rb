@@ -1,6 +1,6 @@
 # See Forum
 class ForumsController < ApplicationController
-  before_action :set_forum, only: [:edit, :update, :destroy]
+  before_action :set_forum, only: %i(edit update destroy)
   include Mover
 
   def new

@@ -26,7 +26,7 @@ module Reader
       end
 
       test 'parse_and_save_news => success' do
-        fixture_name = [:reddit_ruby, :opennet, :lbua, :atytarenko].sample
+        fixture_name = %i(reddit_ruby opennet lbua atytarenko).sample
         VCR.use_cassette(fixture_name.to_s) do
           feed = feeds(fixture_name)
           feed.update(last_fetch_at: 200.years.ago)

@@ -65,8 +65,8 @@ module Reader
       private
 
       def enqueue_ffj(url, response)
-        FetchedFeedJob.perform_later(url, encode(response)) unless
-          response.blank?
+        FetchedFeedJob.perform_later(url, encode(response)) if
+          response.present?
       end
 
       def enqueue_tlj(url, error)

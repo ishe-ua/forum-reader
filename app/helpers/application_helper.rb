@@ -1,4 +1,5 @@
 # coding: utf-8
+
 # See ApplicationController
 module ApplicationHelper
   # Title tag for browser.

@@ -1,7 +1,7 @@
 # See Account
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:edit, :update, :destroy]
-  skip_before_action :require_sign_in, only: [:new, :create]
+  before_action :set_account, only: %i(edit update destroy)
+  skip_before_action :require_sign_in, only: %i(new create)
 
   include ConfirmEmail
   include ConfirmJabber
@@ -66,7 +66,7 @@ class AccountsController < ApplicationController
             :email,
             :password,
             :password_confirmation,
-            user_attributes: [:id, :nick, :jabber, :lang, :country, :timezone]
+            user_attributes: %i(id nick jabber lang country timezone)
           )
   end
 
