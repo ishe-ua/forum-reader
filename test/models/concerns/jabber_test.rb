@@ -5,9 +5,9 @@ class JabberTest < ActiveSupport::TestCase
     @instance = build(:user)
   end
 
-  test 'required field' do
+  test 'not required field' do
     instance.jabber = nil
-    assert_not instance.valid?
+    assert instance.valid?
   end
 
   test 'unique field' do

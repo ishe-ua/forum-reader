@@ -14,7 +14,7 @@ module Jabber
 
     validates :jabber,
 
-              presence: true,
+              allow_blank: true,
               uniqueness: true,
 
               format: {
