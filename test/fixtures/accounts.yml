@@ -7,7 +7,6 @@ DEFAULTS: &DEFAULTS
 
 ishe:
   <<: *DEFAULTS
-  email: in.shevkun@gmail.com
   email_confirmation_token: <%= Account.new.email_confirmation_token %>
 
 mary:

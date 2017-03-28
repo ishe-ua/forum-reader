@@ -9,7 +9,7 @@ module APP
   FOUNDER = 'ishe_ua'.freeze
 
   # Start development since
-  SINCE = 2014
+  SINCE = 2017
 
   ADMIN_EMAIL = 'in.shevkun@gmail.com'.freeze
 
