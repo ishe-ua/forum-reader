@@ -1,16 +1,24 @@
 require 'clockwork'
-
-require './config/boot'
-require './config/environment'
+require_relative '../config/initializers/active_job'
 
 # App clock, gem 'clockwork'.
 module Clockwork
   # Time for system tasks.
   SYS_TIME = '4:00'.freeze
 
+  LOG_DIR = './log'.freeze
+
+  LOG_FILE = 'clockwork.log'.freeze
+
+  configure do |config|
+    config[:logger] = Logger.new("#{LOG_DIR}/#{LOG_FILE}") if
+      Dir.exist?(LOG_DIR)
+  end
+
   # rubocop:disable LineLength
 
-  every(1.day, 'Run system tasks', at: SYS_TIME) do
+  # every(1.day, 'Run system tasks', at: SYS_TIME) do
+  every(1.minute, 'Run system tasks') do
     AdminMailer.stats.deliver_later
   end
 

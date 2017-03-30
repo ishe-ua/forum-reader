@@ -1,9 +1,10 @@
 unless defined?(Rails)
-  # require 'active_job'
-  # FIX: require_relative 'gem_backburner'
+  require 'active_job'
+  require 'sidekiq'
 
-  # require_relative '../../lib/utils/queues.rb'
-  # Dir['../../app/jobs/**/*.rb'].each { |f| require f }
+  # TODO: require_relative '../../lib/utils/queues.rb'
+  Dir[File.expand_path('../../app/jobs/**/*.rb', __dir__)]
+    .each { |f| require f }
 end
 
 ActiveJob::Base.queue_adapter = :sidekiq
