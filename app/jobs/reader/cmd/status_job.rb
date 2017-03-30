@@ -7,7 +7,7 @@ module Reader
       REGEXP = /^\s*STATUS\s*$/i
 
       def perform(body, from)
-        return unless body =~ REGEXP
+        return unless body.match?(REGEXP)
         return unless (user = find_user_from(from))
 
         text = (user.reader_set.on? ? Status::ON : Status::OFF).upcase

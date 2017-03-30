@@ -9,7 +9,7 @@ AllCops:
     - 'config/application.rb'
     - 'config/environments/*'
     - 'test/support/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 Rails:
   Enabled: true

@@ -7,7 +7,7 @@ module Reader
       REGEXP = /^\s*HELP\s*$/i
 
       def perform(body, from)
-        return unless body =~ REGEXP
+        return unless body.match?(REGEXP)
         return unless (user = find_user_from(from))
 
         text = ReplyMailer.help(user).body.encoded

@@ -10,7 +10,7 @@ module Reader
 
       # Like ListJob
       def perform(body, from)
-        return unless body =~ self.class::REGEXP # !!
+        return unless body.match?(self.class::REGEXP) # !!
         return unless (user = find_user_from(from))
 
         params = find_params_from(body)
