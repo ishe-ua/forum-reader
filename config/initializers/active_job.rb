@@ -2,7 +2,8 @@ unless defined?(Rails)
   require 'active_job'
   require 'sidekiq'
 
-  # TODO: require_relative '../../lib/utils/queues.rb'
+  require_relative '01_libs'
+
   Dir[File.expand_path('../../app/jobs/**/*.rb', __dir__)]
     .each { |f| require f }
 end
