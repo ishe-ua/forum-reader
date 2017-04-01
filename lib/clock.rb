@@ -1,4 +1,5 @@
 require 'clockwork'
+require_relative '../config/initializers/action_mailer'
 require_relative '../config/initializers/active_job'
 
 # App clock, gem 'clockwork'.
@@ -17,9 +18,8 @@ module Clockwork
 
   # rubocop:disable LineLength
 
-  # every(1.day, 'Run system tasks', at: SYS_TIME) do
-  every(1.minute, 'Run system tasks') do
-    # AdminMailer.stats.deliver_later
+  every(1.day, 'Run system tasks', at: SYS_TIME) do
+    AdminMailer.stats.deliver_later
   end
 
   # every(5.minutes, 'reader.fetch.forums') { Reader::Fetcher::FetchForumsJob.perform_later }

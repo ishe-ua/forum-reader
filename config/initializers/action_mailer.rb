@@ -1,10 +1,26 @@
+unless defined?(Rails)
+  require 'action_mailer'
+  require 'active_support'
+
+  require_relative '01_libs'
+  require_relative '../../app/mailers/application_mailer.rb'
+
+  Dir[File.expand_path('../../app/mailers/**/*.rb', __dir__)]
+    .each { |f| require f }
+end
+
+###
+#
+#
+
 am = ActionMailer::Base
 am.deliver_later_queue_name = 'mailer'
 
 am.default_options = { from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>" }
-am.default_url_options = { host: 'localhost', port: 3000 }
+am.default_url_options = { host: 'localhost', port: 3000 } if
+  am.respond_to?(:default_url_options)
 
-if Rails.env.production?
+if defined?(Rails) && Rails.env.production?
   am.default_url_options = { host: "http://#{APP::HOST}" }
   am.delivery_method = :smtp
 
