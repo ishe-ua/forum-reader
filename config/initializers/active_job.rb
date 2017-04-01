@@ -4,7 +4,7 @@ unless defined?(Rails)
 
   require_relative '01_libs'
 
-  Dir[File.expand_path('../../app/jobs/**/*.rb', __dir__)]
+  Dir[File.expand_path('../../app/jobs/**/*.rb', __dir__)].sort
     .each { |f| require f }
 end
 

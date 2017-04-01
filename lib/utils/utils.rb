@@ -1,6 +1,6 @@
 # App Utilites.
 module Utils
-  Dir[Rails.root.join('lib', 'utils', '**', '*.rb')].each do |file|
-    require(file) if file != __FILE__ # except current file
+  Dir[File.expand_path('**/*.rb', __dir__)].each do |file|
+    require(file) if file != __FILE__
   end
 end

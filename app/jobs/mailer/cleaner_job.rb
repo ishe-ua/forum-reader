@@ -1,3 +1,5 @@
+require_relative '../reader/cleaner_job'
+
 module Mailer
   # Clean Message -s (like Reader::CleanerJob)
   #
