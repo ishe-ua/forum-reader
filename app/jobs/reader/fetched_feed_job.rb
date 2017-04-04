@@ -12,7 +12,7 @@ module Reader
     def perform(url, feed_stream)
       feed = find_or_create_feed_by(url)
       news_count = parse_and_save_news(feed, feed_stream)
-      Sender::SendForumsJob.perform_later(url) if news_count.positive?
+      SendForumsJob.perform_later(url) if news_count.positive?
     end
 
     protected
