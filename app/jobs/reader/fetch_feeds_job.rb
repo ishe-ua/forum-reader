@@ -2,7 +2,7 @@ module Reader
   # Find Url -s for fetch.
   #
   # Clockwork task
-  class FetchJob < ApplicationJob
+  class FetchFeedsJob < ApplicationJob
     queue_as :default
 
     # Enqueue FetchFeedJob for each Url.

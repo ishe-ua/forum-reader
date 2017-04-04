@@ -22,8 +22,7 @@ module Clockwork
     AdminMailer.stats.deliver_later
   end
 
-  # every(5.minutes, 'reader.fetch.forums') { Reader::Fetcher::FetchForumsJob.perform_later }
-  # every(15.minutes, 'reader.fetch.letters') { Reader::Fetcher::FetchLettersJob.perform_later }
+  every(5.minutes, 'reader.fetch.feeds') { Reader::FetchFeedsJob.perform_later }
 
   # every(1.minute, 'reader.send.letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
   #   Reader::Sender::SendLettersJob.perform_later(Time.zone.now.to_i)

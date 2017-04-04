@@ -1,9 +1,9 @@
 require 'test_helper'
 
 module Reader
-  class FetchJobTest < ActiveJob::TestCase
+  class FetchFeedsJobTest < ActiveJob::TestCase
     setup do
-      @job = FetchJob
+      @job = FetchFeedsJob
     end
 
     test 'success' do
