@@ -22,12 +22,12 @@ module Clockwork
     AdminMailer.stats.deliver_later
   end
 
-  every(5.minutes, 'reader.fetch.feeds') { Reader::FetchFeedsJob.perform_later }
+  every(5.minutes, 'reader: fetch feeds') { Reader::FetchFeedsJob.perform_later }
 
-  every(1.minute, 'reader.send.letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
-    Reader::SendLettersJob.perform_later(Time.zone.now.to_i)
+  every(1.minute, 'reader: send letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
+    Reader::SendLettersJob.perform_later(Time.now.utc.to_i)
   end
 
-  # every(1.day, 'reader.clean.feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
+  every(1.day, 'reader: clean feed_items', at: SYS_TIME) { Reader::CleanerJob.perform_later }
   # every(1.day, 'mailer.clean.messages', at: SYS_TIME) { Mailer::CleanerJob.perform_later }
 end
