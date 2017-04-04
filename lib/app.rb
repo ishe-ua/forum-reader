@@ -21,7 +21,7 @@ module APP
   DEFAULT_PASSWORD = '1234567'.freeze
 
   # Supported locales (see Lang)
-  LANGS = %w(en ru uk).freeze
+  LANGS = %w[en ru uk].freeze
 
   # Common password for +all+ botes (from +ENV+)
   BOTES_PASSWORD = ENV['botes_password']

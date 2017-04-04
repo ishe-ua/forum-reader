@@ -4,7 +4,7 @@ require 'test_helper'
 
 class PositionTest < ActiveSupport::TestCase
   setup do
-    @instance = build(%i(forum letter letter_item).shuffle.sample)
+    @instance = build(%i[forum letter letter_item].shuffle.sample)
   end
 
   test 'следующие по списку номера присваиваются' do

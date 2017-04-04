@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LastPostAtTest < ActiveSupport::TestCase
   setup do
-    @instance = build(%i(forum letter letter_item).shuffle.sample)
+    @instance = build(%i[forum letter letter_item].shuffle.sample)
   end
 
   test 'can be empty' do

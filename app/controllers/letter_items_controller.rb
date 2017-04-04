@@ -1,6 +1,6 @@
 # See LetterItem
 class LetterItemsController < ApplicationController
-  before_action :set_letter_item, only: %i(edit update destroy)
+  before_action :set_letter_item, only: %i[edit update destroy]
   include Mover
 
   def new

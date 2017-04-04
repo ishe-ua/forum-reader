@@ -6,7 +6,7 @@
 module Target
   extend ActiveSupport::Concern
 
-  SUPPORTED_TARGETS = %w(email jabber).freeze
+  SUPPORTED_TARGETS = %w[email jabber].freeze
 
   included do
     enum target: SUPPORTED_TARGETS

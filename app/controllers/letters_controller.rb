@@ -1,6 +1,6 @@
 # See Letter
 class LettersController < ApplicationController
-  before_action :set_letter, only: %i(edit update destroy)
+  before_action :set_letter, only: %i[edit update destroy]
   include Mover
 
   def new

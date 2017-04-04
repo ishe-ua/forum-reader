@@ -3,7 +3,7 @@ require 'test_helper'
 class MoverTest < ActionDispatch::IntegrationTest
   setup do
     account = accounts(:ishe)
-    @resources_name = %w(forums letters).sample
+    @resources_name = %w[forums letters].sample
 
     @resource1 = account.user.send(@resources_name).first
     @resource2 = account.user.send(@resources_name).second

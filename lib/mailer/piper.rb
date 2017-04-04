@@ -5,7 +5,7 @@ module Mailer
   #
   class Piper
     # See config/initializers/lib_piper.rb
-    REQUIRED_LIBS = %w(active_job mail).each { |lib| require lib }
+    REQUIRED_LIBS = %w[active_job mail].each { |lib| require lib }
 
     require_relative '../../config/initializers/active_job'
     # FIX: require_relative '../../config/initializers/gem_backburner'

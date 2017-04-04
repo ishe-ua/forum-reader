@@ -3,7 +3,7 @@ require 'test_helper'
 class ContactsMailerTest < ActionMailer::TestCase
   setup do
     @mailer = ContactsMailer
-    @contact = contacts(%i(one two).shuffle.sample)
+    @contact = contacts(%i[one two].shuffle.sample)
   end
 
   test 'thank_you' do

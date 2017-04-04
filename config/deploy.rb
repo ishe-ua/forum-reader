@@ -4,9 +4,9 @@ require 'mina/git'
 
 require_relative '../lib/app.rb'
 
-set :application_name, -> { APP::NAME }
-set :domain, -> { APP::HOST }
-set :deploy_to, -> { "/var/www/#{APP::HOST}" }
+set :application_name, APP::NAME
+set :domain, -APP::HOST
+set :deploy_to, "/var/www/#{APP::HOST}"
 set :repository, 'git@github.com:ishe-ua/forum-reader.git'
 set :branch, 'master'
 

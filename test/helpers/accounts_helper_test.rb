@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AccountsHelperTest < ActionView::TestCase
   test '#register? => true' do
-    params = { 'controller' => 'accounts', 'action' => %w(new create).sample }
+    params = { 'controller' => 'accounts', 'action' => %w[new create].sample }
     assert register?(params)
   end
 

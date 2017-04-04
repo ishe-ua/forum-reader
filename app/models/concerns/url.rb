@@ -4,7 +4,7 @@
 module Url
   extend ActiveSupport::Concern
 
-  SUPPORTED_SCHEMES = %w(http https).freeze
+  SUPPORTED_SCHEMES = %w[http https].freeze
 
   included do
     before_validation :downcase_url, if: 'url.present?'

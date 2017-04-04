@@ -3,7 +3,7 @@ module CheckAccount
   extend ActiveSupport::Concern
 
   # Pages with deprecated access without check
-  DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT = [%w(pages data)].freeze
+  DEPRICATED_PAGES_WITHOUT_CHECK_ACCOUNT = [%w[pages data]].freeze
 
   included do
     before_action :check_models_presence

@@ -7,11 +7,11 @@ module Reader
         @job = ListJob.new
         @from = users(:ishe).jabber
 
-        @test_objects = %w(
+        @test_objects = %w[
           reddit_ruby
           dev
           opennet
-        ) # forum, letter, letter_item
+        ] # forum, letter, letter_item
       end
 
       test 'success' do

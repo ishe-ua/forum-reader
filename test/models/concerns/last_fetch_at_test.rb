@@ -27,7 +27,7 @@ class LastFetchAtTest < ActiveSupport::TestCase
 
   test '#find_for_fetch' do
     travel_to(1.day.from_now) do
-      sel = instance.class.find_for_fetch(%i(forums letter_items).sample)
+      sel = instance.class.find_for_fetch(%i[forums letter_items].sample)
       assert sel.sample.start_with?('http')
     end
   end
