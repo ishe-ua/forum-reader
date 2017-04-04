@@ -25,17 +25,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'                 # Build JSON APIs with ease
 gem 'bcrypt',   '~> 3.1.7'               # Use ActiveModel has_secure_password
 
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
-
 group :development do
   gem 'annotate'
   gem 'brakeman', require: false
   gem 'rdoc'
   gem 'rubocop', require: false
 
-  gem 'web-console', '>= 3.3.0'          # <% console %> in views
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
