@@ -35,5 +35,5 @@ module Reader
   end
 end
 
-## Run in console (see Procfile)
+## Run in console (see Godfile)
 Reader::BoteOut.run unless defined?(Rails)
