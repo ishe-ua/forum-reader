@@ -1,6 +1,8 @@
+require 'bundler/setup'
+require 'blather/client/dsl'
+
 require_relative '../../config/initializers/active_job'
 require_relative 'reader.rb'
-require 'blather/client/dsl'
 
 module Reader
   # Receive Jabber messages from User.
