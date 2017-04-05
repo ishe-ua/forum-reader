@@ -48,4 +48,4 @@ gem 'blather'
 gem 'rchardet'
 
 gem 'activeadmin', '~> 1.0.0.pre5'
-gem 'devise' # For activeadmin
+gem 'devise' # For activeadmin and sidekiq monitoring
