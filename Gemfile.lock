@@ -75,6 +75,7 @@ GEM
       thor (~> 0.19)
     brakeman (3.6.1)
     builder (3.2.3)
+    byebug (9.0.6)
     clockwork (2.0.2)
       activesupport
       tzinfo
@@ -301,6 +302,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   blather
   brakeman
+  byebug
   clockwork
   coffee-rails (~> 4.2)
   devise

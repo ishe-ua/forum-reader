@@ -25,6 +25,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'                 # Build JSON APIs with ease
 gem 'bcrypt',   '~> 3.1.7'               # Use ActiveModel has_secure_password
 
+group :development, :test do
+  gem 'byebug'
+end
+
 group :development do
   gem 'annotate'
   gem 'brakeman', require: false
