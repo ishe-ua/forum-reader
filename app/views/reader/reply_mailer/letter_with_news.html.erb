@@ -1,8 +1,8 @@
-<% @news.each do |news| %>
+<% @news.each do |item| %>
 
   <%
-  letter_item = news[:letter_item]
-  feed_items = news[:feed_items]
+  letter_item = LetterItem.find(item[0])
+  feed_items = FeedItem.find(item[1])
   %>
 
   <h2><%= letter_item.name %></h2>

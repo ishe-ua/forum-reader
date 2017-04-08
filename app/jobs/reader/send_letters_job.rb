@@ -13,10 +13,8 @@ module Reader
       @time = Time.zone.at(enqueue_job_time)
       find_letters_for_send.each do |letter|
         news = news_in(letter)
-        if news&.any?
-          ReplyMailer.letter_with_news(letter, news).deliver_later
-          update_last_post_at(letter)
-        end
+        ReplyMailer.letter_with_news(letter, news).deliver_later if news&
+        update_last_post_at(letter)
       end
     end
 
@@ -34,11 +32,11 @@ module Reader
     end
 
     def news_in(letter)
-      letter.letter_items.order(:position).select do |letter_item|
+      letter.letter_items.order(:position).map do |letter_item|
         news = news_in_the(letter_item)
-        # { letter_item => news } if news.any?
-        { letter_item: letter_item, feed_items: news } if news&.any?
+        news.any? ? [letter_item.id, news.ids] : nil
       end
+            .compact
     end
 
     # Correct #time to now time

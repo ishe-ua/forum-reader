@@ -26,7 +26,7 @@ module Reader
     # Letter with news to Email.
     #
     # News is array of hashes like
-    # [{letter_item: letter_item, feed_items: feed_items}, ...]
+    # [[letter_item_id, feed_items_ids], ...]
 
     def letter_with_news(letter, news)
       @news = news
