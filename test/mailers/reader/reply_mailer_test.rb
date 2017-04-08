@@ -26,7 +26,8 @@ module Reader
     end
 
     test 'letter_with_news' do
-      mail = mailer.letter_with_news(letters(:ua), [])
+      news = [letter_item: LetterItem.first, feed_items: FeedItem.all]
+      mail = mailer.letter_with_news(letters(:ua), news)
       assert_not_empty mail.body.encoded, 'regards present'
     end
 

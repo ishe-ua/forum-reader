@@ -16,8 +16,8 @@ module Reader
     end
 
     test 'perform' do
-      assert_enqueued_jobs(2) { job.class.perform_now(test_time.to_s) }
-      assert_no_enqueued_jobs { job.class.perform_now(Time.zone.now.to_s) }
+      assert_enqueued_jobs(2) { job.class.perform_now(test_time.to_i) }
+      assert_no_enqueued_jobs { job.class.perform_now(Time.zone.now.to_i) }
     end
 
     test 'find_letters_for_send' do

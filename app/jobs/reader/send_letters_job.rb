@@ -10,11 +10,10 @@ module Reader
 
     # Param should be String
     def perform(enqueue_job_time)
-      @time = enqueue_job_time.to_datetime
-
+      @time = Time.zone.at(enqueue_job_time)
       find_letters_for_send.each do |letter|
         news = news_in(letter)
-        if news.any?
+        if news&.any?
           ReplyMailer.letter_with_news(letter, news).deliver_later
           update_last_post_at(letter)
         end
@@ -37,7 +36,8 @@ module Reader
     def news_in(letter)
       letter.letter_items.order(:position).select do |letter_item|
         news = news_in_the(letter_item)
-        { letter_item => news } if news.any?
+        # { letter_item => news } if news.any?
+        { letter_item: letter_item, feed_items: news } if news&.any?
       end
     end
 
