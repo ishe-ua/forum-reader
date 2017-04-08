@@ -26,7 +26,7 @@ module Reader
         Cmd::ListJob
       ].each do |cmd|
         message(:chat?, body: cmd::REGEXP) do |m|
-          cmd.perform_later(m.body, m.from)
+          cmd.perform_later(m.body, m.from.to_s)
           halt
         end
       end

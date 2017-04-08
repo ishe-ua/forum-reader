@@ -1,3 +1,5 @@
+require 'sidekiq'
+
 # rubocop:disable GlobalVars
 redis_conn = proc { $redis }
 

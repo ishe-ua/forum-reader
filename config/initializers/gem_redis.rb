@@ -1,8 +1,13 @@
-# rubocop:disable GlobalVars
+require 'redis'
 
+# rubocop:disable GlobalVars
 def connect_to_redis
   return if $redis&.connected?
-  $redis = Redis.new(Rails.application.config_for(:redis))
+  $redis = if defined?(Rails)
+             Redis.new(Rails.application.config_for(:redis))
+           else
+             Redis.new # TODO
+           end
 end
 
 connect_to_redis
