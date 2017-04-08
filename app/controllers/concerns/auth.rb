@@ -35,7 +35,7 @@ module Auth
       session[:account_id] = account.id
       true
     else
-      t('auth.sign_in.fail')
+      t('sessions.errors.fail')
     end
   end
 
