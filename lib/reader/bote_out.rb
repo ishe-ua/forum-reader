@@ -14,13 +14,13 @@ module Reader
     disconnected { client.connect }
 
     # Queue with incoming messages (from Cmd).
-    QUEUE_NAME = 'reader.bote_out'.to_sym
+    QUEUE_NAME = 'reader_bote_out'.freeze
 
     class << self
+      # rubocop:disable LineLength
       def run
         EM.run do
           client.run
-          # rubocop:disable LineLength
           EM.add_periodic_timer(1) { jobs_from(QUEUE_NAME) { |job| process_incoming(job) } }
         end
       end

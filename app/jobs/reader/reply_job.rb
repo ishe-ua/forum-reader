@@ -3,7 +3,7 @@ module Reader
   #
   # Incoming job for BoteOut.
   class ReplyJob < ApplicationJob
-    queue_as { Reader::BoteOut::QUEUE_NAME }
+    queue_as { BoteOut::QUEUE_NAME.to_sym }
 
     # +Deprecated+ method (should performs in Cmd -jobs).
     #
