@@ -26,6 +26,14 @@ module Utils
       send_presence
     end
 
+    def wait_msg
+      client.add_message_callback do |msg|
+        yield(msg.body, msg.from) if msg.body &&
+                                     msg.from &&
+                                     msg.type != :error
+      end
+    end
+
     protected
 
     def send_presence
