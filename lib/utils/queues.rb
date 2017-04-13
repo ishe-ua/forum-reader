@@ -1,7 +1,7 @@
 require 'sidekiq/api'
 
 module Utils
-  # Queue (Sidekiq) helpers.
+  # Sidekiq helpers.
   module Queues
     # Get batch of jobs from queue and process each one.
     def jobs_from(queue_name)

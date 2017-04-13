@@ -6,8 +6,10 @@ require_relative 'reader.rb'
 module Reader
   # Receive Jabber messages from User.
   module BoteIn
+    extend Utils::Xmpp
+
     def self.run
-      sleep
+      connect(Reader::BOTE_JID)
     end
   end
 end
