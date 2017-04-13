@@ -34,6 +34,14 @@ module Utils
       end
     end
 
+    def send_msg(body, to)
+      msg = Message.new(to, body.strip)
+      msg.set_type(:chat)
+
+      client.send(msg)
+      send_presence # TODO: is this need here??
+    end
+
     protected
 
     def send_presence
