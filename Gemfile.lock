@@ -64,12 +64,6 @@ GEM
     arel (7.1.4)
     ast (2.3.0)
     bcrypt (3.1.11)
-    blather (1.2.0)
-      activesupport (>= 2.3.11)
-      eventmachine (>= 1.0.0)
-      girl_friday
-      niceogiri (~> 1.0)
-      nokogiri (~> 1.5, >= 1.5.6, <= 1.6.1)
     bourbon (4.3.4)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -95,7 +89,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
-    eventmachine (1.2.3)
     exception_notification (4.2.1)
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
@@ -113,7 +106,6 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
-    girl_friday (0.9.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     god (0.13.7)
@@ -165,8 +157,6 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    niceogiri (1.1.2)
-      nokogiri (~> 1.5)
     nio4r (2.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -301,7 +291,6 @@ DEPENDENCIES
   acts_as_list
   annotate
   bcrypt (~> 3.1.7)
-  blather
   brakeman
   byebug
   clockwork
