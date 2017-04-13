@@ -13,7 +13,7 @@ module Utils
     # In seconds
     RECONNECT_TIMEOUT = 5
 
-    def start(jabber_id, opts = {}) # rubocop:disable AbcSize
+    def start(jabber_id, _opts = {})
       @jid = JID.new(jabber_id)
       @client = Client.new(jid)
       @roster = Roster::Helper.new(client)
@@ -25,11 +25,16 @@ module Utils
     end
 
     def wait_msg
+      _ = Thread.current
+
       client.add_message_callback do |msg|
         yield(msg.body, msg.from) if msg.body &&
                                      msg.from &&
                                      msg.type != :error
       end
+
+      Thread.stop
+      client.close
     end
 
     def send_msg(body, to)
