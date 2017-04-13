@@ -1,3 +1,5 @@
+require 'sidekiq/api'
+
 module Utils
   # Queue (Sidekiq) helpers.
   module Queues

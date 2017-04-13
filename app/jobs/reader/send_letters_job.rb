@@ -13,8 +13,8 @@ module Reader
       @time = Time.zone.at(enqueue_job_time)
       find_letters_for_send.each do |letter|
         news = news_in(letter)
-        ReplyMailer.letter_with_news(letter, news).deliver_later if news&
-        update_last_post_at(letter)
+        ReplyMailer.letter_with_news(letter, news).deliver_later if
+          news && update_last_post_at(letter)
       end
     end
 
