@@ -1,8 +1,11 @@
-# require "xmpp4r/roster"
+require 'xmpp4r'
+require 'xmpp4r/roster'
 
 module Utils
   # Xmpp4r helpers.
   module Xmpp
+    include Jabber
+
     attr_reader :client
     attr_reader :jid
     attr_reader :roster
@@ -10,12 +13,12 @@ module Utils
     # In seconds
     RECONNECT_TIMEOUT = 5
 
-    def connect(jabber_id, opts = {}) # rubocop:disable AbcSize
+    def start(jabber_id, opts = {}) # rubocop:disable AbcSize
       @jid = JID.new(jabber_id)
       @client = Client.new(jid)
       @roster = Roster::Helper.new(client)
 
-      client.connect(jid.domain)
+      client.connect
       client.auth(APP::BOTES_PASSWORD)
 
       unless opts[:without_callbacks]
@@ -53,7 +56,7 @@ module Utils
       client.on_exception do
         unless client&.is_connected?
           sleep(RECONNECT_TIMEOUT)
-          connect(jid, opts)
+          start(jid, opts)
         end
       end
     end

@@ -8,8 +8,31 @@ module Reader
   module BoteIn
     extend Utils::Xmpp
 
-    def self.run
-      connect(Reader::BOTE_JID)
+    class << self
+      def run
+        start(Reader::BOTE_JID)
+
+        wait_msg do |body, from|
+          cmd = body.split[0]
+          job = job_for(cmd) || Cmd::ListJob
+          job.perform_later(body, from)
+        end
+      end
+
+      protected
+
+      def job_for(_cmd)
+        klass = nil
+
+        [Cmd::HelpJob,
+         Cmd::StatusJob,
+         Cmd::OnJob,
+         Cmd::OffJob,
+         Cmd::LastJob,
+         Cmd::ListJob].each { |cmd| klass = cmd unless klass }
+
+        klass
+      end
     end
   end
 end
