@@ -49,6 +49,7 @@ gem 'rails-i18n', '~> 5.0.0' # For 5.x
 gem 'acts_as_list'
 gem 'active_record_union'
 gem 'feedjira'
+gem 'xmpp4r'
 gem 'rchardet'
 
 gem 'activeadmin', '~> 1.0.0.pre5'

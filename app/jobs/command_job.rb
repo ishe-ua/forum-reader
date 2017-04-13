@@ -20,7 +20,7 @@ class CommandJob < ApplicationJob
 
   # Also remove resource from full_jid
   def find_user_from(full_jid)
-    jid = Blather::JID.new(full_jid).stripped.to_s
+    jid = Jabber::JID.new(full_jid).strip.to_s
     User.find_by(jabber: jid)
   end
 
