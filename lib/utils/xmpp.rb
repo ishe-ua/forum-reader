@@ -21,11 +21,6 @@ module Utils
       client.connect
       client.auth(APP::BOTES_PASSWORD)
 
-      unless opts[:without_callbacks]
-        on_exception_callback
-        on_subscription_request_callback
-      end
-
       send_presence
     end
 
