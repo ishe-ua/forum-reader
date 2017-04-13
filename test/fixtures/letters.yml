@@ -32,3 +32,4 @@ others:
   <<: *DEFAULTS
   name: Другие подписки (others)
   position: 3
+  minute: 45

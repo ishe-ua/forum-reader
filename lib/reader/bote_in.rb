@@ -7,7 +7,7 @@ module Reader
   # Receive Jabber messages from User.
   module BoteIn
     def self.run
-      # TODO
+      sleep
     end
   end
 end

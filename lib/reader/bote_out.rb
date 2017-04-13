@@ -11,7 +11,7 @@ module Reader
 
     class << self
       def run
-        # TODO
+        sleep
       end
     end
   end
