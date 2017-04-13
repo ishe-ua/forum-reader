@@ -2,7 +2,7 @@
 # * string
 # * unique index
 #
-module Jabber
+module Jab
   extend ActiveSupport::Concern
 
   # From gem 'devise'

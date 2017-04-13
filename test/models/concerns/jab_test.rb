@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class JabberTest < ActiveSupport::TestCase
+class JabTest < ActiveSupport::TestCase
   setup do
     @instance = build(:user)
   end
