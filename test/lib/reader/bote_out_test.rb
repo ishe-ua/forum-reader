@@ -6,8 +6,6 @@ module Reader
       @modul = BoteOut
     end
 
-    test 'manual testing' do
-      assert true
-    end
+    # Manual testing
   end
 end
