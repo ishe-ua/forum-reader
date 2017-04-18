@@ -17,6 +17,10 @@ module Reader
 
     def self.run
       EM.run { client.run }
+      EM.add_periodic_timer(20) do
+        msg = Blather::Stanza::Message.new('in.shevkun@gmail.com', 'msg', :chat)
+        client.write(msg)
+      end
     end
   end
 end
