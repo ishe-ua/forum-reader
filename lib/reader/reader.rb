@@ -7,6 +7,10 @@ module Reader
 
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
+  SUPPORTED_COMMANDS = %i[
+    help status on off last list
+  ].freeze
+
   if defined?(Rails)
     require_relative 'cmd.rb' # should be first
     require_relative 'bote_in.rb'
