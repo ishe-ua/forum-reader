@@ -15,21 +15,9 @@ module Reader
     # Auto approve subscription requests
     subscription(:request?) { |s| write_to_stream s.approve! }
 
-    # Order is <tt>VERY IMPORTANT</tt>.
-    SUPPORTED_COMMANDS =
-      [
-        Cmd::HelpJob,
-        Cmd::StatusJob,
-        Cmd::OnJob,
-        Cmd::OffJob,
-        Cmd::LastJob,
-        Cmd::ListJob
-      ].each do |cmd|
-        message(:chat?, body: cmd::REGEXP) do |m|
-          EM.next_tick { cmd.perform_later(m.body, m.from.to_s) }
-          halt
-        end
-      end
+    message(:chat?) do |m|
+      EM.next_tick { InJob.perform_later(m.body, m.from.to_s) }
+    end
 
     def self.run
       EM.run { client.run }

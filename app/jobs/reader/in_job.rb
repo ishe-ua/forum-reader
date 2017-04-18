@@ -3,11 +3,11 @@ module Reader
   class InJob < ApplicationJob
     queue_as :default
 
-    def perform(body, from)
+    def perform(text, from)
       SUPPORTED_COMMANDS.each do |cmd|
-        klass = "Reader::Cmd::#{cmd.capitalize}Job".classify.constantize
-        if body.match?(klass::REGEXP)
-          klass.perform_later(body, from)
+        job = "Reader::Cmd::#{cmd.capitalize}Job".classify.constantize
+        if text.match?(job::REGEXP)
+          job.perform_later(text, from)
           return cmd
         end
       end

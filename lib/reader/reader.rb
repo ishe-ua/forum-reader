@@ -7,6 +7,7 @@ module Reader
 
   BOTE_JID = BOTE_NAME + '@' + APP::HOST
 
+  # Order is <tt>VERY IMPORTANT</tt>.
   SUPPORTED_COMMANDS = %i[
     help status on off last list
   ].freeze
