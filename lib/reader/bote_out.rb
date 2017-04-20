@@ -4,7 +4,7 @@ require 'blather/client/dsl'
 require_relative '../../config/initializers/active_job'
 require_relative 'reader.rb'
 
-require 'sidekiq/api'           # TODO
+require 'sidekiq/api' # TODO
 
 module Reader
   # Send Jabber messages to User.
@@ -18,15 +18,18 @@ module Reader
     QUEUE_NAME = 'reader_bote_out'.freeze
 
     def self.run
-      EM.run {
+      EM.run do
         client.run
-        EM.add_periodic_timer(1) {
+        EM.add_periodic_timer(1) do
+          Sidekiq::Queue.all.each do |q|
+            puts q.name
+          end
           q = Sidekiq::Queue.new(QUEUE_NAME)
-          a.each do |job|
+          q.each do |job|
             puts 'aa'
           end
-        }
-      }
+        end
+      end
     end
   end
 end
