@@ -1,4 +1,5 @@
 require 'redis'
+require 'yaml'
 
 env = if defined?(Rails)
         Rails.env
