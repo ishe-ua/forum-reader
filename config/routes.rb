@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  authenticate :admin_user do
-    require 'sidekiq/web'
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  # authenticate :admin_user do
+  #   require 'resque/server'
+  #   mount Resque::Server, at: '/jobs'
+  # end
 
   ###
   # Static pages
@@ -86,8 +86,4 @@ Rails.application.routes.draw do
       patch :change_status
     end
   end
-
-  ###
-  #
-  #
 end

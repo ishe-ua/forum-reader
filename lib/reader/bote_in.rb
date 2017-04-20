@@ -16,6 +16,7 @@ module Reader
     subscription(:request?) { |s| write_to_stream s.approve! }
 
     message(:chat?) do |m|
+      puts m.body
       EM.next_tick { InJob.perform_later(m.body, m.from.to_s) }
     end
 
