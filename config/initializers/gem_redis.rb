@@ -8,3 +8,8 @@ env = if defined?(Rails)
 
 opts = YAML.load_file('config/redis.yml')[env].symbolize_keys
 Redis.current = Redis.new(opts)
+
+# Alias
+def redis
+  Redis.current
+end

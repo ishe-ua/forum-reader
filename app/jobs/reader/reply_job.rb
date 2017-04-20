@@ -3,16 +3,17 @@ module Reader
   #
   # Incoming job for BoteOut.
   class ReplyJob < ApplicationJob
-    queue_as { BoteOut::QUEUE_NAME.to_sym }
+    queue_as :default
 
-    # +Deprecated+ method (should performs in Cmd -jobs).
+    # Compose hash for BoteOut and put to Redis.
     #
     # Params:
     # - +text+ What send
     # - +to+ Whom send (jid with resource)
 
-    def perform(_text, _to)
-      raise 'Deprecated'
+    def perform(text, to)
+      hash = { text: text, to: to }
+      redis.lpush(BoteOut::REDIS_LIST, hash.to_json)
     end
   end
 end
