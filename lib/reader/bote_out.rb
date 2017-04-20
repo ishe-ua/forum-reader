@@ -23,14 +23,10 @@ module Reader
         EM.add_periodic_timer(1) do
           q = Sidekiq::Queue.new(QUEUE_NAME)
           q.each do |job|
-            body = job.args.first['arguments'].first
+            text = job.args.first['arguments'].first
             to = job.args.first['arguments'].second
 
-            puts body
-            puts to
-
-            say 'in.shevkun@gmail.com', 'aa'
-
+            say(to, text)
             job.delete
           end
         end
