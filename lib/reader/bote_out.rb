@@ -21,12 +21,17 @@ module Reader
       EM.run do
         client.run
         EM.add_periodic_timer(1) do
-          Sidekiq::Queue.all.each do |q|
-            puts q.name
-          end
           q = Sidekiq::Queue.new(QUEUE_NAME)
           q.each do |job|
-            puts 'aa'
+            body = job.args.first['arguments'].first
+            to = job.args.first['arguments'].second
+
+            puts body
+            puts to
+
+            say 'in.shevkun@gmail.com', 'aa'
+
+            job.delete
           end
         end
       end
