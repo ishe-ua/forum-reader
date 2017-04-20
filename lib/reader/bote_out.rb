@@ -22,7 +22,7 @@ module Reader
         client.run
         EM.add_periodic_timer(1) do
           while (msg = redis.rpop)
-            msg = JSON.parse(msg, symbolize_keys: true)
+            msg = JSON.parse(msg, symbolize_names: true)
             say(msg[:to], msg[:text])
           end
         end
