@@ -2,6 +2,9 @@ require 'bundler/setup'
 require 'blather/client/dsl'
 
 require_relative 'reader.rb'
+require_relative '../../config/initializers/gem_redis.rb'
+
+require 'json'
 
 module Reader
   # Send Jabber messages to User.
@@ -18,7 +21,10 @@ module Reader
       EM.run do
         client.run
         EM.add_periodic_timer(1) do
-          Redis.current
+          while (msg = redis.rpop)
+            msg = JSON.parse(msg, symbolize_keys: true)
+            say(msg[:to], msg[:text])
+          end
         end
       end
     end
