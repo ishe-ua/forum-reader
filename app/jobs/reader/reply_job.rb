@@ -12,7 +12,7 @@ module Reader
     # - +to+ Whom send (jid with resource)
 
     def perform(text, to)
-      hash = { text: text, to: to }
+      hash = { text: text.strip, to: to.strip }
       redis.lpush(BoteOut::REDIS_LIST, hash.to_json)
     end
   end
