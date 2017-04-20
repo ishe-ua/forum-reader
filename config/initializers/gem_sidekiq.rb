@@ -1,7 +1,5 @@
 require 'sidekiq'
-
-# rubocop:disable GlobalVars
-redis_conn = proc { $redis }
+redis_conn = proc { Redis.current }
 
 Sidekiq.configure_client do |config|
   config.redis = ConnectionPool.new(size: 25, &redis_conn)

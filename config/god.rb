@@ -1,5 +1,4 @@
 # rubocop:disable AbcSize
-# rubocop:disable LineLength
 # rubocop:disable MethodLength
 
 def build_watcher(name, cmd, opts = {})

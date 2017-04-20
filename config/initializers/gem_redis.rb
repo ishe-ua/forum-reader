@@ -1,22 +1,10 @@
 require 'redis'
 
-# rubocop:disable GlobalVars
-def connect_to_redis
-  return if $redis&.connected?
-  $redis = if defined?(Rails)
-             Redis.new(Rails.application.config_for(:redis))
-           else
-             Redis.new # TODO
-           end
-end
+env = if defined?(Rails)
+        Rails.env
+      else
+        ENV.fetch('RAILS_ENV') { 'production' }
+      end
 
-connect_to_redis
-
-# Get Redis connection
-def redis
-  $redis
-rescue
-  connect_to_redis
-ensure
-  $redis
-end
+opts = YAML.load_file('config/redis.yml')[env].symbolize_keys
+Redis.current = Redis.new(opts)
