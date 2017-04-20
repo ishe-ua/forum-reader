@@ -7,7 +7,7 @@ env = if defined?(Rails)
         ENV.fetch('RAILS_ENV') { 'production' }
       end
 
-opts = YAML.load_file('config/redis.yml')[env].symbolize_keys
+opts = YAML.load_file('config/redis.yml')[env]
 Redis.current = Redis.new(opts)
 
 # Alias
