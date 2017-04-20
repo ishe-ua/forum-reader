@@ -27,6 +27,6 @@ opts = { group: 'forum-reader', dir: 'forum-reader2.com' }
 
 build_watcher('web', 'bundle exec puma', opts)
 build_watcher('clock', 'bundle exec clockwork lib/clock.rb', opts)
-build_watcher('worker', 'bundle exec sidekiq -q default -q mailers', opts)
+build_watcher('worker', 'bundle exec sidekiq -q default -q mailers -q reader-bote-out', opts)
 build_watcher('reader-bote-in', 'bundle exec ruby lib/reader/bote_in.rb', opts)
 build_watcher('reader-bote-out', 'bundle exec ruby lib/reader/bote_out.rb', opts)
