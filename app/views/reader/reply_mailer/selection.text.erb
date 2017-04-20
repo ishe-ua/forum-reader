@@ -1,21 +1,16 @@
 <% unless @plus %>
-
   <% @feed_items.each do |feed_item| %>
-    <%= html_to_text(feed_item.theme) %>
-    <%= feed_item.url %>
+<%= html_to_text(feed_item.theme) %>
+<%= feed_item.url %>
 
   <% end %>
-
 <% else %>
-
   <% @feed_items.each do |feed_item| %>
     --
-    <%= html_to_text feed_item.theme %>
+<%= html_to_text feed_item.theme %>
 
-    <%= html_to_text feed_item.text %>
+<%= html_to_text feed_item.text %>
 
-    <%= feed_item.url %>
-
+ <%= feed_item.url %>
   <% end %>
-
 <% end %>
