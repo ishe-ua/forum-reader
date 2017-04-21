@@ -53,4 +53,4 @@ gem 'blather'
 gem 'rchardet'
 
 gem 'activeadmin', '~> 1.0.0.pre5'
-gem 'devise' # TODO: For activeadmin and sidekiq monitoring
+gem 'devise' # For activeadmin and resque monitoring
