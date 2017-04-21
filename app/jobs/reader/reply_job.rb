@@ -13,7 +13,7 @@ module Reader
 
     def perform(text, to)
       hash = { text: text.strip, to: to.strip }
-      redis.lpush(BoteOut::REDIS_LIST, hash.to_json)
+      redis.lpush(BoteOut::REDIS_KEY, hash.to_json)
     end
   end
 end

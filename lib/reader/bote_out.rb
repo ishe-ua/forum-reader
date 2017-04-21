@@ -14,19 +14,20 @@ module Reader
     setup(Reader::BOTE_JID, APP::BOTES_PASSWORD)
     disconnected { client.connect }
 
-    # Queue with incoming messages (from Cmd).
-    REDIS_LIST = 'reader:bote:out'.freeze
+    # List with incoming messages (from Cmd).
+    REDIS_KEY = 'reader:bote:out'.freeze
 
     class << self
       def run
         EM.run do
           client.run
-          to_jabber_from(REDIS_LIST)
+          to_jabber_from(REDIS_KEY)
         end
       end
 
       protected
 
+      # TODO: dry to unique file
       def to_jabber_from(redis_key)
         EM.tick_loop do
           next unless client.connected? || redis.connected?
@@ -36,7 +37,7 @@ module Reader
             msg = JSON.parse(msg, symbolize_names: true)
             say(msg[:to], msg[:text])
           else
-            sleep 0.1 # optimal experimentation value !!
+            sleep 0.1 # !! optimal experimentation value
           end
         end
       end
