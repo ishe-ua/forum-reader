@@ -82,7 +82,7 @@ module Reader
     end
 
     test 'send_time? => false' do
-      job.stub(:time, Time.zone.now) do
+      job.stub(:time, Time.zone.now + 1.hour) do
         travel_to(Time.zone.now) { assert_not job.send(:send_time?, letter) }
       end
     end
