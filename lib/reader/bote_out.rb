@@ -17,19 +17,27 @@ module Reader
     # Queue with incoming messages (from Cmd).
     REDIS_LIST = 'reader:bote:out'.freeze
 
-    def self.run
-      EM.run do
-        client.run
+    class << self
+      def run
+        EM.run do
+          client.run
 
-        EM.tick_loop do
-          next unless client.connected? || redis.connected?
-          msg = redis.rpop(REDIS_LIST)
-          if msg
-            msg = JSON.parse(msg, symbolize_names: true)
-            say(msg[:to], msg[:text])
-          else
-            sleep 0.1
+          EM.tick_loop do
+            next unless client.connected? || redis.connected?
+            from_redis_to_jabber
           end
+        end
+      end
+
+      protected
+
+      def from_redis_to_jabber
+        msg = redis.rpop(REDIS_LIST)
+        if msg
+          msg = JSON.parse(msg, symbolize_names: true)
+          say(msg[:to], msg[:text])
+        else
+          sleep 0.1
         end
       end
     end
