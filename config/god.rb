@@ -28,5 +28,6 @@ opts = { group: 'forum-reader', dir: 'forum-reader2.com' }
 build_watcher('web', 'bundle exec puma', opts)
 build_watcher('clock', 'bundle exec clockwork lib/clock.rb', opts)
 build_watcher('worker', 'QUEUE=* bundle exec rake environment resque:work', opts)
+
 build_watcher('bote-in', 'bundle exec ruby lib/reader/bote_in.rb', opts)
 build_watcher('bote-out', 'bundle exec ruby lib/reader/bote_out.rb', opts)
