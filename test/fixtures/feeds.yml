@@ -12,7 +12,7 @@ opennet:
 
 lbua:
   <<: *DEFAULTS
-  url: http://lb.ua/rss/rss.xml
+  url: http://www.pravda.com.ua/rss/view_mainnews/
 
 atytarenko:
   <<: *DEFAULTS
