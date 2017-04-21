@@ -17,30 +17,27 @@ module Reader
     # Queue with incoming messages (from Cmd).
     REDIS_LIST = 'reader:bote:out'.freeze
 
-    # IMPOTENT: min value
-    POLLING_FREQUENCY = 0.1
-
     class << self
       def run
         EM.run do
           client.run
-
-          EM.tick_loop do
-            next unless client.connected? || redis.connected?
-            from_redis_to_jabber
-          end
+          to_jabber_from(REDIS_LIST)
         end
       end
 
       protected
 
-      def from_redis_to_jabber
-        msg = redis.rpop(REDIS_LIST)
-        if msg
-          msg = JSON.parse(msg, symbolize_names: true)
-          say(msg[:to], msg[:text])
-        else
-          sleep(POLLING_FREQUENCY)
+      def to_jabber_from(redis_key)
+        EM.tick_loop do
+          next unless client.connected? || redis.connected?
+          msg = redis.rpop(redis_key)
+
+          if msg
+            msg = JSON.parse(msg, symbolize_names: true)
+            say(msg[:to], msg[:text])
+          else
+            sleep 0.1 # optimal experimentation value !!
+          end
         end
       end
     end
