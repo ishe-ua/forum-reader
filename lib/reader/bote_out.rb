@@ -20,12 +20,25 @@ module Reader
     def self.run
       EM.run do
         client.run
-        EM.add_periodic_timer(1) do
-          while (msg = redis.rpop(REDIS_LIST))
-            msg = JSON.parse(msg, symbolize_names: true)
-            say(msg[:to], msg[:text])
+
+        EM.tick_loop do
+          if client && client.connected?
+            msg = redis.rpop(REDIS_LIST)
+            if msg
+              msg = JSON.parse(msg, symbolize_names: true)
+              say(msg[:to], msg[:text])
+            else
+              sleep 5
+            end
           end
         end
+
+        # EM.add_periodic_timer(1) do
+        #   while (msg = redis.rpop(REDIS_LIST))
+        #     msg = JSON.parse(msg, symbolize_names: true)
+        #     say(msg[:to], msg[:text])
+        #   end
+        # end
       end
     end
   end
