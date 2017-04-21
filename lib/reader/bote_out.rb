@@ -17,6 +17,9 @@ module Reader
     # Queue with incoming messages (from Cmd).
     REDIS_LIST = 'reader:bote:out'.freeze
 
+    # IMPOTENT: min value
+    POLLING_FREQUENCY = 0.1
+
     class << self
       def run
         EM.run do
@@ -37,7 +40,7 @@ module Reader
           msg = JSON.parse(msg, symbolize_names: true)
           say(msg[:to], msg[:text])
         else
-          sleep 0.1
+          sleep(POLLING_FREQUENCY)
         end
       end
     end
