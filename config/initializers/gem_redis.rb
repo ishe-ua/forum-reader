@@ -14,3 +14,8 @@ Redis.current = Redis.new(opts)
 def redis
   Redis.current
 end
+
+# Get redis url
+def redis_url
+  "redis://#{redis.client.host}:#{redis.client.port}/#{redis.client.db}"
+end

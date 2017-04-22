@@ -1,11 +1,10 @@
 require 'sidekiq'
-
-redis_conn = proc { Redis.current }
+require_relative 'gem_redis.rb'
 
 Sidekiq.configure_client do |config|
-  config.redis = ConnectionPool.new(size: 25, &redis_conn)
+  config.redis = { url: redis_url }
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = ConnectionPool.new(size: 25 + 2, &redis_conn) # !! +2, see doc
+  config.redis = { url: redis_url }
 end
