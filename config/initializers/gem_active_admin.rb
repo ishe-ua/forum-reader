@@ -1,4 +1,3 @@
-# rubocop:disable LineLength
 ActiveAdmin.setup do |config|
   config.skip_before_action :require_sign_in ## See Auth
 
