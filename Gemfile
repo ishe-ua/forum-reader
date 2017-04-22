@@ -10,7 +10,7 @@ gem 'rails', '~> 5.0.1'
 gem 'pg',    '~> 0.19'
 gem 'puma',  '~> 3.0'
 gem 'redis-rails'
-gem 'resque'
+gem 'sidekiq'
 gem 'clockwork'
 
 gem 'exception_notification'
@@ -53,4 +53,4 @@ gem 'blather'
 gem 'rchardet'
 
 gem 'activeadmin', '~> 1.0.0.pre5'
-gem 'devise' # For activeadmin and resque monitoring
+gem 'devise' # For activeadmin and sidekiq monitoring

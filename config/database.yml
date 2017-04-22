@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: 1
+  pool: 25 # like sidekiq threads count
 
 development:
   <<: *default
