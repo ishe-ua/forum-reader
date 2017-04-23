@@ -14,8 +14,8 @@ module Reader
         return unless (user = find_user_from(from))
 
         params = find_params_from(body)
-        text = if valid?(params)
-                 gen_selection(user, params)
+        text = if valid?(params) && (obj = find_obj_by(user, params[:name]))
+                 gen_selection(user, params, obj)
                else
                  CommandJob::NOT_FOUND
                end
@@ -35,10 +35,7 @@ module Reader
         p
       end
 
-      def gen_selection(user, params)
-        obj = find_obj_by(user, params[:name])
-        return CommandJob::NOT_FOUND unless obj
-
+      def gen_selection(user, params, obj)
         feed_items = find_feed_items(obj, params[:count])
 
         if feed_items.any?
