@@ -5,7 +5,7 @@ class ContactsMailer < ApplicationMailer
     @contact = contact
 
     account = Account.find_by(email: contact.email)
-    l = account ? account.lang : I18n.default_locale
+    l = account ? account.user.lang : I18n.default_locale
 
     I18n.with_locale(l) do
       mail to: @contact.email, subject: t('thank_you')
