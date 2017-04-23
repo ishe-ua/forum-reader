@@ -9,6 +9,7 @@ module Reader
       include Cmd
 
       # Like ListJob
+      # rubocop:disable CyclomaticComplexity, PerceivedComplexity, MethodLength
       def perform(body, from)
         return unless body.match?(self.class::REGEXP) # !!
         return unless (user = find_user_from(from))
@@ -21,6 +22,8 @@ module Reader
                end
 
         ReplyJob.perform_later(text, from)
+        yield(obj) if obj && block_given?
+
         text # for tests
       end
 
