@@ -6,7 +6,7 @@
 module JabConfirmation
   extend ActiveSupport::Concern
 
-  JABBER_CONFIRMATION_TOKEN_SIZE = 40
+  JABBER_CONFIRMATION_TOKEN_SIZE = 15
 
   included do
     after_initialize :set_default_jabber_confirmation_token

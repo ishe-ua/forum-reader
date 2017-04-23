@@ -12,7 +12,7 @@ class AccountsMailer < ApplicationMailer
 
   def jabber_confirmation(account)
     @account = account
-    mail to: account.user.jabber
+    mail(to: account.user.jabber)
   end
 
   # Send new Password to Account

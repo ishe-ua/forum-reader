@@ -1,7 +1,7 @@
 # Base Mailer
 class ApplicationMailer < ActionMailer::Base
   default from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>"
-  layout 'mailer'
+  layout 'mailer', except: :jabber_confirmation
 
   helper do
     def html_to_text(str)

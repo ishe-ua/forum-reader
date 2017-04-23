@@ -32,9 +32,10 @@ module ConfirmJabber
 
   def repeat_jabber_confirmation
     text = AccountsMailer.jabber_confirmation(current_account).body.encoded
-    Reader::ReplyJob.perform_later(text, Reader::BOTE_JID)
+    Reader::ReplyJob.perform_later(text, current_user.jabber)
     redirect_to info_path, notice: t(:we_sent_you_jabber)
   end
+
 
   private
 
