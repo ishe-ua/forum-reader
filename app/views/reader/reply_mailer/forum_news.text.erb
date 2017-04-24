@@ -1,7 +1,7 @@
 <% if @forum.jabber? %>
 <%= html_to_text(@subject) %>
-<% end %>
-
+<% else %>
 <%= html_to_text(@feed_item.text) %>
+<% end %>
 
 <%= @feed_item.url %>
