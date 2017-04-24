@@ -2,7 +2,7 @@ unless defined?(Rails)
   require 'action_mailer'
   require 'active_support'
 
-  require_relative '01_libs'
+  require_relative '../../lib/app.rb'
   require_relative '../../app/mailers/application_mailer.rb'
 
   Dir[File.expand_path('../../app/mailers/**/*.rb', __dir__)]

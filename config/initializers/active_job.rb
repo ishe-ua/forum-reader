@@ -2,7 +2,7 @@ require 'active_job'
 ActiveJob::Base.queue_adapter = :sidekiq
 
 unless defined?(Rails)
-  require_relative '01_libs.rb'
+  require_relative '../../lib/app.rb'
   require_relative 'gem_redis.rb'
   require_relative 'gem_sidekiq.rb'
 
