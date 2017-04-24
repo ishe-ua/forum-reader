@@ -12,7 +12,7 @@ class CommandJob < ApplicationJob
 
   NOT_FOUND = '??'.freeze
 
-  DEFAULT_SELECTION_SIZE = 5
+  DEFAULT_SELECTION_SIZE = 15
 
   MAX_SELECTION_SIZE = 200
 
