@@ -16,15 +16,17 @@ module Clockwork
       Dir.exist?(LOG_DIR)
   end
 
-  # rubocop:disable LineLength
-
   every(1.day, 'Run system tasks', at: SYS_TIME) do
     AdminMailer.stats.deliver_later
   end
 
-  every(5.minutes, 'reader: fetch feeds') { Reader::FetchFeedsJob.perform_later }
-
-  every(1.minute, 'reader: send letters', if: ->(time) { APP::SUPPORTED_MINUTES.include?(time.min) }) do
+  every(1.minute, 'reader: send letters', if: lambda { |time|
+    APP::SUPPORTED_MINUTES.include?(time.min)
+  }) do
     Reader::SendLettersJob.perform_later(Time.now.utc.to_i)
+  end
+
+  every(5.minutes, 'reader: fetch feeds') do
+    Reader::FetchFeedsJob.perform_later
   end
 end
