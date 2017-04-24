@@ -16,6 +16,6 @@ def redis
 end
 
 # Get redis url
-def redis_url
+def redis.url
   "redis://#{redis.client.host}:#{redis.client.port}/#{redis.client.db}"
 end
