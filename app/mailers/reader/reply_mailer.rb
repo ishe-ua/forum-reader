@@ -20,7 +20,7 @@ module Reader
       to = forum.user.account.email  if forum.email?
       to = forum.user        .jabber if forum.jabber?
 
-      mail to: to, subject: build_subject(forum.name, feed_item.theme)
+      mail(to: to, subject: build_subject(forum.name, feed_item.theme))
     end
 
     # Letter with news to Email.
@@ -44,7 +44,7 @@ module Reader
     def selection(user, feed_items, plus)
       @feed_items = feed_items
       @plus = plus
-      mail to: user.jabber
+      mail(to: user.jabber)
     end
 
     private
