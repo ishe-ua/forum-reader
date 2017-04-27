@@ -18,7 +18,7 @@ module Checksum
   protected
 
   def calc_and_set_checksum
-    s = "#{url}-#{theme}-#{text}"
+    s = "#{url}-#{theme}"
     self.checksum = Digest::MD5.hexdigest(s)
   end
 end
