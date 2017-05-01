@@ -8,8 +8,10 @@ module Reader
     def perform(url)
       Forum.where(url: url).find_each do |forum|
         news = find_unsended_news_in(forum)
-        send_to(forum, news)
-        update_last_post_at(forum)
+        if forum.user.reader_set.on? && news.any?
+          send_to(forum, news)
+          update_last_post_at(forum)
+        end
       end
     end
 

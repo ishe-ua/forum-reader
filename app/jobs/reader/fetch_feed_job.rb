@@ -6,7 +6,7 @@ module Reader
     def perform(url)
       feed = find_or_create_feed_by(url)
       news = find_news(feed)
-      SendForumsJob.perform_later(url) if news&.any? && forum?(url)
+      SendForumsJob.perform_later(url) if news && news.any? && forum?(url)
     end
 
     protected
