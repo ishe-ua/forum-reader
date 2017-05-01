@@ -27,8 +27,8 @@ if defined?(Rails) && Rails.env.production?
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               APP::HOST,
-    user_name:            Rails.application.secrets['smtp_username'],
-    password:             Rails.application.secrets['smtp_password'],
+    user_name:            Rails.application.secrets[:smtp_username],
+    password:             Rails.application.secrets[:smtp_password],
     authentication:       'plain',
     enable_starttls_auto: true
   }

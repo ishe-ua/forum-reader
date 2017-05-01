@@ -3,7 +3,12 @@ require_relative '../lib/app.rb'
 threads_count = 1
 threads threads_count, threads_count
 
-bind "unix:/tmp/#{APP::NAME.tr('-', '_')}.sock"
+if defined?(Rails) && Rails.env.development?
+  port ENV.fetch('PORT') { 3000 }
+else
+  bind "unix:/tmp/#{APP::NAME.tr('-', '_')}.sock"
+end
+
 environment ENV.fetch('RAILS_ENV') { 'development' }
 
 # workers ENV.fetch('WEB_CONCURRENCY') { 1 }
