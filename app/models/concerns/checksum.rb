@@ -18,7 +18,8 @@ module Checksum
   protected
 
   def calc_and_set_checksum
-    self.checksum = Digest::MD5.hexdigest("#{url}-#{theme}") if
-      checksum.blank?
+    self.checksum = Digest::MD5.hexdigest(url) if
+      checksum.blank? &&
+      url.present?
   end
 end
