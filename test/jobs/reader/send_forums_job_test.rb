@@ -26,12 +26,16 @@ module Reader
 
     test 'send to email' do
       forum.email! # FIX: replace to assert_enqueued_emails
-      assert_enqueued_jobs(1) { job.send(:send_to, forum, [FeedItem.first]) }
+      assert_enqueued_jobs(1) do
+        job.send(:send_to_target, forum, [FeedItem.first])
+      end
     end
 
     test 'send to jabber' do
       forum.jabber!
-      assert_enqueued_jobs(1) { job.send(:send_to, forum, [FeedItem.first]) }
+      assert_enqueued_jobs(1) do
+        job.send(:send_to_target, forum, [FeedItem.first])
+      end
     end
   end
 end

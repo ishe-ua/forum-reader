@@ -6,16 +6,18 @@ module Reader
     # Param:
     # * +url+ Url of Forum
     def perform(url)
-      Forum.where(url: url).find_each do |forum|
-        news = find_unsended_news_in(forum)
-        if forum.user.reader_set.on? && news.any?
-          send_to(forum, news)
-          update_last_post_at(forum)
-        end
-      end
+      Forum.where(url: url).find_each { |forum| send_to(forum) }
     end
 
     protected
+
+    def send_to(forum)
+      news = find_unsended_news_in(forum)
+      return if forum.user.reader_set.off? || news.empty?
+
+      send_to_target(forum, news)
+      update_last_post_at(forum)
+    end
 
     def find_unsended_news_in(forum)
       feed = Feed.find_by(url: forum.url)
@@ -26,7 +28,7 @@ module Reader
     end
 
     # Send ReplyMailer#forum_news to Target
-    def send_to(forum, news)
+    def send_to_target(forum, news)
       news.each do |feed_item|
         mail = ReplyMailer.forum_news(forum, feed_item)
 
