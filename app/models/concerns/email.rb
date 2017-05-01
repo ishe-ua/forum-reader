@@ -9,8 +9,8 @@ module Email
   VALID_EMAIL = /\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/
 
   included do
-    before_validation :downcase_email, if: :email_changed?
-    after_update :nullify_email_confirmation, if: :email_changed?
+    before_validation :downcase_email
+    after_update :nullify_email_confirmation
 
     validates :email,
               presence: true,
@@ -24,11 +24,11 @@ module Email
   protected
 
   def downcase_email
-    email.downcase!
+    email.downcase! if email_changed?
   end
 
   # Invoke after change Email (see EmailConfirmation)
   def nullify_email_confirmation
-    unconfirm_email
+    unconfirm_email if saved_change_to_attribute?(:email)
   end
 end

@@ -12,13 +12,13 @@ module Checksum
               presence: true,
               uniqueness: { scope: :feed_id }
 
-    before_validation :calc_and_set_checksum, if: 'checksum.blank?'
+    before_validation :calc_and_set_checksum
   end
 
   protected
 
   def calc_and_set_checksum
-    s = "#{url}-#{theme}"
-    self.checksum = Digest::MD5.hexdigest(s)
+    self.checksum = Digest::MD5.hexdigest("#{url}-#{theme}") if
+      checksum.blank?
   end
 end

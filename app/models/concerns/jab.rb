@@ -9,8 +9,8 @@ module Jab
   VALID_JABBER = Email::VALID_EMAIL
 
   included do
-    before_validation :downcase_jabber, if: :jabber_changed?
-    after_update :nullify_jabber_confirmation, if: :jabber_changed?
+    before_validation :downcase_jabber
+    after_update :nullify_jabber_confirmation
 
     validates :jabber,
 
@@ -26,11 +26,11 @@ module Jab
   protected
 
   def downcase_jabber
-    jabber.downcase!
+    jabber.downcase! if jabber_changed?
   end
 
   # Invoke after change Jabber (see JabberConfirmation)
   def nullify_jabber_confirmation
-    unconfirm_jabber
+    unconfirm_jabber if saved_change_to_attribute?(:jabber)
   end
 end
