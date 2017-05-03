@@ -9,9 +9,20 @@ module Reader
       @forum = forums(:reddit_ruby)
     end
 
-    test 'perform' do
+    test 'return news count if news exists' do
       feed = feeds(:reddit_ruby)
-      assert_nothing_raised { job.class.perform_now(feed.url) }
+      forums(:reddit_ruby).update(last_post_at: 200.years.ago)
+
+      news_count = job.class.perform_now(feed.url)
+      assert news_count.positive?
+    end
+
+    test 'return nil if any news' do
+      feed = feeds(:reddit_ruby)
+      forums(:reddit_ruby).update(last_post_at: Time.zone.now)
+
+      news_count = job.class.perform_now(feed.url)
+      assert_not news_count
     end
 
     test 'find_unsended_news_in => found' do
