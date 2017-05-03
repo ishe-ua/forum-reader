@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  # TODO: security
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
   ###
   # Static pages
   #
@@ -82,4 +78,25 @@ Rails.application.routes.draw do
       patch :change_status
     end
   end
+
+  ###
+  # Sidekiq
+  #
+
+  require 'sidekiq/web'
+
+  if Rails.env.production? # TODO
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(
+        ::Digest::SHA256.hexdigest(username),
+        ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_username])
+      ) &
+        ActiveSupport::SecurityUtils.secure_compare(
+          ::Digest::SHA256.hexdigest(password),
+          ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_password])
+        )
+    end
+  end
+
+  mount Sidekiq::Web, at: '/sidekiq'
 end
