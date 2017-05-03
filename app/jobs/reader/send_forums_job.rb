@@ -9,17 +9,22 @@ module Reader
       user = User.find(url_or_user_id) if url_or_user_id.is_a?(Integer)
       sel = user ? user.forums : Forum.where(url: url_or_user_id)
 
-      sel.find_each { |forum| send_out(forum) }
+      news_count = 0
+      sel.find_each { |forum| news_count += send_out(forum) }
+
+      news_count.positive? ? news_count : nil
     end
 
     protected
 
     def send_out(forum)
       news = find_unsended_news_in(forum)
-      return if forum.user.reader_set.off? || news.empty?
+      return 0 if forum.user.reader_set.off? || news.empty?
 
       send_to_target(forum, news)
       update_last_post_at(forum)
+
+      news.count
     end
 
     def find_unsended_news_in(forum)
