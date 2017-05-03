@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-  # ActiveAdmin.routes(self)
-
-  # authenticate :admin_user do
-  #   require 'sidekiq/web'
-  #   mount Sidekiq::Web => '/sidekiq'
-  # end
+  # TODO: security
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   ###
   # Static pages

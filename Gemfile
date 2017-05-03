@@ -54,6 +54,3 @@ gem 'active_record_union'
 gem 'feedjira' # !!
 gem 'blather'  # !!
 gem 'rchardet'
-
-# gem 'activeadmin', '~> 1.0.0'
-# gem 'devise' # For activeadmin and sidekiq monitoring
