@@ -11,7 +11,7 @@ module Reader
         return unless (user = find_user_from(from))
 
         user.reader_set.change_status if user.reader_set.off?
-        SendForumsJob.perform_later(user.id) ||
+        SendForumsJob.perform_now(user.id) ||
           ReplyJob.perform_later(DONE, from)
       end
     end

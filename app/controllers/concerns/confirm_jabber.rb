@@ -36,7 +36,6 @@ module ConfirmJabber
     redirect_to info_path, notice: t(:we_sent_you_jabber)
   end
 
-
   private
 
   def attempt_confirm_j(user)

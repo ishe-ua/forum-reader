@@ -29,7 +29,7 @@ module Reader
 
     def find_unsended_news_in(forum)
       feed = Feed.find_by(url: forum.url)
-      return unless feed
+      return [] unless feed
 
       since = forum.last_post_at || Time.zone.now
       feed.feed_items.where('created_at > ?', since).order(:created_at)
