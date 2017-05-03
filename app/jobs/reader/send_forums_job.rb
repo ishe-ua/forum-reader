@@ -4,14 +4,17 @@ module Reader
     queue_as :default
 
     # Param:
-    # * +url+ Url of Forum
-    def perform(url)
-      Forum.where(url: url).find_each { |forum| send_to(forum) }
+    # * +url_or_user_id+ Url of Forum or id of the User
+    def perform(url_or_user_id)
+      user = User.find(url_or_user_id) if url_or_user_id.is_a?(Integer)
+      sel = user ? user.forums : Forum.where(url: url_or_user_id)
+
+      sel.find_each { |forum| send_out(forum) }
     end
 
     protected
 
-    def send_to(forum)
+    def send_out(forum)
       news = find_unsended_news_in(forum)
       return if forum.user.reader_set.off? || news.empty?
 
