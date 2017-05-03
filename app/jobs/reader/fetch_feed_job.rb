@@ -6,7 +6,7 @@ module Reader
     def perform(url)
       feed = find_or_create_feed_by(url)
       news = find_news(feed)
-      SendForumsJob.perform_later(url) if news && news.any? && forum?(url)
+      SendForumsJob.perform_later(url) if news.any? && forum?(url)
     end
 
     protected
@@ -21,9 +21,9 @@ module Reader
         feed_item = build_feed_item_from(entry, feed)
         feed_item.save if feed.last_fetch_at.nil? ||
                           feed.last_fetch_at < feed_item.date
+
+        feed_item
       end
-    rescue
-      nil
     end
 
     def forum?(url)

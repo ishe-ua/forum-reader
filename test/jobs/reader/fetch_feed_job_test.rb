@@ -7,7 +7,10 @@ module Reader
     end
 
     test 'perform' do
-      job.class.perform_now('http://example.com/feed')
+      VCR.use_cassette(:reddit_ruby) do
+        url = feeds(:reddit_ruby).url
+        assert job.class.perform_now(url)
+      end
     end
 
     test 'find_or_create_feed_by => finded' do
@@ -35,7 +38,7 @@ module Reader
     end
 
     test 'find_news => fail' do
-      assert_nil job.send(:find_news, nil)
+      assert_raise { job.send(:find_news, nil) }
     end
   end
 end
