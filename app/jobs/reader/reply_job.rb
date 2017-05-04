@@ -12,6 +12,7 @@ module Reader
     # - +to+ Whom send (jid with resource)
 
     def perform(text, to)
+      # TODO: reject msg if jid is not confirmed
       hash = { text: text.strip, to: to.strip }
       redis.lpush(BoteOut::REDIS_KEY, hash.to_json)
     end
