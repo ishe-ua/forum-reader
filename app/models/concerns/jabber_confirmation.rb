@@ -3,7 +3,7 @@
 # 1. +jabber_confirmation_at+ When confirmed (nil - unconfirmed)
 # 2. +jabber_confirmation_token+
 #
-module JabConfirmation
+module JabberConfirmation
   extend ActiveSupport::Concern
 
   JABBER_CONFIRMATION_TOKEN_SIZE = 15

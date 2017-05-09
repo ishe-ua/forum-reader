@@ -43,8 +43,8 @@ class User < ApplicationRecord
 
   include Nick
 
-  include Jab
-  include JabConfirmation
+  include Jabber
+  include JabberConfirmation
 
   include Lang
   include Country

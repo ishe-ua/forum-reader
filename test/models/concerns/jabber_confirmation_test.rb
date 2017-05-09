@@ -1,15 +1,18 @@
-# coding: utf-8
-
 require 'test_helper'
 
-class JabConfirmationTest < ActiveSupport::TestCase
+class JabberConfirmationTest < ActiveSupport::TestCase
   setup do
     @instance = build(:user)
   end
 
-  test 'токен обязательно' do
+  test 'required' do
     instance.jabber_confirmation_token = nil
     assert_not instance.valid?
+  end
+
+  test 'unique' do
+    assert users(:ishe).update(jabber_confirmation_token: 'aa')
+    assert_not users(:john) .update(jabber_confirmation_token: 'aa')
   end
 
   test '#jabber_confirmed?' do
@@ -30,8 +33,4 @@ class JabConfirmationTest < ActiveSupport::TestCase
     assert_not users(:ishe).jabber_confirmed?
   end
 
-  test 'два одинаковых токена не получится' do
-    assert users(:ishe).update(jabber_confirmation_token: 'aa')
-    assert_not users(:john) .update(jabber_confirmation_token: 'aa')
-  end
 end
