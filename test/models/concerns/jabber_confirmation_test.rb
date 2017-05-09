@@ -32,5 +32,4 @@ class JabberConfirmationTest < ActiveSupport::TestCase
     users(:ishe).unconfirm_jabber
     assert_not users(:ishe).jabber_confirmed?
   end
-
 end
