@@ -16,11 +16,22 @@ module Reader
     subscription(:request?) { |s| write_to_stream s.approve! }
 
     message(:chat?) do |m|
-      EM.next_tick { InJob.perform_later(m.body, m.from.to_s) }
+      EM.next_tick { enqueue(m) }
     end
 
     def self.run
       EM.run { client.run }
+    end
+
+    class << self
+      protected
+
+      # See InJob
+      def enqueue(msg)
+        body = msg.body
+        from = msg.from.to_s
+        InJob.perform_later(body, from) if body.present? && from.present?
+      end
     end
   end
 end
