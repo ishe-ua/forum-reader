@@ -10,196 +10,165 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405061804) do
+ActiveRecord::Schema.define(version: 20160709160620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.string   "email",                    null: false
-    t.string   "password_digest",          null: false
+  create_table "accounts", id: :serial, force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "email_confirmation_at"
-    t.string   "email_confirmation_token"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["email"], name: "index_accounts_on_email", unique: true, using: :btree
-    t.index ["email_confirmation_at"], name: "index_accounts_on_email_confirmation_at", using: :btree
-    t.index ["email_confirmation_token"], name: "index_accounts_on_email_confirmation_token", unique: true, using: :btree
-  end
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.string   "author_type"
-    t.integer  "author_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-  end
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "email"
-    t.string   "theme"
-    t.text     "text"
+    t.string "email_confirmation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_contacts_on_email", using: :btree
+    t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["email_confirmation_at"], name: "index_accounts_on_email_confirmation_at"
+    t.index ["email_confirmation_token"], name: "index_accounts_on_email_confirmation_token", unique: true
   end
 
-  create_table "feed_items", force: :cascade do |t|
-    t.integer  "feed_id"
+  create_table "contacts", id: :serial, force: :cascade do |t|
+    t.string "email"
+    t.string "theme"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_contacts_on_email"
+  end
+
+  create_table "feed_items", id: :serial, force: :cascade do |t|
+    t.integer "feed_id"
     t.datetime "date"
-    t.string   "url"
-    t.string   "theme"
-    t.text     "text"
-    t.string   "checksum",   null: false
+    t.string "url"
+    t.string "theme"
+    t.text "text"
+    t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["checksum"], name: "index_feed_items_on_checksum", using: :btree
-    t.index ["created_at"], name: "index_feed_items_on_created_at", using: :btree
-    t.index ["feed_id"], name: "index_feed_items_on_feed_id", using: :btree
+    t.index ["checksum"], name: "index_feed_items_on_checksum"
+    t.index ["created_at"], name: "index_feed_items_on_created_at"
+    t.index ["feed_id"], name: "index_feed_items_on_feed_id"
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.string   "url"
+  create_table "feeds", id: :serial, force: :cascade do |t|
+    t.string "url"
     t.datetime "last_fetch_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["last_fetch_at"], name: "index_feeds_on_last_fetch_at", using: :btree
-    t.index ["url"], name: "index_feeds_on_url", unique: true, using: :btree
-  end
-
-  create_table "forums", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "url"
-    t.integer  "target"
-    t.integer  "position"
-    t.datetime "last_post_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["last_post_at"], name: "index_forums_on_last_post_at", using: :btree
-    t.index ["target"], name: "index_forums_on_target", using: :btree
-    t.index ["url"], name: "index_forums_on_url", using: :btree
-    t.index ["user_id"], name: "index_forums_on_user_id", using: :btree
-  end
-
-  create_table "letter_items", force: :cascade do |t|
-    t.integer  "letter_id"
-    t.string   "name"
-    t.string   "url"
-    t.datetime "last_post_at"
-    t.integer  "position"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["last_post_at"], name: "index_letter_items_on_last_post_at", using: :btree
-    t.index ["letter_id"], name: "index_letter_items_on_letter_id", using: :btree
-    t.index ["url"], name: "index_letter_items_on_url", using: :btree
-  end
-
-  create_table "letters", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.boolean  "d1"
-    t.boolean  "d2"
-    t.boolean  "d3"
-    t.boolean  "d4"
-    t.boolean  "d5"
-    t.boolean  "d6"
-    t.boolean  "d7"
-    t.integer  "hour"
-    t.integer  "minute"
-    t.datetime "last_post_at"
-    t.integer  "position"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["d1"], name: "index_letters_on_d1", using: :btree
-    t.index ["d2"], name: "index_letters_on_d2", using: :btree
-    t.index ["d3"], name: "index_letters_on_d3", using: :btree
-    t.index ["d4"], name: "index_letters_on_d4", using: :btree
-    t.index ["d5"], name: "index_letters_on_d5", using: :btree
-    t.index ["d6"], name: "index_letters_on_d6", using: :btree
-    t.index ["d7"], name: "index_letters_on_d7", using: :btree
-    t.index ["hour"], name: "index_letters_on_hour", using: :btree
-    t.index ["last_post_at"], name: "index_letters_on_last_post_at", using: :btree
-    t.index ["minute"], name: "index_letters_on_minute", using: :btree
-    t.index ["user_id"], name: "index_letters_on_user_id", using: :btree
-  end
-
-  create_table "mailer_sets", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "secret_name",  null: false
-    t.integer  "status"
-    t.datetime "last_post_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["last_post_at"], name: "index_mailer_sets_on_last_post_at", using: :btree
-    t.index ["secret_name"], name: "index_mailer_sets_on_secret_name", unique: true, using: :btree
-    t.index ["status"], name: "index_mailer_sets_on_status", using: :btree
-    t.index ["user_id"], name: "index_mailer_sets_on_user_id", using: :btree
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "from"
-    t.string   "subject"
-    t.text     "body"
-    t.text     "attachments"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["created_at"], name: "index_messages_on_created_at", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-  end
-
-  create_table "reader_sets", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["status"], name: "index_reader_sets_on_status", using: :btree
-    t.index ["user_id"], name: "index_reader_sets_on_user_id", using: :btree
+    t.index ["last_fetch_at"], name: "index_feeds_on_last_fetch_at"
+    t.index ["url"], name: "index_feeds_on_url", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer  "account_id"
-    t.string   "nick"
-    t.string   "jabber"
+  create_table "forums", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "url"
+    t.integer "target"
+    t.integer "position"
+    t.datetime "last_post_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["last_post_at"], name: "index_forums_on_last_post_at"
+    t.index ["target"], name: "index_forums_on_target"
+    t.index ["url"], name: "index_forums_on_url"
+    t.index ["user_id"], name: "index_forums_on_user_id"
+  end
+
+  create_table "letter_items", id: :serial, force: :cascade do |t|
+    t.integer "letter_id"
+    t.string "name"
+    t.string "url"
+    t.datetime "last_post_at"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["last_post_at"], name: "index_letter_items_on_last_post_at"
+    t.index ["letter_id"], name: "index_letter_items_on_letter_id"
+    t.index ["url"], name: "index_letter_items_on_url"
+  end
+
+  create_table "letters", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.boolean "d1"
+    t.boolean "d2"
+    t.boolean "d3"
+    t.boolean "d4"
+    t.boolean "d5"
+    t.boolean "d6"
+    t.boolean "d7"
+    t.integer "hour"
+    t.integer "minute"
+    t.datetime "last_post_at"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["d1"], name: "index_letters_on_d1"
+    t.index ["d2"], name: "index_letters_on_d2"
+    t.index ["d3"], name: "index_letters_on_d3"
+    t.index ["d4"], name: "index_letters_on_d4"
+    t.index ["d5"], name: "index_letters_on_d5"
+    t.index ["d6"], name: "index_letters_on_d6"
+    t.index ["d7"], name: "index_letters_on_d7"
+    t.index ["hour"], name: "index_letters_on_hour"
+    t.index ["last_post_at"], name: "index_letters_on_last_post_at"
+    t.index ["minute"], name: "index_letters_on_minute"
+    t.index ["user_id"], name: "index_letters_on_user_id"
+  end
+
+  create_table "mailer_sets", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "secret_name", null: false
+    t.integer "status"
+    t.datetime "last_post_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["last_post_at"], name: "index_mailer_sets_on_last_post_at"
+    t.index ["secret_name"], name: "index_mailer_sets_on_secret_name", unique: true
+    t.index ["status"], name: "index_mailer_sets_on_status"
+    t.index ["user_id"], name: "index_mailer_sets_on_user_id"
+  end
+
+  create_table "messages", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "from"
+    t.string "subject"
+    t.text "body"
+    t.text "attachments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "reader_sets", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_reader_sets_on_status"
+    t.index ["user_id"], name: "index_reader_sets_on_user_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.integer "account_id"
+    t.string "nick"
+    t.string "jabber"
     t.datetime "jabber_confirmation_at"
-    t.string   "jabber_confirmation_token"
-    t.string   "lang"
-    t.string   "country"
-    t.string   "timezone"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["account_id"], name: "index_users_on_account_id", using: :btree
-    t.index ["country"], name: "index_users_on_country", using: :btree
-    t.index ["jabber"], name: "index_users_on_jabber", unique: true, using: :btree
-    t.index ["jabber_confirmation_at"], name: "index_users_on_jabber_confirmation_at", using: :btree
-    t.index ["jabber_confirmation_token"], name: "index_users_on_jabber_confirmation_token", unique: true, using: :btree
-    t.index ["lang"], name: "index_users_on_lang", using: :btree
-    t.index ["nick"], name: "index_users_on_nick", unique: true, using: :btree
-    t.index ["timezone"], name: "index_users_on_timezone", using: :btree
+    t.string "jabber_confirmation_token"
+    t.string "lang"
+    t.string "country"
+    t.string "timezone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_users_on_account_id"
+    t.index ["country"], name: "index_users_on_country"
+    t.index ["jabber"], name: "index_users_on_jabber", unique: true
+    t.index ["jabber_confirmation_at"], name: "index_users_on_jabber_confirmation_at"
+    t.index ["jabber_confirmation_token"], name: "index_users_on_jabber_confirmation_token", unique: true
+    t.index ["lang"], name: "index_users_on_lang"
+    t.index ["nick"], name: "index_users_on_nick", unique: true
+    t.index ["timezone"], name: "index_users_on_timezone"
   end
 
   add_foreign_key "feed_items", "feeds"
