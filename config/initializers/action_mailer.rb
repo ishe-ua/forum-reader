@@ -19,13 +19,13 @@ am.default_options = { from: "#{APP::NAME} <#{APP::NOREPLY_EMAIL}>" }
 am.default_url_options = { host: 'localhost', port: 3000 } if
   am.respond_to?(:default_url_options)
 
-if defined?(Rails) && Rails.env.production?
+if defined?(Rails) && (!Rails.env.development? && !Rails.env.test?)
   am.default_url_options = { host: "http://#{APP::HOST}" }
   am.delivery_method = :smtp
 
   am.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    address:              Rails.application.secrets[:smtp_server],
+    port:                 Rails.application.secrets[:smtp_port],
     domain:               APP::HOST,
     user_name:            Rails.application.secrets[:smtp_username],
     password:             Rails.application.secrets[:smtp_password],
