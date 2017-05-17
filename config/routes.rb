@@ -80,23 +80,24 @@ Rails.application.routes.draw do
   end
 
   ###
-  # Sidekiq
+  # Sidekiq monitoring
   #
 
-  require 'sidekiq/web'
+  require 'sidekiq/web' # TODO: security (password)
+  mount Sidekiq::Web => '/sidekiq'
 
-  if Rails.env.production? # TODO
-    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-      ActiveSupport::SecurityUtils.secure_compare(
-        ::Digest::SHA256.hexdigest(username),
-        ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_username])
-      ) &
-        ActiveSupport::SecurityUtils.secure_compare(
-          ::Digest::SHA256.hexdigest(password),
-          ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_password])
-        )
-    end
-  end
+  # if Rails.env.production? # TODO
+  #   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+  #     ActiveSupport::SecurityUtils.secure_compare(
+  #       ::Digest::SHA256.hexdigest(username),
+  #       ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_username])
+  #     ) &
+  #       ActiveSupport::SecurityUtils.secure_compare(
+  #         ::Digest::SHA256.hexdigest(password),
+  #         ::Digest::SHA256.hexdigest(Rails.application.secrets[:sidekiq_password])
+  #       )
+  #   end
+  # end
 
-  mount Sidekiq::Web, at: '/sidekiq'
+  # mount Sidekiq::Web, at: '/sidekiq'
 end
