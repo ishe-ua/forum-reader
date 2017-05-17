@@ -20,7 +20,6 @@ gem 'god'
 gem 'sass-rails',    '~> 5.0'
 gem 'uglifier',      '>= 1.3.0'
 gem 'coffee-rails',  '~> 4.2'
-gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
 gem 'jbuilder', '~> 2.5'                 # Build JSON APIs with ease
@@ -48,6 +47,7 @@ group :test do
   gem 'vcr'
 end
 
+gem 'rails-assets-zepto', source: 'https://rails-assets.org'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master' # For 5.x
 gem 'acts_as_list'
 gem 'active_record_union'

@@ -1,5 +1,4 @@
-//= require jquery
-//= require jquery_ujs
-//
+//= require zepto
+//= require rails-ujs
 //= require turbolinks
 //= require_tree .
