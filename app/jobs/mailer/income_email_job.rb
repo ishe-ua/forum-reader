@@ -1,6 +1,6 @@
 module Mailer
   # Income (receive) email from Piper.
-  class IncomeEmailJob < ActiveJob::Base
+  class IncomeEmailJob < ApplicationJob
     queue_as :default
 
     # See Piper#to

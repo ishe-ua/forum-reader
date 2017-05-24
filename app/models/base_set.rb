@@ -1,5 +1,5 @@
 # Base for set-models.
-class BaseSet < ActiveRecord::Base
+class BaseSet < ApplicationRecord
   self.abstract_class = true
 
   belongs_to :user

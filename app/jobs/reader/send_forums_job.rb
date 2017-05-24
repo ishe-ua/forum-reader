@@ -1,6 +1,6 @@
 module Reader
   # Send Forum news.
-  class SendForumsJob < ActiveJob::Base
+  class SendForumsJob < ApplicationJob
     queue_as :default
 
     # Param:

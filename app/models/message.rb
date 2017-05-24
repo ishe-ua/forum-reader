@@ -22,7 +22,7 @@
 #
 #  fk_rails_273a25a7a6  (user_id => users.id)
 #
-class Message < ActiveRecord::Base
+class Message < ApplicationRecord
   belongs_to :user
   validates :from, presence: true
 end
