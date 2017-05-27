@@ -71,14 +71,9 @@ class AccountsController < ApplicationController
   end
 
   def send_emails_after_create_and_redirect
-    AccountsMailer.welcome(@account)
-                  .deliver_later!(queue_priority: 0)
-
-    AccountsMailer.email_confirmation(@account)
-                  .deliver_later!(queue_priority: 0)
-
-    AdminMailer.new_registration(@account)
-               .deliver_later!(queue_priority: 0)
+    AccountsMailer.welcome(@account).deliver_later
+    AccountsMailer.email_confirmation(@account).deliver_later
+    AdminMailer.new_registration(@account).deliver_later
 
     redirect_to info_path, notice: t('we_sent_you_email')
   end
@@ -93,6 +88,6 @@ class AccountsController < ApplicationController
   end
 
   def send_email_confirmation
-    AccountsMailer.email_confirmation(@account).deliver_later(queue_priority: 0)
+    AccountsMailer.email_confirmation(@account).deliver_later
   end
 end
