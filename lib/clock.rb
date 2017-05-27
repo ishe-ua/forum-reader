@@ -16,9 +16,11 @@ module Clockwork
       Dir.exist?(LOG_DIR)
   end
 
-  every(1.day, 'Run system tasks', at: SYS_TIME) do
+  every(1.week, 'Run system tasks', at: 'Friday 15:20') do
     AdminMailer.stats.deliver_later
   end
+
+  # every(1.day, 'Run system tasks', at: SYS_TIME) {}
 
   every(1.minute, 'reader: send letters', if: lambda { |time|
     APP::SUPPORTED_MINUTES.include?(time.min)
