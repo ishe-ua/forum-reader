@@ -37,7 +37,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_0236efdee3  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Letter < ApplicationRecord
   belongs_to :user

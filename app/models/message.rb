@@ -20,7 +20,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_273a25a7a6  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Message < ApplicationRecord
   belongs_to :user

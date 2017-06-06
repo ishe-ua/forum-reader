@@ -21,7 +21,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_ae6ced02bb  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class MailerSet < BaseSet
   include SecretName

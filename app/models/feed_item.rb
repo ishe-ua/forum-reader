@@ -22,7 +22,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_0b1095a1ad  (feed_id => feeds.id)
+#  fk_rails_...  (feed_id => feeds.id)
 #
 class FeedItem < ApplicationRecord
   belongs_to :feed
