@@ -24,7 +24,7 @@ module APP
   LANGS = %w[en ru uk].freeze
 
   # Common password for +all+ botes (from +ENV+)
-  BOTES_PASSWORD = ENV['BOTES_PASSWORD'] || DEFAULT_PASSWORD
+  BOTES_PASSWORD = ENV.fetch('BOTES_PASSWORD') { DEFAULT_PASSWORD }
 
   # See Schedule and Clockwork
   SUPPORTED_MINUTES = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].freeze
