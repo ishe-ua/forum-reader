@@ -83,8 +83,9 @@ Rails.application.routes.draw do
   # Sidekiq monitoring
   #
 
-  require 'sidekiq/web' # TODO: security (password)
-  mount Sidekiq::Web => '/sidekiq'
+  # TODO
+  # require 'sidekiq/web' # TODO: security (password)
+  # mount Sidekiq::Web => '/sidekiq'
 
   # if Rails.env.production? # TODO
   #   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
